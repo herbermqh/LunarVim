@@ -7,7 +7,8 @@
   `-...-'    |_____\__,_|_| |_|\__,_|_|    \_/  |_|_| |_| |_|
 ```
 
-# Christian Header {{{1
+<!-- Christian Information -->
+#{{{1
 [![GitHub license](https://img.shields.io/github/license/ChristianChiarulli/LunarVim)](https://github.com/ChristianChiarulli/LunarVim/blob/master/LICENSE)
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/ChristianChiarulli/lunarvim)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
@@ -15,11 +16,13 @@
 <a href="https://twitter.com/intent/follow?screen_name=chrisatmachine"><img src="https://img.shields.io/twitter/follow/chrisatmachine?style=social&logo=twitter" alt="follow on Twitter"></a>
 #}}}1
 
-# Main Image {{{1
+<!-- Main Image -->
+#{{{1
 ![LunarVim Demo](./utils/media/demo.png)
 #}}}1
 
-# Table of contents {{{1
+<!-- Table Of Contents -->
+# {{{1
 - [Intro](#intro)
 - [Links](#links)
 - [Key Bindings](#key-bindings)
