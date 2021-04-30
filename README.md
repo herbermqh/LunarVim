@@ -47,7 +47,11 @@ his brilliant work.
 # Contents
 <!-- {{{1 -->
 - [Some Useful Links](#some-useful-links)
+- [Extra Plugins](#extra-plugins)
 - [Key Bindings](#key-bindings)
+- [Visual Appearance](#visual-appearance)
+- [Galaxy Line](#galaxy-line)
+- [Forgotten Commands](#forgotten-commands)
 <!-- }}}1 -->
 
 # Some Useful Links
@@ -137,7 +141,7 @@ This image shows what is in the different sections.
 
 ![Galaxy Line](./media/GalaxyLine.png)
 
-The line is split into 5 main sections:
+The line is split into 5 main sections, 3 on the left and 2 on the right:
 
 - On the left:
   - VIM Mode is colour coded, see the init.lua for details
@@ -148,8 +152,52 @@ The line is split into 5 main sections:
   - Position information
 <!-- }}}1 -->
 
-# Misc normal VIM commands I can never remember
+# Forgotten Commands
 <!-- {{{1 -->
+The rest of this file contains information I need to remind myself every now and
+then ;-).
+
+##  Block editing
+<!-- {{{2 -->
+- ```<Ctrl+q``` Start column mode
+- Select the columns and rows where you want to enter your text, shift and move with keyboard ('''Do not use the mouse to select the block!''')
+- ```Shift + i``` to go into insert mode in column mode
+- Type in the text you want to enter. Don't be discouraged by the fact that only the first row is changed.
+- ```Esc``` to apply your change (or alternately ```<Ctrl+c>```)
+<!-- }}}2 -->
+
+##  Marks
+<!-- {{{2 -->
+- ```m/``` Display marks.
+- ```m<space>``` Remove all marks.
+- ```mx``` Toggle mark 'x'
+- ```'x``` Goto to mark 'x'
+<!-- }}}2 -->
+
+##  Changing case
+<!-- {{{2 -->
+- ```g\~\~``` Togglecase line
+- ```guu``` Lowercase line
+- ```gUU``` Uppercase line
+- ```g~``` + movement Togglecase
+- ```gu``` + movement Lowercase
+- ```gU``` + movement Uppercase
+- Title Case regex ```:s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g```
+<!-- }}}2 -->
+
+##  Increment a value
+<!-- {{{2 -->
+- Ctrl+a increment value under cursor.
+- Ctrl+x deccrement value under cursor.
+:let i=1 | g/foo/s//\=i/ | let i=i+1
+:let i=1 | g/foo/s//\="morestuff".i."morestuff"/ | let i=i+1
+<!-- }}}2 -->
+<!-- }}}1 -->
+
+# Section to complete, please ignore.
+<!-- {{{1 -->
+## Misc normal VIM commands I can never remember
+<!-- {{{2 -->
 - cat, cit etc for change insert tags etc.
 - ci' ca( ci{ Change stuff in between ' (also works for ", [, (, {).
 - cc Change current line.
@@ -163,71 +211,23 @@ The line is split into 5 main sections:
 - gd Goto definition.
 - gr Show references.
 - gg=G auto (re)indent entire document.
-- = (re)indent the text on the current line or on the area selected (SUPER).                                                
+- = (re)indent the text on the current line or on the area selected (SUPER).
 - =% (re)indent the current braces { ... }.
-<!-- }}}1 -->
+<!-- }}}2 -->
 
-# Marks
-  <!-- {{{1 -->
-- mx Toggle mark 'x'
-- 'x Goto to mark 'x'
-- m<space> Remove all marks.
-- m/ Display marks.
-<!-- }}}1 -->
-
-# Folds
-  <!-- {{{1 -->
-- zz Toggle a fold at the cursor.
-- za Toggle a fold at the cursor.
-- zo Opens folds.
-- zc Closes fold.
-- zR Open all folds. Reveal.
-- zM Close all folds. Mask.
-- zj Moves to the next fold.
-- zk Moves to the previous fold.
-<!-- }}}1 -->
-
-# Changing case
-  <!-- {{{1 -->
-- g\~\~ Togglecase line.
-- guu Lowercase line.
-- gUU Uppercase line.
-- g~ + movement Togglecase.
-- gu + movement Lowercase.
-- gU + movement Uppercase.
-- Title Case regex ```:s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g```
-<!-- }}}1 -->
-
-# Increment a value
-<!-- {{{12 -->
-- Ctrl+a increment value under cursor.
-- Ctrl+x deccrement value under cursor.
-:let i=1 | g/foo/s//\=i/ | let i=i+1
-:let i=1 | g/foo/s//\="morestuff".i."morestuff"/ | let i=i+1
-<!-- }}}1 -->
-
-# Not tested
-<!-- {{{1 -->
+##  Not tested
+<!-- {{{2 -->
 - gx : gf open url/file in new window/buffer.
 - gi implementation.
-<!-- }}}1 -->
+<!-- }}}2 -->
 
-# Block editing
-<!-- {{{1 -->
-- Ctrl+q Start column mode
-- Select the columns and rows where you want to enter your text, shift and move with keyboard ('''Do not use the mouse to select the block!''')
-- Shift + i to go into insert mode in column mode
-- Type in the text you want to enter. Don't be discouraged by the fact that only the first row is changed.
-- Esc to apply your change (or alternately Ctrl+c)
-<!-- }}}1 -->
-
-# Formatting
-<!-- {{{1 -->
+##  Formatting
+<!-- {{{2 -->
 - :%!par
 - :%!par j1w80
 - :[range]ce[nter] [width] center lines :.,+3 center 80
 - :[range] ri[ght] [right edge] right alignment :% right
 - :[range] le[ft] [indent] left alignment.(Unit of identation is space) :% left 4
-# }}}1
-<!-- }}}1 -->
+<!-- }}}2 -->
 
+<!-- }}}1 -->
