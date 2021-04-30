@@ -15,7 +15,7 @@ badd +1 .config/LunarVim/vimInfoScreen.md
 argglobal
 %argdel
 $argadd .config/LunarVim/init.lua
-edit .config/LunarVim/vimInfoScreen.md
+edit .config/LunarVim/lv-settings.lua
 set splitbelow splitright
 wincmd t
 set winminheight=0
@@ -23,7 +23,7 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-balt .config/LunarVim/lv-settings.lua
+balt .config/LunarVim/init.lua
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -32,11 +32,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1 - ((0 * winheight(0) + 29) / 58)
+let s:l = 41 - ((40 * winheight(0) + 29) / 58)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 41
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'

@@ -1,419 +1,161 @@
 ```
-   _..._                             
- .'   (_`.    _                         __     ___           
-:  .      :  | |   _   _ _ __   __ _ _ _\ \   / (_)_ __ ___  
-:)    ()  :  | |  | | | | '_ \ / _` | '__\ \ / /| | '_ ` _ \ 
+   _..._
+ .'   (_`.    _                         __     ___
+:  .      :  | |   _   _ _ __   __ _ _ _\ \   / (_)_ __ ___
+:)    ()  :  | |  | | | | '_ \ / _` | '__\ \ / /| | '_ ` _ \
 `.   .   .'  | |__| |_| | | | | (_| | |   \ V / | | | | | | |
   `-...-'    |_____\__,_|_| |_|\__,_|_|    \_/  |_|_| |_| |_|
 ```
 
-
+# Christian Header {{{1
 [![GitHub license](https://img.shields.io/github/license/ChristianChiarulli/LunarVim)](https://github.com/ChristianChiarulli/LunarVim/blob/master/LICENSE)
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/ChristianChiarulli/lunarvim)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 <a href="https://patreon.com/chrisatmachine" title="Donate to this project using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon donate button" /></a>
 <a href="https://twitter.com/intent/follow?screen_name=chrisatmachine"><img src="https://img.shields.io/twitter/follow/chrisatmachine?style=social&logo=twitter" alt="follow on Twitter"></a>
+#}}}1
 
+# Main Image {{{1
 ![LunarVim Demo](./utils/media/demo.png)
+#}}}1
+
+# Table of contents {{{1
+- [Intro](#intro)
+- [Links](#links)
+- [Key Bindings](#key-bindings)
+# }}}1
+
+# Intro {{{1
+This is a fork of the *brilliant* configuration project [LunarVim](https://github.com/ChristianChiarulli/LunarVim) by [Christian Chiarulli](https://twitter.com/intent/follow?screen_name=chrisatmachine).
+I've just added some of my preferences and "vimisms" I prefer.  The main changes are:
+
+- My config for GalaxyLine.
+- My dashboard.
+- Custom Keybindings.
+# }}}1
+
+# Links {{{1
+- Quick ref: http://tnerual.eriogerg.free.fr/vimqrc.html
+- Vim tutorial: https://www.openvim.com/
+- Vim cookbook: http://www.oualline.com/vim-cook.html
+- Cheatsheet: https://paulgorman.org/technical/vim.html
+- 100 Essential commands: https://catswhocode.com/vim-commands/
+
+Check Health
+:checkhealth rnvimr
 
-# Table of contents
-- [What's included?](#whats-included)
-  - [Why do I want tree-sitter and LSP?](#why-do-i-want-tree-sitter-and-lsp)
-- [Project Goals](#project-goals)
-- [Install In One Command!](#install-in-one-command)
-  - [Get the latest version of Neovim](#get-the-latest-version-of-neovim)
-- [Getting started](#getting-started)
-  - [Home screen](#home-screen)
-  - [Leader and Whichkey](#leader-and-whichkey)
-  - [Important Configuration files](#important-configuration-files)
-- [Install your own plugins](#install-your-own-plugins)
-  - [An example installation of the colorizer plugin](#an-example-installation-of-the-colorizer-plugin)
-- [Using Packer](#using-packer)
-  - [Packer commands](#packer-commands)
-  - [Packer reports missing plugins](#packer-reports-missing-plugins)
-- [Clipboard Support](#clipboard-support)
-- [LSP](#lsp)
-  - [Lsp errors](#lsp-errors)
-    - [Understanding LspInfo](#understanding-lspinfo)
-  - [Last resort](#last-resort)
-- [Useful Programs](#useful-programs)
-- [EFM server](#efm-server)
-- [Formatters and Linters](#formatters-and-linters)
-- [De-bugging](#de-bugging)
-- [VSCodium](#vscodium)
-- [Useful commands for troubleshooting](#useful-commands-for-troubleshooting)
-- [TODO](#todo)
-
-
-# What's included?
-
-LunarVim provides neovim configuration files that take advantage of tree-sitter and language server protocol. The configuration is written in lua. 
-
-## Why do I want tree-sitter and LSP?
-
-* Normally, an editor uses regular expression parsing for things like highlighting and checking the syntax of your file.  Each time you make a change, the editor must re-parse the entire file.  Tree-sitter, on the other hand, transforms text into a syntax tree.  Each time you make a change, only the parts of the code that change need to be parsed.  This greatly improves the speed of parsing. This can make a huge difference when editing large files.
-
-* Neovim 0.5 including language server protocol means your editor can provide: code actions, completions, formatting, navigating to definitions, renaming, etc.  The language server only has to be written once and will work on any editor that supports LSP.  Any improvements made to the language server will immediately be used by all editors that support LSP.
-
-# Project Goals
-*  This project aims to help one transition away from VSCode, and into a superior text editing experience. (Just making this clear)
-
-* This is also a community project, if you would like to see support for a feature or [language](https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md) consider making a PR.
-
-* This project will do it's best to include core features you would expect from a modern IDE, while making it easy to add or remove what the user wants.
-
-# Install In One Command!
-
-Make sure you have the newest version of Neovim. 
-
-```bash
-bash <(curl -s https://raw.githubusercontent.com/ChristianChiarulli/lunarvim/master/utils/installer/install.sh)
-```
-
-After installation run `nvim` and then `:PackerInstall`
-
-## Get the latest version of Neovim
-
-Some operating systems package versions of Neovim 0.5.  You can install those or you can follow the steps below to compile from source.  Compiling from source is the recommended method.
-
-First, get the dependencies. For distributions other than Ubuntu or Arch go [here](https://github.com/neovim/neovim/wiki/Building-Neovim#build-prerequisites)
-```bash
-#Ubuntu
-sudo apt-get install gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip build-essential
-#Arch
-sudo pacman -S base-devel cmake unzip ninja tree-sitter
-```
-
-Download and compile Neovim
-```bash
-cd ~
-sudo rm -r neovim
-git clone https://github.com/neovim/neovim
-cd neovim
-sudo make CMAKE_BUILD_TYPE=Release install
-cd ~
-sudo rm -r neovim
-```
-or if you are on Arch you can get it from the AUR
-```bash
-yay -S neovim-git
-```
-
-# Getting started
-
-## Home screen
-The home screen is a plugin called dashboard.  It uses the Telescope plugin to find files or find words within files.  The home  screen provides a link to load saved Sessions.  The home screen links to the settings file located at this path: ~/.config/nvim/lv-settings.lua
-
-## Leader and Whichkey
-The default leader key is set to \<Space>.  Pressing it will also open up whichkey.  Whichkey will help you easily access many of the default keybindings.  
-
-## Other key bindings
-Other key bindings can be found in ~/.config/nvim/lua/keymappings.lua
-
-If you already have a set of keybindings in vimscript that you prefer, source your vimscript file from ~/.config/nvim/init.lua  
-
-Example:
-```lua
-vim.cmd('source ~/.config/nvim/vimscript/keymappings.vim')
-```
-
-Or you can translate your old bindings to lua and keep them in the provided keymappings file.  Follow the lua guide available [here](https://github.com/nanotee/nvim-lua-guide)
-
-## Important Configuration files
-| Path | Description |
-|------|-------------|
-|~/.config/nvim/lv-settings.lua      | The main settings file            |
-|~/.config/nvim/lua/keymappings.lua  |  Key bindings           |
-|~/.config/nvim/lua/plugins.lua      |  Add or remove plugins here           |
-
-# Install your own plugins 
-The steps for configuring your own plugin are:
-1. Add the plugin to plugins.lua
-2. If the plugin requires configuration.  Create a configuration file for it
-3. If you created a configuration, require the file in init.lua
-4. Use Packer to download and install the plugin
-
-## An example installation of the colorizer plugin
-
-* ~/.config/nvim/lua/plugins.lua
-
-```lua
-use {"norcalli/nvim-colorizer.lua", opt = true}
-require_plugin("nvim-colorizer.lua")
-```
-
-* ~/.config/nvim/lua/lv-colorizer/init.lua
-
-```lua
-require'colorizer'.setup()
-```
-
-* ~/.config/nvim/init.lua
-
-```lua
-require('lv-colorizer')
-```
-
-```lua
-:PackerCompile
-:PackerInstall
-```
-
-# Using Packer
-Packer manages your installed plugins.  Any time you make changes to your list of plugins in ~/.config/nvim/lua/plugins.lua you must first run the command :PackerCompile then :PackerInstall. 
-## Packer commands
-
-```bash
--- You must run this or `PackerSync` whenever you make changes to your plugin configuration
-:PackerCompile
-
--- Only install missing plugins
-:PackerInstall
-
--- Update and install plugins
-:PackerUpdate
-
--- Remove any disabled or unused plugins
-:PackerClean
-
--- Performs `PackerClean` and then `PackerUpdate`
-:PackerSync
-
--- View the status of your plugins
-:PackerStatus
-```
-
-## Packer reports missing plugins
-
-If you get an error message about missing plugins and the above commands do not work, remove the plugin directory and reinstall from scratch.
-```bash
-sudo rm -R ~/.local/share/nvim
-:PackerCompile
-:PackerInstall
-```
-
-# Clipboard Support
-
-- On Mac `pbcopy` should be built-in
-
-- Ubuntu
-
-    ```bash
-    sudo apt install xclip
-    ```
-
-- Arch
-
-    ```bash
-    sudo pacman -S xclip
-    ```
-
-- WSL2
-
-    Make sure ~/bin is in your path in this case.
-    
-    ```bash
-    curl -sLo/tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
-    unzip -p /tmp/win32yank.zip win32yank.exe > /tmp/win32yank.exe
-    chmod +x /tmp/win32yank.exe
-    mv /tmp/win32yank.exe ~/bin
-    ```
-
-# LSP
-
-To install a supported language server:
-
-```md
-  :LspInstall <your_language_server>
-```
-
-Most common languages should be supported out of the box, if yours is not I would welcome a PR
-
-## Lsp errors
-LunarVim lists the attached lsp server in the bottom status bar.  If it says 'No client connected' use :LspInfo to troubleshoot.
-
-### Understanding LspInfo
-1. Make sure there is a client attached to the buffer.  0 attached clients means lsp is not running
-2. Active clients are clients in other files you have open
-3. Clients that match the filetype will be listed.  If installed with :LspInstall <servername> the language servers will be installed.  
-4. 'cmd' must be populated.  This is the language server executable.  If the 'cmd' isn't set or if it's not executable you won't be able to run the language server.  
-  * In the example below 'efm-langserver' is the name of the binary that acts as the langserver.  If we run 'which efm-langserver' and we get a location to the executable, it means the langauge server is installed and available globally. 
-  * If you know the command is installed AND you don't want to install it globally you'll need to manually set the cmd in the language server settings.  Configurations are stored in ~/.config/nvim/lua/lsp/  The settings will be stored in a file that matches the name of the language. e.g. python-ls.lua 
-  * 'identified root' must also be populated.  Most language servers require you be inside a git repository for the root to be detected.  If you don't want to initialize the directory as a git repository, an empty .git/ folder will also work.  
-5. Some language servers get set up on a per project basis so you may have to reinstall the language server when you move to a different project.
-
-```md
-    Configured servers: dartls, graphql, clangd, sumneko_lua, intelephense, kotlin_language_server, bashls, tsserver, tailwindls, solargraph, gopls,
-~                  Neovim logs at: /Users/my-user/.cache/nvim/lsp.log
-~
-~                  0 client(s) attached to this buffer:
-~
-~                  0 active client(s):
-~
-~                  Clients that match the filetype python:
-~
-~                    Config: efm
-~                      cmd:               /Users/my-user/.local/share/nvim/lspinstall/efm/efm-langserver
-~                      cmd is executable: True
-~                      identified root:   None
-~                      custom handlers:
-~
-~                    Config: pyright
-~                      cmd:               /Users/my-user/.local/share/nvim/lspinstall/python/node_modules/.bin/pyright-langserver --stdio
-~                      cmd is executable: True
-~                      identified root:   None
-~                      custom handlers:   textDocument/publishDiagnostics
-```
-
-### Last resort
-If you still have problems after implementing the above measures, rule out plugin problems with the following. This reinstalls your plugins and language servers.
-
-```md
-sudo rm -R ~/.local/share/nvim
-:PackerCompile
-:PackerInstall
-:LspInstall python   <-- REPLACE WITH YOUR OWN LANGUAGE
-:LspInstall efm      <-- REPLACE WITH YOUR OWN LANGUAGE
-```
-
-For a more in depth LSP support:
-[link](https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md)
-
-# Useful Programs
-
-LunarVim depends on the following:
-
-``` bash
 ranger
 ueberzug
 ripgrep
 pynvim
 neovim-remote
-```
+# }}}1
 
-# EFM server
+# Key Bindings {{{1
+- <F1> Help, open this page.
+- <F2> Toggle space red colour at end of line.
+- <F3> Toggle space highlight.
+- <F4> Open left file menu.
+- <F5> Terminal only open URL.
+- <F6> Line wrap toggle.
+- <F7>
+- <F8>
+- <F9> 
+- <F10> New terminal in Kitty in new tab.
+- <F11> Toggle right tagbar.
+- <F12> Toggle ranger.
+# }}}1
 
-In order for linters and formatters to work you will need to install
-`efm-langserver`
+# Misc commands {{{1
 
-```vim
-:LspInstall efm
-```
+- Control+w wrap
+- Control+h Open this screen.
+- Control+f Open nerd tree file manager, I to toggle dot files.
+- Control+Space Code completion.
 
-# Formatters and Linters
+- cat, cit etc for change insert tags etc.
+- ci' ca( ci{ Change stuff in between ' (also works for ", [, (, {).
+- cc Change current line.
+- dt<char> Delete to "char", d\$ or D to end of line, d0 to start.
+- cf<char> Change to "char" (any char).
+- qq, q, Q Macro, start record, end record and play.
+- #!ba for file header with hash bang.
+- set number! Toggle line numbers.
+- set ft={unix|html|dos} Set file type.
+- set syntax? Syntax type.
+- bn, bp, bd buffer next, previous, delete (close).
+# }}}1
 
-**Python**
+# G commands {{{1
 
-``` bash
-pip3 install --user flake8
-pip3 install --user yapf
-```
+- gJ Join without space.
+- gx : gf open url/file in new window/buffer.
+- ga Ascii, octal val.
+- gd Goto definition.
+- gq Format/justify paragraph. With par command.
+- gy type-definition.
+- gi implementation.
+- gr Show references.
+- K Show documentation.
+- ggg?G rot13 whole file.
+- Alt-a,Alt-x increment, decrement next number on same line as the cursor.
+- = (re)indent the text on the current line or on the area selected (SUPER).
+- =% (re)indent the current braces { ... }.
+- gg=G auto (re)indent entire document.
+# }}}1
 
-**Lua**
+# Marks {{{1
 
-``` bash
-luarocks install --server=https://luarocks.org/dev luaformatter
-```
+- mx Toggle mark 'x'
+- 'x Goto to mark 'x'
+- m<space> Remove all marks.
+- m/ Display marks.
+# }}}1
 
-**Yaml, Json, Javascript, HTML, CSS**
+# Folds {{{1
+- za Toggle a fold at the cursor.
+- zo Opens folds.
+- zc Closes fold.
+- zR Open all folds. Reveal.
+- zM Close all folds. Mask.
+- zj Moves to the next fold.
+- zk Moves to the previous fold.
+# }}}1
 
-``` bash
-npm install -g prettier
-```
+# Changing case {{{1
+- g\~\~ Togglecase line.
+- guu Lowercase line.
+- gUU Uppercase line.
+- g~ + movement Togglecase.
+- gu + movement Lowercase.
+- gU + movement Uppercase.
+- Title Case regex
 
-**Markdown**
+# :s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g
+# }}}1
 
-``` bash
-pandoc
-```
+# Increment a value {{{1
+- Ctrl+a increment value under cursor.
+- Ctrl+x deccrement value under cursor.
 
-# De-bugging
+:let i=1 | g/foo/s//\=i/ | let i=i+1
+:let i=1 | g/foo/s//\="morestuff".i."morestuff"/ | let i=i+1
+# }}}1
 
-To set up your particular debugger, look here:
-[link](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation)
+# Block editing {{{1
+- Ctrl+q Start column mode
+- Select the columns and rows where you want to enter your text, shift and move with keyboard ('''Do not use the mouse to select the block!''')
+- Shift + i to go into insert mode in column mode
+- Type in the text you want to enter. Don't be discouraged by the fact that only the first row is changed.
+- Esc to apply your change (or alternately Ctrl+c)
+# }}}1
 
-# VSCodium
-
-I recommend you support Free/Libre versions if you plan to use VSCode:
-
-- [VSCodium](https://vscodium.com/)
-
-- Article to get you set up with VSCodium: [link](https://www.chrisatmachine.com/Neovim/22-vscodium-neovim/) 
-
-After installing the [Neovim
-extension](https://github.com/asvetliakov/vscode-neovim) in VSCode
-
-I recommend using this alongside the VSCode
-[which-key](https://github.com/VSpaceCode/vscode-which-key) extension
-
-You will also need `settings.json` and `keybindings.json` which can be
-found in utils/vscode\_config
-
-Point the nvim path to your `nvim` binary
-
-Point your `init.vim` path to:
-
-``` vim
-$HOME/.config/nvim/vimscript/lv-vscode/init.vim
-```
-
-# Useful commands for troubleshooting
-Whether you plan on using LunarVim as is or as a base to configure your own neovim, the following commands may be useful.  Any command that includes the symbol ':' is meant to be typed as a command in neovim. Make sure you're in normal mode not insert mode. 
-
-| Command | Description |
-|------|-------------|
-| :checkhealth | Check the health of your neovim install            |
-| :checkhealth \<pluginname>  |  Check the health of a plugin |
-| nvim -v |   checks your neovim version           |
-| nvim -V | vebose output when running neovim.  Prints out every event |
-| :PackerCompile | Must be run when you make plugin changes. (or, alternately run :PackerSync) |
-| :PackerInstall  | Only install missing plugins|
-| :PackerUpdate | Update and install plugins |
-|:PackerClean | Remove any disabled or unused plugins |
-|:PackerSync | Performs 'PackerClean' then 'PackerUpdate' |
-|:PackerStatus | List the status of your plugins |
-|:LspInstall \<language> | Install a language server for a specific programming language |
-| :LspInfo | List the status of active and configured language servers|
-|:LspStart \<language> |     Start the requested server name. Will only succesfully start if the command detects a root directory matching the current config. Pass autostart = false to your .setup{} call for a language server if you would like to launch clients solely with this command. Defaults to all servers matching current buffer filetype.  |
-|:LspStop | Stops all buffer clients|
-|:LspRestart | Restarts all buffer clients|
-|:map | List keybindings |
-|:nmap | List normal mode keybindings |
-|:vmap | List visual mode keybindings |
-|:imap | List insert mode keybindings |
-|:verbose imap \<keybinding> | Print out what a particular keybinding is mapped to|
-|:messages | Print error messages.  Useful when messages get cut off|
-|:scriptnames | List all sourced files|
-
-
-# TODO
-
-**HIGH PRIORITY**
-
-- Move user config into `config.lua` ts-comment string for react
-- From here I will update for bug fixes and implement low priority
-features when I have time
-- different key to advance through snippets
-
-
-**LOW PRIORITY**
-
-- vim vsnips dir should be co-located with config
-- list all binaries needed for formatters and linters (one day add in wiki)
-- Implement what I can from this java config:
-  [link](https://github.com/mfussenegger/nvim-jdtls/wiki/Sample-Configurations)
-  - better ui for code actions - formatting
-  - setup junit tests for java
-- look into emmet-ls
-- vim ult test
-- which-key all in lua
-- what is `fzy`
-- https://github.com/pwntester/octo.nvim
-- configure surround
-- Implement this for typescript https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils
-- look into tabnine
-
-
-**PLUGIN BUGS**
-
-REACT COMMENTING IS A NIGHTMARE (the filetype is just not recognized idk why)
+# Formatting {{{1
+- [http://tech.zhenhua.info/2009/01/text-formatting-in-vim.html]
+- gq current line format to 80j
+- :%!par
+- :%!par j1w80
+- :[range]ce[nter] [width] center lines :.,+3 center 80
+- :[range] ri[ght] [right edge] right alignment :% right
+- :[range] le[ft] [indent] left alignment.(Unit of identation is space) :% left 4
+# }}}1
