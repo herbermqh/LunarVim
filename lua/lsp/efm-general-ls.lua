@@ -13,7 +13,7 @@ local flake8 = {
 local isort = {formatCommand = "isort --quiet -", formatStdin = true}
 
 local yapf = {formatCommand = "yapf --quiet", formatStdin = true}
-local black = {formatCommand = "black --quiet --stdin-filename ", formatStdin = true}
+local black = {formatCommand = "black --quiet -", formatStdin = true}
 
 if O.python.linter == 'flake8' then table.insert(python_arguments, flake8) end
 
@@ -27,12 +27,22 @@ end
 
 -- lua
 local lua_arguments = {}
+
 local luaFormat = {
     formatCommand = "lua-format -i --no-keep-simple-function-one-line --column-limit=120",
     formatStdin = true
 }
 
-if O.lua.formatter == 'lua-format' then table.insert(lua_arguments, luaFormat) end
+local lua_fmt = {
+    formatCommand = "luafmt --indent-count 2 --line-width 120 --stdin",
+    formatStdin = true
+}
+
+if O.lua.formatter == 'lua-format' then
+  table.insert(lua_arguments, luaFormat)
+elseif O.lua.formatter == 'lua-fmt' then
+  table.insert(lua_arguments, lua_fmt)
+end
 
 -- sh
 local sh_arguments = {}
@@ -82,7 +92,7 @@ require"lspconfig".efm.setup {
     -- init_options = {initializationOptions},
     cmd = {DATA_PATH .. "/lspinstall/efm/efm-langserver"},
     init_options = {documentFormatting = true, codeAction = false},
-    filetypes = {"lua", "python", "javascriptreact", "javascript", "sh", "html", "css", "json", "yaml", "markdown"},
+    filetypes = {"lua", "python", "javascriptreact", "javascript", "typescript","typescriptreact","sh", "html", "css", "json", "yaml", "markdown", "vue"},
     settings = {
         rootMarkers = {".git/"},
         languages = {
@@ -91,6 +101,8 @@ require"lspconfig".efm.setup {
             sh = sh_arguments,
             javascript = tsserver_args,
             javascriptreact = tsserver_args,
+			typescript = tsserver_args,
+			typescriptreact = tsserver_args,
             html = {prettier},
             css = {prettier},
             json = {prettier},

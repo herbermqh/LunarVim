@@ -16,12 +16,11 @@ require('lv-gitsigns')
 require('lv-nvimtree')
 require('lv-treesitter')
 require('lv-autopairs')
-require('lv-barbar')
 require('lv-rnvimr')
+require('lv-which-key')
 require('lv-colorizer')
 
--- Which Key (Hope to replace with Lua plugin someday)
-vim.cmd('source ~/.config/nvim/vimscript/lv-whichkey/init.vim')
+-- TODO is there a way to do this without vimscript
 vim.cmd('source ~/.config/nvim/vimscript/functions.vim')
 
 -- LSP
@@ -48,5 +47,9 @@ require('lsp.efm-general-ls')
 require('lsp.latex-ls')
 require('lsp.svelte-ls')
 require('lsp.tailwindcss-ls')
+require('lsp.ruby-ls')
+require('lsp.kotlin-ls')
+require('lsp.vue-ls')
+require('lsp.angular-ls')
 
 vim.cmd('source ~/.config/nvim/user.vim')
