@@ -10,12 +10,12 @@ endif
 set shortmess=aoO
 badd +41 .config/LunarVim/lv-settings.lua
 badd +2 .config/LunarVim/init.lua
-badd +410 .config/LunarVim/user.vim
-badd +1 .config/LunarVim/vimInfoScreen.md
+badd +94 .config/LunarVim/user.vim
+badd +69 .config/LunarVim/README.md
 argglobal
 %argdel
 $argadd .config/LunarVim/init.lua
-edit .config/LunarVim/lv-settings.lua
+edit .config/LunarVim/README.md
 set splitbelow splitright
 wincmd t
 set winminheight=0
@@ -23,21 +23,22 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-balt .config/LunarVim/init.lua
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=0
+setlocal fdl=1
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 41 - ((40 * winheight(0) + 29) / 58)
+53
+normal! zc
+let s:l = 82 - ((49 * winheight(0) + 29) / 58)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 41
-normal! 0
+keepjumps 82
+normal! 02|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

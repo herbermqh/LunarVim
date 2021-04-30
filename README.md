@@ -28,49 +28,65 @@
 - [Key Bindings](#key-bindings)
 <!-- }}}1 -->
 
-# Intro {{{1
-This is a fork of the *brilliant* configuration project [LunarVim](https://github.com/ChristianChiarulli/LunarVim) by [Christian Chiarulli](https://twitter.com/intent/follow?screen_name=chrisatmachine).
-I've just added some of my preferences and "vimisms" I prefer.  The main changes are:
+<!-- Intro -->
+<!-- {{{1 -->
+
+This is a fork of the *brilliant* configuration project
+[LunarVim](https://github.com/ChristianChiarulli/LunarVim) by [Christian
+Chiarulli](https://twitter.com/intent/follow?screen_name=chrisatmachine).
+I've been using VI on and off as my daily editor since the early 1990's and
+Christian's setup is the best I've seen so I've just plagiarized it and added a
+few of my own twists.
+
+The main changes are documented below:
 
 - My config for GalaxyLine.
 - My dashboard.
 - Custom Keybindings.
+
+I intend to merge Christian's changes into my config regularly to keep up with
+his brilliant work.
+
+<!-- }}}1 -->
+
+# Links
+  <!-- {{{1 -->
+- [NeoVim](https://neovim.io)
+- [LunarVim](https://github.com/ChristianChiarulli/LunarVim)
+- [Quick ref](http://tnerual.eriogerg.free.fr/vimqrc.html)
+- [Cheatsheet](https://paulgorman.org/technical/vim.html)
+- [100 Essential commands](https://catswhocode.com/vim-commands/)
+- [Vim tutorial](https://www.openvim.com/)
+- [Vim cookbook](http://www.oualline.com/vim-cook.html)
+<!-- }}}1 -->
+
+# Key Bindings
+  <!-- {{{1 -->
+- <C-w> Format paragraph to 80 chars.
+- gj Jump
+  - If line contains a url jump to this in browser.
+  - If line contains a hex colour jump to that colour on [ColorHexa.com](https://www.colorhexa.com)
+  - Try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
+- Function Keys
+  - <F1> Help, open this page.
+  - <F2> Toggle space red colour at end of line.
+  - <F3> Toggle space highlight.
+  - <F4> Open left file menu.
+  - <F5> Terminal only open URL.
+  - <F6> Line wrap toggle.
+  - <F7>
+  - <F8>
+  - <F9> 
+  - <F10> New terminal in Kitty in new tab.
+  - <F11> Toggle right tagbar.
+  - <F12> Toggle ranger.
+<!-- }}}1 -->
+
+<!-- Table Of Contents -->
 # }}}1
 
-# Links {{{1
-- Quick ref: http://tnerual.eriogerg.free.fr/vimqrc.html
-- Vim tutorial: https://www.openvim.com/
-- Vim cookbook: http://www.oualline.com/vim-cook.html
-- Cheatsheet: https://paulgorman.org/technical/vim.html
-- 100 Essential commands: https://catswhocode.com/vim-commands/
-
-Check Health
-:checkhealth rnvimr
-
-ranger
-ueberzug
-ripgrep
-pynvim
-neovim-remote
-# }}}1
-
-# Key Bindings {{{1
-- <F1> Help, open this page.
-- <F2> Toggle space red colour at end of line.
-- <F3> Toggle space highlight.
-- <F4> Open left file menu.
-- <F5> Terminal only open URL.
-- <F6> Line wrap toggle.
-- <F7>
-- <F8>
-- <F9> 
-- <F10> New terminal in Kitty in new tab.
-- <F11> Toggle right tagbar.
-- <F12> Toggle ranger.
-# }}}1
-
-# Misc commands {{{1
-
+# Misc commands
+  <!-- {{{1 -->
 - Control+w wrap
 - Control+h Open this screen.
 - Control+f Open nerd tree file manager, I to toggle dot files.
@@ -87,10 +103,10 @@ neovim-remote
 - set ft={unix|html|dos} Set file type.
 - set syntax? Syntax type.
 - bn, bp, bd buffer next, previous, delete (close).
-# }}}1
+<!-- }}}1 -->
 
-# G commands {{{1
-
+# G commands
+<!-- {{{1 -->
 - gJ Join without space.
 - gx : gf open url/file in new window/buffer.
 - ga Ascii, octal val.
@@ -105,17 +121,18 @@ neovim-remote
 - = (re)indent the text on the current line or on the area selected (SUPER).
 - =% (re)indent the current braces { ... }.
 - gg=G auto (re)indent entire document.
-# }}}1
+<!-- }}}1 -->
 
-# Marks {{{1
-
+# Marks
+  <!-- {{{1 -->
 - mx Toggle mark 'x'
 - 'x Goto to mark 'x'
 - m<space> Remove all marks.
 - m/ Display marks.
-# }}}1
+<!-- }}}1 -->
 
-# Folds {{{1
+# Folds
+  <!-- {{{1 -->
 - za Toggle a fold at the cursor.
 - zo Opens folds.
 - zc Closes fold.
@@ -123,9 +140,10 @@ neovim-remote
 - zM Close all folds. Mask.
 - zj Moves to the next fold.
 - zk Moves to the previous fold.
-# }}}1
+<!-- }}}1 -->
 
-# Changing case {{{1
+# Changing case
+  <!-- {{{1 -->
 - g\~\~ Togglecase line.
 - guu Lowercase line.
 - gUU Uppercase line.
@@ -135,25 +153,28 @@ neovim-remote
 - Title Case regex
 
 # :s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g
-# }}}1
+<!-- }}}1 -->
 
-# Increment a value {{{1
+# Increment a value
+<!-- {{{1 -->
 - Ctrl+a increment value under cursor.
 - Ctrl+x deccrement value under cursor.
 
 :let i=1 | g/foo/s//\=i/ | let i=i+1
 :let i=1 | g/foo/s//\="morestuff".i."morestuff"/ | let i=i+1
-# }}}1
+<!-- }}}1 -->
 
-# Block editing {{{1
+# Block editing
+<!-- {{{1 -->
 - Ctrl+q Start column mode
 - Select the columns and rows where you want to enter your text, shift and move with keyboard ('''Do not use the mouse to select the block!''')
 - Shift + i to go into insert mode in column mode
 - Type in the text you want to enter. Don't be discouraged by the fact that only the first row is changed.
 - Esc to apply your change (or alternately Ctrl+c)
-# }}}1
+<!-- }}}1 -->
 
-# Formatting {{{1
+# Formatting
+<!-- {{{1 -->
 - [http://tech.zhenhua.info/2009/01/text-formatting-in-vim.html]
 - gq current line format to 80j
 - :%!par
@@ -162,3 +183,7 @@ neovim-remote
 - :[range] ri[ght] [right edge] right alignment :% right
 - :[range] le[ft] [indent] left alignment.(Unit of identation is space) :% left 4
 # }}}1
+<!-- }}}1 -->
+
+Check Health
+:checkhealth rnvimr

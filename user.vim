@@ -91,6 +91,18 @@ nnoremap zz za
 nnoremap <A-a> <C-a>
 nnoremap <A-x> <C-x>
 
+" Jump!
+function! JumpToSelection()
+    let url=matchstr(getline('.'), '[a-z]*:\/\/[^ >,;)]*')
+    if url != ""
+        silent exec ':!xdg-open "'.url.'"' | redraw!
+        echo "Opened URL ".url
+    else
+        echo "No URL under cursor."
+    endif
+endfunction
+nmap gj :call JumpToSelection()<CR>
+
 " Open url under cursor.
 function! OpenUrlUnderCursor()
     let url=matchstr(getline('.'), '[a-z]*:\/\/[^ >,;)]*')
@@ -154,7 +166,7 @@ function TOGGLEWHITESPACECOLOURS()
 endfunction
 
 " Function key mappings.
-map <F1> :sp $HOME/.config/nvim/vimInfoScreen.md<CR>
+map <F1> :sp $HOME/.config/nvim/README.md<CR>
 map <F2> :call TOGGLEWHITESPACECOLOURS()<CR>
 map <F3> :set list!<CR>
 map <F4> :NvimTreeToggle<CR>
