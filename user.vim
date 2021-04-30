@@ -270,10 +270,6 @@ set clipboard+=unnamedplus              " Use single clipboard
 " My colour scheme
 colorscheme zenburnmod
 
-" Colour words highlightin
-" See: https://github.com/RRethy/vim-hexokinase
-let g:Hexokinase_highlighters = [ 'backgroundfull' ]
-
 " Show whitespace characters
 set listchars=eol:¶,tab:»-,trail:·,extends:>,precedes:<,space:·
 set list
@@ -289,14 +285,14 @@ highlight CursorLine ctermbg=238 guibg=#870000
 highlight Visual cterm=NONE ctermbg=0 ctermfg=NONE guibg=Grey35
 
 " Search hit colour
-highlight Search guibg=peru guifg=wheat
+highlight Search guibg=Peru guifg=Wheat
 
 " Line number colour
-highlight LineNr ctermbg=black guifg=RoyalBlue1 guibg=Gray19
+highlight LineNr ctermbg=Black guifg=RoyalBlue1 guibg=Gray19
 highlight CursorLineNr ctermbg=NONE guifg=Yellow guibg=Gray19
 
 " Highlight text over 100 chars
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+highlight OverLength ctermbg=Red ctermfg=White guibg=#592929
 match OverLength /\%101v.\+/
 
 " Diff colours

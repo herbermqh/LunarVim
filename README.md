@@ -21,12 +21,6 @@
 ![LunarVim Demo](./utils/media/demo.png)
 <!-- }}}1 -->
 
-<!-- Table Of Contents -->
-<!-- {{{1 -->
-- [Some Useful Links](#some-useful-links)
-- [Key Bindings](#key-bindings)
-<!-- }}}1 -->
-
 <!-- Introduction -->
 <!-- {{{1 -->
 
@@ -48,6 +42,12 @@ Most of my configuration is contained in ```user.vim```.
 I intend to merge Christian's changes into my config regularly to keep up with
 his brilliant work.
 
+<!-- }}}1 -->
+
+# Contents
+<!-- {{{1 -->
+- [Some Useful Links](#some-useful-links)
+- [Key Bindings](#key-bindings)
 <!-- }}}1 -->
 
 # Some Useful Links
@@ -101,9 +101,29 @@ I've added a few extra plugins I use to the configuration:
   - ```<F10>``` New terminal in Kitty in new tab.
   - ```<F11>``` Toggle right tagbar.
   - ```<F12>``` Toggle ranger.
-- #!ba for file header with hash bang, also makes the file executable.
-- qq, q, Q Macro, start record, end record and play.
+- Type ```#!ba``` in normal mode and the bash file header will be inserted, also makes the file executable.
+  - ```#!sh``` Shell
+  - ```#!pe``` Perl
+  - ```#!py``` Python
+  - ```#!gr``` Groovy
+  - ```#!zs``` Zsh
+- ```qq```, ```q```, ```Q``` Macro, start record, end record and play.
 - ```:checkhealth``` to check installation health.
+<!-- }}}1 -->
+
+# Visual Help
+<!-- {{{1 -->
+![Visual Appearance](./media/VisualAppearance.png)
+- I've added vertical markers at 80 and 120 characters.
+  - Galaxy line displays the current column and line length, these change colour at 80 and 120 characters.
+- The current cursor line is highlighted in red.
+- The current cursor column is highlighted in light blue.
+- Margin
+  - Current line number is highlighted in Yellow.
+  - Relative line numbers are shown.
+  - Markers are shown.
+  - Git changes are shown.
+  - Folding marks are also shown.
 <!-- }}}1 -->
 
 # Misc normal VIM commands I can never remember
