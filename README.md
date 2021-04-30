@@ -111,19 +111,28 @@ I've added a few extra plugins I use to the configuration:
 - ```:checkhealth``` to check installation health.
 <!-- }}}1 -->
 
-# Visual Help
+# Visual Appearance
 <!-- {{{1 -->
 ![Visual Appearance](./media/VisualAppearance.png)
+- I use zenburn theme.  One of the reasons for this is that its available in virtually
+  any plugin/app/program that allows themeing, so I can near consistent code themeing
+  everywhere.
 - I've added vertical markers at 80 and 120 characters.
   - Galaxy line displays the current column and line length, these change colour at 80 and 120 characters.
-- The current cursor line is highlighted in red.
-- The current cursor column is highlighted in light blue.
-- Margin
+- The current cursor line is highlighted in red, #870000
+- The current cursor column is highlighted in light blue, #483d8b.
+- Whitspace at the end of a line in highlighted in bright Red.
+- Margin:
   - Current line number is highlighted in Yellow.
-  - Relative line numbers are shown.
+  - Relative line numbers are shown in RoyalBlue1.
   - Markers are shown.
   - Git changes are shown.
-  - Folding marks are also shown.
+  - Folding marks are also shown in the margin.
+<!-- }}}1 -->
+
+# Galaxy line
+<!-- {{{1 -->
+![Galaxy Line](./media/GalaxyLine.png)
 <!-- }}}1 -->
 
 # Misc normal VIM commands I can never remember
@@ -141,7 +150,7 @@ I've added a few extra plugins I use to the configuration:
 - gd Goto definition.
 - gr Show references.
 - gg=G auto (re)indent entire document.
-- = (re)indent the text on the current line or on the area selected (SUPER).
+- = (re)indent the text on the current line or on the area selected (SUPER).                                                
 - =% (re)indent the current braces { ... }.
 <!-- }}}1 -->
 
