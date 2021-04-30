@@ -132,7 +132,20 @@ I've added a few extra plugins I use to the configuration:
 
 # Galaxy line
 <!-- {{{1 -->
+The Galaxy line configuration can be found [here](https://github.com/jimcornmell/LunarVim/blob/master/lua/lv-galaxyline/init.lua).
+This image shows what is in the different sections.
+
 ![Galaxy Line](./media/GalaxyLine.png)
+
+The line is split into 5 main sections:
+
+- On the left:
+  - VIM Mode is colour coded, see the init.lua for details
+  - Git information
+  - LSP information
+- On the right:
+  - File information
+  - Position information
 <!-- }}}1 -->
 
 # Misc normal VIM commands I can never remember
