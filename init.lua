@@ -20,6 +20,11 @@ require('lv-rnvimr')
 require('lv-which-key')
 require('lv-colorizer')
 
+-- Jimc extras.
+require('lv-colorizer')
+require('lv-vim-signature')
+require('lv-tagbar')
+
 -- TODO is there a way to do this without vimscript
 vim.cmd('source ~/.config/nvim/vimscript/functions.vim')
 
@@ -52,4 +57,6 @@ require('lsp.kotlin-ls')
 require('lsp.vue-ls')
 require('lsp.angular-ls')
 
+-- Jimc extras.
 vim.cmd('source ~/.config/nvim/user.vim')
+

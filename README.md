@@ -23,15 +23,14 @@
 
 <!-- Table Of Contents -->
 <!-- {{{1 -->
-- [Intro](#intro)
-- [Links](#links)
+- [Some Useful Links](#some-useful-links)
 - [Key Bindings](#key-bindings)
 <!-- }}}1 -->
 
-<!-- Intro -->
+<!-- Introduction -->
 <!-- {{{1 -->
 
-This is a fork of the *brilliant* configuration project
+This is a fork of the **brilliant** configuration project
 [LunarVim](https://github.com/ChristianChiarulli/LunarVim) by [Christian
 Chiarulli](https://twitter.com/intent/follow?screen_name=chrisatmachine).
 I've been using VI on and off as my daily editor since the early 1990's and
@@ -44,12 +43,14 @@ The main changes are documented below:
 - My dashboard.
 - Custom Keybindings.
 
+Most of my configuration is contained in ```user.vim```.
+
 I intend to merge Christian's changes into my config regularly to keep up with
 his brilliant work.
 
 <!-- }}}1 -->
 
-# Links
+# Some Useful Links
   <!-- {{{1 -->
 - [NeoVim](https://neovim.io)
 - [LunarVim](https://github.com/ChristianChiarulli/LunarVim)
@@ -60,67 +61,68 @@ his brilliant work.
 - [Vim cookbook](http://www.oualline.com/vim-cook.html)
 <!-- }}}1 -->
 
+# Extra Plugins
+<!-- {{{1 -->
+I've added a few extra plugins I use to the configuration:
+
+- [NVim Colorizer](https://github.com/norcalli/nvim-colorizer.lua)
+  - A high-performance color highlighter for Neovim which has no external dependencies! Written in performant Luajit.
+- [Vim Signature](https://github.com/kshenoy/vim-signature)
+  - A plugin to place, toggle and display marks.
+- [Tagbar](https://github.com/preservim/tagbar)
+  - A plugin that provides an easy way to browse the tags of the current file and get an overview of the files structure.
+  - Opened with ```<F11>```
+<!-- }}}1 -->
+
 # Key Bindings
-  <!-- {{{1 -->
-- <C-w> Format paragraph to 80 chars.
-- gj Jump
+<!-- {{{1 -->
+- ```<Ctrl-w>``` Format paragraph to 80 chars.
+- ```gj``` Jump
   - If line contains a url jump to this in browser.
   - If line contains a hex colour jump to that colour on [ColorHexa.com](https://www.colorhexa.com)
   - Try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
+- ```<Ctrl-/>``` (un)Comment a line and move to the next.
+  - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.
+  - I find this really handy!
+- Moving lines up and down.
+  - ```<Alt-Up>``` Move current line up.
+  - ```<Alt-Down>``` Move current line down.
+- ```<Ctrl-l>``` redraws the screen and removes any search highlighting.
 - Function Keys
-  - <F1> Help, open this page.
-  - <F2> Toggle space red colour at end of line.
-  - <F3> Toggle space highlight.
-  - <F4> Open left file menu.
-  - <F5> Terminal only open URL.
-  - <F6> Line wrap toggle.
-  - <F7>
-  - <F8>
-  - <F9> 
-  - <F10> New terminal in Kitty in new tab.
-  - <F11> Toggle right tagbar.
-  - <F12> Toggle ranger.
+  - ```<F1>``` Help, open this page.
+  - ```<F2>``` Toggle highlighting whitespace at end of line.
+  - ```<F3>``` Toggle whitespace highlight.
+  - ```<F4>``` Open left file menu.
+  - ```<F5>``` Special binding for kitty, not used in vim.
+  - ```<F6>``` Toggle line wrap.
+  - ```<F7>``` Toggle spell check highlighting.
+  - ```<F8>``` Not defined.
+  - ```<F9>``` Open Telescope.
+  - ```<F10>``` New terminal in Kitty in new tab.
+  - ```<F11>``` Toggle right tagbar.
+  - ```<F12>``` Toggle ranger.
+- #!ba for file header with hash bang, also makes the file executable.
+- qq, q, Q Macro, start record, end record and play.
+- ```:checkhealth``` to check installation health.
 <!-- }}}1 -->
 
-<!-- Table Of Contents -->
-# }}}1
-
-# Misc commands
-  <!-- {{{1 -->
-- Control+w wrap
-- Control+h Open this screen.
-- Control+f Open nerd tree file manager, I to toggle dot files.
-- Control+Space Code completion.
-
+# Misc normal VIM commands I can never remember
+<!-- {{{1 -->
 - cat, cit etc for change insert tags etc.
 - ci' ca( ci{ Change stuff in between ' (also works for ", [, (, {).
 - cc Change current line.
 - dt<char> Delete to "char", d\$ or D to end of line, d0 to start.
 - cf<char> Change to "char" (any char).
-- qq, q, Q Macro, start record, end record and play.
-- #!ba for file header with hash bang.
 - set number! Toggle line numbers.
 - set ft={unix|html|dos} Set file type.
 - set syntax? Syntax type.
 - bn, bp, bd buffer next, previous, delete (close).
-<!-- }}}1 -->
-
-# G commands
-<!-- {{{1 -->
-- gJ Join without space.
-- gx : gf open url/file in new window/buffer.
 - ga Ascii, octal val.
 - gd Goto definition.
-- gq Format/justify paragraph. With par command.
-- gy type-definition.
-- gi implementation.
 - gr Show references.
-- K Show documentation.
-- ggg?G rot13 whole file.
-- Alt-a,Alt-x increment, decrement next number on same line as the cursor.
+- gg=G auto (re)indent entire document.
 - = (re)indent the text on the current line or on the area selected (SUPER).
 - =% (re)indent the current braces { ... }.
-- gg=G auto (re)indent entire document.
 <!-- }}}1 -->
 
 # Marks
@@ -133,6 +135,7 @@ his brilliant work.
 
 # Folds
   <!-- {{{1 -->
+- zz Toggle a fold at the cursor.
 - za Toggle a fold at the cursor.
 - zo Opens folds.
 - zc Closes fold.
@@ -150,18 +153,21 @@ his brilliant work.
 - g~ + movement Togglecase.
 - gu + movement Lowercase.
 - gU + movement Uppercase.
-- Title Case regex
-
-# :s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g
+- Title Case regex ```:s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g```
 <!-- }}}1 -->
 
 # Increment a value
-<!-- {{{1 -->
+<!-- {{{12 -->
 - Ctrl+a increment value under cursor.
 - Ctrl+x deccrement value under cursor.
-
 :let i=1 | g/foo/s//\=i/ | let i=i+1
 :let i=1 | g/foo/s//\="morestuff".i."morestuff"/ | let i=i+1
+<!-- }}}1 -->
+
+# Not tested
+<!-- {{{1 -->
+- gx : gf open url/file in new window/buffer.
+- gi implementation.
 <!-- }}}1 -->
 
 # Block editing
@@ -175,8 +181,6 @@ his brilliant work.
 
 # Formatting
 <!-- {{{1 -->
-- [http://tech.zhenhua.info/2009/01/text-formatting-in-vim.html]
-- gq current line format to 80j
 - :%!par
 - :%!par j1w80
 - :[range]ce[nter] [width] center lines :.,+3 center 80
@@ -185,5 +189,3 @@ his brilliant work.
 # }}}1
 <!-- }}}1 -->
 
-Check Health
-:checkhealth rnvimr

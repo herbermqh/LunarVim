@@ -35,7 +35,7 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
 vmap yy    y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
 
-" Move lines up and down using alt-up/down as per Eclipse!
+" Move lines up and down using alt-up/down.
 nnoremap <A-Down> :m .+1<CR>==
 nnoremap <A-Up> :m .-2<CR>==
 inoremap <A-Down> <Esc>:m .+1<CR>==gi
@@ -88,8 +88,8 @@ nnoremap W :w<CR>
 nnoremap zz za
 
 " Inc and dec a number.
-nnoremap <A-a> <C-a>
-nnoremap <A-x> <C-x>
+" nnoremap <A-a> <C-a>
+" nnoremap <A-x> <C-x>
 
 " Jump!
 function! JumpToSelection()
