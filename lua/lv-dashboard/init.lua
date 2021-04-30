@@ -1,22 +1,3 @@
--- vim.g.dashboard_custom_header = {
---     '███╗   ██╗██╗   ██╗ ██████╗ ██████╗ ██████╗ ███████╗',
---     '████╗  ██║██║   ██║██╔════╝██╔═══██╗██╔══██╗██╔════╝',
---     '██╔██╗ ██║██║   ██║██║     ██║   ██║██║  ██║█████╗',
---     '██║╚██╗██║╚██╗ ██╔╝██║     ██║   ██║██║  ██║██╔══╝',
---     '██║ ╚████║ ╚████╔╝ ╚██████╗╚██████╔╝██████╔╝███████╗',
---     '╚═╝  ╚═══╝  ╚═══╝   ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝'
--- }
--- vim.g.dashboard_custom_header = {
---
--- '      _..._                                                                           ',
--- '    .\'     `.   ██      ██    ██ ███    ██  █████  ██████  ██    ██ ██ ███    ███ ',
--- '   :         :  ██      ██    ██ ████   ██ ██   ██ ██   ██ ██    ██ ██ ████  ████ ',
--- '   :         :  ██      ██    ██ ██ ██  ██ ███████ ██████  ██    ██ ██ ██ ████ ██ ',
--- '   `.       .\'  ██      ██    ██ ██  ██ ██ ██   ██ ██   ██  ██  ██  ██ ██  ██  ██ ',
--- '     `-...-\'    ███████  ██████  ██   ████ ██   ██ ██   ██   ████   ██ ██      ██ ',
---
--- }
-
 vim.g.dashboard_custom_header = {
 
 '                 _..._                                                                           ',
@@ -28,7 +9,6 @@ vim.g.dashboard_custom_header = {
 
 }
 
-
 vim.g.dashboard_default_executive = 'telescope'
 
 vim.g.dashboard_custom_section = {
@@ -36,20 +16,31 @@ vim.g.dashboard_custom_section = {
     b = {description = {'  Recently Used Files'}, command = 'Telescope oldfiles'},
     c = {description = {'  Load Last Session  '}, command = 'SessionLoad'},
     d = {description = {'  Find Word          '}, command = 'Telescope live_grep'},
-    e = {description = {'  Settings           '}, command = ':e ~/.config/nvim/lv-settings.lua'}
-    -- e = {description = {'  Marks              '}, command = 'Telescope marks'}
+    e = {description = {'  Settings           '}, command = ':e ~/.config/nvim/lv-settings.lua'},
+    m = {description = {'  Marks              '}, command = 'Telescope marks'},
+    v = {description = {'  VIM Session        '}, command = ':source ~/.config/nvim.user/sessions/config_nvim.vim'},
+    z = {description = {'  Zshrc              '}, command = ':e ~/.zshrc'}
 }
 
--- file_browser = {description = {' File Browser'}, command = 'Telescope find_files'},
+vim.g.dashboard_custom_shortcut = {
+  last_session       = 'SPC s l',
+  find_history       = 'SPC f h',
+  find_file          = 'SPC f f',
+  new_file           = 'SPC c n',
+  change_colorscheme = 'SPC t c',
+  find_word          = 'SPC f a',
+  book_marks         = 'SPC f b',
+}
 
 -- vim.g.dashboard_custom_shortcut = {
---     a = 'f',
---     find_word = 'SPC f a',
---     last_session = 'SPC s l',
---     new_file = 'SPC c n',
---     book_marks = 'SPC f b'
+    -- a = 'f',
+    -- find_word = 'SPC f a',
+    -- last_session = 'SPC s l',
+    -- new_file = 'SPC c n',
+    -- book_marks = 'SPC f b',
+    -- find_history = 'SPC f h',
+    -- file_browser = {description = {' File Browser'}, command = 'Telescope find_files'},
 -- }
--- find_history = 'SPC f h',
 
--- vim.g.dashboard_session_directory = '~/.cache/nvim/session'
-vim.g.dashboard_custom_footer = {'chrisatmachine.com'}
+vim.g.dashboard_session_directory = '~/.cache/nvim/session'
+vim.g.dashboard_custom_footer = {'https://github.com/ChristianChiarulli/LunarVim/'}

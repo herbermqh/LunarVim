@@ -1,37 +1,88 @@
-local gl = require('galaxyline')
--- get my theme in galaxyline repo
--- local colors = require('galaxyline.theme').default
-local colors = {
-    -- bg = '#2E2E2E',
-    bg = '#292D38',
-    yellow = '#DCDCAA',
-    dark_yellow = '#D7BA7D',
-    cyan = '#4EC9B0',
-    green = '#608B4E',
-    light_green = '#B5CEA8',
-    string_orange = '#CE9178',
-    orange = '#FF8800',
-    purple = '#C586C0',
-    magenta = '#D16D9E',
-    grey = '#858585',
-    blue = '#569CD6',
-    vivid_blue = '#4FC1FF',
-    light_blue = '#9CDCFE',
-    red = '#D16969',
-    error_red = '#F44747',
-    info_yellow = '#FFCC66'
-}
-local condition = require('galaxyline.condition')
-local gls = gl.section
-gl.short_line_list = {'NvimTree', 'vista', 'dbui', 'packer'}
+--   ____       _                  _     _
+--  / ___| __ _| | __ ___  ___   _| |   (_)_ __   ___
+-- | |  _ / _` | |/ _` \ \/ | | | | |   | | '_ \ / _ \
+-- | |_| | (_| | | (_| |>  <| |_| | |___| | | | |  __/
+--  \____|\__,_|_|\__,_/_/\_\\__, |_____|_|_| |_|\___|
+--                           |___/
+-- See: https://github.com/glepnir/galaxyline.nvim
 
-gls.left[1] = {
+-- Settings {{{1
+local gl = require('galaxyline')
+
+local colors = {
+    bg              = '#000000',
+
+    giticon         = '#FF8800',
+    gitbg           = '#5C2C2E',
+    gittext         = '#C5C5C5',
+
+    diagerror       = '#F44747',
+    diagwarn        = '#FF8800',
+    diaghint        = '#4FC1FF',
+    diaginfo        = '#FFCC66',
+
+    lspicon         = '#68AF00',
+    lspbg           = '#304B2E',
+    lsptext         = '#C5C5C5',
+
+    typeicon        = '#FF8800',
+    typebg          = '#5C2C2E',
+    typetext        = '#C5C5C5',
+
+    statsicon       = '#9CDCFE',
+    statsbg         = '#5080A0',
+    statstext       = '#000000',
+
+    lineokfg        = '#000000',
+    lineokbg        = '#5080A0',
+    linelongfg      = '#990000',
+    linelongwarnfg  = '#664400',
+    linelongbg      = '#5080A0',
+
+    shortbg         = '#DCDCAA',
+    shorttext       = '#000000',
+
+    shortrightbg    = '#3F3F3F',
+    shortrighttext  = '#7C4C4E',
+
+    red             = '#D16969',
+    yellow          = '#DCDCAA',
+    magenta         = '#D16D9E',
+    green           = '#608B4E',
+    orange          = '#FF8800',
+    purple          = '#C586C0',
+    blue            = '#569CD6',
+    cyan            = '#4EC9B0'
+}
+
+local lineLengthWarning = 80
+local lineLengthError = 120
+local leftbracket = ""
+local rightbracket = ""
+gl.short_line_list = {'NvimTree', 'vista', 'dbui', 'packer', 'tagbar'}
+local gls = gl.section
+local condition = require('galaxyline.condition')
+-- }}}1
+
+-- Left {{{1
+local c = 1
+
+-- Edit mode {{{2
+gls.left[c] = {
+    ViModeSpace = {
+        provider = function() return " " end,
+        highlight = {colors.giticon, colors.bg}
+    }
+}
+
+c = c+1
+gls.left[c] = {
     ViMode = {
         provider = function()
             -- auto change color according the vim mode
             local mode_color = {
                 n = colors.blue,
-                i = colors.green,
+                i = colors.red,
                 v = colors.purple,
                 [''] = colors.purple,
                 V = colors.purple,
@@ -52,157 +103,457 @@ gls.left[1] = {
                 t = colors.blue
             }
             vim.api.nvim_command('hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()])
-            return '▊ '
+            return ""
         end,
+        separator = " ",
+        separator_highlight = {colors.red, colors.bg},
         highlight = {colors.red, colors.bg}
     }
 }
+
 print(vim.fn.getbufvar(0, 'ts'))
 vim.fn.getbufvar(0, 'ts')
+-- }}}2
 
-gls.left[2] = {
+-- Git info {{{2
+
+-- Git Branch Name {{{3
+c = c+1
+gls.left[c] = {
+    GitStart = {
+        provider = function() return leftbracket end,
+        condition = condition.check_git_workspace,
+        highlight = {colors.giticon, colors.bg}
+    }
+}
+c = c+1
+gls.left[c] = {
     GitIcon = {
         provider = function()
             return ' '
         end,
         condition = condition.check_git_workspace,
-        separator = ' ',
-        separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.orange, colors.bg}
+        separator = '',
+        separator_highlight = {'NONE', colors.giticon},
+        highlight = {colors.gitbg, colors.giticon}
+    }
+}
+c = c+1
+gls.left[c] = {
+    GitMid = {
+        provider = function() return rightbracket .. ' ' end,
+        condition = condition.check_git_workspace,
+        highlight = {colors.giticon, colors.gitbg}
     }
 }
 
-gls.left[3] = {
+c = c+1
+gls.left[c] = {
     GitBranch = {
         provider = 'GitBranch',
         condition = condition.check_git_workspace,
         separator = ' ',
-        separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.grey, colors.bg}
+        separator_highlight = {'NONE', colors.gitbg},
+        highlight = {colors.gittext, colors.gitbg}
     }
 }
-
-gls.left[4] = {
+-- }}}3
+-- Git Changes {{{3
+c = c+1
+gls.left[c] = {
     DiffAdd = {
         provider = 'DiffAdd',
-        condition = condition.hide_in_width,
-        icon = '  ',
-        highlight = {colors.green, colors.bg}
+        -- condition = condition.hide_in_width,
+        condition = condition.check_git_workspace,
+        icon = '  ',
+        -- icon = '  ',
+        highlight = {colors.green, colors.gitbg}
     }
 }
-gls.left[5] = {
+c = c+1
+gls.left[c] = {
     DiffModified = {
         provider = 'DiffModified',
-        condition = condition.hide_in_width,
-        icon = ' 柳',
-        highlight = {colors.blue, colors.bg}
+        -- condition = condition.hide_in_width,
+        condition = condition.check_git_workspace,
+        icon = '  ',
+        -- icon = ' 柳',
+        highlight = {colors.blue, colors.gitbg}
     }
 }
-gls.left[6] = {
+
+c = c+1
+gls.left[c] = {
     DiffRemove = {
         provider = 'DiffRemove',
-        condition = condition.hide_in_width,
-        icon = '  ',
-        highlight = {colors.red, colors.bg}
+        -- condition = condition.hide_in_width,
+        condition = condition.check_git_workspace,
+        icon = '  ',
+        -- icon = '  ',
+        highlight = {colors.red, colors.gitbg}
     }
 }
 
-gls.right[1] = {
-    DiagnosticError = {provider = 'DiagnosticError', icon = '  ', highlight = {colors.error_red, colors.bg}}
+c = c+1
+gls.left[c] = {
+    EndGit = {
+        provider = function() return rightbracket end,
+        condition = condition.check_git_workspace,
+        separator = " ",
+        separator_highlight = {colors.gitbg, colors.bg},
+        highlight = {colors.gitbg, colors.bg}
+    }
 }
-gls.right[2] = {DiagnosticWarn = {provider = 'DiagnosticWarn', icon = '  ', highlight = {colors.orange, colors.bg}}}
+-- }}}3
 
-gls.right[3] = {
-    DiagnosticHint = {provider = 'DiagnosticHint', icon = '  ', highlight = {colors.vivid_blue, colors.bg}}
+-- }}}2
+
+-- Lsp Section {{{2
+
+-- Lsp Client {{{3
+c = c+1
+gls.left[c] = {
+    LspStart = {
+        provider = function() return leftbracket end,
+        -- condition = condition.check_active_lsp,
+        highlight = {colors.lspicon, colors.bg}
+    }
 }
 
-gls.right[4] = {DiagnosticInfo = {provider = 'DiagnosticInfo', icon = '  ', highlight = {colors.info_yellow, colors.bg}}}
+c = c+1
+gls.left[c] = {
+    LspIcon = {
+        provider = function()
+            local name = ""
 
-gls.right[5] = {
+            if gl.lspclient ~= nil then
+                name = gl.lspclient()
+            end
+
+            return '' .. name
+        end,
+        -- condition = condition.check_active_lsp,
+        highlight = {colors.lspbg, colors.lspicon}
+    }
+}
+
+c = c+1
+gls.left[c] = {
+    LspMid = {
+        provider = function() return rightbracket .. ' ' end,
+        -- condition = condition.check_active_lsp,
+        highlight = {colors.lspicon, colors.lspbg}
+    }
+}
+
+c = c+1
+gls.left[c] = {
     ShowLspClient = {
         provider = 'GetLspClient',
-        condition = function()
-            local tbl = {['dashboard'] = true, [' '] = true}
-            if tbl[vim.bo.filetype] then return false end
-            return true
-        end,
-        icon = ' ',
-        highlight = {colors.grey, colors.bg}
+        -- condition = condition.check_active_lsp,
+        -- condition = function()
+            -- local tbl = {['dashboard'] = true, [' '] = true}
+            -- if tbl[vim.bo.filetype] then return false end
+            -- return true
+        -- end,
+        highlight = {colors.textbg, colors.lspbg}
     }
 }
 
-gls.right[6] = {
-    LineInfo = {
-        provider = 'LineColumn',
-        separator = '  ',
-        separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.grey, colors.bg}
+c = c+1
+gls.left[c] = {
+    LspSpace4 = {
+        provider = function() return ' ' end,
+        -- condition = condition.check_active_lsp,
+        highlight = {colors.lspicon, colors.lspbg}
+,    }
+}
+-- }}}
+-- Diagnostics {{{3
+c = c+1
+gls.left[c] = {
+    DiagnosticError = {
+        provider = 'DiagnosticError',
+        -- condition = condition.check_active_lsp,
+        icon = '  ',
+        separator_highlight = {colors.gitbg, colors.bg},
+        highlight = {colors.diagerror, colors.lspbg}
     }
 }
 
-gls.right[7] = {
-    PerCent = {
-        provider = 'LinePercent',
-        separator = ' ',
-        separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.grey, colors.bg}
+c = c+1
+gls.left[c] = {
+    DiagnosticWarn = {
+        provider = 'DiagnosticWarn',
+        -- condition = condition.check_active_lsp,
+        icon = '  ',
+        highlight = {colors.diagwarn, colors.lspbg}
     }
 }
 
-gls.right[8] = {
-    Tabstop = {
+c = c+1
+gls.left[c] = {
+    DiagnosticHint = {
+        provider = 'DiagnosticHint',
+        -- condition = condition.check_active_lsp,
+        icon = '  ',
+        highlight = {colors.diaghint, colors.lspbg}
+    }
+}
+
+c = c+1
+gls.left[c] = {
+    DiagnosticInfo = {
+        provider = 'DiagnosticInfo',
+        -- condition = condition.check_active_lsp,
+        icon = '  ',
+        highlight = {colors.diaginfo, colors.lspbg}
+    }
+}
+
+c = c+1
+gls.left[c] = {
+    LspSectionEnd = {
+        provider = function() return rightbracket .. " " end,
+        -- condition = condition.check_active_lsp,
+        highlight = {colors.lspbg, colors.bg}
+    }
+}
+
+-- }}}3
+
+-- }}}2
+
+-- }}}1
+
+-- Right {{{1
+c = 1
+
+-- Type {{{2
+c = c+1
+gls.right[c] = { TypeStart = { provider = function() return leftbracket end, highlight = {colors.typeicon, colors.bg} } }
+c = c+1
+gls.right[c] = {
+    TypeIcon = {
         provider = function()
-            return "Spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
+            return ''
         end,
-        condition = condition.hide_in_width,
-        separator = ' ',
-        separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.grey, colors.bg}
+        highlight = {colors.typebg, colors.typeicon}
+    }
+}
+c = c+1
+gls.right[c] = { TypeMid = { provider = function() return rightbracket .. ' ' end, highlight = {colors.typeicon, colors.typebg} } }
+
+c = c+1
+gls.right[c] = {
+    FileName = {
+        provider = 'FileName',
+        separator_highlight = {'NONE', colors.typebg},
+        highlight = {colors.typetext, colors.typebg}
     }
 }
 
-gls.right[9] = {
+-- c = c+1
+-- gls.right[c] = {
+    -- FileName = {
+        -- provider = file_readonly(),
+        -- highlight = {colors.typetext, colors.typebg}
+    -- }
+-- }
+
+c = c+1
+gls.right[c] = {
+    FileSize = {
+        provider = 'FileSize',
+        separator = ' ',
+        separator_highlight = {colors.typeicon, colors.typebg},
+        highlight = {colors.typetext, colors.typebg}
+    }
+}
+
+c = c+1
+gls.right[c] = { FileIcon = { provider = 'FileIcon', highlight = {colors.typeicon, colors.typebg} } }
+
+c = c+1
+gls.right[c] = {
     BufferType = {
         provider = 'FileTypeName',
-        condition = condition.hide_in_width,
-        separator = ' ',
-        separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.grey, colors.bg}
+        highlight = {colors.typetext, colors.typebg}
     }
 }
 
-gls.right[10] = {
+c = c+1
+gls.right[c] = {
+    FileFormat = {
+        provider = 'FileFormat',
+        separator = ' ⏎ ',
+        separator_highlight = {colors.typeicon, colors.typebg},
+        highlight = {colors.typetext, colors.typebg}
+    }
+}
+
+c = c+1
+gls.right[c] = {
     FileEncode = {
         provider = 'FileEncode',
-        condition = condition.hide_in_width,
-        separator = ' ',
-        separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.grey, colors.bg}
+        separator = ' ',
+        separator_highlight = {colors.typeicon, colors.typebg},
+        highlight = {colors.typetext, colors.typebg}
     }
 }
+c = c+1
+gls.right[c] = { TypeSectionEnd = { provider = function() return rightbracket end, highlight = {colors.typebg, colors.bg} } }
 
-gls.right[11] = {
-    Space = {
+c = c+1
+gls.right[c] = { Space = { provider = function() return ' ' end, highlight = {colors.typebg, colors.bg} } }
+
+-- }}}2
+
+-- File Position Section {{{2
+c = c+1
+gls.right[c] = { StatsSectionStart = { provider = function() return leftbracket end, highlight = {colors.statsicon, colors.bg} } }
+c = c+1
+gls.right[c] = {
+    StatsIcon = {
         provider = function()
-            return ' '
+            return '⅑'
         end,
-        separator = ' ',
-        separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.orange, colors.bg}
+        highlight = {colors.statsbg, colors.statsicon}
+    }
+}
+c = c+1
+gls.right[c] = { StatsMid = { provider = function() return rightbracket .. ' ' end, highlight = {colors.statsicon, colors.statsbg} } }
+
+c = c+1
+gls.right[c] = {
+    PerCent = {
+        provider = 'LinePercent',
+        highlight = {colors.statstext, colors.statsbg}
     }
 }
 
-gls.short_line_left[1] = {
-    BufferType = {
+c = c+1
+gls.right[c] = {
+    VerticalPosAndSize = {
+        provider = function()
+            return vim.fn.line('.') .. "[" .. vim.fn.line('$') .. "] "
+        end,
+        separator = '⇕ ',
+        separator_highlight = {colors.statsicon, colors.statsbg},
+        highlight = {colors.statstext, colors.statsbg}
+    }
+}
+
+c = c+1
+gls.right[c] = {
+    CursorColumn = {
+        provider = function()
+            if (vim.fn.col('.') > lineLengthWarning)
+            then
+                if (vim.fn.col('.') > lineLengthError)
+                then
+                    vim.cmd('highlight LinePosHighlight guifg=' .. colors.linelongfg .. ' guibg=' .. colors.linelongbg)
+                else
+                    vim.cmd('highlight LinePosHighlight guifg=' .. colors.linelongwarnfg .. ' guibg=' .. colors.linelongbg)
+                end
+            else
+                vim.cmd('highlight LinePosHighlight guifg=' .. colors.lineokfg .. ' guibg=' .. colors.lineokbg)
+            end
+            return " " .. vim.fn.col('.')
+        end,
+        separator = '⇔ ',
+        separator_highlight = {colors.statsicon, colors.statsbg},
+        highlight = 'LinePosHighlight'
+    }
+}
+
+c = c+1
+gls.right[c] = {
+    LineLength = {
+        provider = function()
+            if (vim.fn.strwidth(vim.fn.getline('.')) > lineLengthWarning)
+            then
+                if (vim.fn.strwidth(vim.fn.getline('.')) > lineLengthError)
+                then
+                    vim.cmd('highlight LineLenHighlight guifg=' .. colors.linelongfg .. ' guibg=' .. colors.linelongbg)
+                else
+                    vim.cmd('highlight LineLenHighlight guifg=' .. colors.linelongwarnfg .. ' guibg=' .. colors.linelongbg)
+                end
+            else
+                vim.cmd('highlight LineLenHighlight guifg=' .. colors.lineokfg .. ' guibg=' .. colors.lineokbg)
+            end
+            return "[" .. vim.fn.strwidth(vim.fn.getline('.')) .. "] "
+        end,
+        highlight = 'LineLenHighlight'
+    }
+}
+
+c = c+1
+gls.right[c] = {
+    Tabstop = {
+        provider = function()
+            return "Spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+        end,
+        condition = condition.hide_in_width,
+        separator = ' ',
+        separator_highlight = {colors.statsicon, colors.statsbg},
+        highlight = {colors.statstext, colors.statsbg}
+    }
+}
+
+c = c+1
+gls.right[c] = { StatsSpcSectionEnd = { provider = function() return rightbracket .. " " end, highlight = {colors.statsbg, colors.bg} } }
+
+-- }}}2
+
+-- }}}1
+
+-- Left Short {{{1
+c = 1
+gls.short_line_left[c] = { ShortSectionStart = { provider = function() return leftbracket  end, highlight = {colors.shortbg, colors.bg} } }
+
+c = c+1
+gls.short_line_left[c] = { ShortSectionSpace = { provider = function() return " "  end, highlight = {colors.shorttext, colors.shortbg} } }
+
+c = c+1
+gls.short_line_left[c] = {
+    LeftShortName = {
         provider = 'FileTypeName',
-        separator = ' ',
-        separator_highlight = {'NONE', colors.bg},
-        highlight = {colors.grey, colors.bg}
+        highlight = {colors.shorttext, colors.shortbg},
     }
 }
 
-gls.short_line_left[2] = {
-    SFileName = {provider = 'SFileName', condition = condition.buffer_not_empty, highlight = {colors.grey, colors.bg}}
+c = c+1
+gls.short_line_left[c] = { ShortSectionMid = { provider = function() return " " end, highlight = {colors.shortbg, colors.shortbg} } }
+
+c = c+1
+gls.short_line_left[c] = {
+    LeftShortFileName = {
+        provider = 'SFileName',
+        condition = condition.buffer_not_empty,
+        separator_highlight = {colors.shorttext, colors.shortbg},
+        highlight = {colors.shorttext, colors.shortbg},
+    }
 }
 
-gls.short_line_right[1] = {BufferIcon = {provider = 'BufferIcon', highlight = {colors.grey, colors.bg}}}
+c = c+1
+gls.short_line_left[c] = {
+    ShortSectionEnd = {
+        provider = function() return rightbracket end,
+        highlight = {colors.shortbg, colors.bg}
+    }
+}
+
+-- }}}1
+
+-- Right Short {{{1
+c = 1
+gls.short_line_right[c] = {
+    BufferIcon = {
+        provider = 'BufferIcon',
+        separator_highlight = {colors.shorttext, colors.bg},
+        highlight = {colors.shortrighttext, colors.bg}
+    }
+}
+-- }}}1
+

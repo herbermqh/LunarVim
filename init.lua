@@ -18,6 +18,7 @@ require('lv-treesitter')
 require('lv-autopairs')
 require('lv-barbar')
 require('lv-rnvimr')
+require('lv-colorizer')
 
 -- Which Key (Hope to replace with Lua plugin someday)
 vim.cmd('source ~/.config/nvim/vimscript/lv-whichkey/init.vim')
@@ -47,3 +48,5 @@ require('lsp.efm-general-ls')
 require('lsp.latex-ls')
 require('lsp.svelte-ls')
 require('lsp.tailwindcss-ls')
+
+vim.cmd('source ~/.config/nvim/user.vim')
