@@ -8,25 +8,25 @@
 ```
 
 <!-- Christian Information -->
-#{{{1
+<!-- {{{1 -->
 [![GitHub license](https://img.shields.io/github/license/ChristianChiarulli/LunarVim)](https://github.com/ChristianChiarulli/LunarVim/blob/master/LICENSE)
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/ChristianChiarulli/lunarvim)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 <a href="https://patreon.com/chrisatmachine" title="Donate to this project using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon donate button" /></a>
 <a href="https://twitter.com/intent/follow?screen_name=chrisatmachine"><img src="https://img.shields.io/twitter/follow/chrisatmachine?style=social&logo=twitter" alt="follow on Twitter"></a>
-#}}}1
+<!-- }}}1 -->
 
 <!-- Main Image -->
-#{{{1
+<!-- {{{1 -->
 ![LunarVim Demo](./utils/media/demo.png)
-#}}}1
+<!-- }}}1 -->
 
 <!-- Table Of Contents -->
-# {{{1
+<!-- {{{1 -->
 - [Intro](#intro)
 - [Links](#links)
 - [Key Bindings](#key-bindings)
-# }}}1
+<!-- }}}1 -->
 
 # Intro {{{1
 This is a fork of the *brilliant* configuration project [LunarVim](https://github.com/ChristianChiarulli/LunarVim) by [Christian Chiarulli](https://twitter.com/intent/follow?screen_name=chrisatmachine).
