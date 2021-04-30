@@ -87,75 +87,50 @@ nnoremap W :w<CR>
 " zz toggles fold
 nnoremap zz za
 
-" Inc and dec a number.
-" nnoremap <A-a> <C-a>
-" nnoremap <A-x> <C-x>
-
-" Jump!
+" Jump, looks under the cursor for a URL, Hex Code, GithubProject or Word!
 function! JumpToSelection()
-    let url=matchstr(getline('.'), '[a-z]*:\/\/[^ >,;)]*')
-    if url != ""
-        silent exec ':!xdg-open "'.url.'"' | redraw!
-        echo "Opened URL ".url
+  let url=matchstr(expand("<cWORD>"), 'http[s]*:\/\/[^ >,;)]*')
+
+  " Is it a url?
+  if url != ""
+    silent exec ':!xdg-open "'.url.'"' | redraw!
+    echo "Opening URL ".url
+  else
+    let wordUnderCursor = expand("<cWORD>")
+    let hexcode = matchstr(wordUnderCursor, '[0-9a-fA-F]\{6}')
+
+    " Is it a hex colour code?
+    if hexcode != ""
+      let url="https://www.colorhexa.com/" . hexcode
+      silent exec ':!xdg-open "'.url.'"' | redraw!
+      echo "Opened HEX colour ".url
     else
-        echo "No URL under cursor."
+      let projectPath = matchstr(wordUnderCursor, '[0-9a-zA-Z]\{3,}/[0-9a-z-A-Z]\{3,}')
+
+      " Is it a github project?
+      if projectPath != ""
+        let url="https://github.com/" . projectPath
+        silent exec ':!xdg-open "'.url.'"' | redraw!
+        echo "Opened GitHub project : ".projectPath
+      else
+        let url='https://cheat.sh/' . &filetype . '/' . wordUnderCursor
+
+        if url != ""
+          let $CURLCMDVIM='https://cheat.sh/' . &filetype . '/' . wordUnderCursor
+          term curl -s $CURLCMDVIM
+          echo "Opened Cheat ".url
+        else
+          echo "No URL, HEX colour sequence, GitHub Project or Keyword under cursor."
+        endif
+      endif
     endif
+  endif
 endfunction
 nmap gj :call JumpToSelection()<CR>
 
-" Open url under cursor.
-function! OpenUrlUnderCursor()
-    let url=matchstr(getline('.'), '[a-z]*:\/\/[^ >,;)]*')
-    if url != ""
-        silent exec ':!xdg-open "'.url.'"' | redraw!
-        echo "Opened URL ".url
-    else
-        echo "No URL under cursor."
-    endif
-endfunction
-nmap gx :call OpenUrlUnderCursor()<CR>
-
-" Open url under cursor.
-function! OpenPluginUnderCursor()
-    let url="https://github.com/" .  matchstr(getline('.'), '"[^"]*"')
-    if url != ""
-        silent exec ':!xdg-open "'.url.'"' | redraw!
-        echo "Opened URL ".url
-    else
-        echo "No URL under cursor."
-    endif
-endfunction
-nmap gp :call OpenPluginUnderCursor()<CR>
-
-" Open cheat page on word under cursor
-function! OpenChtUrlUnderCursor()
-    let wordUnderCursor = expand("<cword>")
-    let url='https://cheat.sh/' . &filetype . '/' . wordUnderCursor
-    if url != ""
-        let $CURLCMDVIM='https://cheat.sh/' . &filetype . '/' . wordUnderCursor
-        term curl -s $CURLCMDVIM
-        echo "Opened Cheat ".url
-    else
-        echo "No cheat word under cursor."
-    endif
-endfunction
-nmap gc :call OpenChtUrlUnderCursor()<CR>
-
-" Open colour under cursor when hex like #ff4422
-function! OpenHexUrlUnderCursor()
-    let url="https://www.colorhexa.com/" . matchstr(getline('.'), '[0-9a-fA-F]\{6}')
-    if url != ""
-        silent exec ':!xdg-open "'.url.'"' | redraw!
-        echo "Opened hex colour ".url
-    else
-        echo "No hex colour under cursor."
-    endif
-endfunction
-nmap gh :call OpenHexUrlUnderCursor()<CR>
-
 " Toggle whitespace highlight.
 let s:hilightws = 1
-function TOGGLEWHITESPACECOLOURS()
+function! TOGGLEWHITESPACECOLOURS()
   if s:hilightws
     match ExtraWhitespace //
     let s:hilightws = 0
@@ -401,7 +376,6 @@ cab s sort
 " }}}
 
 " LSP {{{1
-
 " lua require'lspconfig'.pyright.setup{}
 " lua require'lspconfig'.bashls.setup{}
 " }}}

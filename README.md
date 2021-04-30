@@ -58,6 +58,7 @@ his brilliant work.
   <!-- {{{1 -->
 - [NeoVim](https://neovim.io)
 - [LunarVim](https://github.com/ChristianChiarulli/LunarVim)
+- [Vim Sheet](http://vimsheet.com)
 - [Quick ref](http://tnerual.eriogerg.free.fr/vimqrc.html)
 - [Cheatsheet](https://paulgorman.org/technical/vim.html)
 - [100 Essential commands](https://catswhocode.com/vim-commands/)
@@ -80,39 +81,42 @@ I've added a few extra plugins I use to the configuration:
 
 # Key Bindings
 <!-- {{{1 -->
-- ```<Ctrl-w>``` Format paragraph to 80 chars.
-- ```gj``` Jump
-  - If line contains a url jump to this in browser.
-  - If line contains a hex colour jump to that colour on [ColorHexa.com](https://www.colorhexa.com)
-  - Try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
-- ```<Ctrl-/>``` (un)Comment a line and move to the next.
-  - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.
-  - I find this really handy!
-- Moving lines up and down.
-  - ```<Alt-Up>``` Move current line up.
-  - ```<Alt-Down>``` Move current line down.
-- ```<Ctrl-l>``` redraws the screen and removes any search highlighting.
-- Function Keys
-  - ```<F1>``` Help, open this page.
-  - ```<F2>``` Toggle highlighting whitespace at end of line.
-  - ```<F3>``` Toggle whitespace highlight.
-  - ```<F4>``` Open left file menu.
-  - ```<F5>``` Special binding for kitty, not used in vim.
-  - ```<F6>``` Toggle line wrap.
-  - ```<F7>``` Toggle spell check highlighting.
-  - ```<F8>``` Not defined.
-  - ```<F9>``` Open Telescope.
-  - ```<F10>``` New terminal in Kitty in new tab.
-  - ```<F11>``` Toggle right tagbar.
-  - ```<F12>``` Toggle ranger.
-- Type ```#!ba``` in normal mode and the bash file header will be inserted, also makes the file executable.
-  - ```#!sh``` Shell
-  - ```#!pe``` Perl
-  - ```#!py``` Python
-  - ```#!gr``` Groovy
-  - ```#!zs``` Zsh
-- ```qq```, ```q```, ```Q``` Macro, start record, end record and play.
-- ```:checkhealth``` to check installation health.
+Key | Action
+--- | ------
+```<Ctrl-w>```   | Format paragraph to at most 79 chars.
+```gj```         | Jump
+``` ```          | - If line contains a url jump to this in browser.
+``` ```          | - Else if line contains a hex colour jump to that colour on [ColorHexa.com](https://www.colorhexa.com)
+``` ```          | - Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
+```gr```         | Run line under cursor in shell, **USE WITH CARE!**
+```qq```, ```q```, ```Q``` | Macro, start record, end record and play.
+```<Ctrl-/>```   | (un)Comment a line and move to the next.
+``` ```          | - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.
+``` ```          | - I find this really handy!
+``` ```          | Moving lines up and down.
+```<Alt-Up>```   | - Move current line up.
+```<Alt-Down>``` | - Move current line down.
+```<Ctrl-l>```   | redraws the screen and removes any search highlighting
+``` ```          | Function Keys
+```<F1>```       | Help, open this page
+```<F2>```       | Toggle highlighting whitespace at end of line
+```<F3>```       | Toggle whitespace highlight
+```<F4>```       | Open left file menu
+```<F5>```       | Special binding for kitty, not used in vim
+```<F6>```       | Toggle line wrap
+```<F7>```       | Toggle spell check highlighting
+```<F8>```       | Not defined
+```<F9>```       | Open Telescope
+```<F10>```      | New terminal in Kitty in new tab
+```<F11>```      | Toggle right tagbar
+```<F12>```      | Toggle ranger
+```#!ba```       | in normal mode and the bash file header will be inserted, also makes the file executable.
+```#!sh```       | Shell
+```#!pe```       | Perl
+```#!py```       | Python
+```#!gr```       | Groovy
+```#!zs```       | Zsh
+```:checkhealth``` | to check installation health.
 <!-- }}}1 -->
 
 # Visual Appearance
@@ -155,7 +159,7 @@ The line is split into 5 main sections, 3 on the left and 2 on the right:
 # Forgotten Commands
 <!-- {{{1 -->
 The rest of this file contains information I need to remind myself every now and
-then ;-).
+then ;-).  Maybe others will find this a useful cheatsheet.
 
 ##  Block editing
 <!-- {{{2 -->
@@ -176,7 +180,7 @@ then ;-).
 
 ##  Changing case
 <!-- {{{2 -->
-- ```g\~\~``` Togglecase line
+- ```g~~``` Togglecase line
 - ```guu``` Lowercase line
 - ```gUU``` Uppercase line
 - ```g~``` + movement Togglecase
@@ -187,47 +191,48 @@ then ;-).
 
 ##  Increment a value
 <!-- {{{2 -->
-- Ctrl+a increment value under cursor.
-- Ctrl+x deccrement value under cursor.
+- ```<Ctrl+a>``` increment value under cursor by 1.
+- ```<Ctrl+x>``` decrement value under cursor by 1.
+```vim
 :let i=1 | g/foo/s//\=i/ | let i=i+1
+
 :let i=1 | g/foo/s//\="morestuff".i."morestuff"/ | let i=i+1
-<!-- }}}2 -->
-<!-- }}}1 -->
-
-# Section to complete, please ignore.
-<!-- {{{1 -->
-## Misc normal VIM commands I can never remember
-<!-- {{{2 -->
-- cat, cit etc for change insert tags etc.
-- ci' ca( ci{ Change stuff in between ' (also works for ", [, (, {).
-- cc Change current line.
-- dt<char> Delete to "char", d\$ or D to end of line, d0 to start.
-- cf<char> Change to "char" (any char).
-- set number! Toggle line numbers.
-- set ft={unix|html|dos} Set file type.
-- set syntax? Syntax type.
-- bn, bp, bd buffer next, previous, delete (close).
-- ga Ascii, octal val.
-- gd Goto definition.
-- gr Show references.
-- gg=G auto (re)indent entire document.
-- = (re)indent the text on the current line or on the area selected (SUPER).
-- =% (re)indent the current braces { ... }.
+```
 <!-- }}}2 -->
 
-##  Not tested
+## Other misc commands
 <!-- {{{2 -->
-- gx : gf open url/file in new window/buffer.
-- gi implementation.
+- ```cat```, ```cit``` etc for change insert tags etc.
+- ```ci'``` ```ca(``` ```ci{``` Change stuff in between ' (also works for ", [, (, {).
+- ```cc``` Change current line.
+- ```dt<char>``` Delete to "char", d\$ or D to end of line, d0 to start.
+- ```cf<char>``` Change to "char" (any char).
+- ```set number!``` Toggle line numbers.
+- ```set ft={markdown|java|...}``` Set file type.
+- ```set ff={unix|html|dos}``` Set file format.
+- ```set syntax?``` Syntax type.
+- ```bn``` or ```<tab>```, ```bp``` or ```<shift+tab>```, ```bd``` buffer next, previous, delete (close).
+- ```ga``` Ascii, octal val of char under cursor.
+- ```gd``` Goto definition.
+- ```gg=G``` auto (re)indent entire document.
+- ```=``` (re)indent the text on the current line or on the area selected (SUPER).
+- ```=%``` (re)indent the current braces { ... }.
 <!-- }}}2 -->
 
 ##  Formatting
 <!-- {{{2 -->
-- :%!par
-- :%!par j1w80
-- :[range]ce[nter] [width] center lines :.,+3 center 80
-- :[range] ri[ght] [right edge] right alignment :% right
-- :[range] le[ft] [indent] left alignment.(Unit of identation is space) :% left 4
+[Par formatting](https://vim.fandom.com/wiki/Par_text_reformatter)
+
+- ```:%!par``` Format range, in this case whole doument.
+- ```:%!par j1w80``` Format range to j1w80.
+- I've setup a useful software for this, ```<Ctrl-w>```
+
+```vim
+:[range]ce[nter] [width] center lines :.,+3 center 80
+:[range] ri[ght] [right edge] right alignment :% right
+:[range] le[ft] [indent] left alignment.(Unit of identation is space) :% left 4
+```
 <!-- }}}2 -->
 
 <!-- }}}1 -->
+
