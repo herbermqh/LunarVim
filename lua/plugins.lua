@@ -84,7 +84,9 @@ return require("packer").startup(
         -- Jimc extras.
         use {"norcalli/nvim-colorizer.lua", opt = true}  -- Colour text.
         use {"kshenoy/vim-signature", opt = true}        -- Markers in margin.
-        use {"preservim/tagbar", opt = true}             -- https://github.com/preservim/tagbar
+        use {"preservim/tagbar", opt = true}             -- Tags navigation.
+        use {"tpope/vim-surround", opt = true}           -- Surroundings.
+        use {"tpope/vim-eunuch", opt = true}             -- Unix commands.
 
         require_plugin("nvim-lspconfig")
         require_plugin("lspsaga.nvim")
@@ -114,5 +116,7 @@ return require("packer").startup(
         require_plugin("nvim-colorizer.lua")
         require_plugin("vim-signature")
         require_plugin("tagbar")
+        require_plugin("vim-surround")
+        require_plugin("vim-eunuch")
     end
 )

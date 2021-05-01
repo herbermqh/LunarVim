@@ -77,6 +77,11 @@ I've added a few extra plugins I use to the configuration:
 - [Tagbar](https://github.com/preservim/tagbar)
   - A plugin that provides an easy way to browse the tags of the current file and get an overview of the files structure.
   - Opened with ```<F11>```
+- [Vim Eunuch](https://github.com/tpope/vim-eunuch)
+  - Vim sugar for the UNIX shell commands that need it the most.
+- [Vim Surround](https://github.com/tpope/vim-surround)
+  - Surround.vim is all about "surroundings": parentheses, brackets, quotes,
+    XML tags, and more. The plugin provides mappings to easily delete, change and add such surroundings in pairs.
 <!-- }}}1 -->
 
 # Key Bindings
@@ -85,7 +90,7 @@ Key | Action
 --- | ------
 ```<Ctrl-w>```   | Format paragraph to at most 79 chars.
 ```gj```         | Jump
-``` ```          | - If line contains a url jump to this in browser.
+                 | - If line contains a url jump to this in browser.
 ``` ```          | - Else if line contains a hex colour jump to that colour on [ColorHexa.com](https://www.colorhexa.com)
 ``` ```          | - Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
 ```gr```         | Run line under cursor in shell, **USE WITH CARE!**
@@ -236,3 +241,6 @@ then ;-).  Maybe others will find this a useful cheatsheet.
 
 <!-- }}}1 -->
 
+<!-- # Todo -->
+<!-- {{{1 -->
+<!-- }}}1 -->
