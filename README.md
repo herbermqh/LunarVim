@@ -86,6 +86,10 @@ I've added a few extra plugins I use to the configuration:
 
 # Key Bindings
 <!-- {{{1 -->
+
+The following are a mixture of stadard key bindings and my own, which I find
+useful like ```Q```, ```gj```, ```<Alt-Up>``` etc.
+
 Key                                    | Action
 -------------------------------------- | ---------------------------------
 ```<Ctrl-w>```                         | Format paragraph to at most 79 chars.
@@ -96,11 +100,9 @@ __Macros__
 ```q```                                | Quit recording.
 ```Q```                                | Play macro q.
 __Jump__
-```gj```                               | If line contains a url jump to this in browser.<br/>- Else if line contains a hex colour, ```#AABBCC```jump to that colour on [ColorHexa.com](https://www.colorhexa.com)<br/>- Else if line contains a github project name of the format  ```user/repository``` then jump to this GitHub project.<br/>- Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
+```gj```                               | If line contains a url jump to this in browser.<br/> - Else if line contains a hex colour, ```#AABBCC```jump to that colour on [ColorHexa.com](https://www.colorhexa.com)<br/>- Else if line contains a github project name of the format  ```user/repository``` then jump to this GitHub project.<br/>- Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
 __Commenting__
-```<Ctrl-/>```                         | (un)Comment a line and move to the next.
-&nbsp;                                 | I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.
-&nbsp;                                 | I find this really handy!
+```<Ctrl-/>```                         | (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.  <br/> - I find this really handy!
 __Moving Line__
 ```<Alt-Up>```                         | Move current line up.
 ```<Alt-Down>```                       | Move current line down.
