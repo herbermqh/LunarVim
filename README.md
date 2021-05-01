@@ -90,27 +90,39 @@ Key | Action
 --- | ------
 ```<Ctrl-w>```   | Format paragraph to at most 79 chars.
 ```<Ctrl-l>```   | redraws the screen and removes any search highlighting
-&nbsp; | &nbsp;
-Jump
-```gj```         | Jump
-&nbsp;           | - If line contains a url jump to this in browser.
+```gr```         | Run line under cursor in shell, **USE WITH CARE!**
+```qq```, ```q```, ```Q``` | Macro, start record, end record and play.
+__Jump__
+```gj```         | - If line contains a url jump to this in browser.
 &nbsp;           | - Else if line contains a hex colour, ```#AABBCC```jump to that colour on [ColorHexa.com](https://www.colorhexa.com)
 &nbsp;           | - Else if line contains a github project name of the format  ```user/repository``` then jump to this GitHub project.
 &nbsp;           | - Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
-&nbsp; | &nbsp;
-```gr```         | Run line under cursor in shell, **USE WITH CARE!**
-```qq```, ```q```, ```Q``` | Macro, start record, end record and play.
+__Commenting__
 ```<Ctrl-/>```   | (un)Comment a line and move to the next.
 &nbsp;           | - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.
 &nbsp;           | - I find this really handy!
-&nbsp; | &nbsp;
-&nbsp;           | Moving lines up and down.
-Move Lines
+__Moving Line__
 ```<Alt-Up>```   | - Move current line up.
 ```<Alt-Down>``` | - Move current line down.
-&nbsp; | &nbsp;
-&nbsp;           | Function Keys
-Function Keys
+__Changing case__
+```g~~```        | Togglecase line
+```guu```        | Lowercase line
+```gUU```        | Uppercase line
+```g~<movement>``` | Togglecase, movement is ```w``` or ```}``` etc.
+```gu<movement>``` | Lowercase
+```gU<movement>``` | Uppercase
+&nbsp;           | Title Case regex ```:s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g```
+__Marks__
+```m/```         | Display marks.
+```m<space>```   | Remove all marks.
+```mx```         | Toggle mark 'x'
+```'x```         | Goto to mark 'x'
+**Increment a value**
+```<Ctrl+a>```   | Increment value under cursor by 1.
+```<Ctrl+x>```   | Decrement value under cursor by 1.
+&nbsp;           | ```:let i=1 \| g/foo/s//\=i/ \| let i=i+1```
+&nbsp;           | ```:let i=1 || g/foo/s//\="morestuff".i."morestuff"/ || let i=i+1```
+__Function Keys__
 ```<F1>```       | Help, open this page
 ```<F2>```       | Toggle highlighting whitespace at end of line
 ```<F3>```       | Toggle whitespace highlight
@@ -123,8 +135,7 @@ Function Keys
 ```<F10>```      | New terminal in Kitty in new tab
 ```<F11>```      | Toggle right tagbar
 ```<F12>```      | Toggle ranger
-&nbsp; | &nbsp;
-Script Header
+__Script Header__
 ```#!ba```       | in normal mode and the bash file header will be inserted, also makes the file executable.
 ```#!sh```       | Shell
 ```#!pe```       | Perl
@@ -184,35 +195,8 @@ then ;-).  Maybe others will find this a useful cheatsheet.
 - ```Esc``` to apply your change (or alternately ```<Ctrl+c>```)
 <!-- }}}2 -->
 
-##  Marks
-<!-- {{{2 -->
-- ```m/``` Display marks.
-- ```m<space>``` Remove all marks.
-- ```mx``` Toggle mark 'x'
-- ```'x``` Goto to mark 'x'
-<!-- }}}2 -->
 
-##  Changing case
-<!-- {{{2 -->
-- ```g~~``` Togglecase line
-- ```guu``` Lowercase line
-- ```gUU``` Uppercase line
-- ```g~``` + movement Togglecase
-- ```gu``` + movement Lowercase
-- ```gU``` + movement Uppercase
-- Title Case regex ```:s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g```
-<!-- }}}2 -->
 
-##  Increment a value
-<!-- {{{2 -->
-- ```<Ctrl+a>``` increment value under cursor by 1.
-- ```<Ctrl+x>``` decrement value under cursor by 1.
-```vim
-:let i=1 | g/foo/s//\=i/ | let i=i+1
-
-:let i=1 | g/foo/s//\="morestuff".i."morestuff"/ | let i=i+1
-```
-<!-- }}}2 -->
 
 ## Other misc commands
 <!-- {{{2 -->
