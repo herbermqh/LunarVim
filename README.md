@@ -120,24 +120,23 @@ __Marks__
 ```m<space>```                         | Remove all marks.
 ```mx```                               | Toggle mark 'x'
 ```'x```                               | Goto to mark 'x'
-**Increment a value**
+__Increment a value__
 ```<Ctrl+a>```                         | Increment value under cursor by 1.
 ```<Ctrl+x>```                         | Decrement value under cursor by 1.
 &nbsp;                                 | ```:let i=1 \| g/foo/s//\=i/ \| let i=i+1```
 &nbsp;                                 | ```:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1```
 __Other misc commands__
+```dt<char>```                         | Delete to ```char```.
+```d^```                               | Delete to start of line.
+```D```                                | Delete to end of line.
+```ga```                               | Ascii, octal val of char under cursor.
 ```cat```, ```cit```                   | etc for change insert tags etc.
 ```ci'``` ```ca(``` ```ci{```          | Change stuff in between ' (also works for ", [, (, {).
 ```cc```                               | Change current line.
-```dt<char>```                         | Delete to "char", d\$ or D to end of line, d0 to start.
-```cf<char>```                         | Change to "char" (any char).
-```set number!```                      | Toggle line numbers.
-```set ft={markdown|java|...}```       | Set file type.
-```set ff={unix|html|dos}```           | Set file format.
-```set syntax?```                      | Syntax type.
+```cf<char>```                         | Change to ```char``` (any char).
 ```bn``` or ```<tab>```, ```bp``` or ```<shift+tab>```, ```bd```                                  | buffer next, previous, delete (close).
-```ga```                               | Ascii, octal val of char under cursor.
 ```gd```                               | Goto definition.
+__Formatting__
 ```gg=G```                             | auto (re)indent entire document.
 ```=```                                | (re)indent the text on the current line or on the area selected (SUPER).
 ```=%```                               | (re)indent the current braces { ... }.
@@ -148,7 +147,7 @@ __Other misc commands__
 &nbsp;                                 | ```:[range] ri[ght] [right edge] right alignment :% right```
 &nbsp;                                 | ```:[range] le[ft] [indent] left alignment.(Unit of identation is space) :% left 4```
 __Block editing__
-```<Ctrl+q```                          | Start column mode
+```<Ctrl+q>```                         | Start column mode
 &nbsp;                                 | Select the columns and rows where you want to enter your text, shift and move with keyboard ('''Do not use the mouse to select the block!''')
 ```I```                                | To go into insert mode in column mode.
 &nbsp;                                 | Type in the text you want to enter. Don't be discouraged by the fact that only the first row is changed.
@@ -173,6 +172,11 @@ __Script Header__
 ```#!py```                             | Python
 ```#!gr```                             | Groovy
 ```#!zs```                             | Zsh
+__Misc commands__
+```:set number!```                     | Toggle line numbers.
+```:set ft={markdown\|java|...}```     | Set file type.
+```:set ff={unix\|html\|dos}```        | Set file format.
+```:set syntax?```                     | Syntax type.
 <!-- }}}1 -->
 
 # Visual Appearance
