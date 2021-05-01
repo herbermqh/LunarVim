@@ -86,62 +86,93 @@ I've added a few extra plugins I use to the configuration:
 
 # Key Bindings
 <!-- {{{1 -->
-Key | Action
---- | ------
-```<Ctrl-w>```   | Format paragraph to at most 79 chars.
-```<Ctrl-l>```   | redraws the screen and removes any search highlighting
-```gr```         | Run line under cursor in shell, **USE WITH CARE!**
-```qq```, ```q```, ```Q``` | Macro, start record, end record and play.
+Key                                    | Action
+-------------------------------------- | ---------------------------------
+```<Ctrl-w>```                         | Format paragraph to at most 79 chars.
+```<Ctrl-l>```                         | redraws the screen and removes any search highlighting
+```gr```                               | Run line under cursor in shell, **USE WITH CARE!**
+__Macros__
+```qq```                               | Record (as q).
+```q```                                | Quit recording.
+```Q```                                | Play macro q.
 __Jump__
-```gj```         | - If line contains a url jump to this in browser.
-&nbsp;           | - Else if line contains a hex colour, ```#AABBCC```jump to that colour on [ColorHexa.com](https://www.colorhexa.com)
-&nbsp;           | - Else if line contains a github project name of the format  ```user/repository``` then jump to this GitHub project.
-&nbsp;           | - Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
+```gj```                               | If line contains a url jump to this in browser.
+&nbsp;                                 | Else if line contains a hex colour, ```#AABBCC```jump to that colour on [ColorHexa.com](https://www.colorhexa.com)
+&nbsp;                                 | Else if line contains a github project name of the format  ```user/repository``` then jump to this GitHub project.
+&nbsp;                                 | Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
 __Commenting__
-```<Ctrl-/>```   | (un)Comment a line and move to the next.
-&nbsp;           | - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.
-&nbsp;           | - I find this really handy!
+```<Ctrl-/>```                         | (un)Comment a line and move to the next.
+&nbsp;                                 | I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.
+&nbsp;                                 | I find this really handy!
 __Moving Line__
-```<Alt-Up>```   | - Move current line up.
-```<Alt-Down>``` | - Move current line down.
+```<Alt-Up>```                         | Move current line up.
+```<Alt-Down>```                       | Move current line down.
 __Changing case__
-```g~~```        | Togglecase line
-```guu```        | Lowercase line
-```gUU```        | Uppercase line
-```g~<movement>``` | Togglecase, movement is ```w``` or ```}``` etc.
-```gu<movement>``` | Lowercase
-```gU<movement>``` | Uppercase
-&nbsp;           | Title Case regex ```:s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g```
+```g~~```                              | Togglecase line
+```guu```                              | Lowercase line
+```gUU```                              | Uppercase line
+```g~<movement>```                     | Togglecase, movement is ```w``` or ```}``` etc.
+```gu<movement>```                     | Lowercase
+```gU<movement>```                     | Uppercase
+&nbsp;                                 | Title Case regex ```:s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g```
 __Marks__
-```m/```         | Display marks.
-```m<space>```   | Remove all marks.
-```mx```         | Toggle mark 'x'
-```'x```         | Goto to mark 'x'
+```m/```                               | Display marks.
+```m<space>```                         | Remove all marks.
+```mx```                               | Toggle mark 'x'
+```'x```                               | Goto to mark 'x'
 **Increment a value**
-```<Ctrl+a>```   | Increment value under cursor by 1.
-```<Ctrl+x>```   | Decrement value under cursor by 1.
-&nbsp;           | ```:let i=1 \| g/foo/s//\=i/ \| let i=i+1```
-&nbsp;           | ```:let i=1 || g/foo/s//\="morestuff".i."morestuff"/ || let i=i+1```
+```<Ctrl+a>```                         | Increment value under cursor by 1.
+```<Ctrl+x>```                         | Decrement value under cursor by 1.
+&nbsp;                                 | ```:let i=1 \| g/foo/s//\=i/ \| let i=i+1```
+&nbsp;                                 | ```:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1```
+__Other misc commands__
+```cat```, ```cit```                   | etc for change insert tags etc.
+```ci'``` ```ca(``` ```ci{```          | Change stuff in between ' (also works for ", [, (, {).
+```cc```                               | Change current line.
+```dt<char>```                         | Delete to "char", d\$ or D to end of line, d0 to start.
+```cf<char>```                         | Change to "char" (any char).
+```set number!```                      | Toggle line numbers.
+```set ft={markdown|java|...}```       | Set file type.
+```set ff={unix|html|dos}```           | Set file format.
+```set syntax?```                      | Syntax type.
+```bn``` or ```<tab>```, ```bp``` or ```<shift+tab>```, ```bd```                                  | buffer next, previous, delete (close).
+```ga```                               | Ascii, octal val of char under cursor.
+```gd```                               | Goto definition.
+```gg=G```                             | auto (re)indent entire document.
+```=```                                | (re)indent the text on the current line or on the area selected (SUPER).
+```=%```                               | (re)indent the current braces { ... }.
+```:%!par```                           | Format range, in this case whole doument.
+```:%!par j1w80```                     | Format range to j1w80.
+```<Ctrl-w>```                         | Wrap, quick format current paragraph.
+&nbsp;                                 | ```:[range]ce[nter] [width] center lines :.,+3 center 80```
+&nbsp;                                 | ```:[range] ri[ght] [right edge] right alignment :% right```
+&nbsp;                                 | ```:[range] le[ft] [indent] left alignment.(Unit of identation is space) :% left 4```
+__Block editing__
+```<Ctrl+q```                          | Start column mode
+&nbsp;                                 | Select the columns and rows where you want to enter your text, shift and move with keyboard ('''Do not use the mouse to select the block!''')
+```I```                                | To go into insert mode in column mode.
+&nbsp;                                 | Type in the text you want to enter. Don't be discouraged by the fact that only the first row is changed.
+```Esc```                              | To apply your change (or alternately ```<Ctrl+c>```)
 __Function Keys__
-```<F1>```       | Help, open this page
-```<F2>```       | Toggle highlighting whitespace at end of line
-```<F3>```       | Toggle whitespace highlight
-```<F4>```       | Open left file menu
-```<F5>```       | Special binding for kitty, not used in vim
-```<F6>```       | Toggle line wrap
-```<F7>```       | Toggle spell check highlighting
-```<F8>```       | Not defined
-```<F9>```       | Open Telescope
-```<F10>```      | New terminal in Kitty in new tab
-```<F11>```      | Toggle right tagbar
-```<F12>```      | Toggle ranger
+```<F1>```                             | Help, open this page
+```<F2>```                             | Toggle highlighting whitespace at end of line
+```<F3>```                             | Toggle whitespace highlight
+```<F4>```                             | Open left file menu
+```<F5>```                             | Special binding for kitty, not used in vim
+```<F6>```                             | Toggle line wrap
+```<F7>```                             | Toggle spell check highlighting
+```<F8>```                             | Not defined
+```<F9>```                             | Open Telescope
+```<F10>```                            | New terminal in Kitty in new tab
+```<F11>```                            | Toggle right tagbar
+```<F12>```                            | Toggle ranger
 __Script Header__
-```#!ba```       | in normal mode and the bash file header will be inserted, also makes the file executable.
-```#!sh```       | Shell
-```#!pe```       | Perl
-```#!py```       | Python
-```#!gr```       | Groovy
-```#!zs```       | Zsh
+```#!ba```                             | in normal mode and the bash file header will be inserted, also makes the file executable.
+```#!sh```                             | Shell
+```#!pe```                             | Perl
+```#!py```                             | Python
+```#!gr```                             | Groovy
+```#!zs```                             | Zsh
 <!-- }}}1 -->
 
 # Visual Appearance
@@ -179,59 +210,6 @@ The line is split into 5 main sections, 3 on the left and 2 on the right:
 - On the right:
   - File information
   - Position information
-<!-- }}}1 -->
-
-# Forgotten Commands
-<!-- {{{1 -->
-The rest of this file contains information I need to remind myself every now and
-then ;-).  Maybe others will find this a useful cheatsheet.
-
-##  Block editing
-<!-- {{{2 -->
-- ```<Ctrl+q``` Start column mode
-- Select the columns and rows where you want to enter your text, shift and move with keyboard ('''Do not use the mouse to select the block!''')
-- ```Shift + i``` to go into insert mode in column mode
-- Type in the text you want to enter. Don't be discouraged by the fact that only the first row is changed.
-- ```Esc``` to apply your change (or alternately ```<Ctrl+c>```)
-<!-- }}}2 -->
-
-
-
-
-## Other misc commands
-<!-- {{{2 -->
-- ```cat```, ```cit``` etc for change insert tags etc.
-- ```ci'``` ```ca(``` ```ci{``` Change stuff in between ' (also works for ", [, (, {).
-- ```cc``` Change current line.
-- ```dt<char>``` Delete to "char", d\$ or D to end of line, d0 to start.
-- ```cf<char>``` Change to "char" (any char).
-- ```set number!``` Toggle line numbers.
-- ```set ft={markdown|java|...}``` Set file type.
-- ```set ff={unix|html|dos}``` Set file format.
-- ```set syntax?``` Syntax type.
-- ```bn``` or ```<tab>```, ```bp``` or ```<shift+tab>```, ```bd``` buffer next, previous, delete (close).
-- ```ga``` Ascii, octal val of char under cursor.
-- ```gd``` Goto definition.
-- ```gg=G``` auto (re)indent entire document.
-- ```=``` (re)indent the text on the current line or on the area selected (SUPER).
-- ```=%``` (re)indent the current braces { ... }.
-<!-- }}}2 -->
-
-##  Formatting
-<!-- {{{2 -->
-[Par formatting](https://vim.fandom.com/wiki/Par_text_reformatter)
-
-- ```:%!par``` Format range, in this case whole doument.
-- ```:%!par j1w80``` Format range to j1w80.
-- I've setup a useful software for this, ```<Ctrl-w>```
-
-```vim
-:[range]ce[nter] [width] center lines :.,+3 center 80
-:[range] ri[ght] [right edge] right alignment :% right
-:[range] le[ft] [indent] left alignment.(Unit of identation is space) :% left 4
-```
-<!-- }}}2 -->
-
 <!-- }}}1 -->
 
 <!-- # Todo -->

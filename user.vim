@@ -183,8 +183,11 @@ command! -nargs=1 Csv :call CSVH(<args>)
 " Sql and Java flipping.
 vnoremap <A-s> :!$HOME/bin/sak sqlflip<CR>
 
+nnoremap Q @q
+
 " Toggle comment and move to next line.
 nmap <C-_> :CommentToggle<CR>j
+" In neovide use this line instead!
 " nmap <C-/> :CommentToggle<CR>j
 " }}}
 
