@@ -89,20 +89,28 @@ I've added a few extra plugins I use to the configuration:
 Key | Action
 --- | ------
 ```<Ctrl-w>```   | Format paragraph to at most 79 chars.
+```<Ctrl-l>```   | redraws the screen and removes any search highlighting
+&nbsp; | &nbsp;
+Jump
 ```gj```         | Jump
-                 | - If line contains a url jump to this in browser.
-``` ```          | - Else if line contains a hex colour jump to that colour on [ColorHexa.com](https://www.colorhexa.com)
-``` ```          | - Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
+&nbsp;           | - If line contains a url jump to this in browser.
+&nbsp;           | - Else if line contains a hex colour, ```#AABBCC```jump to that colour on [ColorHexa.com](https://www.colorhexa.com)
+&nbsp;           | - Else if line contains a github project name of the format  ```user/repository``` then jump to this GitHub project.
+&nbsp;           | - Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
+&nbsp; | &nbsp;
 ```gr```         | Run line under cursor in shell, **USE WITH CARE!**
 ```qq```, ```q```, ```Q``` | Macro, start record, end record and play.
 ```<Ctrl-/>```   | (un)Comment a line and move to the next.
-``` ```          | - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.
-``` ```          | - I find this really handy!
-``` ```          | Moving lines up and down.
+&nbsp;           | - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.
+&nbsp;           | - I find this really handy!
+&nbsp; | &nbsp;
+&nbsp;           | Moving lines up and down.
+Move Lines
 ```<Alt-Up>```   | - Move current line up.
 ```<Alt-Down>``` | - Move current line down.
-```<Ctrl-l>```   | redraws the screen and removes any search highlighting
-``` ```          | Function Keys
+&nbsp; | &nbsp;
+&nbsp;           | Function Keys
+Function Keys
 ```<F1>```       | Help, open this page
 ```<F2>```       | Toggle highlighting whitespace at end of line
 ```<F3>```       | Toggle whitespace highlight
@@ -115,13 +123,14 @@ Key | Action
 ```<F10>```      | New terminal in Kitty in new tab
 ```<F11>```      | Toggle right tagbar
 ```<F12>```      | Toggle ranger
+&nbsp; | &nbsp;
+Script Header
 ```#!ba```       | in normal mode and the bash file header will be inserted, also makes the file executable.
 ```#!sh```       | Shell
 ```#!pe```       | Perl
 ```#!py```       | Python
 ```#!gr```       | Groovy
 ```#!zs```       | Zsh
-```:checkhealth``` | to check installation health.
 <!-- }}}1 -->
 
 # Visual Appearance
