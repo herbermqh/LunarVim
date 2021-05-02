@@ -155,8 +155,8 @@ map <F11> :TagbarToggle<CR>
 map <F12> :RnvimrToggle<CR>
 
 " For folding.
-inoremap "{ " Name { <esc>xa{{1<CR>" } <esc>xa}}<esc>bbbbbcw
-inoremap #{ # Name { <esc>xa{{1<CR># } <esc>xa}}<esc>bbbbbcw
+" inoremap "{ " Name { <esc>xa{{1<CR>" } <esc>xa}}<esc>bbbbbcw
+" inoremap #{ # Name { <esc>xa{{1<CR># } <esc>xa}}<esc>bbbbbcw
 
 " Save
 map <c-s> :w<CR>
