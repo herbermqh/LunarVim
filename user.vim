@@ -1,12 +1,12 @@
 " Useful Links and TODO {{{1
 " LINK: https://github.com/Kethku/neovide
 " LINK: http://cheat.sh
+" LINK: http://cheat.sh
+
+" LINK: https://github.com/hrsh7th/vim-vsnip
 
 " TODO: Get Codi working.
-" TODO: Style barbar.
 " TODO: Tidy galaxyline code.
-" TODO: Snippets how to use?
-" TODO: Code completion how to use?
 " TODO: LSP Perl
 " TODO: LSP Bash
 " TODO: LSP Java
@@ -43,22 +43,8 @@ inoremap <A-Up> <Esc>:m .-2<CR>==gi
 vnoremap <A-Down> :m '>+1<CR>gv=gv
 vnoremap <A-Up> :m '<-2<CR>gv=gv
 
-" Hash bang function and key combo
-" See https://vim.fandom.com/wiki/Setting_file_attributes_without_reloading_a_buffer
-function! SetExecutableBit()
-  let fname = expand("%:p")
-  checktime
-  execute "au FileChangedShell " . fname . " :echo"
-  silent !chmod a+x %
-  checktime
-  execute "au! FileChangedShell " . fname
-endfunction
-inoremap #!ba #!/usr/bin/env bash<CR><Esc>:w<CR>:call SetExecutableBit()<CR>a
-inoremap #!sh #!/usr/bin/env sh<CR><Esc>:w<CR>:call SetExecutableBit()<CR>a
-inoremap #!pe #!/usr/bin/env perl<CR><Esc>:w<CR>:call SetExecutableBit()<CR>a
-inoremap #!py #!/usr/bin/env python<CR><Esc>:w<CR>:call SetExecutableBit()<CR>a
-inoremap #!gr #!/usr/bin/env groovy<CR><Esc>:w<CR>:call SetExecutableBit()<CR>a
-inoremap #!zs #!/usr/bin/env zsh<CR><Esc>:w<CR>:call SetExecutableBit()<CR>a
+" Make current file executable using Eunuch.
+map <silent> <A-e> :Chmod a+x<CR>:echo "File is now executable!"<CR>
 
 " Execute current file.
 map <silent> <A-r> :w<CR>:!%:p<CR>
@@ -154,10 +140,6 @@ map <F9> :Telescope find_files<CR>
 map <F11> :TagbarToggle<CR>
 map <F12> :RnvimrToggle<CR>
 
-" For folding.
-" inoremap "{ " Name { <esc>xa{{1<CR>" } <esc>xa}}<esc>bbbbbcw
-" inoremap #{ # Name { <esc>xa{{1<CR># } <esc>xa}}<esc>bbbbbcw
-
 " Save
 map <c-s> :w<CR>
 
@@ -183,6 +165,7 @@ command! -nargs=1 Csv :call CSVH(<args>)
 " Sql and Java flipping.
 vnoremap <A-s> :!$HOME/bin/sak sqlflip<CR>
 
+" Run macro q with just typing Q.
 nnoremap Q @q
 
 " Toggle comment and move to next line.
@@ -236,11 +219,10 @@ set updatetime=300                      " Faster completion
 set timeoutlen=750                      " By default timeoutlen is 1000 ms
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set incsearch                           " Highlight all matches
-" set guifont=Consolas\ Nerd\ Font        " Preferred font
-set guifont=SauceCodePro\ Nerd\ Font\ Mono:h15
 set foldenable                          " Folding enabled
 set foldmethod=marker                   " Folding method, based on { { {1
 set clipboard+=unnamedplus              " Use single clipboard
+set guifont=SauceCodePro\ Nerd\ Font\ Mono:h15
 " }}}
 
 " Visual and Colours {{{1
@@ -339,29 +321,10 @@ au BufRead,BufNewFile *.log set filetype=log4j
 au! Syntax runlog source ~/.config/nvim/syntax/runlog.vim
 au BufRead,BufNewFile ALLREAD*.txt set filetype=runlog
 au BufRead,BufNewFile ALLKewill*.txt set filetype=runlog
+
 " }}}
 
 " Abbreviations and Snippets {{{1
-
-let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit='~/.config/nvim/UltiSnips'
-let g:UltiSnipsListSnippets="<c-s>"
-
-" For Java
-au BufRead,BufNewFile *.java call JavaAbbrevFunction()
-function JavaAbbrevFunction()
-    iab /* /*<CR> *<CR>*/<Up>
-    iab psvm public static void main(String[] args){<CR>}<esc>O
-    iab sysout System.out.println("");<esc>2hi
-    iab sop System.out.println("");<esc>2hi
-    iab syserr System.err.println("");<esc>2hi
-    iab sep System.err.println("");<esc>2hi
-    iab forl for (int i = 0; i < ; i++) {<esc>7hi
-    iab tryb try {<CR>} catch (Exception ex) {<CR> ex.printStackTrace();<CR>}<esc>hx3ko
-    iab const public static final int
-    iab ctm System.currentTimeMillis()
-    iab slept try {<CR> Thread.sleep();<CR>}<esc>hxA catch(Exception ex) {<CR> ex.printStackTrace();<CR>}<esc>hx3k$hi
-    iab log import org.slf4j.Logger;<CR>import org.slf4j.LoggerFactory;<CR>/* Logging! */<CR>private static final Logger LOG = LoggerFactory.getLogger(HealthCheckService.class);<CR>
-endfunction
 
 " Misc
 iab waht what
@@ -376,11 +339,6 @@ iab adn and
 
 " For command abbreviations
 cab s sort
-" }}}
-
-" LSP {{{1
-" lua require'lspconfig'.pyright.setup{}
-" lua require'lspconfig'.bashls.setup{}
 " }}}
 
 " Auto Commands, e.g source init.vim {{{1

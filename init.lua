@@ -18,7 +18,6 @@ require('lv-treesitter')
 require('lv-autopairs')
 require('lv-rnvimr')
 require('lv-which-key')
-require('lv-colorizer')
 
 -- Jimc extras.
 require('lv-colorizer')

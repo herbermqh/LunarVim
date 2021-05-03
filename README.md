@@ -113,90 +113,86 @@ I've added a few extra plugins I use to the configuration:
 <!-- {{{1 -->
 
 The following are a mixture of stadard key bindings and my own, which I find
-useful like `Q`, `gj`, `<Alt-Up>` etc.   My bespoke bindings are highlighted in bold like this **`<Ctrl-l>`**.
+useful like `Q`, `gj`, `<Alt+Up>` etc. I've marked mine and other non-default
+key-bindings with "B" in the table below.
 
-Key                                    | Action
--------------------------------------- | ---------------------------------
-**`<Ctrl-w>`**                     | Format paragraph to at most 79 chars.
-**`<Ctrl-l>`**                     | redraws the screen and removes any search highlighting
-**`gr`**                           | Run line under cursor in shell, **USE WITH CARE!**
+Key                   | (B)espke or (I)nternal | Action
+------------------------------- | - | -------------------------------
+`<Ctrl+l>`                      | B | Redraws the screen and removes any search highlighting
+`<Ctrl+s>`                      | B | Save the current file.
+`gr`                            | B | Run line under cursor in shell, **USE WITH CARE!**
+`<Alt+r>`                       | B | Run the current file.
+`<Alt+e>`                       | B | Make the current file executable `chmod a+x file`
 __Macros__
-`qq`                               | Record (as q), you can use `qa` to record to `a` but double q is a quick shortcut.
-`q`                                | Quit recording.
-**`Q`**                            | Play macro q.
+`qq`                            | I | Record macro (as q), you can use `qa` to record to `a` but double q is a quick shortcut.
+`q`                             | I | Quit recording current macro.
+`Q`                             | B | Play macro q, shortcut for `@q`.
 __Jump__
-**`gj`**                           | If line contains a url jump to this in browser.<br/> - Else if line contains a hex colour, `#AABBCC`jump to that colour on [ColorHexa.com](https://www.colorhexa.com)<br/>- Else if line contains a github project name of the format  `user/repository` then jump to this GitHub project.<br/>- Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
+`gj`                            | B | If line contains a url jump to this in browser.<br/> - Else if line contains a hex colour, `#AABBCC`jump to that colour on [ColorHexa.com](https://www.colorhexa.com)<br/>- Else if line contains a github project name of the format  `user/repository` then jump to this GitHub project.<br/>- Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
 __Commenting__
-**`<Ctrl-/>`**                     | (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.  <br/> - I find this really handy!
+`<Ctrl+/>`                      | B | (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.  <br/> - I find this really handy!
 __Moving Line__
-**`<Alt-Up>`**                     | Move current line up.
-**`<Alt-Down>`**                   | Move current line down.
+`<Alt+Up>`                      | B | Move current line up.
+`<Alt+Down>`                    | B | Move current line down.
 __Changing case__
-`g~~`                              | Togglecase line
-`guu`                              | Lowercase line
-`gUU`                              | Uppercase line
-`g~<movement>`                     | Togglecase, movement is `w` or `}` etc.
-`gu<movement>`                     | Lowercase
-`gU<movement>`                     | Uppercase
-&nbsp;                                 | Title Case regex `:s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g`
+`g~~`                           | I | Togglecase line
+`guu`                           | I | Lowercase line
+`gUU`                           | I | Uppercase line
+`g~<movement>`                  | I | Togglecase, movement is `w` or `}` etc.
+`gu<movement>`                  | I | Lowercase
+`gU<movement>`                  | I | Uppercase
+&nbsp;                          | &nbsp; | Title Case regex `:s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g`
 __Marks__
-`m/`                               | Display marks.
-`m<space>`                         | Remove all marks.
-`mx`                               | Toggle mark 'x'
-`'x`                               | Goto to mark 'x'
+`m/`                            | I | Display marks.
+`m<space>`                      | I | Remove all marks.
+`mx`                            | I | Toggle mark 'x'
+`'x`                            | I | Goto to mark 'x'
 __Increment a value__
-`<Ctrl+a>`                         | Increment value under cursor by 1.
-`<Ctrl+x>`                         | Decrement value under cursor by 1.<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`
+`<Ctrl+a>`                      | I | Increment value under cursor by 1.
+`<Ctrl+x>`                      | I | Decrement value under cursor by 1.<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`
 __Other misc commands__
-`dt<char>`                         | Delete to `char`.
-`d^`                               | Delete to start of line.
-`D`                                | Delete to end of line.
-`ga`                               | Ascii, octal val of char under cursor.
-`cat`, `cit`                   | etc for change insert tags etc.
-`ci'` `ca(` `ci{`          | Change stuff in between ' (also works for ", [, (, {).
-`cc`                               | Change current line.
-`cf<char>`                         | Change to `char` (any char).
-`bn` or `<tab>`, `bp` or `<shift+tab>`, `bd`                                  | buffer next, previous, delete (close).
-`gd`                               | Goto definition.
+`dt<char>`                      | I | Delete to `char`.
+`d^`                            | I | Delete to start of line.
+`D`                             | I | Delete to end of line.
+`ga`                            | I | Ascii, octal val of char under cursor.
+`cat`, `cit`                    | I | etc for change insert tags etc.
+`ci'` `ca(` `ci{`               | I | Change stuff in between ' (also works for ", [, (, {).
+`cc`                            | I | Change current line.
+`cf<char>`                      | I | Change to `char` (any char).
+`<tab>`, `<shift+tab>`, `bd`    | I | Buffer next, previous, delete (close).
+`gd`                            | I | Goto definition.
 __Formatting__
-`gg=G`                             | auto (re)indent entire document.
-`=`                                | (re)indent the text on the current line or on the area selected (SUPER).
-`=%`                               | (re)indent the current braces { ... }.
-`:%!par`                           | Format range, in this case whole doument.
-`:%!par j1w80`                     | Format range to j1w80.
-**`<Ctrl-w>`**                     | Wrap, quick format current paragraph.
-&nbsp;                             | `:[range]ce[nter] [width] center lines :.,+3 center 80`
-&nbsp;                             | `:[range] ri[ght] [right edge] right alignment :% right`
-&nbsp;                             | `:[range] le[ft] [indent] left alignment.(Unit of identation is space) :% left 4`
+`gg=G`                          | I | auto (re)indent entire document.
+`=`                             | I | (re)indent the text on the current line or on the area selected (SUPER).
+`=%`                            | I | (re)indent the current braces { ... }.
+`:%!par`                        | I | Format range, in this case whole doument.
+`:%!par j1w80`                  | I | Format range to j1w80.
+`<Ctrl+w>`                      | B | Wrap, quick format current paragraph.
+&nbsp;                          | &nbsp; | `:[range]ce[nter] [width] center lines :.,+3 center 80`
+&nbsp;                          | &nbsp; | `:[range] ri[ght] [right edge] right alignment :% right`
+&nbsp;                          | &nbsp; | `:[range] le[ft] [indent] left alignment.(Unit of identation is space) :% left 4`
 __Block editing__
-`<Ctrl+q>`                         | Start column mode<br/>Select the columns and rows where you want to enter your text, shift and move with keyboard ('''Do not use the mouse to select the block!''')
-`I`                                | To go into insert mode in column mode.<br/>Type in the text you want to enter. Don't be discouraged by the fact that only the first row is changed.
-`Esc`                              | To apply your change (or alternately `<Ctrl+c>`)
+`<Ctrl+q>`                      | I | Start column mode<br/>Select the columns and rows where you want to enter your text, shift and move with keyboard ('''Do not use the mouse to select the block!''')
+`I`                             | I | To go into insert mode in column mode.<br/>Type in the text you want to enter. Don't be discouraged by the fact that only the first row is changed.
+`Esc`                           | I | To apply your change (or alternately `<Ctrl+c>`)
 __Function Keys__
-`<F1>`                             | Help, open this page
-`<F2>`                             | Toggle highlighting whitespace at end of line
-`<F3>`                             | Toggle whitespace highlight
-`<F4>`                             | Open left file menu
-`<F5>`                             | Special binding for kitty, not used in vim
-`<F6>`                             | Toggle line wrap
-`<F7>`                             | Toggle spell check highlighting
-`<F8>`                             | Not defined
-`<F9>`                             | Open Telescope
-`<F10>`                            | New terminal in Kitty in new tab
-`<F11>`                            | Toggle right tagbar
-`<F12>`                            | Toggle ranger
-__Script Header__
-`#!ba`                             | in normal mode and the bash file header will be inserted, also makes the file executable.
-`#!sh`                             | Shell
-`#!pe`                             | Perl
-`#!py`                             | Python
-`#!gr`                             | Groovy
-`#!zs`                             | Zsh
+`<F1>`                          | B | Help, open this page
+`<F2>`                          | B | Toggle highlighting whitespace at end of line
+`<F3>`                          | B | Toggle whitespace highlight
+`<F4>`                          | B | Open left file menu
+`<F5>`                          | B | Special binding for kitty, not used in vim
+`<F6>`                          | B | Toggle line wrap
+`<F7>`                          | B | Toggle spell check highlighting
+`<F8>`                          | &nbsp; | Not defined
+`<F9>`                          | B | Open Telescope
+`<F10>`                         | B | New terminal in Kitty in new tab
+`<F11>`                         | B | Toggle right tagbar
+`<F12>`                         | B | Toggle ranger
 __Misc commands__
-`:set number!`                     | Toggle line numbers.
-`:set ft={markdown\|java|...}`     | Set file type.
-`:set ff={unix\|html\|dos}`        | Set file format.
-`:set syntax?`                     | Syntax type.
+`:set number!`                  | I | Toggle line numbers.
+`:set ft={markdown\|java\|...}` | I | Set file type.
+`:set ff={unix\|html\|dos}`     | I | Set file format.
+`:set syntax?`                  | I | Syntax type.
 <!-- }}}1 -->
 
 # Some Useful Links

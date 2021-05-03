@@ -87,6 +87,7 @@ return require("packer").startup(
         use {"preservim/tagbar", opt = true}             -- Tags navigation.
         use {"tpope/vim-surround", opt = true}           -- Surroundings.
         use {"tpope/vim-eunuch", opt = true}             -- Unix commands.
+        use {"mfussenegger/nvim-jdtls", opt = true}      -- Java LSP
 
         require_plugin("nvim-lspconfig")
         require_plugin("lspsaga.nvim")
@@ -118,5 +119,6 @@ return require("packer").startup(
         require_plugin("tagbar")
         require_plugin("vim-surround")
         require_plugin("vim-eunuch")
+        require_plugin("nvim-jdtls")
     end
 )
