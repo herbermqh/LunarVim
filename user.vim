@@ -251,9 +251,9 @@ highlight Search guibg=Peru guifg=Wheat
 highlight LineNr ctermbg=Black guifg=RoyalBlue1 guibg=Gray19
 highlight CursorLineNr ctermbg=NONE guifg=Yellow guibg=Gray19
 
-" Highlight text over 100 chars
+" Highlight text over 120 chars
 highlight OverLength ctermbg=Red ctermfg=White guibg=#592929
-match OverLength /\%101v.\+/
+match OverLength /\%121v.\+/
 
 " Diff colours
 highlight DiffAdd      gui=none  guibg=none    guifg=Green
@@ -313,6 +313,10 @@ au BufRead,BufNewFile *.hse set filetype=edifile
 au! Syntax franchisefile source ~/.config/nvim/syntax/franchisefile.vim
 au BufRead,BufNewFile *.dat set filetype=franchisefile
 
+" TTT text files.
+au! Syntax cooptttfile source ~/.config/nvim/syntax/cooptttfile.vim
+au BufRead,BufNewFile tau.cc.* set filetype=cooptttfile
+
 " Log4j files.
 au! Syntax log4j source ~/.config/nvim/syntax/log4j.vim
 au BufRead,BufNewFile *.log set filetype=log4j
@@ -347,7 +351,7 @@ cab s sort
 " autocmd! bufwritepost ~/.config/nvim/init.vim source ~/.config/nvim/init.vim | echo "Reloaded my init.vim"
 
 " Disable some things on the dashboard.
-autocmd! Filetype * if &ft=="dashboard"|match OverLength /\%501v.\+/|endif | autocmd WinLeave <buffer> match OverLength /\%101v.\+/
+autocmd! Filetype * if &ft=="dashboard"|match OverLength /\%501v.\+/|endif | autocmd WinLeave <buffer> match OverLength /\%121v.\+/
 
 " }}}
 

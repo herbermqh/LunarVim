@@ -200,6 +200,7 @@ __Misc commands__
 - [NeoVim](https://neovim.io)
 - [LunarVim](https://github.com/ChristianChiarulli/LunarVim)
 - [Vim Sheet](http://vimsheet.com)
+- [Vim Cheatsheet](https://www.cheatsheet.wtf/vim/)
 - [Quick ref](http://tnerual.eriogerg.free.fr/vimqrc.html)
 - [Cheatsheet](https://paulgorman.org/technical/vim.html)
 - [100 Essential commands](https://catswhocode.com/vim-commands/)
