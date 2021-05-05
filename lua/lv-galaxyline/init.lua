@@ -215,7 +215,6 @@ c = c+1
 gls.left[c] = {
     LspStart = {
         provider = function() return leftbracket end,
-        -- condition = condition.check_active_lsp,
         highlight = {colors.lspicon, colors.bg}
     }
 }
@@ -232,7 +231,6 @@ gls.left[c] = {
 
             return '' .. name
         end,
-        -- condition = condition.check_active_lsp,
         highlight = {colors.lspbg, colors.lspicon}
     }
 }
@@ -241,7 +239,6 @@ c = c+1
 gls.left[c] = {
     LspMid = {
         provider = function() return rightbracket .. ' ' end,
-        -- condition = condition.check_active_lsp,
         highlight = {colors.lspicon, colors.lspbg}
     }
 }
@@ -250,20 +247,7 @@ c = c+1
 gls.left[c] = {
     ShowLspClient = {
         provider = 'GetLspClient',
-        -- condition = condition.check_active_lsp,
-        -- condition = function()
-            -- local tbl = {['dashboard'] = true, [' '] = true}
-            -- if tbl[vim.bo.filetype] then return false end
-            -- return true
-        -- end,
-        -- highlight = {colors.textbg, colors.lspbg}
-        -- condition = function()
-            -- local tbl = {['dashboard'] = true, [' '] = true}
-            -- if tbl[vim.bo.filetype] then return false end
-            -- return true
-        -- end,
-        -- icon = '  ',
-        -- highlight = {colors.grey, colors.bg}
+        highlight = {colors.textbg, colors.lspbg}
     }
 }
 
@@ -271,7 +255,6 @@ c = c+1
 gls.left[c] = {
     LspSpace4 = {
         provider = function() return ' ' end,
-        -- condition = condition.check_active_lsp,
         highlight = {colors.lspicon, colors.lspbg}
 ,    }
 }
@@ -292,7 +275,6 @@ c = c+1
 gls.left[c] = {
     DiagnosticWarn = {
         provider = 'DiagnosticWarn',
-        -- condition = condition.check_active_lsp,
         icon = '  ',
         highlight = {colors.diagwarn, colors.lspbg}
     }
@@ -302,7 +284,6 @@ c = c+1
 gls.left[c] = {
     DiagnosticHint = {
         provider = 'DiagnosticHint',
-        -- condition = condition.check_active_lsp,
         icon = '  ',
         highlight = {colors.diaghint, colors.lspbg}
     }
@@ -312,7 +293,6 @@ c = c+1
 gls.left[c] = {
     DiagnosticInfo = {
         provider = 'DiagnosticInfo',
-        -- condition = condition.check_active_lsp,
         icon = '  ',
         highlight = {colors.diaginfo, colors.lspbg}
     }
@@ -322,7 +302,6 @@ c = c+1
 gls.left[c] = {
     LspSectionEnd = {
         provider = function() return rightbracket .. " " end,
-        -- condition = condition.check_active_lsp,
         highlight = {colors.lspbg, colors.bg}
     }
 }
