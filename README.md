@@ -177,6 +177,14 @@ __Block editing__
 <kbd>Ctrl</kbd>+<kbd>q</kbd>    |&nbsp;| Start column mode<br/>Select the columns and rows where you want to enter your text, shift and move with keyboard ('''Do not use the mouse to select the block!''')
 <kbd>I</kbd>                    |&nbsp;| To go into insert mode in column mode.<br/>Type in the text you want to enter. Don't be discouraged by the fact that only the first row is changed.
 <kbd>Esc</kbd>                  |&nbsp;| To apply your change (or alternately <kbd>Ctrl</kbd>+<kbd>c</kbd>)
+__Surround__
+<kbd>c</kbd><kbd>s</kbd><kbd>"</kbd><kbd>'</kbd>  | :triangular_flag_on_post: | "aWord" to 'aWord'
+<kbd>c</kbd><kbd>s</kbd><kbd>'</kbd><kbd>"</kbd>  | :triangular_flag_on_post: | 'aWord' to "aWord"
+<kbd>c</kbd><kbd>s</kbd><kbd>'</kbd><kbd>&lt;</kbd><kbd>q</kbd><kbd>&gt;</kbd>  | :triangular_flag_on_post: | 'aWord' to &lt;q&gt;aWord&lt;/q&gt;
+<kbd>d</kbd><kbd>s</kbd><kbd>'</kbd>  | :triangular_flag_on_post: | 'aWord' to aWord
+<kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>w</kbd><kbd>]</kbd> | :triangular_flag_on_post: | aWord to [aWord]
+<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>)</kbd> | :triangular_flag_on_post: | Whole-Line to (Whole-Line)  (The whole line!)
+<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>"</kbd> | :triangular_flag_on_post: | Whole-Line to "Whole-Line"  (The whole line!)
 __Function Keys__
 <kbd>F1</kbd>                   | :triangular_flag_on_post: | Help, open this page
 <kbd>F2</kbd>                   | :triangular_flag_on_post: | Toggle highlighting whitespace at end of line
@@ -192,6 +200,7 @@ __Function Keys__
 <kbd>F12</kbd>                  | :triangular_flag_on_post: | Toggle ranger
 __Misc commands__
 `:set number!`                  |&nbsp;| Toggle line numbers.
+`:set relativenumber!`          |&nbsp;| Toggle relative line numbers.
 `:set ft={markdown\|java\|...}` |&nbsp;| Set file type.
 `:set ff={unix\|html\|dos}`     |&nbsp;| Set file format.
 `:set syntax?`                  |&nbsp;| Syntax type.
@@ -205,3 +214,7 @@ __Misc commands__
 | [![100 Essential commands](https://img.shields.io/badge/100%20Essential%20Commands-website-red)](https://catswhocode.com/vim-commands/) | [![Vim tutorial](https://img.shields.io/badge/Vim%20Tutorial-website-red)](https://www.openvim.com/) | [![Vim cookbook](https://img.shields.io/badge/Vim%20Cookbook-website-red)](http://www.oualline.com/vim-cook.html)
 
 <!-- }}}1 -->
+
+<!--
+TODO: https://github.com/tpope/vim-repeat
+-->
