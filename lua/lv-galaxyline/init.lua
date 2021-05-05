@@ -256,7 +256,14 @@ gls.left[c] = {
             -- if tbl[vim.bo.filetype] then return false end
             -- return true
         -- end,
-        highlight = {colors.textbg, colors.lspbg}
+        -- highlight = {colors.textbg, colors.lspbg}
+        -- condition = function()
+            -- local tbl = {['dashboard'] = true, [' '] = true}
+            -- if tbl[vim.bo.filetype] then return false end
+            -- return true
+        -- end,
+        -- icon = '  ',
+        -- highlight = {colors.grey, colors.bg}
     }
 }
 
