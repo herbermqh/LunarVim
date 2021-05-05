@@ -7,13 +7,12 @@
   `-...-'    |_____\__,_|_| |_|\__,_|_|    \_/  |_|_| |_| |_|
 ```
 
-<!-- Christian Information -->
+<!-- Sheilds -->
 <!-- {{{1 -->
-[![GitHub license](https://img.shields.io/github/license/ChristianChiarulli/LunarVim)](https://github.com/ChristianChiarulli/LunarVim/blob/master/LICENSE)
-[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/ChristianChiarulli/lunarvim)
+[![GitHub license](https://img.shields.io/github/license/jimcornmell/LunarVim)](https://github.com/jimcornmell/LunarVim/blob/master/LICENSE)
+[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%3F/Yes%21/blue?icon=github)](https://github.com/jimcornmell/LunarVim)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-<a href="https://patreon.com/chrisatmachine" title="Donate to this project using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon donate button" /></a>
-<a href="https://twitter.com/intent/follow?screen_name=chrisatmachine"><img src="https://img.shields.io/twitter/follow/chrisatmachine?style=social&logo=twitter" alt="follow on Twitter"></a>
+[![Web Site](https://img.shields.io/badge/Jims%20Cosmos-website-red)](https://JimsCosmos.com)
 <!-- }}}1 -->
 
 <!-- Main Image -->
@@ -42,6 +41,9 @@ Most of my configuration is contained in `user.vim`.
 
 I intend to merge Christian's changes into my config regularly to keep up with
 his brilliant work.
+
+If your interested my website is [![Web Site](https://img.shields.io/badge/Jims%20Cosmos-website-red)](https://JimsCosmos.com)
+
 
 <!-- }}}1 -->
 
@@ -114,96 +116,92 @@ I've added a few extra plugins I use to the configuration:
 
 The following are a mixture of stadard key bindings and my own, which I find
 useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt</kbd>+<kbd>Up</kbd> etc. I've marked mine and other non-default
-key-bindings with "B" in the table below.
+key-bindings with :triangular_flag_on_post: in the table below.
 
-Key                   | (B)espke or (I)nternal | Action
-------------------------------- | - | -------------------------------
-<kbd>Ctrl</kbd>+<kbd>l</kbd>    | B | Redraws the screen and removes any search highlighting
-<kbd>Ctrl</kbd>+<kbd>s</kbd>    | B | Save the current file.
-<kbd>g</kbd><kbd>r</kbd>        | B | Run line under cursor in shell, **USE WITH CARE!**
-<kbd>Alt</kbd>+<kbd>r</kbd>     | B | Run the current file.
-<kbd>Alt</kbd>+<kbd>e</kbd>     | B | Make the current file executable `chmod a+x file`
+Key                   | Bespoke | Action
+-------------------------------: | :-----: | -------------------------------
+<kbd>Ctrl</kbd>+<kbd>l</kbd>    | :triangular_flag_on_post: | Redraws the screen and removes any search highlighting
+<kbd>Ctrl</kbd>+<kbd>s</kbd>    | :triangular_flag_on_post: | Save the current file.
+<kbd>g</kbd><kbd>r</kbd>        | :triangular_flag_on_post: | Run line under cursor in shell, **USE WITH CARE!**
+<kbd>Alt</kbd>+<kbd>r</kbd>     | :triangular_flag_on_post: | Run the current file.
+<kbd>Alt</kbd>+<kbd>e</kbd>     | :triangular_flag_on_post: | Make the current file executable `chmod a+x file`
 __Macros__
-<kbd>q</kbd><kbd>q</kbd>        | I | Record macro (as q), you can use `qa` to record to `a` but double q is a quick shortcut.
-<kbd>q</kbd>                    | I | Quit recording current macro.
-<kbd>Q</kbd>                    | B | Play macro q, shortcut for `@q`.
+<kbd>q</kbd><kbd>q</kbd>        |&nbsp;| Record macro (as q), you can use `qa` to record to `a` but double q is a quick shortcut.
+<kbd>q</kbd>                    |&nbsp;| Quit recording current macro.
+<kbd>Q</kbd>                    | :triangular_flag_on_post: | Play macro q, shortcut for `@q`.
 __Jump__
-<kbd>g</kbd><kbd>j</kbd>        | B | If line contains a url jump to this in browser.<br/> - Else if line contains a hex colour, `#AABBCC`jump to that colour on [ColorHexa.com](https://www.colorhexa.com)<br/>- Else if line contains a github project name of the format  `user/repository` then jump to this GitHub project.<br/>- Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
+<kbd>g</kbd><kbd>j</kbd>        | :triangular_flag_on_post: | If line contains a url jump to this in browser.<br/> - Else if line contains a hex colour, `#AABBCC`jump to that colour on [ColorHexa.com](https://www.colorhexa.com)<br/>- Else if line contains a github project name of the format  `user/repository` then jump to this GitHub project.<br/>- Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
 __Commenting__
-<kbd>Ctrl</kbd>+<kbd>/</kbd>             | B | (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.  <br/> - I find this really handy!
+<kbd>Ctrl</kbd>+<kbd>/</kbd>             | :triangular_flag_on_post: | (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.  <br/> - I find this really handy!
 __Moving Line__
-<kbd>Alt</kbd>+<kbd>Up</kbd>             | B | Move current line up.
-<kbd>Alt</kbd>+<kbd>Down</kbd>           | B | Move current line down.
+<kbd>Alt</kbd>+<kbd>Up</kbd>             | :triangular_flag_on_post: | Move current line up.
+<kbd>Alt</kbd>+<kbd>Down</kbd>           | :triangular_flag_on_post: | Move current line down.
 __Changing case__
-<kbd>g</kbd><kbd>\~</kbd><kbd>\~</kbd>                  | I | Togglecase line
-<kbd>g</kbd><kbd>u</kbd><kbd>u</kbd>                  | I | Lowercase line
-<kbd>g</kbd><kbd>U</kbd><kbd>U</kbd>                  | I | Uppercase line
-<kbd>g</kbd><kbd>~</kbd><kbd>movement</kbd>         | I | Togglecase, movement is <kbd>w</kbd> or <kbd>}</kbd> etc.
-<kbd>g</kbd><kbd>u</kbd><kbd>movement</kbd>         | I | Lowercase
-<kbd>g</kbd><kbd>U</kbd><kbd>movement</kbd>         | I | Uppercase
+<kbd>g</kbd><kbd>\~</kbd><kbd>\~</kbd>                  |&nbsp;| Togglecase line
+<kbd>g</kbd><kbd>u</kbd><kbd>u</kbd>                  |&nbsp;| Lowercase line
+<kbd>g</kbd><kbd>U</kbd><kbd>U</kbd>                  |&nbsp;| Uppercase line
+<kbd>g</kbd><kbd>~</kbd><kbd>movement</kbd>         |&nbsp;| Togglecase, movement is <kbd>w</kbd> or <kbd>}</kbd> etc.
+<kbd>g</kbd><kbd>u</kbd><kbd>movement</kbd>         |&nbsp;| Lowercase
+<kbd>g</kbd><kbd>U</kbd><kbd>movement</kbd>         |&nbsp;| Uppercase
 &nbsp;                          | &nbsp; | Title Case regex `:s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g`
 __Marks__
-<kbd>m</kbd><kbd>/</kbd>                   | I | Display marks.
-<kbd>m</kbd><kbd>space</kbd>             | I | Remove all marks.
-<kbd>m</kbd><kbd>x</kbd>                   | I | Toggle mark 'x'
-<kbd>'</kbd><kbd>x</kbd>                   | I | Goto to mark 'x'
+<kbd>m</kbd><kbd>/</kbd>                   |&nbsp;| Display marks.
+<kbd>m</kbd><kbd>space</kbd>             |&nbsp;| Remove all marks.
+<kbd>m</kbd><kbd>x</kbd>                   |&nbsp;| Toggle mark <kbd>x</kbd>
+<kbd>'</kbd><kbd>x</kbd>                   |&nbsp;| Goto to mark <kbd>x</kbd>
 __Increment a value__
-<kbd>Ctrl</kbd>+<kbd>a</kbd>             | I | Increment value under cursor by 1.
-<kbd>Ctrl</kbd>+<kbd>x</kbd>             | I | Decrement value under cursor by 1.<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`
+<kbd>Ctrl</kbd>+<kbd>a</kbd>             |&nbsp;| Increment value under cursor by 1.
+<kbd>Ctrl</kbd>+<kbd>x</kbd>             |&nbsp;| Decrement value under cursor by 1.<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`
 __Other misc commands__
-<kbd>d</kbd><kbd>t</kbd><kbd>char</kbd>             | I | Delete to `char`.
-<kbd>d</kbd><kbd>^</kbd>                   | I | Delete to start of line.
-<kbd>D</kbd>                   | I | Delete to end of line.
-<kbd>g</kbd><kbd>a</kbd>                   | I | Ascii, octal val of char under cursor.
-<kbd>c</kbd><kbd>a</kbd><kbd>t</kbd>, <kbd>c</kbd><kbd>i</kbd><kbd>t</kbd>           | I | etc for change insert tags etc.
-<kbd>c</kbd><kbd>i</kbd><kbd>'</kbd>, <kbd>c</kbd><kbd>a</kbd><kbd>(</kbd>, <kbd>c</kbd><kbd>i</kbd><kbd>{</kbd>      | I | Change stuff in between ' (also works for ", [, (, {).
-<kbd>c</kbd><kbd>c</kbd>                   | I | Change current line.
-<kbd>c</kbd><kbd>f</kbd><kbd>char</kbd>             | I | Change to `char` (any char).
-<kbd>tab</kbd>, <kbd>shift</kbd>+<kbd>tab</kbd>, <kbd>b</kbd><kbd>d</kbd>    | I | Buffer next, previous, delete (close).
-<kbd>g</kbd><kbd>d</kbd>                   | I | Goto definition.
+<kbd>d</kbd><kbd>t</kbd><kbd>char</kbd>             |&nbsp;| Delete to `char`.
+<kbd>d</kbd><kbd>^</kbd>                   |&nbsp;| Delete to start of line.
+<kbd>D</kbd>                   |&nbsp;| Delete to end of line.
+<kbd>g</kbd><kbd>a</kbd>                   |&nbsp;| Ascii, octal val of char under cursor.
+<kbd>c</kbd><kbd>a</kbd><kbd>t</kbd>, <kbd>c</kbd><kbd>i</kbd><kbd>t</kbd>           |&nbsp;| etc for change insert tags etc.
+<kbd>c</kbd><kbd>i</kbd><kbd>'</kbd>, <kbd>c</kbd><kbd>a</kbd><kbd>(</kbd>, <kbd>c</kbd><kbd>i</kbd><kbd>{</kbd>      |&nbsp;| Change stuff in between ' (also works for ", [, (, {).
+<kbd>c</kbd><kbd>c</kbd>                   |&nbsp;| Change current line.
+<kbd>c</kbd><kbd>f</kbd><kbd>char</kbd>             |&nbsp;| Change to `char` (any char).
+<kbd>tab</kbd>, <kbd>shift</kbd>+<kbd>tab</kbd>, <kbd>b</kbd><kbd>d</kbd>    |&nbsp;| Buffer next, previous, delete (close).
+<kbd>g</kbd><kbd>d</kbd>                   |&nbsp;| Goto definition.
 __Formatting__
-<kbd>g</kbd><kbd>g</kbd><kbd>=</kbd><kbd>G</kbd>                 | I | auto (re)indent entire document.
-<kbd>=</kbd>                    | I | (re)indent the text on the current line or on the area selected (SUPER).
-<kbd>=</kbd><kbd>%</kbd>                   | I | (re)indent the current braces { ... }.
-`:%!par`        | I | Format range, in this case whole doument.
-`:%!par j1w80`         | I | Format range to j1w80.
-<kbd>Ctrl</kbd>+<kbd>w</kbd>             | B | Wrap, quick format current paragraph.
+<kbd>g</kbd><kbd>g</kbd><kbd>=</kbd><kbd>G</kbd>                 |&nbsp;| auto (re)indent entire document.
+<kbd>=</kbd>                    |&nbsp;| (re)indent the text on the current line or on the area selected (SUPER).
+<kbd>=</kbd><kbd>%</kbd>                   |&nbsp;| (re)indent the current braces { ... }.
+`:%!par`        |&nbsp;| Format range, in this case whole doument.
+`:%!par j1w80`         |&nbsp;| Format range to j1w80.
+<kbd>Ctrl</kbd>+<kbd>w</kbd>             | :triangular_flag_on_post: | Wrap, quick format current paragraph.
 &nbsp;                          | &nbsp; | `:[range]ce[nter] [width] center lines :.,+3 center 80`
 &nbsp;                          | &nbsp; | `:[range] ri[ght] [right edge] right alignment :% right`
 &nbsp;                          | &nbsp; | `:[range] le[ft] [indent] left alignment.(Unit of identation is space) :% left 4`
 __Block editing__
-<kbd>Ctrl</kbd>+<kbd>q</kbd>    | I | Start column mode<br/>Select the columns and rows where you want to enter your text, shift and move with keyboard ('''Do not use the mouse to select the block!''')
-<kbd>I</kbd>                    | I | To go into insert mode in column mode.<br/>Type in the text you want to enter. Don't be discouraged by the fact that only the first row is changed.
-<kbd>Esc</kbd>                  | I | To apply your change (or alternately <kbd>Ctrl</kbd>+<kbd>c</kbd>)
+<kbd>Ctrl</kbd>+<kbd>q</kbd>    |&nbsp;| Start column mode<br/>Select the columns and rows where you want to enter your text, shift and move with keyboard ('''Do not use the mouse to select the block!''')
+<kbd>I</kbd>                    |&nbsp;| To go into insert mode in column mode.<br/>Type in the text you want to enter. Don't be discouraged by the fact that only the first row is changed.
+<kbd>Esc</kbd>                  |&nbsp;| To apply your change (or alternately <kbd>Ctrl</kbd>+<kbd>c</kbd>)
 __Function Keys__
-<kbd>F1</kbd>                   | B | Help, open this page
-<kbd>F2</kbd>                   | B | Toggle highlighting whitespace at end of line
-<kbd>F3</kbd>                   | B | Toggle whitespace highlight
-<kbd>F4</kbd>                   | B | Open left file menu
-<kbd>F5</kbd>                   | B | Special binding for kitty, not used in vim
-<kbd>F6</kbd>                   | B | Toggle line wrap
-<kbd>F7</kbd>                   | B | Toggle spell check highlighting
+<kbd>F1</kbd>                   | :triangular_flag_on_post: | Help, open this page
+<kbd>F2</kbd>                   | :triangular_flag_on_post: | Toggle highlighting whitespace at end of line
+<kbd>F3</kbd>                   | :triangular_flag_on_post: | Toggle whitespace highlight
+<kbd>F4</kbd>                   | :triangular_flag_on_post: | Open left file menu
+<kbd>F5</kbd>                   | :triangular_flag_on_post: | Special binding for kitty, not used in vim
+<kbd>F6</kbd>                   | :triangular_flag_on_post: | Toggle line wrap
+<kbd>F7</kbd>                   | :triangular_flag_on_post: | Toggle spell check highlighting
 <kbd>F8</kbd>                   | &nbsp; | Not defined
-<kbd>F9</kbd>                   | B | Open Telescope
-<kbd>F10</kbd>                  | B | New terminal in Kitty in new tab
-<kbd>F11</kbd>                  | B | Toggle right tagbar
-<kbd>F12</kbd>                  | B | Toggle ranger
+<kbd>F9</kbd>                   | :triangular_flag_on_post: | Open Telescope
+<kbd>F10</kbd>                  | :triangular_flag_on_post: | New terminal in Kitty in new tab
+<kbd>F11</kbd>                  | :triangular_flag_on_post: | Toggle right tagbar
+<kbd>F12</kbd>                  | :triangular_flag_on_post: | Toggle ranger
 __Misc commands__
-`:set number!`                  | I | Toggle line numbers.
-`:set ft={markdown\|java\|...}` | I | Set file type.
-`:set ff={unix\|html\|dos}`     | I | Set file format.
-`:set syntax?`                  | I | Syntax type.
+`:set number!`                  |&nbsp;| Toggle line numbers.
+`:set ft={markdown\|java\|...}` |&nbsp;| Set file type.
+`:set ff={unix\|html\|dos}`     |&nbsp;| Set file format.
+`:set syntax?`                  |&nbsp;| Syntax type.
 <!-- }}}1 -->
 
 # Some Useful Links
 <!-- {{{1 -->
-- [NeoVim](https://neovim.io)
-- [LunarVim](https://github.com/ChristianChiarulli/LunarVim)
-- [Vim Sheet](http://vimsheet.com)
-- [Vim Cheatsheet](https://www.cheatsheet.wtf/vim/)
-- [Quick ref](http://tnerual.eriogerg.free.fr/vimqrc.html)
-- [Cheatsheet](https://paulgorman.org/technical/vim.html)
-- [100 Essential commands](https://catswhocode.com/vim-commands/)
-- [Vim tutorial](https://www.openvim.com/)
-- [Vim cookbook](http://www.oualline.com/vim-cook.html)
+| [![NeoVim](https://img.shields.io/badge/NeoVim-website-red)](https://neovim.io) | [![Lunar Vim](https://img.shields.io/badge/Lunar%20Vim-website-red)](https://github.com/ChristianChiarulli/LunarVim) | [![Vim Sheet](https://img.shields.io/badge/Vim%20Sheet-website-red)](http://vimsheet.com)
+| :--: | :--: | :--:
+| [![Vim Cheatsheet](https://img.shields.io/badge/Vim%20CheatSheet.wtf-website-red)](https://www.cheatsheet.wtf/vim/) | [![Quick ref](https://img.shields.io/badge/Quick%20Ref-website-red)](http://tnerual.eriogerg.free.fr/vimqrc.html) | [![Cheatsheet](https://img.shields.io/badge/Cheatsheet-website-red)](https://paulgorman.org/technical/vim.html)
+| [![100 Essential commands](https://img.shields.io/badge/100%20Essential%20Commands-website-red)](https://catswhocode.com/vim-commands/) | [![Vim tutorial](https://img.shields.io/badge/Vim%20Tutorial-website-red)](https://www.openvim.com/) | [![Vim cookbook](https://img.shields.io/badge/Vim%20Cookbook-website-red)](http://www.oualline.com/vim-cook.html)
+
 <!-- }}}1 -->
