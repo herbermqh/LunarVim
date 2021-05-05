@@ -118,7 +118,7 @@ key-bindings with "B" in the table below.
 
 Key                   | (B)espke or (I)nternal | Action
 ------------------------------- | - | -------------------------------
-`<Ctrl+l>`                      | B | Redraws the screen and removes any search highlighting
+<kbd>Ctrl</kbd><kbd>l</kbd>     | B | Redraws the screen and removes any search highlighting
 `<Ctrl+s>`                      | B | Save the current file.
 `gr`                            | B | Run line under cursor in shell, **USE WITH CARE!**
 `<Alt+r>`                       | B | Run the current file.
