@@ -135,46 +135,46 @@ __Moving Line__
 <kbd>Alt</kbd>+<kbd>Up</kbd>             | B | Move current line up.
 <kbd>Alt</kbd>+<kbd>Down</kbd>           | B | Move current line down.
 __Changing case__
-<kbd>g</kbd><kbd>~</kbd><kbd>~</kbd>                  | I | Togglecase line
+<kbd>g</kbd><kbd>\~</kbd><kbd>\~</kbd>                  | I | Togglecase line
 <kbd>g</kbd><kbd>u</kbd><kbd>u</kbd>                  | I | Lowercase line
 <kbd>g</kbd><kbd>U</kbd><kbd>U</kbd>                  | I | Uppercase line
-<kbd>g</kbd><kbd>~</kbd><kbd>movement</kbd>         | I | Togglecase, movement is <kbd>>w</kbd> or <kbd>}` etc.
+<kbd>g</kbd><kbd>~</kbd><kbd>movement</kbd>         | I | Togglecase, movement is <kbd>w</kbd> or <kbd>}</kbd> etc.
 <kbd>g</kbd><kbd>u</kbd><kbd>movement</kbd>         | I | Lowercase
 <kbd>g</kbd><kbd>U</kbd><kbd>movement</kbd>         | I | Uppercase
 &nbsp;                          | &nbsp; | Title Case regex `:s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g`
 __Marks__
 <kbd>m</kbd><kbd>/</kbd>                   | I | Display marks.
-<kbd>m</kbd><kbd><space></kbd>             | I | Remove all marks.
+<kbd>m</kbd><kbd>space</kbd>             | I | Remove all marks.
 <kbd>m</kbd><kbd>x</kbd>                   | I | Toggle mark 'x'
 <kbd>'</kbd><kbd>x</kbd>                   | I | Goto to mark 'x'
 __Increment a value__
-<kbd><Ctrl</kbd><kbd>+a></kbd>             | I | Increment value under cursor by 1.
-<kbd><Ctrl</kbd><kbd>+x></kbd>             | I | Decrement value under cursor by 1.<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`
+<kbd>Ctrl</kbd>+<kbd>a</kbd>             | I | Increment value under cursor by 1.
+<kbd>Ctrl</kbd>+<kbd>x</kbd>             | I | Decrement value under cursor by 1.<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`
 __Other misc commands__
-<kbd>d</kbd><kbd>t</kbd><kbd><char></kbd>             | I | Delete to `char`.
+<kbd>d</kbd><kbd>t</kbd><kbd>char</kbd>             | I | Delete to `char`.
 <kbd>d</kbd><kbd>^</kbd>                   | I | Delete to start of line.
-<kbd>D</kbd><kbd></kbd>                    | I | Delete to end of line.
+<kbd>D</kbd>                   | I | Delete to end of line.
 <kbd>g</kbd><kbd>a</kbd>                   | I | Ascii, octal val of char under cursor.
-<kbd>c</kbd><kbd>a</kbd><kbd>t</kbd><kbd>`, `</kbd><kbd>c</kbd><kbd>i</kbd><kbd>t</kbd>           | I | etc for change insert tags etc.
-<kbd>c</kbd><kbd>i</kbd><kbd>'</kbd><kbd>` `</kbd><kbd>c</kbd><kbd>a</kbd><kbd>(</kbd><kbd>` `</kbd><kbd>c</kbd><kbd>i</kbd><kbd>{</kbd>      | I | Change stuff in between ' (also works for ", [, (, {).
+<kbd>c</kbd><kbd>a</kbd><kbd>t</kbd>, <kbd>c</kbd><kbd>i</kbd><kbd>t</kbd>           | I | etc for change insert tags etc.
+<kbd>c</kbd><kbd>i</kbd><kbd>'</kbd>, <kbd>c</kbd><kbd>a</kbd><kbd>(</kbd>, <kbd>c</kbd><kbd>i</kbd><kbd>{</kbd>      | I | Change stuff in between ' (also works for ", [, (, {).
 <kbd>c</kbd><kbd>c</kbd>                   | I | Change current line.
-<kbd>c</kbd><kbd>f<char></kbd>             | I | Change to `char` (any char).
-<kbd><tab></kbd><kbd>`, </kbd><kbd>`<shift+tab></kbd><kbd>`, </kbd><kbd>`bd</kbd><kbd>`    | I | Buffer next, previous, delete (close).
+<kbd>c</kbd><kbd>f</kbd><kbd>char</kbd>             | I | Change to `char` (any char).
+<kbd>tab</kbd>, <kbd>shift</kbd>+<kbd>tab</kbd>, <kbd>b</kbd><kbd>d</kbd>    | I | Buffer next, previous, delete (close).
 <kbd>g</kbd><kbd>d</kbd>                   | I | Goto definition.
 __Formatting__
 <kbd>g</kbd><kbd>g</kbd><kbd>=</kbd><kbd>G</kbd>                 | I | auto (re)indent entire document.
 <kbd>=</kbd>                    | I | (re)indent the text on the current line or on the area selected (SUPER).
 <kbd>=</kbd><kbd>%</kbd>                   | I | (re)indent the current braces { ... }.
-<kbd>:%!par</kbd>               | I | Format range, in this case whole doument.
-<kbd>:%!par j1w80</kbd>         | I | Format range to j1w80.
-<kbd><Ctrl</kbd><kbd>+w></kbd>             | B | Wrap, quick format current paragraph.
+`:%!par`        | I | Format range, in this case whole doument.
+`:%!par j1w80`         | I | Format range to j1w80.
+<kbd>Ctrl</kbd>+<kbd>w</kbd>             | B | Wrap, quick format current paragraph.
 &nbsp;                          | &nbsp; | `:[range]ce[nter] [width] center lines :.,+3 center 80`
 &nbsp;                          | &nbsp; | `:[range] ri[ght] [right edge] right alignment :% right`
 &nbsp;                          | &nbsp; | `:[range] le[ft] [indent] left alignment.(Unit of identation is space) :% left 4`
 __Block editing__
-<kbd><Ctrl</kbd><kbd>+q></kbd>             | I | Start column mode<br/>Select the columns and rows where you want to enter your text, shift and move with keyboard ('''Do not use the mouse to select the block!''')
+<kbd>Ctrl</kbd>+<kbd>q</kbd>    | I | Start column mode<br/>Select the columns and rows where you want to enter your text, shift and move with keyboard ('''Do not use the mouse to select the block!''')
 <kbd>I</kbd>                    | I | To go into insert mode in column mode.<br/>Type in the text you want to enter. Don't be discouraged by the fact that only the first row is changed.
-<kbd>Esc</kbd>                  | I | To apply your change (or alternately `<Ctrl+c>`)
+<kbd>Esc</kbd>                  | I | To apply your change (or alternately <kbd>Ctrl</kbd>+<kbd>c</kbd>)
 __Function Keys__
 <kbd>F1</kbd>                   | B | Help, open this page
 <kbd>F2</kbd>                   | B | Toggle highlighting whitespace at end of line
