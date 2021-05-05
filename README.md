@@ -101,7 +101,7 @@ I've added a few extra plugins I use to the configuration:
   - A plugin to place, toggle and display marks.
 - [Tagbar](https://github.com/preservim/tagbar)
   - A plugin that provides an easy way to browse the tags of the current file and get an overview of the files structure.
-  - Opened with `<F11>`
+  - Opened with <kbd>F11</kbd>
 - [Vim Eunuch](https://github.com/tpope/vim-eunuch)
   - Vim sugar for the UNIX shell commands that need it the most.
 - [Vim Surround](https://github.com/tpope/vim-surround)
@@ -113,7 +113,7 @@ I've added a few extra plugins I use to the configuration:
 <!-- {{{1 -->
 
 The following are a mixture of stadard key bindings and my own, which I find
-useful like `Q`, `gj`, `<Alt+Up>` etc. I've marked mine and other non-default
+useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt</kbd>+<kbd>Up</kbd> etc. I've marked mine and other non-default
 key-bindings with "B" in the table below.
 
 Key                   | (B)espke or (I)nternal | Action
