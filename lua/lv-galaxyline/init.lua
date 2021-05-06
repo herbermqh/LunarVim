@@ -163,10 +163,9 @@ c = c+1
 gls.left[c] = {
     DiffAdd = {
         provider = 'DiffAdd',
-        -- condition = condition.hide_in_width,
         condition = condition.check_git_workspace,
-        icon = '  ',
-        -- icon = '  ',
+        -- icon = '  ',
+        icon = '  ',
         highlight = {colors.green, colors.gitbg}
     }
 }
@@ -174,10 +173,9 @@ c = c+1
 gls.left[c] = {
     DiffModified = {
         provider = 'DiffModified',
-        -- condition = condition.hide_in_width,
         condition = condition.check_git_workspace,
-        icon = '  ',
-        -- icon = ' 柳',
+        -- icon = '  ',
+        icon = ' 柳',
         highlight = {colors.blue, colors.gitbg}
     }
 }
@@ -186,10 +184,9 @@ c = c+1
 gls.left[c] = {
     DiffRemove = {
         provider = 'DiffRemove',
-        -- condition = condition.hide_in_width,
         condition = condition.check_git_workspace,
-        icon = '  ',
-        -- icon = '  ',
+        -- icon = '  ',
+        icon = '  ',
         highlight = {colors.red, colors.gitbg}
     }
 }
@@ -264,7 +261,6 @@ c = c+1
 gls.left[c] = {
     DiagnosticError = {
         provider = 'DiagnosticError',
-        -- condition = condition.check_active_lsp,
         icon = '  ',
         separator_highlight = {colors.gitbg, colors.bg},
         highlight = {colors.diagerror, colors.lspbg}
@@ -422,7 +418,7 @@ c = c+1
 gls.right[c] = {
     VerticalPosAndSize = {
         provider = function()
-            return vim.fn.line('.') .. "[" .. vim.fn.line('$') .. "] "
+            return string.format("%4i[%4i] ", vim.fn.line('.'), vim.fn.line('$'))
         end,
         separator = '⇕ ',
         separator_highlight = {colors.statsicon, colors.statsbg},
@@ -445,7 +441,7 @@ gls.right[c] = {
             else
                 vim.cmd('highlight LinePosHighlight guifg=' .. colors.lineokfg .. ' guibg=' .. colors.lineokbg)
             end
-            return " " .. vim.fn.col('.')
+            return " " .. string.format("%3i", vim.fn.col('.'))
         end,
         separator = '⇔ ',
         separator_highlight = {colors.statsicon, colors.statsbg},
@@ -468,7 +464,8 @@ gls.right[c] = {
             else
                 vim.cmd('highlight LineLenHighlight guifg=' .. colors.lineokfg .. ' guibg=' .. colors.lineokbg)
             end
-            return "[" .. vim.fn.strwidth(vim.fn.getline('.')) .. "] "
+
+            return "[" .. string.format("%3i", string.len(vim.fn.getline('.'))) .. "] "
         end,
         highlight = 'LineLenHighlight'
     }
