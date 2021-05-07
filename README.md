@@ -52,6 +52,7 @@ If your interested my website is [![Web Site](https://img.shields.io/badge/Jims%
 - [Visual Appearance](#visual-appearance)
 - [Galaxy Line](#galaxy-line)
 - [Extra Plugins](#extra-plugins)
+- [Java LSP Install](#java-lsp-install)
 - [Key Bindings](#key-bindings)
 - [Some Useful Links](#some-useful-links)
 <!-- }}}1 -->
@@ -91,6 +92,92 @@ The line is split into 5 main sections, 3 on the left and 2 on the right:
 - On the right:
   - File information
   - Position information
+<!-- }}}1 -->
+
+# Java LSP Install
+<!-- {{{1 -->
+1) Download and Install Java 11
+
+At the time of writing 1/May/2021 you must use Java 11, __Java 16 will not
+work.__ I have not investigated why, it was just simpler to follow the
+instructions (and leave that research for someone who has the time).
+
+```bash
+# Download
+wget https://corretto.aws/downloads/latest/amazon-corretto-11-x64-linux-jdk.tar.gz
+
+# Untar
+tar zxvf amazon-corretto-11-x64-linux-jdk.tar.gz
+
+# Move to /opt
+sudo mv amazon-corretto-11.0.11.9.1-linux-x64 /opt
+
+# Create a nice link
+sudo ln -s /opt/amazon-corretto-11.0.11.9.1-linux-x64 /opt/java-11
+```
+
+2) Setup your environment
+```bash
+export JAVA_HOME=/opt/java-11
+export PATH=$PATH:$JAVA_HOME/bin
+```
+
+3) Install the LSP for Java
+
+Full instructions are [here](https://github.com/eclipse/eclipse.jdt.ls) but the
+condensed instructions are as follows.
+
+4) Clone the repo and build
+
+See [these instructions](https://github.com/mfussenegger/nvim-jdtls).
+This took a while on my machine (10 minutes on Ryzen 7 3700X @ 3.600GHz)
+
+```bash
+git clone git@github.com:eclipse/eclipse.jdt.ls.git
+cd eclipse.jdt.ls
+./mvnw clean verify
+cd ..
+sudo mv eclipse.jdt.ls /opt
+```
+
+5) Create startup file
+This must be and executable called `java-linux-ls` in a folder on your path.
+
+```bash
+#!/usr/bin/env bash
+export JAVA_HOME="/opt/java-11"
+export JAR="/opt/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_*.jar"
+export JDTLS_CONFIG="/opt/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux"
+export WORKSPACE="$HOME/workspace"
+
+$JAVA_HOME/bin/java \
+  -Declipse.application=org.eclipse.jdt.ls.core.id1 \
+  -Dosgi.bundles.defaultStartLevel=4 \
+  -Declipse.product=org.eclipse.jdt.ls.core.product \
+  -Dlog.protocol=true \
+  -Dlog.level=ALL \
+  -Xms1g \
+  -Xmx2G \
+  -jar           $(echo "$JAR") \
+  -configuration "$JDTLS_CONFIG" \
+  -data          "$WORKSPACE" \
+  --add-modules=ALL-SYSTEM \
+  --add-opens java.base/java.util=ALL-UNNAMED \
+  --add-opens java.base/java.lang=ALL-UNNAMED
+```
+
+6) Update [`init.lua`](https://github.com/jimcornmell/LunarVim/blob/master/init.lua)
+```lua
+require('lsp.java-ls')
+```
+
+7) Update [`lua/plugins.lua`](https://github.com/jimcornmell/LunarVim/blob/master/lua/plugins.lua)
+```lua
+use {"mfussenegger/nvim-jdtls", opt = true}
+require_plugin("nvim-jdtls")
+```
+
+8) Close and open LunarVim and run `:PackerSync`
 <!-- }}}1 -->
 
 # Extra Plugins
