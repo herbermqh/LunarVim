@@ -106,6 +106,7 @@ I've added a few extra plugins I use to the configuration:
   - Opened with <kbd>F11</kbd>
 - [Vim Eunuch](https://github.com/tpope/vim-eunuch)
   - Vim sugar for the UNIX shell commands that need it the most.
+  - Also makes files starting with `#!` executable.
 - [Vim Surround](https://github.com/tpope/vim-surround)
   - Surround.vim is all about "surroundings": parentheses, brackets, quotes,
     XML tags, and more. The plugin provides mappings to easily delete, change and add such surroundings in pairs.
@@ -124,7 +125,7 @@ Key                   | Bespoke | Action
 <kbd>Ctrl</kbd>+<kbd>s</kbd>    | :triangular_flag_on_post: | Save the current file.
 <kbd>g</kbd><kbd>r</kbd>        | :triangular_flag_on_post: | Run line under cursor in shell, **USE WITH CARE!**
 <kbd>Alt</kbd>+<kbd>r</kbd>     | :triangular_flag_on_post: | Run the current file.
-<kbd>Alt</kbd>+<kbd>e</kbd>     | :triangular_flag_on_post: | Make the current file executable `chmod a+x file`
+<kbd>Alt</kbd>+<kbd>e</kbd>     | :triangular_flag_on_post: | Make the current file executable `chmod a+x file`<br/>The Eunuch plugin also makes files starting with `#!` executable.
 __Macros__
 <kbd>q</kbd><kbd>q</kbd>        |&nbsp;| Record macro (as q), you can use `qa` to record to `a` but double q is a quick shortcut.
 <kbd>q</kbd>                    |&nbsp;| Quit recording current macro.

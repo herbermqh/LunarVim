@@ -5,6 +5,12 @@
 -- augroup end
 -- find_root looks for parent directories relative to the current buffer containing one of the given arguments.
 -- require'lspconfig'.jdtls.setup {cmd = {'java-linux-ls'}}
+
+-- See: https://github.com/georgewfraser/java-language-server/
+-- See: https://github.com/georgewfraser/java-language-server/issues/188
+-- See: https://github.com/neovim/nvim-lspconfig/commit/61ec39359a8496f0b62d8ece299ed7f92b04c189
+-- See: https://github.com/natebosch/vim-lsc
+
 if vim.fn.has("mac") == 1 then
     JAVA_LS_EXECUTABLE = 'java-mac-ls'
 elseif vim.fn.has("unix") == 1 then

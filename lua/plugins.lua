@@ -90,7 +90,7 @@ return require("packer").startup(
         use {"tpope/vim-eunuch", opt = true}             -- Unix commands.
         use {"tpope/vim-repeat", opt = true}             -- . repeats properly for macros.
         use {"tpope/vim-speeddating", opt = true}        -- Inc/dec dates.
-        -- use {"mfussenegger/nvim-jdtls", opt = true}      -- Java LSP
+        use {"mfussenegger/nvim-jdtls", opt = true}      -- Java LSP
 
         require_plugin("nvim-lspconfig")
         require_plugin("lspsaga.nvim")
@@ -124,6 +124,6 @@ return require("packer").startup(
         require_plugin("vim-eunuch")
         require_plugin("vim-repeat")
         require_plugin("vim-speeddating")
-        -- require_plugin("nvim-jdtls")
+        require_plugin("nvim-jdtls")
     end
 )

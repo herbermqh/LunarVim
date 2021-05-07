@@ -285,6 +285,37 @@ highlight BufferInactiveMod   guifg=#FF4422   guibg=#333333
 highlight ExtraWhitespace ctermbg=Red guibg=Red
 match ExtraWhitespace /^\s*\t\s*\|\s\+\%#\@<!$/
 set termguicolors
+
+" LSP colours
+hi LspDiagnosticsDefaultError                guifg=Red
+hi LspDiagnosticsDefaultWarning              guifg=Red
+hi LspDiagnosticsDefaultInformation          guifg=Cyan
+hi LspDiagnosticsDefaultHint                 guifg=Green
+
+hi LspDiagnosticsFloatingError               guifg=Red
+hi LspDiagnosticsFloatingWarning             guifg=Orange
+hi LspDiagnosticsFloatingWarn                guifg=Orange
+hi LspDiagnosticsFloatingInformation         guifg=Cyan
+hi LspDiagnosticsFloatingInfor               guifg=Cyan
+hi LspDiagnosticsFloatingHint                guifg=Green
+
+" Lsp highlight in left margin.
+hi LspDiagnosticsSignError                   guifg=Red    guibg=Gray19
+hi LspDiagnosticsSignWarning                 guifg=Orange guibg=Gray19
+hi LspDiagnosticsSignInformation             guifg=Cyan   guibg=Gray19
+hi LspDiagnosticsSignHint                    guifg=Green  guibg=Gray19
+
+" Lsp Inline error highlight.
+hi LspDiagnosticsUnderlineError              guifg=Black guibg=Brown
+hi LspDiagnosticsUnderlineWarning            guifg=Black guibg=Orange
+hi LspDiagnosticsUnderlineInformation        guifg=Black guibg=Cyan
+hi LspDiagnosticsUnderlineHint               guifg=Black guibg=Green
+
+" Lsp error on right side.
+hi LspDiagnosticsVirtualTextError            guifg=Red
+hi LspDiagnosticsVirtualTextWarning          guifg=Orange
+hi LspDiagnosticsVirtualTextInformation      guifg=Cyan
+hi LspDiagnosticsVirtualTextHint             guifg=Green
 " }}}
 
 " Syntax files {{{1

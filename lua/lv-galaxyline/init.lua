@@ -418,7 +418,7 @@ c = c+1
 gls.right[c] = {
     VerticalPosAndSize = {
         provider = function()
-            return string.format("%4i[%4i] ", vim.fn.line('.'), vim.fn.line('$'))
+            return string.format("%4i/%4i ", vim.fn.line('.'), vim.fn.line('$'))
         end,
         separator = '⇕ ',
         separator_highlight = {colors.statsicon, colors.statsbg},
@@ -465,7 +465,7 @@ gls.right[c] = {
                 vim.cmd('highlight LineLenHighlight guifg=' .. colors.lineokfg .. ' guibg=' .. colors.lineokbg)
             end
 
-            return "[" .. string.format("%3i", string.len(vim.fn.getline('.'))) .. "] "
+            return "/" .. string.format("%3i", string.len(vim.fn.getline('.'))) .. " "
         end,
         highlight = 'LineLenHighlight'
     }
