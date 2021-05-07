@@ -150,7 +150,7 @@ __Marks__
 <kbd>m</kbd><kbd>x</kbd>                   |&nbsp;| Toggle mark <kbd>x</kbd>
 <kbd>'</kbd><kbd>x</kbd>                   |&nbsp;| Goto to mark <kbd>x</kbd>
 __Increment a value__
-<kbd>Ctrl</kbd>+<kbd>a</kbd>             |&nbsp;| Increment value under cursor by 1.
+<kbd>Ctrl</kbd>+<kbd>a</kbd>             |&nbsp;| Increment value under cursor by 1.  Also works with Dates/times....
 <kbd>Ctrl</kbd>+<kbd>x</kbd>             |&nbsp;| Decrement value under cursor by 1.<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`
 __Other misc commands__
 <kbd>d</kbd><kbd>t</kbd><kbd>char</kbd>             |&nbsp;| Delete to `char`.
@@ -183,8 +183,12 @@ __Surround__
 <kbd>c</kbd><kbd>s</kbd><kbd>'</kbd><kbd>&lt;</kbd><kbd>q</kbd><kbd>&gt;</kbd>  | :triangular_flag_on_post: | 'aWord' to &lt;q&gt;aWord&lt;/q&gt;
 <kbd>d</kbd><kbd>s</kbd><kbd>'</kbd>  | :triangular_flag_on_post: | 'aWord' to aWord
 <kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>w</kbd><kbd>]</kbd> | :triangular_flag_on_post: | aWord to [aWord]
-<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>)</kbd> | :triangular_flag_on_post: | Whole-Line to (Whole-Line)  (The whole line!)
-<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>"</kbd> | :triangular_flag_on_post: | Whole-Line to "Whole-Line"  (The whole line!)
+<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>)</kbd> | :triangular_flag_on_post: | Whole-Line to (Whole-Line)
+<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>"</kbd> | :triangular_flag_on_post: | Whole-Line to "Whole-Line"
+__Eunuch__
+SudoWrite |&nbsp;" | Write even if you don't have permission.
+__Repeat__
+Not tested yet | &nbsp; | Todo
 __Function Keys__
 <kbd>F1</kbd>                   | :triangular_flag_on_post: | Help, open this page
 <kbd>F2</kbd>                   | :triangular_flag_on_post: | Toggle highlighting whitespace at end of line

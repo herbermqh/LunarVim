@@ -55,6 +55,6 @@ require('lsp.vue-ls')
 require('lsp.angular-ls')
 
 -- Jimc extras.
-require('lsp.java-ls')
+-- require('lsp.java-ls')
 vim.cmd('source ~/.config/nvim/user.vim')
 
