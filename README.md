@@ -96,6 +96,12 @@ The line is split into 5 main sections, 3 on the left and 2 on the right:
 
 # Java LSP Install
 <!-- {{{1 -->
+
+Note Java is not stable at the moment but it looks like there is plenty of
+activity, so I guess sometime in 2021 it will reach a tipping point.
+
+![Java Lsp](./utils/media/JavaLsp.png)
+
 1) Download and Install Java 11
 
 At the time of writing 1/May/2021 you must use Java 11, __Java 16 will not
