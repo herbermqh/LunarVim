@@ -203,6 +203,8 @@ I've added a few extra plugins I use to the configuration:
 - [Vim Surround](https://github.com/tpope/vim-surround)
   - Surround.vim is all about "surroundings": parentheses, brackets, quotes,
     XML tags, and more. The plugin provides mappings to easily delete, change and add such surroundings in pairs.
+- [Java LSP](https://github.com/mfussenegger/nvim-jdtls)
+  - See [Java LSP Install](#java-lsp-install)
 <!-- }}}1 -->
 
 # Key Bindings
