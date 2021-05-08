@@ -30,16 +30,16 @@ setlocal fdn=20
 setlocal fen
 29
 normal! zo
-230
+232
 normal! zo
-392
+394
 normal! zo
-let s:l = 312 - ((0 * winheight(0) + 18) / 36)
+let s:l = 124 - ((24 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 312
-normal! 048|
+keepjumps 124
+normal! 05|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -51,7 +51,6 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

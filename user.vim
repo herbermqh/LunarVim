@@ -115,22 +115,105 @@ endfunction
 nmap gj :call JumpToSelection()<CR>
 
 " Toggle whitespace highlight.
-let s:hilightws = 1
-function! TOGGLEWHITESPACECOLOURS()
-  if s:hilightws
-    highlight extraWhitespace NONE
-    highlight longLine NONE
-    let s:hilightws = 0
-  else
-    highlight extraWhitespace guibg=Red
-    highlight longLine guibg=#AA3333
-    let s:hilightws = 1
-  endif
+let s:colcursorline=1
+let s:colcursorcolumn=1
+let s:colvlines=1
+let s:collongline=1
+let s:colwhitespace=1
+
+function! ToggleWhiteSpaceColours()
+    let choice='0'
+
+    while choice != 'q'
+        echohl Title
+        echo 'Toggle colour settings:'
+        echohl None
+        echo '1. Cursor horizontal line'
+        echo '2. Cursor vertical line'
+        echo '3. 80 and 120 vertical lines'
+        echo '4. Whitespace over 120 characters'
+        echo '5. Whitespace at end of line'
+        echo '6. Colour words and hex codes'
+        echo '7. All on'
+        echo '8. All off'
+        echo 'Select item to toggle, or q to quit:'
+        let choice = nr2char(getchar())
+
+        if choice == "1"
+            if s:colcursorline
+                highlight CursorLine                        guibg=#4f4f4f
+                let s:colcursorline=0
+            else
+                highlight CursorLine                        guibg=#870000
+                let s:colcursorline=1
+            endif
+        elseif choice == "2"
+            if s:colcursorcolumn
+                highlight CursorColumn    NONE
+                let s:colcursorcolumn=0
+            else
+                highlight CursorColumn    guifg=#ffffff     guibg=#483d8b
+                let s:colcursorcolumn=1
+            endif
+        elseif choice == "3"
+            if s:colvlines
+                set colorcolumn=0
+                let s:colvlines=0
+            else
+                set colorcolumn=80,120
+                let s:colvlines=1
+            endif
+        elseif choice == "4"
+            if s:collongline
+                highlight longLine        NONE
+                let s:collongline=0
+            else
+                highlight longLine                          guibg=#AA3333
+                let s:collongline=1
+            endif
+        elseif choice == "5"
+            if s:colwhitespace
+                highlight extraWhitespace NONE
+                let s:colwhitespace=0
+            else
+                highlight extraWhitespace                   guibg=Red
+                let s:colwhitespace=1
+            endif
+        elseif choice == "6"
+            ColorizerToggle
+        elseif choice == "7"
+            highlight CursorLine                        guibg=#870000
+            let s:colcursorcolumn=1
+            highlight CursorColumn    guifg=#ffffff     guibg=#483d8b
+            let s:colcursorcolumn=1
+            set colorcolumn=80,120
+            let s:colvlines=1
+            highlight longLine                          guibg=#AA3333
+            let s:collongline=1
+            highlight extraWhitespace                   guibg=Red
+            let s:colwhitespace=1
+            ColorizerAttachToBuffer
+        elseif choice == "8"
+            highlight CursorLine                        guibg=#4f4f4f
+            let s:colcursorline=0
+            highlight CursorColumn    NONE
+            let s:colcursorcolumn=0
+            set colorcolumn=0
+            let s:colvlines=0
+            highlight longLine        NONE
+            let s:collongline=0
+            highlight extraWhitespace NONE
+            let s:colwhitespace=0
+            ColorizerDetachFromBuffer
+        end
+
+        redraw
+    endwhile
 endfunction
 
 " Function key mappings.
 map <F1> :sp $HOME/.config/nvim/README.md<CR>
-map <F2> :call TOGGLEWHITESPACECOLOURS()<CR>
+map <F2> :call ToggleWhiteSpaceColours()<CR>
 map <F3> :set list!<CR>
 map <F4> :NvimTreeToggle<CR>
 " F5 reserved for kitty.
