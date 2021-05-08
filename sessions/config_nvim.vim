@@ -32,12 +32,14 @@ setlocal fen
 normal! zo
 230
 normal! zo
-let s:l = 242 - ((70 * winheight(0) + 18) / 36)
+392
+normal! zo
+let s:l = 312 - ((0 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 242
-normal! 052|
+keepjumps 312
+normal! 048|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
