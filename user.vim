@@ -118,10 +118,12 @@ nmap gj :call JumpToSelection()<CR>
 let s:hilightws = 1
 function! TOGGLEWHITESPACECOLOURS()
   if s:hilightws
-    match ExtraWhitespace //
+    highlight extraWhitespace NONE
+    highlight longLine NONE
     let s:hilightws = 0
   else
-    match ExtraWhitespace /^\s*\t\s*\|\s\+\%#\@<!$/
+    highlight extraWhitespace ctermbg=Red guibg=Red
+    highlight longLine guibg=#AA3333
     let s:hilightws = 1
   endif
 endfunction
@@ -229,6 +231,7 @@ set guifont=SauceCodePro\ Nerd\ Font\ Mono:h15
 
 " My colour scheme
 colorscheme zenburnmod
+set termguicolors
 
 " Show whitespace characters
 set listchars=eol:¶,tab:»-,trail:·,extends:>,precedes:<,space:·
@@ -236,86 +239,97 @@ set list
 
 "Highligh cursor line/column
 set colorcolumn=80,120
-highlight ColorColumn  cterm=NONE ctermbg=Grey       ctermfg=White guibg=#313131 guifg=#ffffff
+highlight ColorColumn                               cterm=NONE ctermbg=Grey       ctermfg=White guibg=#313131 guifg=#ffffff
 set cursorcolumn
-highlight CursorColumn cterm=NONE ctermbg=Black      ctermfg=White guibg=#483d8b guifg=#ffffff
+highlight CursorColumn                              cterm=NONE ctermbg=Black      ctermfg=White guibg=#483d8b guifg=#ffffff
 highlight CursorLine ctermbg=238 guibg=#870000
 
 " Selection line colours
-highlight Visual cterm=NONE ctermbg=0 ctermfg=NONE guibg=Grey35
+highlight Visual                                    cterm=NONE ctermbg=0 ctermfg=NONE guibg=Grey35
 
 " Search hit colour
-highlight Search guibg=Peru guifg=Wheat
+highlight Search                                    guibg=Peru guifg=Wheat
 
 " Line number colour
-highlight LineNr ctermbg=Black guifg=RoyalBlue1 guibg=Gray19
-highlight CursorLineNr ctermbg=NONE guifg=Yellow guibg=Gray19
-
-" Highlight text over 120 chars
-highlight OverLength ctermbg=Red ctermfg=White guibg=#592929
-match OverLength /\%121v.\+/
+highlight LineNr                                    ctermbg=Black guifg=RoyalBlue1 guibg=Gray19
+highlight CursorLineNr                              ctermbg=NONE guifg=Yellow guibg=Gray19
 
 " Diff colours
-highlight DiffAdd      gui=none  guibg=none    guifg=Green
-highlight DiffChange   gui=none  guibg=none    guifg=Cyan
-highlight DiffDelete   gui=none  guibg=none    guifg=Red
-highlight DiffText     gui=none  guibg=none    guifg=Orange
+highlight DiffAdd                                   gui=none  guibg=none    guifg=Green
+highlight DiffChange                                gui=none  guibg=none    guifg=Cyan
+highlight DiffDelete                                gui=none  guibg=none    guifg=Red
+highlight DiffText                                  gui=none  guibg=none    guifg=Orange
 
 " Highlight folds
 highlight Folded guifg=lightgreen
 set foldcolumn=1
 
 " Git changes and margins
-highlight GitSignsAdd    ctermfg=Black ctermbg=Green guifg=White guibg=#608b4e
-highlight GitSignsDelete ctermfg=Black ctermbg=Red   guifg=White guibg=#d16969
-highlight GitSignsChange ctermfg=Black ctermbg=Blue  guifg=White guibg=#5497cf
-highlight GitSignsCurrentLineBlame guifg=Grey guibg=#700000
+highlight GitSignsAdd                               ctermfg=Black ctermbg=Green guifg=White guibg=#608b4e
+highlight GitSignsDelete                            ctermfg=Black ctermbg=Red   guifg=White guibg=#d16969
+highlight GitSignsChange                            ctermfg=Black ctermbg=Blue  guifg=White guibg=#5497cf
+highlight GitSignsCurrentLineBlame                  guifg=Grey guibg=#700000
 
 " Tab bar at top!
-highlight BufferCurrent       guifg=Black     guibg=#CCCCCC
-highlight BufferCurrentIndex  guifg=Black     guibg=#CCCCCC
-highlight BufferCurrentSign   guifg=Black     guibg=#CCCCCC
-highlight BufferCurrentMod    guifg=#FF4422   guibg=#CCCCCC
-highlight BufferInactive      guifg=White     guibg=#333333
-highlight BufferInactiveIndex guifg=White     guibg=#333333
-highlight BufferInactiveSign  guifg=White     guibg=#333333
-highlight BufferInactiveMod   guifg=#FF4422   guibg=#333333
-
-" Highlight spaces at end of line: https://vim.fandom.com/wiki/Highlight_unwanted_spaces
-highlight ExtraWhitespace ctermbg=Red guibg=Red
-match ExtraWhitespace /^\s*\t\s*\|\s\+\%#\@<!$/
-set termguicolors
+highlight BufferCurrent                             guifg=Black     guibg=#CCCCCC
+highlight BufferCurrentIndex                        guifg=Black     guibg=#CCCCCC
+highlight BufferCurrentSign                         guifg=Black     guibg=#CCCCCC
+highlight BufferCurrentMod                          guifg=#FF4422   guibg=#CCCCCC
+highlight BufferInactive                            guifg=White     guibg=#333333
+highlight BufferInactiveIndex                       guifg=White     guibg=#333333
+highlight BufferInactiveSign                        guifg=White     guibg=#333333
+highlight BufferInactiveMod                         guifg=#FF4422   guibg=#333333
 
 " LSP colours
-hi LspDiagnosticsDefaultError                guifg=Red
-hi LspDiagnosticsDefaultWarning              guifg=Red
-hi LspDiagnosticsDefaultInformation          guifg=Cyan
-hi LspDiagnosticsDefaultHint                 guifg=Green
+highlight LspDiagnosticsDefaultError                guifg=Red
+highlight LspDiagnosticsDefaultWarning              guifg=Red
+highlight LspDiagnosticsDefaultInformation          guifg=Cyan
+highlight LspDiagnosticsDefaultHint                 guifg=Green
 
-hi LspDiagnosticsFloatingError               guifg=Red
-hi LspDiagnosticsFloatingWarning             guifg=Orange
-hi LspDiagnosticsFloatingWarn                guifg=Orange
-hi LspDiagnosticsFloatingInformation         guifg=Cyan
-hi LspDiagnosticsFloatingInfor               guifg=Cyan
-hi LspDiagnosticsFloatingHint                guifg=Green
+highlight LspDiagnosticsFloatingError               guifg=Red
+highlight LspDiagnosticsFloatingWarning             guifg=Orange
+highlight LspDiagnosticsFloatingWarn                guifg=Orange
+highlight LspDiagnosticsFloatingInformation         guifg=Cyan
+highlight LspDiagnosticsFloatingInfor               guifg=Cyan
+highlight LspDiagnosticsFloatingHint                guifg=Green
 
 " Lsp highlight in left margin.
-hi LspDiagnosticsSignError                   guifg=Red    guibg=Gray19
-hi LspDiagnosticsSignWarning                 guifg=Orange guibg=Gray19
-hi LspDiagnosticsSignInformation             guifg=Cyan   guibg=Gray19
-hi LspDiagnosticsSignHint                    guifg=Green  guibg=Gray19
+highlight LspDiagnosticsSignError                   guifg=Red    guibg=Gray19
+highlight LspDiagnosticsSignWarning                 guifg=Orange guibg=Gray19
+highlight LspDiagnosticsSignInformation             guifg=Cyan   guibg=Gray19
+highlight LspDiagnosticsSignHint                    guifg=Green  guibg=Gray19
 
 " Lsp Inline error highlight.
-hi LspDiagnosticsUnderlineError              guifg=Black guibg=Brown
-hi LspDiagnosticsUnderlineWarning            guifg=Black guibg=Orange
-hi LspDiagnosticsUnderlineInformation        guifg=Black guibg=Cyan
-hi LspDiagnosticsUnderlineHint               guifg=Black guibg=Green
+highlight LspDiagnosticsUnderlineError              guifg=Black guibg=Brown
+highlight LspDiagnosticsUnderlineWarning            guifg=Black guibg=Orange
+highlight LspDiagnosticsUnderlineInformation        guifg=Black guibg=Cyan
+highlight LspDiagnosticsUnderlineHint               guifg=Black guibg=Green
 
 " Lsp error on right side.
-hi LspDiagnosticsVirtualTextError            guifg=Red
-hi LspDiagnosticsVirtualTextWarning          guifg=Orange
-hi LspDiagnosticsVirtualTextInformation      guifg=Cyan
-hi LspDiagnosticsVirtualTextHint             guifg=Green
+highlight LspDiagnosticsVirtualTextError            guifg=Red
+highlight LspDiagnosticsVirtualTextWarning          guifg=Orange
+highlight LspDiagnosticsVirtualTextInformation      guifg=Cyan
+highlight LspDiagnosticsVirtualTextHint             guifg=Green
+
+" Highlight text over 120 chars
+highlight longLine                                  guibg=#AA3333
+call matchadd('longLine', '.\%>121v', 1)
+
+" Highlight git merge conflict markers.
+highlight gitMergeConflictStart                     guifg=DarkGreen guibg=Red
+call matchadd('gitMergeConflictStart', '^<<<<<<< HEAD.*$', 1)
+
+highlight gitMergeConflictMid                       guifg=DarkBlue guibg=Red
+call matchadd('gitMergeConflictMid', '^=======.*$', 1)
+
+highlight gitMergeConflictEnd                       guifg=Orange guibg=Red
+call matchadd('gitMergeConflictEnd', '^>>>>>>>.*$', 1)
+
+" Highlight spaces at end of line:
+" https://vim.fandom.com/wiki/Highlight_unwanted_spaces
+highlight extraWhitespace                           ctermbg=Red guibg=Red
+call matchadd('extraWhitespace', '/^\s*\t\s*\|\s\+\%#\@<!$', 1)
+
 " }}}
 
 " Syntax files {{{1
@@ -382,7 +396,7 @@ cab s sort
 " autocmd! bufwritepost ~/.config/nvim/init.vim source ~/.config/nvim/init.vim | echo "Reloaded my init.vim"
 
 " Disable some things on the dashboard.
-autocmd! Filetype * if &ft=="dashboard"|match OverLength /\%501v.\+/|endif | autocmd WinLeave <buffer> match OverLength /\%121v.\+/
-
+autocmd! Filetype * if &ft=="dashboard"| highlight longLine NONE |endif | autocmd WinLeave <buffer> highlight longLine guibg=#AA3333
+autocmd! Filetype * if &ft=="dashboard"| highlight extraWhitespace NONE |endif | autocmd WinLeave <buffer> highlight extraWhitespace ctermbg=Red guibg=Red
 " }}}
 
