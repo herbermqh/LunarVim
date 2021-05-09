@@ -261,7 +261,7 @@ c = c+1
 gls.left[c] = {
     DiagnosticError = {
         provider = 'DiagnosticError',
-        icon = '  ',
+        icon = '  ',
         separator_highlight = {colors.gitbg, colors.bg},
         highlight = {colors.diagerror, colors.lspbg}
     }
@@ -271,7 +271,7 @@ c = c+1
 gls.left[c] = {
     DiagnosticWarn = {
         provider = 'DiagnosticWarn',
-        icon = '  ',
+        icon = '  ',
         highlight = {colors.diagwarn, colors.lspbg}
     }
 }
@@ -280,7 +280,7 @@ c = c+1
 gls.left[c] = {
     DiagnosticHint = {
         provider = 'DiagnosticHint',
-        icon = '  ',
+        icon = '  ',
         highlight = {colors.diaghint, colors.lspbg}
     }
 }
@@ -289,7 +289,7 @@ c = c+1
 gls.left[c] = {
     DiagnosticInfo = {
         provider = 'DiagnosticInfo',
-        icon = '  ',
+        icon = '  ',
         highlight = {colors.diaginfo, colors.lspbg}
     }
 }

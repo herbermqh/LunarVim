@@ -91,7 +91,7 @@ function! JumpToSelection()
       silent exec ':!xdg-open "'.url.'"' | redraw!
       echo "Opened HEX colour ".url
     else
-      let projectPath = matchstr(wordUnderCursor, '[0-9a-zA-Z]\{3,}/[0-9a-z-A-Z]\{3,}')
+      let projectPath = matchstr(wordUnderCursor, '[0-9a-zA-Z]\{3,}/[0-9a-z-A-Z\.]\{3,}')
 
       " Is it a github project?
       if projectPath != ""
@@ -120,28 +120,35 @@ let s:colcursorcolumn=1
 let s:colvlines=1
 let s:collongline=1
 let s:colwhitespace=1
+let s:blameline=1
 
 function! ToggleWhiteSpaceColours()
-    let choice='0'
+    let choice=''
 
-    while choice != 'q'
+    while choice != ''
         echohl Title
-        echo 'Toggle colour settings:'
+        echo 'Toggle visual item display:'
         echohl None
-        echo '1. Cursor horizontal line'
-        echo '2. Cursor vertical line'
-        echo '3. 80 and 120 vertical lines'
-        echo '4. Whitespace over 120 characters'
-        echo '5. Whitespace at end of line'
-        echo '6. Colour words and hex codes'
-        echo '7. All on'
-        echo '8. All off'
-        echo 'Select item to toggle, or q to quit:'
+        echo '1) Cursor horizontal line'
+        echo '2) Cursor vertical line'
+        echo '3) Display of 80 and 120 vertical lines'
+        echo '4) Highlight whitespace over 120 characters'
+        echo '5) Highlight whitespace at end of line'
+        echo '6) Color word and hex code display'
+        echo '7) Whitespace'
+        echo '8) Git blame'
+        echo '9) Line wrap'
+        echo '0) Syntax'
+        echo '-) All off'
+        echo '=) All on'
+        echohl Title
+        echo 'Select item to toggle, or Escape to quit:'
+        echohl None
         let choice = nr2char(getchar())
 
         if choice == "1"
             if s:colcursorline
-                highlight CursorLine                        guibg=#4f4f4f
+                highlight CursorLine      NONE
                 let s:colcursorline=0
             else
                 highlight CursorLine                        guibg=#870000
@@ -182,6 +189,49 @@ function! ToggleWhiteSpaceColours()
         elseif choice == "6"
             ColorizerToggle
         elseif choice == "7"
+            set list!
+        elseif choice == "8"
+            if s:blameline
+                let s:blameline=0
+            else
+                let s:blameline=1
+            endif
+            Gitsigns toggle_current_line_blame
+        elseif choice == "9"
+            set wrap!
+        elseif choice == "0"
+            if exists("g:syntax_on")
+                syntax off
+            else
+                syntax enable
+            endif
+            " set foldcolumn=0
+            " set nonumber
+            " set norelativenumber
+        elseif choice == "-"
+            highlight CursorLine      NONE
+            let s:colcursorline=0
+            highlight CursorColumn    NONE
+            let s:colcursorcolumn=0
+            set colorcolumn=0
+            let s:colvlines=0
+            highlight longLine        NONE
+            let s:collongline=0
+            highlight extraWhitespace NONE
+            let s:colwhitespace=0
+            ColorizerDetachFromBuffer
+            set nolist
+            if s:blameline
+                Gitsigns toggle_current_line_blame
+            endif
+            let s:blameline=0
+            set nowrap
+            syntax off
+            set foldcolumn=0
+            set nonumber
+            set norelativenumber
+            Gitsigns detach
+        elseif choice == "="
             highlight CursorLine                        guibg=#870000
             let s:colcursorcolumn=1
             highlight CursorColumn    guifg=#ffffff     guibg=#483d8b
@@ -193,18 +243,19 @@ function! ToggleWhiteSpaceColours()
             highlight extraWhitespace                   guibg=Red
             let s:colwhitespace=1
             ColorizerAttachToBuffer
-        elseif choice == "8"
-            highlight CursorLine                        guibg=#4f4f4f
-            let s:colcursorline=0
-            highlight CursorColumn    NONE
-            let s:colcursorcolumn=0
-            set colorcolumn=0
-            let s:colvlines=0
-            highlight longLine        NONE
-            let s:collongline=0
-            highlight extraWhitespace NONE
-            let s:colwhitespace=0
-            ColorizerDetachFromBuffer
+            set list
+            if ! s:blameline
+                Gitsigns toggle_current_line_blame
+            endif
+            let s:blameline=1
+            set wrap
+            syntax enable
+            set foldcolumn=1
+            set number
+            highlight LineNr          guifg=RoyalBlue1  guibg=Gray19
+            set relativenumber
+            highlight CursorLineNr    guifg=Yellow      guibg=Gray19
+            Gitsigns attach
         end
 
         redraw
@@ -214,11 +265,11 @@ endfunction
 " Function key mappings.
 map <F1> :sp $HOME/.config/nvim/README.md<CR>
 map <F2> :call ToggleWhiteSpaceColours()<CR>
-map <F3> :set list!<CR>
+" map <F3> :set list!<CR>
 map <F4> :NvimTreeToggle<CR>
 " F5 reserved for kitty.
-map <F6> :set wrap!<CR>
-map <F7> :if exists("g:syntax_on")<Bar>syntax off<Bar>else<Bar>syntax enable<Bar>endif<CR>
+" map <F6> :set wrap!<CR>
+" map <F7> :if exists("g:syntax_on")<Bar>syntax off<Bar>else<Bar>syntax enable<Bar>endif<CR>
 " map <F8>
 map <F9> :Telescope find_files<CR>
 " F10 reserved for kitty, open new terminal.
@@ -348,9 +399,9 @@ highlight Folded guifg=lightgreen
 set foldcolumn=1
 
 " Git changes and margins
-highlight GitSignsAdd                          guifg=White       guibg=#608b4e
-highlight GitSignsDelete                       guifg=White       guibg=#d16969
-highlight GitSignsChange                       guifg=White       guibg=#5497cf
+highlight GitSignsAdd                          guifg=#608b4e     guibg=#608b4e
+highlight GitSignsDelete                       guifg=#d16969     guibg=#343434
+highlight GitSignsChange                       guifg=#5497cf     guibg=#5497cf
 highlight GitSignsCurrentLineBlame             guifg=Grey        guibg=#700000
 
 " Tab bar at top!
@@ -364,35 +415,35 @@ highlight BufferInactiveSign                   guifg=White       guibg=#333333
 highlight BufferInactiveMod                    guifg=#FF4422     guibg=#333333
 
 " LSP colours
-highlight LspDiagnosticsDefaultError           guifg=Red
-highlight LspDiagnosticsDefaultWarning         guifg=Red
-highlight LspDiagnosticsDefaultInformation     guifg=Cyan
-highlight LspDiagnosticsDefaultHint            guifg=Green
+highlight LspDiagnosticsDefaultError           guifg=#F44747
+highlight LspDiagnosticsDefaultWarning         guifg=#FF8800
+highlight LspDiagnosticsDefaultInformation     guifg=#FFCC66
+highlight LspDiagnosticsDefaultHint            guifg=#4FC1FF
 
-highlight LspDiagnosticsFloatingError          guifg=Red
-highlight LspDiagnosticsFloatingWarning        guifg=Orange
-highlight LspDiagnosticsFloatingWarn           guifg=Orange
-highlight LspDiagnosticsFloatingInformation    guifg=Cyan
-highlight LspDiagnosticsFloatingInfor          guifg=Cyan
-highlight LspDiagnosticsFloatingHint           guifg=Green
+highlight LspDiagnosticsFloatingError          guifg=#F44747
+highlight LspDiagnosticsFloatingWarning        guifg=#FF8800
+highlight LspDiagnosticsFloatingWarn           guifg=#FF8800
+highlight LspDiagnosticsFloatingInformation    guifg=#FFCC66
+highlight LspDiagnosticsFloatingInfor          guifg=#FFCC66
+highlight LspDiagnosticsFloatingHint           guifg=#4FC1FF
 
 " Lsp highlight in left margin.
-highlight LspDiagnosticsSignError              guifg=Red         guibg=Gray19
-highlight LspDiagnosticsSignWarning            guifg=Orange      guibg=Gray19
-highlight LspDiagnosticsSignInformation        guifg=Cyan        guibg=Gray19
-highlight LspDiagnosticsSignHint               guifg=Green       guibg=Gray19
+highlight LspDiagnosticsSignError              guifg=#F44747     guibg=Gray19
+highlight LspDiagnosticsSignWarning            guifg=#FF8800     guibg=Gray19
+highlight LspDiagnosticsSignInformation        guifg=#FFCC66     guibg=Gray19
+highlight LspDiagnosticsSignHint               guifg=#4FC1FF     guibg=Gray19
 
 " Lsp Inline error highlight.
-highlight LspDiagnosticsUnderlineError         guifg=Black       guibg=Brown
-highlight LspDiagnosticsUnderlineWarning       guifg=Black       guibg=Orange
-highlight LspDiagnosticsUnderlineInformation   guifg=Black       guibg=Cyan
-highlight LspDiagnosticsUnderlineHint          guifg=Black       guibg=Green
+highlight LspDiagnosticsUnderlineError         guifg=Black       guibg=#F44747
+highlight LspDiagnosticsUnderlineWarning       guifg=Black       guibg=#FF8800
+highlight LspDiagnosticsUnderlineInformation   guifg=Black       guibg=#FFCC66
+highlight LspDiagnosticsUnderlineHint          guifg=Black       guibg=#4FC1FF
 
 " Lsp error on right side.
-highlight LspDiagnosticsVirtualTextError       guifg=Red
-highlight LspDiagnosticsVirtualTextWarning     guifg=Orange
-highlight LspDiagnosticsVirtualTextInformation guifg=Cyan
-highlight LspDiagnosticsVirtualTextHint        guifg=Green
+highlight LspDiagnosticsVirtualTextError       guifg=#F44747
+highlight LspDiagnosticsVirtualTextWarning     guifg=#FF8800
+highlight LspDiagnosticsVirtualTextInformation guifg=#FFCC66
+highlight LspDiagnosticsVirtualTextHint        guifg=#4FC1FF
 
 " Highlight text over 120 chars
 highlight longLine                                               guibg=#AA3333
