@@ -60,6 +60,7 @@ function! ExecuteCurrentLine()
     endif
 endfunction
 nmap gr :call ExecuteCurrentLine()<CR>
+nmap gt :exe getline('.')<CR>
 
 " gq to format selection as 80 char justified.
 " set formatoptions q
@@ -115,10 +116,6 @@ endfunction
 nmap gj :call JumpToSelection()<CR>
 
 " Toggle whitespace highlight.
-let s:colcursorline=1
-let s:colcursorcolumn=1
-let s:collongline=1
-let s:colwhitespace=1
 let s:blameline=1
 
 function! ToggleWhiteSpaceColours()
@@ -138,6 +135,7 @@ function! ToggleWhiteSpaceColours()
         echo '8) Git blame'
         echo '9) Line wrap'
         echo '0) Syntax'
+        echo 'i) Highlight current word'
         echo 'g) Gutter'
         echo '-) All off'
         echo '=) All on'
@@ -147,25 +145,16 @@ function! ToggleWhiteSpaceColours()
         let choice = nr2char(getchar())
 
         if choice == "1"
-            " if cursorline
-                " highlight CursorLine                        guibg=#870000
-            " else
-                " highlight CursorLine      NONE
-            " endif
-            if s:colcursorline
+            if synIDattr(hlID("CursorLine"), "bg", "gui") == "#870000"
                 highlight CursorLine      NONE
-                let s:colcursorline=0
             else
                 highlight CursorLine                        guibg=#870000
-                let s:colcursorline=1
             endif
         elseif choice == "2"
-            if s:colcursorcolumn
+            if synIDattr(hlID("CursorColumn"), "bg", "gui") == "#483d8b"
                 highlight CursorColumn    NONE
-                let s:colcursorcolumn=0
             else
                 highlight CursorColumn    guifg=#ffffff     guibg=#483d8b
-                let s:colcursorcolumn=1
             endif
         elseif choice == "3"
             if &colorcolumn == 0
@@ -174,20 +163,16 @@ function! ToggleWhiteSpaceColours()
                 set colorcolumn=0
             endif
         elseif choice == "4"
-            if s:collongline
+            if synIDattr(hlID("longLine"), "bg", "gui") == "#5F3F3F"
                 highlight longLine        NONE
-                let s:collongline=0
             else
-                highlight longLine                          guibg=#AA3333
-                let s:collongline=1
+                highlight longLine                          guibg=#5F3F3F
             endif
         elseif choice == "5"
-            if s:colwhitespace
+            if synIDattr(hlID("extraWhitespace"), "bg", "gui") == "Red"
                 highlight extraWhitespace NONE
-                let s:colwhitespace=0
             else
                 highlight extraWhitespace                   guibg=Red
-                let s:colwhitespace=1
             endif
         elseif choice == "6"
             ColorizerToggle
@@ -207,6 +192,12 @@ function! ToggleWhiteSpaceColours()
                 syntax off
             else
                 syntax enable
+            endif
+        elseif choice == "i"
+            if synIDattr(hlID("IncSearch"), "bg", "gui") == "#385f38"
+                highlight IncSearch NONE
+            else
+                highlight IncSearch                            guifg=#f8f893     guibg=#385f38
             endif
         elseif choice == "g"
             if &foldcolumn == 1
@@ -244,13 +235,14 @@ function! ToggleWhiteSpaceColours()
             set nonumber
             set norelativenumber
             Gitsigns detach
+            highlight IncSearch       NONE
         elseif choice == "="
             highlight CursorLine                        guibg=#870000
             let s:colcursorcolumn=1
             highlight CursorColumn    guifg=#ffffff     guibg=#483d8b
             let s:colcursorcolumn=1
             set colorcolumn=80,120
-            highlight longLine                          guibg=#AA3333
+            highlight longLine                          guibg=#5F3F3F
             let s:collongline=1
             highlight extraWhitespace                   guibg=Red
             let s:colwhitespace=1
@@ -268,6 +260,7 @@ function! ToggleWhiteSpaceColours()
             set relativenumber
             highlight CursorLineNr    guifg=Yellow      guibg=Gray19
             Gitsigns attach
+            highlight IncSearch       guifg=#f8f893     guibg=#385f38
         end
 
         redraw
@@ -331,45 +324,44 @@ let bufferline.icons="both"
 let bufferline.icon_custom_colors="true"
 let bufferline.icon_close_tab_modified=''
 
-syntax enable                           " Enables syntax highlighing
-set iskeyword+=-                        " Treat dash separated words as a word text object"
-set formatoptions-=cro                  " Stop newline continution of comments
-set hidden                              " Required to keep multiple buffers open multiple buffers
-set nowrap                              " Display long lines as just one line
-set encoding=utf-8                      " The encoding displayed
-set pumheight=10                        " Makes popup menu smaller
-set fileencoding=utf-8                  " The encoding written to file
-set ruler                               " Show the cursor position all the time
-set cmdheight=2                         " More space for displaying messages
-set mouse=a                             " Enable your mouse
-set splitbelow                          " Horizontal splits will automatically be below
-set splitright                          " Vertical splits will automatically be to the right
-set t_Co=256                            " Support 256 colors
-set conceallevel=0                      " So that I can see `` in markdown files
-set tabstop=4                           " Insert 4 spaces for a tab
-set softtabstop=0                       " Disable soft tabs
-set shiftwidth=4                        " Change the number of space chars inserted for indentation
-set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
-set expandtab                           " Converts tabs to spaces
-set smartindent                         " Makes indenting smart
-set autoindent                          " Good auto indent
-set laststatus=2                        " Always display the status line
-set number relativenumber               " Line numbers and relativenumbers
-set cursorline                          " Enable highlighting of the current line
-set background=dark                     " tell vim what the background color looks like
-set showtabline=2                       " Always show tabs
-set noshowmode                          " We don't need to see things like -- INSERT -- anymore
-set nobackup                            " This is recommended by coc
-set nowritebackup                       " This is recommended by coc
-set shortmess+=c                        " Don't pass messages to |ins-completion-menu|.
-set signcolumn=yes                      " Always show, otherwise it would shift the text each time
-set updatetime=300                      " Faster completion
-set timeoutlen=750                      " By default timeoutlen is 1000 ms
-set clipboard=unnamedplus               " Copy paste between vim and everything else
-set incsearch                           " Highlight all matches
-set foldenable                          " Folding enabled
-set foldmethod=marker                   " Folding method, based on { { {1
-set clipboard+=unnamedplus              " Use single clipboard
+syntax enable              " Enables syntax highlighing
+set iskeyword+=-           " Treat dash separated words as a word text object"
+set formatoptions-=cro     " Stop newline continution of comments
+set hidden                 " Required to keep multiple buffers open multiple buffers
+set nowrap                 " Display long lines as just one line
+set encoding=utf-8         " The encoding displayed
+set pumheight=10           " Makes popup menu smaller
+set fileencoding=utf-8     " The encoding written to file
+set ruler                  " Show the cursor position all the time
+set cmdheight=2            " More space for displaying messages
+set mouse=a                " Enable the mouse
+set splitbelow             " Horizontal splits will automatically be below
+set splitright             " Vertical splits will automatically be to the right
+set t_Co=256               " Support 256 colors
+set conceallevel=0         " So that I can see `` in markdown files
+set tabstop=4              " Insert 4 spaces for a tab
+set softtabstop=0          " Disable soft tabs
+set shiftwidth=4           " Change the number of space chars inserted for indentation
+set smarttab               " Makes tabbing smarter will realize you have 2 vs 4
+set expandtab              " Converts tabs to spaces
+set smartindent            " Makes indenting smart
+set autoindent             " Good auto indent
+set laststatus=2           " Always display the status line
+set number relativenumber  " Line numbers and relativenumbers
+set cursorline             " Enable highlighting of the current line
+set background=dark        " tell vim what the background color looks like
+set showtabline=2          " Always show tabs
+set noshowmode             " We don't need to see things like -- INSERT -- anymore
+set nobackup               " This is recommended by coc
+set nowritebackup          " This is recommended by coc
+set shortmess+=c           " Don't pass messages to |ins-completion-menu|.
+set signcolumn=yes         " Always show, otherwise it would shift the text each time
+set updatetime=300         " Faster completion
+set timeoutlen=750         " By default timeoutlen is 1000 ms
+set incsearch              " Highlight all matches
+set foldenable             " Folding enabled
+set foldmethod=marker      " Folding method, based on { { {1
+set clipboard=unnamedplus  " Copy paste between vim and everything else
 set guifont=SauceCodePro\ Nerd\ Font\ Mono:h15
 " }}}
 
@@ -385,7 +377,7 @@ set list
 
 "Highligh cursor line/column
 set colorcolumn=80,120
-highlight ColorColumn                          guifg=#ffffff     guibg=#313131
+highlight ColorColumn                          guifg=#ffffff     guibg=#3A3A3A
 set cursorcolumn
 highlight CursorColumn                         guifg=#ffffff     guibg=#483d8b
 highlight CursorLine                                             guibg=#870000
@@ -405,10 +397,6 @@ highlight DiffAdd                              guifg=Green
 highlight DiffChange                           guifg=Cyan
 highlight DiffDelete                           guifg=Red
 highlight DiffText                             guifg=Orange
-
-" Highlight folds
-highlight Folded guifg=lightgreen
-set foldcolumn=1
 
 " Git changes and margins
 highlight GitSignsAdd                          guifg=#608b4e     guibg=#608b4e
@@ -458,7 +446,7 @@ highlight LspDiagnosticsVirtualTextInformation guifg=#FFCC66
 highlight LspDiagnosticsVirtualTextHint        guifg=#4FC1FF
 
 " Highlight text over 120 chars
-highlight longLine                                               guibg=#AA3333
+highlight longLine                                               guibg=#5F3F3F
 call matchadd('longLine', '.\%>121v', 1)
 
 " Highlight git merge conflict markers.
@@ -476,15 +464,24 @@ call matchadd('gitMergeConflictEnd', '^>>>>>>>.*$', 1)
 highlight extraWhitespace                                        guibg=Red
 call matchadd('extraWhitespace', '/^\s*\t\s*\|\s\+\%#\@<!$', 1)
 
-highlight IncSearch                            guifg=#385f38     guibg=#f8f893
-" }}}
+highlight IncSearch       NONE                 guifg=#f8f893     guibg=#385f38
+
+" Highlight folds
+highlight Folded                               guifg=#888888     guibg=#000032
+set foldcolumn=1
+" Highlight markers.
+highlight markerStart                          guifg=#888888     guibg=#000032
+highlight markerEnd                            guifg=#888888     guibg=#000032
+call matchadd('markerStart', '^.*{{{.*$', 1)
+call matchadd('markerEnd', '^.*}}}.*$', 1)
+" }}}1
 
 " Syntax files {{{1
 
 "  Auddis!
 au! Syntax auddis source ~/.config/nvim/syntax/auddis.vim
 au BufRead,BufNewFile *.aud set filetype=auddis
-au BufRead,BufNewFile *.ASC set filetype=auddis
+au BufRead,BufNewFile AUDDIS*.ASC set filetype=auddis
 
 "  Celestia!
 au! Syntax cel source ~/.config/nvim/syntax/cel.vim
@@ -543,7 +540,7 @@ cab s sort
 " autocmd! bufwritepost ~/.config/nvim/init.vim source ~/.config/nvim/init.vim | echo "Reloaded my init.vim"
 
 " Disable some things on the dashboard.
-autocmd! Filetype * if &ft=="dashboard"| highlight longLine NONE |endif | autocmd WinLeave <buffer> highlight longLine guibg=#AA3333
+autocmd! Filetype * if &ft=="dashboard"| highlight longLine NONE |endif | autocmd WinLeave <buffer> highlight longLine guibg=#5F3F3F
 autocmd! Filetype * if &ft=="dashboard"| highlight extraWhitespace NONE |endif | autocmd WinLeave <buffer> highlight extraWhitespace guibg=Red
 
 " Highlight matching words in buffer.
