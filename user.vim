@@ -117,7 +117,6 @@ nmap gj :call JumpToSelection()<CR>
 " Toggle whitespace highlight.
 let s:colcursorline=1
 let s:colcursorcolumn=1
-let s:colvlines=1
 let s:collongline=1
 let s:colwhitespace=1
 let s:blameline=1
@@ -139,6 +138,7 @@ function! ToggleWhiteSpaceColours()
         echo '8) Git blame'
         echo '9) Line wrap'
         echo '0) Syntax'
+        echo 'g) Gutter'
         echo '-) All off'
         echo '=) All on'
         echohl Title
@@ -147,6 +147,11 @@ function! ToggleWhiteSpaceColours()
         let choice = nr2char(getchar())
 
         if choice == "1"
+            " if cursorline
+                " highlight CursorLine                        guibg=#870000
+            " else
+                " highlight CursorLine      NONE
+            " endif
             if s:colcursorline
                 highlight CursorLine      NONE
                 let s:colcursorline=0
@@ -163,12 +168,10 @@ function! ToggleWhiteSpaceColours()
                 let s:colcursorcolumn=1
             endif
         elseif choice == "3"
-            if s:colvlines
-                set colorcolumn=0
-                let s:colvlines=0
-            else
+            if &colorcolumn == 0
                 set colorcolumn=80,120
-                let s:colvlines=1
+            else
+                set colorcolumn=0
             endif
         elseif choice == "4"
             if s:collongline
@@ -205,16 +208,26 @@ function! ToggleWhiteSpaceColours()
             else
                 syntax enable
             endif
-            " set foldcolumn=0
-            " set nonumber
-            " set norelativenumber
+        elseif choice == "g"
+            if &foldcolumn == 1
+                set foldcolumn=0
+                set nonumber
+                set norelativenumber
+                Gitsigns detach
+            else
+                set foldcolumn=1
+                set number
+                highlight LineNr          guifg=RoyalBlue1  guibg=Gray19
+                set relativenumber
+                highlight CursorLineNr    guifg=Yellow      guibg=Gray19
+                Gitsigns attach
+            endif
         elseif choice == "-"
             highlight CursorLine      NONE
             let s:colcursorline=0
             highlight CursorColumn    NONE
             let s:colcursorcolumn=0
             set colorcolumn=0
-            let s:colvlines=0
             highlight longLine        NONE
             let s:collongline=0
             highlight extraWhitespace NONE
@@ -237,7 +250,6 @@ function! ToggleWhiteSpaceColours()
             highlight CursorColumn    guifg=#ffffff     guibg=#483d8b
             let s:colcursorcolumn=1
             set colorcolumn=80,120
-            let s:colvlines=1
             highlight longLine                          guibg=#AA3333
             let s:collongline=1
             highlight extraWhitespace                   guibg=Red
@@ -463,6 +475,8 @@ call matchadd('gitMergeConflictEnd', '^>>>>>>>.*$', 1)
 " https://vim.fandom.com/wiki/Highlight_unwanted_spaces
 highlight extraWhitespace                                        guibg=Red
 call matchadd('extraWhitespace', '/^\s*\t\s*\|\s\+\%#\@<!$', 1)
+
+highlight IncSearch                            guifg=#385f38     guibg=#f8f893
 " }}}
 
 " Syntax files {{{1
@@ -531,5 +545,8 @@ cab s sort
 " Disable some things on the dashboard.
 autocmd! Filetype * if &ft=="dashboard"| highlight longLine NONE |endif | autocmd WinLeave <buffer> highlight longLine guibg=#AA3333
 autocmd! Filetype * if &ft=="dashboard"| highlight extraWhitespace NONE |endif | autocmd WinLeave <buffer> highlight extraWhitespace guibg=Red
+
+" Highlight matching words in buffer.
+autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 " }}}
 
