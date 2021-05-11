@@ -9,17 +9,18 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +9 .config/LunarVim/init.lua
-badd +404 .config/LunarVim/user.vim
 badd +17 .config/LunarVim/lv-settings.lua
 badd +71 .config/LunarVim/lua/plugins.lua
 badd +19 .config/LunarVim/lua/lv-galaxyline/init.lua
 badd +320 ~/.config/nvim/README.md
 badd +20 ~/test.sh
+badd +319 .config/LunarVim/user.vim
 argglobal
 %argdel
 $argadd .config/LunarVim/init.lua
 edit .config/LunarVim/user.vim
 argglobal
+balt .config/LunarVim/init.lua
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -28,20 +29,14 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-318
+363
 normal! zo
-368
-normal! zo
-475
-normal! zo
-368
-normal! zc
-let s:l = 366 - ((43 * winheight(0) + 24) / 49)
+let s:l = 1 - ((0 * winheight(0) + 26) / 53)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 366
-normal! 05|
+keepjumps 1
+normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

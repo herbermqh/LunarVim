@@ -145,16 +145,16 @@ function! ToggleWhiteSpaceColours()
         let choice = nr2char(getchar())
 
         if choice == "1"
-            if synIDattr(hlID("CursorLine"), "bg", "gui") == "#870000"
-                highlight CursorLine      NONE
+            if &cursorline
+                set nocursorline
             else
-                highlight CursorLine                        guibg=#870000
+                set cursorline
             endif
         elseif choice == "2"
-            if synIDattr(hlID("CursorColumn"), "bg", "gui") == "#483d8b"
-                highlight CursorColumn    NONE
+            if &cursorcolumn
+                set nocursorcolumn
             else
-                highlight CursorColumn    guifg=#ffffff     guibg=#483d8b
+                set cursorcolumn
             endif
         elseif choice == "3"
             if &colorcolumn == 0
@@ -214,15 +214,11 @@ function! ToggleWhiteSpaceColours()
                 Gitsigns attach
             endif
         elseif choice == "-"
-            highlight CursorLine      NONE
-            let s:colcursorline=0
-            highlight CursorColumn    NONE
-            let s:colcursorcolumn=0
+            set nocursorline
+            set nocursorcolumn
             set colorcolumn=0
             highlight longLine        NONE
-            let s:collongline=0
             highlight extraWhitespace NONE
-            let s:colwhitespace=0
             ColorizerDetachFromBuffer
             set nolist
             if s:blameline
@@ -237,15 +233,11 @@ function! ToggleWhiteSpaceColours()
             Gitsigns detach
             highlight IncSearch       NONE
         elseif choice == "="
-            highlight CursorLine                        guibg=#870000
-            let s:colcursorcolumn=1
-            highlight CursorColumn    guifg=#ffffff     guibg=#483d8b
-            let s:colcursorcolumn=1
+            set cursorline   
+            set cursorcolumn
             set colorcolumn=80,120
             highlight longLine                          guibg=#5F3F3F
-            let s:collongline=1
             highlight extraWhitespace                   guibg=Red
-            let s:colwhitespace=1
             ColorizerAttachToBuffer
             set list
             if ! s:blameline
@@ -313,6 +305,9 @@ nnoremap Q @q
 nmap <C-_> :CommentToggle<CR>j
 " In neovide use this line instead!
 " nmap <C-/> :CommentToggle<CR>j
+
+" Keep X as delete backwards, rather then close buffer, I prefer to use :bd
+nunmap X
 " }}}
 
 " Settings {{{1
