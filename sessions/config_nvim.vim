@@ -10,17 +10,16 @@ endif
 set shortmess=aoO
 badd +9 .config/LunarVim/init.lua
 badd +17 .config/LunarVim/lv-settings.lua
-badd +71 .config/LunarVim/lua/plugins.lua
+badd +93 .config/LunarVim/lua/plugins.lua
 badd +19 .config/LunarVim/lua/lv-galaxyline/init.lua
 badd +320 ~/.config/nvim/README.md
-badd +20 ~/test.sh
-badd +319 .config/LunarVim/user.vim
+badd +225 .config/LunarVim/user.vim
 argglobal
 %argdel
 $argadd .config/LunarVim/init.lua
-edit .config/LunarVim/user.vim
+edit .config/LunarVim/init.lua
 argglobal
-balt .config/LunarVim/init.lua
+balt .config/LunarVim/lv-settings.lua
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -29,13 +28,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-363
-normal! zo
-let s:l = 1 - ((0 * winheight(0) + 26) / 53)
+let s:l = 59 - ((20 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 59
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
@@ -48,7 +45,6 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
