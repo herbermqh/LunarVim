@@ -137,8 +137,6 @@ function! ToggleWhiteSpaceColours()
         echo '0) Syntax'
         echo 'i) Highlight current word'
         echo 'g) Gutter'
-        echo '-) All off'
-        echo '=) All on'
         echohl Title
         echo 'Select item to toggle, or Escape to quit:'
         echohl None
@@ -149,12 +147,14 @@ function! ToggleWhiteSpaceColours()
                 set nocursorline
             else
                 set cursorline
+                highlight CursorLine                        guibg=#870000
             endif
         elseif choice == "2"
             if &cursorcolumn
                 set nocursorcolumn
             else
                 set cursorcolumn
+                highlight CursorColumn    guifg=#ffffff     guibg=#483d8b
             endif
         elseif choice == "3"
             if &colorcolumn == 0
@@ -213,46 +213,6 @@ function! ToggleWhiteSpaceColours()
                 highlight CursorLineNr    guifg=Yellow      guibg=Gray19
                 Gitsigns attach
             endif
-        elseif choice == "-"
-            set nocursorline
-            set nocursorcolumn
-            set colorcolumn=0
-            highlight longLine        NONE
-            highlight extraWhitespace NONE
-            ColorizerDetachFromBuffer
-            set nolist
-            if s:blameline
-                Gitsigns toggle_current_line_blame
-            endif
-            let s:blameline=0
-            set nowrap
-            syntax off
-            set foldcolumn=0
-            set nonumber
-            set norelativenumber
-            Gitsigns detach
-            highlight IncSearch       NONE
-        elseif choice == "="
-            set cursorline   
-            set cursorcolumn
-            set colorcolumn=80,120
-            highlight longLine                          guibg=#5F3F3F
-            highlight extraWhitespace                   guibg=Red
-            ColorizerAttachToBuffer
-            set list
-            if ! s:blameline
-                Gitsigns toggle_current_line_blame
-            endif
-            let s:blameline=1
-            set wrap
-            syntax enable
-            set foldcolumn=1
-            set number
-            highlight LineNr          guifg=RoyalBlue1  guibg=Gray19
-            set relativenumber
-            highlight CursorLineNr    guifg=Yellow      guibg=Gray19
-            Gitsigns attach
-            highlight IncSearch       guifg=#f8f893     guibg=#385f38
         end
 
         redraw
@@ -462,13 +422,13 @@ call matchadd('extraWhitespace', '/^\s*\t\s*\|\s\+\%#\@<!$', 1)
 highlight IncSearch       NONE                 guifg=#f8f893     guibg=#385f38
 
 " Highlight folds
-highlight Folded                               guifg=#888888     guibg=#000032
+highlight Folded                               guifg=#777777     guibg=#000000
 set foldcolumn=1
 " Highlight markers.
-highlight markerStart                          guifg=#888888     guibg=#000032
-highlight markerEnd                            guifg=#888888     guibg=#000032
-call matchadd('markerStart', '^.*{{{.*$', 1)
-call matchadd('markerEnd', '^.*}}}.*$', 1)
+highlight markerStart                          guifg=#777777     guibg=#000000
+highlight markerEnd                            guifg=#777777     guibg=#000000
+call matchadd('markerStart', '^.*{\{3\}.*$', 1)
+call matchadd('markerEnd', '^.*}\{3\}.*$', 1)
 " }}}1
 
 " Syntax files {{{1
