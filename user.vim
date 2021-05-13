@@ -1,53 +1,18 @@
 " Useful Links and TODO {{{1
-" LINK: https://github.com/Kethku/neovide
-" LINK: http://cheat.sh
-" LINK: http://cheat.sh
+" https://github.com/Kethku/neovide
+" http://cheat.sh
+" Buffer bar info: https://github.com/romgrk/barbar.nvim
 
-" LINK: https://github.com/hrsh7th/vim-vsnip
-
-" TODO: Get Codi working.
 " TODO: Tidy galaxyline code.
 " TODO: LSP Perl
-" TODO: LSP Bash
 " TODO: LSP Java
 " TODO: LSP JavaScript
 " TODO: LSP React
-" TODO: LSP Python
 " TODO: LSP PHP
-" TODO: LSP Lua
 
-" Buffer bar info: https://github.com/romgrk/barbar.nvim
 " }}}
 
-" TODO: Codi maths editor {{{1
-" map <C-c> :Codi<CR>
-" let g:codi#virtual_text_prefix = " ❯❯❯ "
-" let g:codi#rightsplit=1
-" let g:codi#rightalign=1
-" }}}
-
-" Key mappings {{{1
-
-" <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
-
-" <Ctrl-c> and yy copies to clipboard, paste with <shift-insert>
-vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
-vmap yy    y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
-
-" Move lines up and down using alt-up/down.
-nnoremap <A-Down> :m .+1<CR>==
-nnoremap <A-Up> :m .-2<CR>==
-inoremap <A-Down> <Esc>:m .+1<CR>==gi
-inoremap <A-Up> <Esc>:m .-2<CR>==gi
-vnoremap <A-Down> :m '>+1<CR>gv=gv
-vnoremap <A-Up> :m '<-2<CR>gv=gv
-
-" Make current file executable using Eunuch.
-map <silent> <A-e> :Chmod a+x<CR>:echo "File is now executable!"<CR>
-
-" Execute current file.
-map <silent> <A-r> :w<CR>:!%:p<CR>
+" Functions {{{1
 
 function! ExecuteCurrentLine()
     let line=getline('.')
@@ -59,20 +24,6 @@ function! ExecuteCurrentLine()
         echo "No Text under cursor."
     endif
 endfunction
-nmap gr :call ExecuteCurrentLine()<CR>
-nmap gt :exe getline('.')<CR>
-
-" gq to format selection as 80 char justified.
-" set formatoptions q
-set formatprg=par\ -w79
-map <C-w> gqip
-
-" Saves a few key presses.
-nnoremap ; :
-nnoremap W :w<CR>
-
-" zz toggles fold
-nnoremap zz za
 
 " Jump, looks under the cursor for a URL, Hex Code, GithubProject or Word!
 function! JumpToSelection()
@@ -113,128 +64,126 @@ function! JumpToSelection()
     endif
   endif
 endfunction
-nmap gj :call JumpToSelection()<CR>
 
-" Toggle whitespace highlight.
-let s:blameline=1
-
-function! ToggleWhiteSpaceColours()
-    let choice=''
-
-    while choice != ''
-        echohl Title
-        echo 'Toggle visual item display:'
-        echohl None
-        echo '1) Cursor horizontal line'
-        echo '2) Cursor vertical line'
-        echo '3) Display of 80 and 120 vertical lines'
-        echo '4) Highlight whitespace over 120 characters'
-        echo '5) Highlight whitespace at end of line'
-        echo '6) Color word and hex code display'
-        echo '7) Whitespace'
-        echo '8) Git blame'
-        echo '9) Line wrap'
-        echo '0) Syntax'
-        echo 'i) Highlight current word'
-        echo 'g) Gutter'
-        echohl Title
-        echo 'Select item to toggle, or Escape to quit:'
-        echohl None
-        let choice = nr2char(getchar())
-
-        if choice == "1"
-            if &cursorline
-                set nocursorline
-            else
-                set cursorline
-                highlight CursorLine                        guibg=#870000
-            endif
-        elseif choice == "2"
-            if &cursorcolumn
-                set nocursorcolumn
-            else
-                set cursorcolumn
-                highlight CursorColumn    guifg=#ffffff     guibg=#483d8b
-            endif
-        elseif choice == "3"
-            if &colorcolumn == 0
-                set colorcolumn=80,120
-            else
-                set colorcolumn=0
-            endif
-        elseif choice == "4"
-            if synIDattr(hlID("longLine"), "bg", "gui") == "#5F3F3F"
-                highlight longLine        NONE
-            else
-                highlight longLine                          guibg=#5F3F3F
-            endif
-        elseif choice == "5"
-            if synIDattr(hlID("extraWhitespace"), "bg", "gui") == "Red"
-                highlight extraWhitespace NONE
-            else
-                highlight extraWhitespace                   guibg=Red
-            endif
-        elseif choice == "6"
-            ColorizerToggle
-        elseif choice == "7"
-            set list!
-        elseif choice == "8"
-            if s:blameline
-                let s:blameline=0
-            else
-                let s:blameline=1
-            endif
-            Gitsigns toggle_current_line_blame
-        elseif choice == "9"
-            set wrap!
-        elseif choice == "0"
-            if exists("g:syntax_on")
-                syntax off
-            else
-                syntax enable
-            endif
-        elseif choice == "i"
-            if synIDattr(hlID("IncSearch"), "bg", "gui") == "#385f38"
-                highlight IncSearch NONE
-            else
-                highlight IncSearch                            guifg=#f8f893     guibg=#385f38
-            endif
-        elseif choice == "g"
-            if &foldcolumn == 1
-                set foldcolumn=0
-                set nonumber
-                set norelativenumber
-                Gitsigns detach
-            else
-                set foldcolumn=1
-                set number
-                highlight LineNr          guifg=RoyalBlue1  guibg=Gray19
-                set relativenumber
-                highlight CursorLineNr    guifg=Yellow      guibg=Gray19
-                Gitsigns attach
-            endif
-        end
-
-        redraw
-    endwhile
+" TODO: Jumps.
+function! JumpToArtifactory()
 endfunction
 
-" Function key mappings.
-map <F1> :sp $HOME/.config/nvim/README.md<CR>
-map <F2> :call ToggleWhiteSpaceColours()<CR>
-" map <F3> :set list!<CR>
-map <F4> :NvimTreeToggle<CR>
-" F5 reserved for kitty.
-" map <F6> :set wrap!<CR>
-" map <F7> :if exists("g:syntax_on")<Bar>syntax off<Bar>else<Bar>syntax enable<Bar>endif<CR>
-" map <F8>
-map <F9> :Telescope find_files<CR>
-" F10 reserved for kitty, open new terminal.
-map <F11> :TagbarToggle<CR>
-map <F12> :RnvimrToggle<CR>
+function! JumpToCi()
+endfunction
 
-" Save
-map <c-s> :w<CR>
+function! JumpToReleaseNotes()
+endfunction
+
+function! JumpToRepository()
+endfunction
+
+function! JumpToRun()
+endfunction
+
+function! JumpToSonar()
+endfunction
+
+function! JumpToTestReports()
+endfunction
+
+function! JumpToTicket()
+endfunction
+
+function! ToggleColourCursorLine()
+    if &cursorline
+        set nocursorline
+    else
+        set cursorline
+        highlight CursorLine                        guibg=#665555
+    endif
+endfunction
+
+function! ToggleColourCursorColumn()
+    if &cursorcolumn
+        set nocursorcolumn
+    else
+        set cursorcolumn
+        highlight CursorColumn    guifg=#ffffff     guibg=#483d8b
+    endif
+endfunction
+
+function! ToggleColourColumn()
+    if &colorcolumn == 0
+        set colorcolumn=80,120
+    else
+        set colorcolumn=0
+    endif
+endfunction
+
+function! ToggleColourLongLine()
+    if synIDattr(hlID("longLine"), "bg", "gui") == "#5F3F3F"
+        highlight longLine        NONE
+    else
+        highlight longLine                          guibg=#5F3F3F
+    endif
+endfunction
+
+function! ToggleColourWhiteSpace()
+    if synIDattr(hlID("extraWhitespace"), "bg", "gui") == "Red"
+        highlight extraWhitespace NONE
+    else
+        highlight extraWhitespace                   guibg=Red
+    endif
+endfunction
+
+let s:blameline=1
+function! ToggleColourGitBlame()
+    if s:blameline
+        let s:blameline=0
+    else
+        let s:blameline=1
+    endif
+    Gitsigns toggle_current_line_blame
+endfunction
+
+function! ToggleColourSyntax()
+    if exists("g:syntax_on")
+        syntax off
+    else
+        syntax enable
+    endif
+endfunction
+
+function! ToggleColourIncSearch()
+    if synIDattr(hlID("IncSearch"), "bg", "gui") == "#385f38"
+        highlight IncSearch NONE
+    else
+        highlight IncSearch                            guifg=#f8f893     guibg=#385f38
+    endif
+endfunction
+
+function! ToggleGutter()
+    if &foldcolumn == 1
+        set foldcolumn=0
+        set nonumber
+        set norelativenumber
+        Gitsigns detach
+    else
+        set foldcolumn=1
+        set number
+        highlight LineNr          guifg=RoyalBlue1  guibg=Gray19
+        set relativenumber
+        highlight CursorLineNr    guifg=Yellow      guibg=Gray19
+        Gitsigns attach
+    endif
+endfunction
+
+" Delete whitespace at end of lines, and put cursor back to where it started.
+function! DeleteTrailingWhiteSpace()
+    let current_position=getpos(".")
+    let reg=@/
+    %s/\s*$//
+    let @/=reg
+  unlet reg
+  call setpos('.', current_position)
+  unlet current_position
+endfunction
 
 " Highlight a column in csv text.
 " See: https://vim.fandom.com/wiki/Working_with_CSV_files
@@ -253,6 +202,40 @@ function! CSVH(colnr)
     match
   endif
 endfunction
+
+" }}}1
+
+" Key mappings {{{1
+
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+" <Ctrl-c> and yy copies to clipboard, paste with <shift-insert>
+vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
+vmap yy    y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
+
+" Make current file executable using Eunuch.
+map <silent> <A-e> :Chmod a+x<CR>:echo "File is now executable!"<CR>
+
+" Execute current file, line and vim command.
+map <silent> <A-r> :w<CR>:!%:p<CR>
+nmap gr :call ExecuteCurrentLine()<CR>
+nmap gt :exe getline('.')<CR>
+
+" gq to format selection as 80 char justified.
+" set formatoptions q
+set formatprg=par\ -w79
+map <C-w> gqip
+
+" Saves a few key presses.
+nnoremap ; :
+nnoremap W :w<CR>
+map <C-s> :w<CR>
+
+" zz toggles fold
+nnoremap zz za
+
+" Highlight column in csv
 command! -nargs=1 Csv :call CSVH(<args>)
 
 " Sql and Java flipping.
@@ -264,13 +247,59 @@ nnoremap Q @q
 " Toggle comment and move to next line.
 nmap <C-_> :CommentToggle<CR>j
 " In neovide use this line instead!
-" nmap <C-/> :CommentToggle<CR>j
+nmap <C-/> :CommentToggle<CR>j
+
+" Move lines up and down using alt-up/down.
+nnoremap <A-Down> :m .+1<CR>==
+nnoremap <A-Up> :m .-2<CR>==
+inoremap <A-Down> <Esc>:m .+1<CR>==gi
+inoremap <A-Up> <Esc>:m .-2<CR>==gi
+vnoremap <A-Down> :m '>+1<CR>gv=gv
+vnoremap <A-Up> :m '<-2<CR>gv=gv
+
+" Jump : TODO: Add description to which key.
+nmap gj :call JumpToSelection()<CR>
+noremap <leader>jj :call JumpToSelection()<CR>
+noremap <leader>jr :call JumpToRepository()<CR>
+noremap <leader>jt :call JumpToTicket()<CR>
+noremap <leader>ja :call JumpToArtifactory()<CR>
+noremap <leader>jc :call JumpToCi()<CR>
+noremap <leader>jn :call JumpToReleaseNotes()<CR>
+noremap <leader>js :call JumpToSonar()<CR>
+noremap <leader>ju :call JumpToRun()<CR>
+noremap <leader>je :call JumpToTestReports()<CR>
+
+" Toggle various visual items. : TODO: Add description to which key.
+noremap <leader>t1 :call ToggleColourCursorLine()<CR>
+noremap <leader>t2 :call ToggleColourCursorColumn()<CR>
+noremap <leader>t3 :call ToggleColourColumn()<CR>
+noremap <leader>t4 :call ToggleColourLongLine()<CR>
+noremap <leader>t5 :call ToggleColourWhiteSpace()<CR>
+noremap <leader>t6 :ColorizerToggle<CR>
+noremap <leader>t7 :set list!<CR>
+noremap <leader>t8 :call ToggleColourGitBlame()<CR>
+noremap <leader>t9 :set wrap!<CR>
+noremap <leader>t0 :call ToggleColourSyntax()<CR>
+noremap <leader>ti :call ToggleColourIncSearch()<CR>
+noremap <leader>tu :call ToggleGutter()<CR>
+noremap <leader>w :call DeleteTrailingWhiteSpace()<CR>
+
+" Function keys.
+map <F1> :sp $HOME/.config/nvim/README.md<CR>
+map <F4> :NvimTreeToggle<CR>
+" F5 reserved for kitty, open selected.
+map <F9> :Telescope find_files<CR>
+" F10 reserved for kitty, open new terminal.
+map <F11> :TagbarToggle<CR>
+map <F12> :RnvimrToggle<CR>
 
 " Keep X as delete backwards, rather then close buffer, I prefer to use :bd
 nunmap X
+
 " }}}
 
 " Settings {{{1
+
 :Gitsigns toggle_current_line_blame
 
 let g:github_enterprise_urls = ['https://bitbucket.org']
@@ -318,6 +347,7 @@ set foldenable             " Folding enabled
 set foldmethod=marker      " Folding method, based on { { {1
 set clipboard=unnamedplus  " Copy paste between vim and everything else
 set guifont=SauceCodePro\ Nerd\ Font\ Mono:h15
+
 " }}}
 
 " Visual and Colours {{{1
@@ -335,7 +365,7 @@ set colorcolumn=80,120
 highlight ColorColumn                          guifg=#ffffff     guibg=#3A3A3A
 set cursorcolumn
 highlight CursorColumn                         guifg=#ffffff     guibg=#483d8b
-highlight CursorLine                                             guibg=#870000
+highlight CursorLine                                             guibg=#665555
 
 " Selection line colours
 highlight Visual                                                 guibg=Grey35
@@ -500,5 +530,12 @@ autocmd! Filetype * if &ft=="dashboard"| highlight extraWhitespace NONE |endif |
 
 " Highlight matching words in buffer.
 autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+
+" Remove whitespace on save for certain file types.
+autocmd BufWrite *.py :call DeleteTrailingWhiteSpace()
+autocmd BufWrite *.java :call DeleteTrailingWhiteSpace()
+autocmd BufWrite * if &ft=="sh" | :call DeleteTrailingWhiteSpace() | endif
+autocmd BufWrite * if &ft=="vim" | :call DeleteTrailingWhiteSpace() | endif
+
 " }}}
 

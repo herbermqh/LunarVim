@@ -8,18 +8,20 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +9 .config/LunarVim/init.lua
+badd +61 .config/LunarVim/init.lua
 badd +17 .config/LunarVim/lv-settings.lua
-badd +93 .config/LunarVim/lua/plugins.lua
+badd +129 .config/LunarVim/lua/plugins.lua
 badd +19 .config/LunarVim/lua/lv-galaxyline/init.lua
 badd +320 ~/.config/nvim/README.md
-badd +225 .config/LunarVim/user.vim
+badd +12 .config/LunarVim/user.vim
+badd +45 ~/.config/LunarVim/lua/keymappings.lua
+badd +57 ~/.config/LunarVim/lua/lv-which-key/init.lua
 argglobal
 %argdel
 $argadd .config/LunarVim/init.lua
-edit .config/LunarVim/init.lua
+edit .config/LunarVim/user.vim
 argglobal
-balt .config/LunarVim/lv-settings.lua
+balt ~/.config/nvim/README.md
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -28,11 +30,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 59 - ((20 * winheight(0) + 20) / 40)
+let s:l = 305 - ((304 * winheight(0) + 16) / 32)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 59
+keepjumps 305
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'

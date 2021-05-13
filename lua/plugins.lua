@@ -92,6 +92,7 @@ return require("packer").startup(
         use {"tpope/vim-speeddating", opt = true}        -- Inc/dec dates.
         -- use {"mfussenegger/nvim-jdtls", opt = true}      -- Java LSP.
         use {"itchyny/vim-highlighturl", opt = true}     -- Highlight URL's.
+        use {"metakirby5/codi.vim", opt = true}          -- Python scratchpad
 
         require_plugin("nvim-lspconfig")
         require_plugin("lspsaga.nvim")
@@ -127,5 +128,6 @@ return require("packer").startup(
         require_plugin("vim-speeddating")
         -- require_plugin("nvim-jdtls")
         require_plugin("vim-highlighturl")
+        require_plugin("codi.vim")
     end
 )
