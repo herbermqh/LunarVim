@@ -95,7 +95,7 @@ function! ToggleColourCursorLine()
         set nocursorline
     else
         set cursorline
-        highlight CursorLine                        guibg=#665555
+        highlight CursorLine                        guibg=#605555
     endif
 endfunction
 
@@ -365,7 +365,7 @@ set colorcolumn=80,120
 highlight ColorColumn                          guifg=#ffffff     guibg=#3A3A3A
 set cursorcolumn
 highlight CursorColumn                         guifg=#ffffff     guibg=#483d8b
-highlight CursorLine                                             guibg=#665555
+highlight CursorLine                                             guibg=#605555
 
 " Selection line colours
 highlight Visual                                                 guibg=Grey35
@@ -378,16 +378,16 @@ highlight LineNr                               guifg=RoyalBlue1  guibg=Gray19
 highlight CursorLineNr                         guifg=Yellow      guibg=Gray19
 
 " Diff colours
-highlight DiffAdd                              guifg=Green
-highlight DiffChange                           guifg=Cyan
-highlight DiffDelete                           guifg=Red
-highlight DiffText                             guifg=Orange
+highlight DiffAdd                                                guibg=DarkGreen
+highlight DiffChange                                             guibg=Black
+highlight DiffDelete                                             guibg=DarkRed
+highlight DiffText                             guifg=Red
 
 " Git changes and margins
 highlight GitSignsAdd                          guifg=#608b4e     guibg=#608b4e
 highlight GitSignsDelete                       guifg=#d16969     guibg=#343434
 highlight GitSignsChange                       guifg=#5497cf     guibg=#5497cf
-highlight GitSignsCurrentLineBlame             guifg=Grey        guibg=#700000
+highlight GitSignsCurrentLineBlame             guifg=Black       guibg=#605555
 
 " Tab bar at top!
 highlight BufferCurrent                        guifg=Black       guibg=#CCCCCC

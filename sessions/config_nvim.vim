@@ -36,13 +36,13 @@ normal! zo
 normal! zo
 208
 normal! zo
-522
+353
 normal! zo
-let s:l = 274 - ((24 * winheight(0) + 20) / 40)
+let s:l = 407 - ((42 * winheight(0) + 29) / 58)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 274
+keepjumps 407
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
