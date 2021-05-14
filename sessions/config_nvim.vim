@@ -13,7 +13,7 @@ badd +17 .config/LunarVim/lv-settings.lua
 badd +129 .config/LunarVim/lua/plugins.lua
 badd +19 .config/LunarVim/lua/lv-galaxyline/init.lua
 badd +320 ~/.config/nvim/README.md
-badd +12 .config/LunarVim/user.vim
+badd +263 .config/LunarVim/user.vim
 badd +45 ~/.config/LunarVim/lua/keymappings.lua
 badd +57 ~/.config/LunarVim/lua/lv-which-key/init.lua
 argglobal
@@ -30,11 +30,19 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 305 - ((304 * winheight(0) + 16) / 32)
+1
+normal! zo
+15
+normal! zo
+208
+normal! zo
+522
+normal! zo
+let s:l = 274 - ((24 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 305
+keepjumps 274
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
@@ -47,6 +55,7 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

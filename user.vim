@@ -260,14 +260,14 @@ vnoremap <A-Up> :m '<-2<CR>gv=gv
 " Jump : TODO: Add description to which key.
 nmap gj :call JumpToSelection()<CR>
 noremap <leader>jj :call JumpToSelection()<CR>
-noremap <leader>jr :call JumpToRepository()<CR>
-noremap <leader>jt :call JumpToTicket()<CR>
-noremap <leader>ja :call JumpToArtifactory()<CR>
-noremap <leader>jc :call JumpToCi()<CR>
-noremap <leader>jn :call JumpToReleaseNotes()<CR>
-noremap <leader>js :call JumpToSonar()<CR>
-noremap <leader>ju :call JumpToRun()<CR>
-noremap <leader>je :call JumpToTestReports()<CR>
+noremap <silent> <leader>jr :silent exec "!jump Repo %:p:h"<CR>
+noremap <silent> <leader>jt :silent exec "!jump Ticket %:p:h"<CR>
+noremap <silent> <leader>ja :silent exec "!jump Artifact %:p:h"<CR>
+noremap <silent> <leader>jn :silent exec "!jump Notes %:p:h"<CR>
+noremap <silent> <leader>jc :silent exec "!jump Ci %:p:h"<CR>
+noremap <silent> <leader>jl :silent exec "!jump Lint %:p:h"<CR>
+" noremap <silent> <leader>ju :silent exec "!jump Live %:p:h"<CR>
+noremap <silent> <leader>je :silent exec "!jump TestReports %:p:h"<CR>
 
 " Toggle various visual items. : TODO: Add description to which key.
 noremap <leader>t1 :call ToggleColourCursorLine()<CR>
