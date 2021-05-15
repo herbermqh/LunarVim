@@ -65,30 +65,20 @@ function! JumpToSelection()
   endif
 endfunction
 
-" TODO: Jumps.
-function! JumpToArtifactory()
+function! OpenHelpPage()
+  let s:help_word = expand('<cword>')
+  :exe ":help " . s:help_word
 endfunction
 
-function! JumpToCi()
-endfunction
-
-function! JumpToReleaseNotes()
-endfunction
-
-function! JumpToRepository()
-endfunction
-
-function! JumpToRun()
-endfunction
-
-function! JumpToSonar()
-endfunction
-
-function! JumpToTestReports()
-endfunction
-
-function! JumpToTicket()
-endfunction
+" function! OpenManualPage()
+  " let s:wordUnderCursor = expand("<cWORD>")
+  " let $MANPG=s:wordUnderCursor
+  " term colored man $MANPG
+  " :exe ":wincmd n"
+  " :exe ":r!man " . s:man_word . " | col -b"
+  " :exe ":goto"
+  " :exe ":delete"
+" endfunction
 
 function! ToggleColourCursorLine()
     if &cursorline
@@ -266,7 +256,9 @@ noremap <silent> <leader>ja :silent exec "!jump Artifact %:p:h"<CR>
 noremap <silent> <leader>jn :silent exec "!jump Notes %:p:h"<CR>
 noremap <silent> <leader>jc :silent exec "!jump Ci %:p:h"<CR>
 noremap <silent> <leader>jl :silent exec "!jump Lint %:p:h"<CR>
-" noremap <silent> <leader>ju :silent exec "!jump Live %:p:h"<CR>
+noremap <silent> <leader>jh :call OpenHelpPage()<CR>
+noremap <silent> <leader>jm :<C-U>exe "Man" v:count "<C-R><C-W>"<CR>
+noremap <silent> <leader>ji :silent exec "!jump Live %:p:h"<CR>
 noremap <silent> <leader>je :silent exec "!jump TestReports %:p:h"<CR>
 
 " Toggle various visual items. : TODO: Add description to which key.
@@ -308,11 +300,27 @@ let bufferline.icons="both"
 let bufferline.icon_custom_colors="true"
 let bufferline.icon_close_tab_modified=''
 
+" If diffing two or more files then....
+" See: https://neovim.io/doc/user/options.html
+if &diff
+    set diffopt+=algorithm:patience
+    set diffopt+=indent-heuristic
+    set diffopt+=iblank    " Ignore blank lines
+    set diffopt+=iwhiteall " Ignore all whitespace
+    set diffopt+=iwhiteeol " Ignore whitespace at end of line
+    let g:diff_translations=0 " Speed up syntax
+    set syntax=diff
+    set wrap               " Lines wrap to following lines"
+    set nolist             " Do not display whitespace
+else
+    set nowrap             " Display long lines as just one line
+    set list               " Display whitespace
+endif
+
 syntax enable              " Enables syntax highlighing
 set iskeyword+=-           " Treat dash separated words as a word text object"
 set formatoptions-=cro     " Stop newline continution of comments
 set hidden                 " Required to keep multiple buffers open multiple buffers
-set nowrap                 " Display long lines as just one line
 set encoding=utf-8         " The encoding displayed
 set pumheight=10           " Makes popup menu smaller
 set fileencoding=utf-8     " The encoding written to file
@@ -358,7 +366,6 @@ set termguicolors
 
 " Show whitespace characters
 set listchars=eol:¶,tab:»-,trail:·,extends:>,precedes:<,space:·
-set list
 
 "Highligh cursor line/column
 set colorcolumn=80,120
@@ -377,11 +384,11 @@ highlight Search                               guifg=Wheat       guibg=Peru
 highlight LineNr                               guifg=RoyalBlue1  guibg=Gray19
 highlight CursorLineNr                         guifg=Yellow      guibg=Gray19
 
-" Diff colours
-highlight DiffAdd                                                guibg=DarkGreen
-highlight DiffChange                                             guibg=Black
-highlight DiffDelete                                             guibg=DarkRed
-highlight DiffText                             guifg=Red
+" Diff colours : http://vimdoc.sourceforge.net/htmldoc/diff.html
+highlight DiffAdd                              guifg=#999999     guibg=#115511
+highlight DiffChange                                             guibg=#222266
+highlight DiffDelete                           guifg=#552222     guibg=#552222
+highlight DiffText                             guifg=Red         guibg=#222266
 
 " Git changes and margins
 highlight GitSignsAdd                          guifg=#608b4e     guibg=#608b4e
