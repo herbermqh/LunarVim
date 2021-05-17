@@ -193,6 +193,35 @@ function! CSVH(colnr)
   endif
 endfunction
 
+function FoldingToggle()
+    if &foldmethod == 'diff'
+        if &foldenable == 1
+            set foldenable!
+            echo "Folding switched off"
+        else
+            set foldenable
+            set foldmethod=manual
+            echo "Folding method set to Manual"
+        endif
+    elseif &foldmethod == 'manual'
+        set foldenable
+        set foldmethod=indent
+        echo "Folding method set to Indent"
+    elseif &foldmethod == 'indent'
+        set foldenable
+        set foldmethod=marker
+        echo "Folding method set to Marker"
+    elseif &foldmethod == 'marker'
+        set foldenable
+        set foldmethod=syntax
+        echo "Folding method set to Syntax"
+    elseif &foldmethod == 'syntax'
+        set foldenable
+        set foldmethod=diff
+        echo "Folding method set to Diff"
+    endif
+endfunction
+
 " }}}1
 
 " Key mappings {{{1
@@ -221,9 +250,6 @@ map <C-w> gqip
 nnoremap ; :
 nnoremap W :w<CR>
 map <C-s> :w<CR>
-
-" zz toggles fold
-nnoremap zz za
 
 " Highlight column in csv
 command! -nargs=1 Csv :call CSVH(<args>)
@@ -278,6 +304,7 @@ noremap <leader>w :call DeleteTrailingWhiteSpace()<CR>
 
 " Function keys.
 map <F1> :sp $HOME/.config/nvim/README.md<CR>
+map <silent> <F2> :call FoldingToggle()<CR>
 map <F4> :NvimTreeToggle<CR>
 " F5 reserved for kitty, open selected.
 map <F9> :Telescope find_files<CR>

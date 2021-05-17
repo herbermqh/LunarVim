@@ -65,9 +65,9 @@ If your interested my website is [![Web Site](https://img.shields.io/badge/Jims%
   everywhere.
 - I've added vertical markers at 80 and 120 characters.
   - Galaxy line displays the current column and line length, these change colour at 80 and 120 characters.
-- The current cursor line is highlighted in red, #870000
+- The current cursor line is highlighted in red, #605555
 - The current cursor column is highlighted in light blue, #483d8b.
-- Whitspace at the end of a line in highlighted in bright Red.
+- Whitespace at the end of a line in highlighted in bright Red.
 - Margin:
   - Current line number is highlighted in Yellow.
   - Relative line numbers are shown in RoyalBlue1.
@@ -212,98 +212,93 @@ I've added a few extra plugins I use to the configuration:
 
 The following are a mixture of stadard key bindings and my own, which I find
 useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt</kbd>+<kbd>Up</kbd> etc. I've marked mine and other non-default
-key-bindings with :triangular_flag_on_post: in the table below.
+key-bindings with :heavy_check_mark: in the table below.
 
-Key                   | Bespoke | Action
--------------------------------: | :-----: | -------------------------------
-<kbd>Ctrl</kbd>+<kbd>l</kbd>    | :triangular_flag_on_post: | Redraws the screen and removes any search highlighting
-<kbd>Ctrl</kbd>+<kbd>s</kbd>    | :triangular_flag_on_post: | Save the current file.
-<kbd>g</kbd><kbd>r</kbd>        | :triangular_flag_on_post: | Run line under cursor in shell, **USE WITH CARE!**
-<kbd>Alt</kbd>+<kbd>r</kbd>     | :triangular_flag_on_post: | Run the current file.
-<kbd>Alt</kbd>+<kbd>e</kbd>     | :triangular_flag_on_post: | Make the current file executable `chmod a+x file`<br/>The Eunuch plugin also makes files starting with `#!` executable.
+Key                                          | Bespoke          | Action
+-------------------------------------------: | :--------------: | -------------------------------
+<kbd>Ctrl</kbd>+<kbd>l</kbd>                 |:heavy_check_mark:| Redraws the screen and removes any search highlighting
+<kbd>Ctrl</kbd>+<kbd>s</kbd>                 |:heavy_check_mark:| Save the current file.
+<kbd>g</kbd><kbd>r</kbd>                     |:heavy_check_mark:| Run line under cursor in shell, **USE WITH CARE!**
+<kbd>Alt</kbd>+<kbd>r</kbd>                  |:heavy_check_mark:| Run the current file.
+<kbd>Alt</kbd>+<kbd>e</kbd>                  |:heavy_check_mark:| Make the current file executable `chmod a+x file`<br/>The Eunuch plugin also makes files starting with `#!` executable.
 __Macros__
-<kbd>q</kbd><kbd>q</kbd>        |&nbsp;| Record macro (as q), you can use `qa` to record to `a` but double q is a quick shortcut.
-<kbd>q</kbd>                    |&nbsp;| Quit recording current macro.
-<kbd>Q</kbd>                    | :triangular_flag_on_post: | Play macro q, shortcut for `@q`.
+<kbd>q</kbd><kbd>q</kbd>                     |:x:               | Record macro (as q), you can use `qa` to record to `a` but double q is a quick shortcut.
+<kbd>q</kbd>                                 |:x:               | Quit recording current macro.
+<kbd>Q</kbd>                                 |:heavy_check_mark:| Play macro q, shortcut for `@q`.
 __Jump__
-<kbd>g</kbd><kbd>j</kbd>        | :triangular_flag_on_post: | If line contains a url jump to this in browser.<br/> - Else if line contains a hex colour, `#AABBCC`jump to that colour on [ColorHexa.com](https://www.colorhexa.com)<br/>- Else if line contains a github project name of the format  `user/repository` then jump to this GitHub project.<br/>- Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
+<kbd>g</kbd><kbd>j</kbd>                     |:heavy_check_mark:| If line contains a url jump to this in browser.<br/> - Else if line contains a hex colour, `#AABBCC`jump to that colour on [ColorHexa.com](https://www.colorhexa.com)<br/>- Else if line contains a github project name of the format  `user/repository` then jump to this GitHub project.<br/>- Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
 __Commenting__
-<kbd>Ctrl</kbd>+<kbd>/</kbd>             | :triangular_flag_on_post: | (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.  <br/> - I find this really handy!
+<kbd>Ctrl</kbd>+<kbd>/</kbd>                 |:heavy_check_mark:| (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.  <br/> - I find this really handy!
 __Moving Line__
-<kbd>Alt</kbd>+<kbd>Up</kbd>             | :triangular_flag_on_post: | Move current line up.
-<kbd>Alt</kbd>+<kbd>Down</kbd>           | :triangular_flag_on_post: | Move current line down.
+<kbd>Alt</kbd>+<kbd>Up</kbd>                 |:heavy_check_mark:| Move current line up.
+<kbd>Alt</kbd>+<kbd>Down</kbd>               |:heavy_check_mark:| Move current line down.
 __Changing case__
-<kbd>g</kbd><kbd>\~</kbd><kbd>\~</kbd>                  |&nbsp;| Togglecase line
-<kbd>g</kbd><kbd>u</kbd><kbd>u</kbd>                  |&nbsp;| Lowercase line
-<kbd>g</kbd><kbd>U</kbd><kbd>U</kbd>                  |&nbsp;| Uppercase line
-<kbd>g</kbd><kbd>~</kbd><kbd>movement</kbd>         |&nbsp;| Togglecase, movement is <kbd>w</kbd> or <kbd>}</kbd> etc.
-<kbd>g</kbd><kbd>u</kbd><kbd>movement</kbd>         |&nbsp;| Lowercase
-<kbd>g</kbd><kbd>U</kbd><kbd>movement</kbd>         |&nbsp;| Uppercase
-&nbsp;                          | &nbsp; | Title Case regex `:s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g`
+<kbd>g</kbd><kbd>\~</kbd><kbd>\~</kbd>       |:x:               | Togglecase line
+<kbd>g</kbd><kbd>u</kbd><kbd>u</kbd>         |:x:               | Lowercase line
+<kbd>g</kbd><kbd>U</kbd><kbd>U</kbd>         |:x:               | Uppercase line
+<kbd>g</kbd><kbd>~</kbd><kbd>movement</kbd>  |:x:               | Togglecase, movement is <kbd>w</kbd> or <kbd>}</kbd> etc.
+<kbd>g</kbd><kbd>u</kbd><kbd>movement</kbd>  |:x:               | Lowercase
+<kbd>g</kbd><kbd>U</kbd><kbd>movement</kbd>  |:x:               | Uppercase
+&nbsp;                                       |:x:               | Title Case regex `:s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g`
 __Marks__
-<kbd>m</kbd><kbd>/</kbd>                   |&nbsp;| Display marks.
-<kbd>m</kbd><kbd>space</kbd>             |&nbsp;| Remove all marks.
-<kbd>m</kbd><kbd>x</kbd>                   |&nbsp;| Toggle mark <kbd>x</kbd>
-<kbd>'</kbd><kbd>x</kbd>                   |&nbsp;| Goto to mark <kbd>x</kbd>
+<kbd>m</kbd><kbd>/</kbd>                     |:x:               | Display marks.
+<kbd>m</kbd><kbd>space</kbd>                 |:x:               | Remove all marks.
+<kbd>m</kbd><kbd>x</kbd>                     |:x:               | Toggle mark <kbd>x</kbd>
+<kbd>'</kbd><kbd>x</kbd>                     |:x:               | Goto to mark <kbd>x</kbd>
 __Increment a value__
-<kbd>Ctrl</kbd>+<kbd>a</kbd>             |&nbsp;| Increment value under cursor by 1.  Also works with Dates/times....
-<kbd>Ctrl</kbd>+<kbd>x</kbd>             |&nbsp;| Decrement value under cursor by 1.<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`
+<kbd>Ctrl</kbd>+<kbd>a</kbd>                 |:x:               | Increment value under cursor by 1.  Also works with Dates/times....
+<kbd>Ctrl</kbd>+<kbd>x</kbd>                 |:x:               | Decrement value under cursor by 1.<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`
 __Other misc commands__
-<kbd>d</kbd><kbd>t</kbd><kbd>char</kbd>             |&nbsp;| Delete to `char`.
-<kbd>d</kbd><kbd>^</kbd>                   |&nbsp;| Delete to start of line.
-<kbd>D</kbd>                   |&nbsp;| Delete to end of line.
-<kbd>g</kbd><kbd>a</kbd>                   |&nbsp;| Ascii, octal val of char under cursor.
-<kbd>c</kbd><kbd>a</kbd><kbd>t</kbd>, <kbd>c</kbd><kbd>i</kbd><kbd>t</kbd>           |&nbsp;| etc for change insert tags etc.
-<kbd>c</kbd><kbd>i</kbd><kbd>'</kbd>, <kbd>c</kbd><kbd>a</kbd><kbd>(</kbd>, <kbd>c</kbd><kbd>i</kbd><kbd>{</kbd>      |&nbsp;| Change stuff in between ' (also works for ", [, (, {).
-<kbd>c</kbd><kbd>c</kbd>                   |&nbsp;| Change current line.
-<kbd>c</kbd><kbd>f</kbd><kbd>char</kbd>             |&nbsp;| Change to `char` (any char).
-<kbd>tab</kbd>, <kbd>shift</kbd>+<kbd>tab</kbd>, <kbd>b</kbd><kbd>d</kbd>    |&nbsp;| Buffer next, previous, delete (close).
-<kbd>g</kbd><kbd>d</kbd>                   |&nbsp;| Goto definition.
+<kbd>d</kbd><kbd>t</kbd><kbd>char</kbd>      |:x:               | Delete to `char`.
+<kbd>d</kbd><kbd>^</kbd>                     |:x:               | Delete to start of line.
+<kbd>D</kbd>                                 |:x:               | Delete to end of line.
+<kbd>g</kbd><kbd>a</kbd>                     |:x:               | Ascii, octal val of char under cursor.
+<kbd>c</kbd><kbd>a</kbd><kbd>t</kbd>, <kbd>c</kbd><kbd>i</kbd><kbd>t</kbd>           |:x:               | etc for change insert tags etc.
+<kbd>c</kbd><kbd>i</kbd><kbd>'</kbd>, <kbd>c</kbd><kbd>a</kbd><kbd>(</kbd>, <kbd>c</kbd><kbd>i</kbd><kbd>{</kbd>      |:x:               | Change stuff in between ' (also works for ", [, (, {).
+<kbd>c</kbd><kbd>c</kbd>                     |:x:               | Change current line.
+<kbd>c</kbd><kbd>f</kbd><kbd>char</kbd>      |:x:               | Change to `char` (any char).
+<kbd>tab</kbd>, <kbd>shift</kbd>+<kbd>tab</kbd>, <kbd>b</kbd><kbd>d</kbd>    |:x:               | Buffer next, previous, delete (close).
+<kbd>g</kbd><kbd>d</kbd>                     |:x:               | Goto definition.
 __Formatting__
-<kbd>g</kbd><kbd>g</kbd><kbd>=</kbd><kbd>G</kbd>                 |&nbsp;| auto (re)indent entire document.
-<kbd>=</kbd>                    |&nbsp;| (re)indent the text on the current line or on the area selected (SUPER).
-<kbd>=</kbd><kbd>%</kbd>                   |&nbsp;| (re)indent the current braces { ... }.
-`:%!par`        |&nbsp;| Format range, in this case whole doument.
-`:%!par j1w80`         |&nbsp;| Format range to j1w80.
-<kbd>Ctrl</kbd>+<kbd>w</kbd>             | :triangular_flag_on_post: | Wrap, quick format current paragraph.
-&nbsp;                          | &nbsp; | `:[range]ce[nter] [width] center lines :.,+3 center 80`
-&nbsp;                          | &nbsp; | `:[range] ri[ght] [right edge] right alignment :% right`
-&nbsp;                          | &nbsp; | `:[range] le[ft] [indent] left alignment.(Unit of identation is space) :% left 4`
+<kbd>g</kbd><kbd>g</kbd><kbd>=</kbd><kbd>G</kbd> |:x:           | auto (re)indent entire document.
+<kbd>=</kbd>                                 |:x:               | (re)indent the text on the current line or on the area selected (SUPER).
+<kbd>=</kbd><kbd>%</kbd>                     |:x:               | (re)indent the current braces { ... }.
+`:%!par`                                     |:x:               | Format range, in this case whole doument.
+`:%!par j1w80`                               |:x:               | Format range to j1w80.
+<kbd>Ctrl</kbd>+<kbd>w</kbd>                 |:heavy_check_mark:| Wrap, quick format current paragraph.
+&nbsp;                                       |:x:               | `:[range]ce[nter] [width] center lines :.,+3 center 80`
+&nbsp;                                       |:x:               | `:[range] ri[ght] [right edge] right alignment :% right`
+&nbsp;                                       |:x:               | `:[range] le[ft] [indent] left alignment.(Unit of identation is space) :% left 4`
 __Block editing__
-<kbd>Ctrl</kbd>+<kbd>q</kbd>    |&nbsp;| Start column mode<br/>Select the columns and rows where you want to enter your text, shift and move with keyboard ('''Do not use the mouse to select the block!''')
-<kbd>I</kbd>                    |&nbsp;| To go into insert mode in column mode.<br/>Type in the text you want to enter. Don't be discouraged by the fact that only the first row is changed.
-<kbd>Esc</kbd>                  |&nbsp;| To apply your change (or alternately <kbd>Ctrl</kbd>+<kbd>c</kbd>)
+<kbd>Ctrl</kbd>+<kbd>q</kbd>                 |:x:               | Start column mode<br/>Select the columns and rows where you want to enter your text, shift and move with keyboard ('''Do not use the mouse to select the block!''')
+<kbd>I</kbd>                                 |:x:               | To go into insert mode in column mode.<br/>Type in the text you want to enter. Don't be discouraged by the fact that only the first row is changed.
+<kbd>Esc</kbd>                               |:x:               | To apply your change (or alternately <kbd>Ctrl</kbd>+<kbd>c</kbd>)
 __Surround__
-<kbd>c</kbd><kbd>s</kbd><kbd>"</kbd><kbd>'</kbd>  | :triangular_flag_on_post: | "aWord" to 'aWord'
-<kbd>c</kbd><kbd>s</kbd><kbd>'</kbd><kbd>"</kbd>  | :triangular_flag_on_post: | 'aWord' to "aWord"
-<kbd>c</kbd><kbd>s</kbd><kbd>'</kbd><kbd>&lt;</kbd><kbd>q</kbd><kbd>&gt;</kbd>  | :triangular_flag_on_post: | 'aWord' to &lt;q&gt;aWord&lt;/q&gt;
-<kbd>d</kbd><kbd>s</kbd><kbd>'</kbd>  | :triangular_flag_on_post: | 'aWord' to aWord
-<kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>w</kbd><kbd>]</kbd> | :triangular_flag_on_post: | aWord to [aWord]
-<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>)</kbd> | :triangular_flag_on_post: | Whole-Line to (Whole-Line)
-<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>"</kbd> | :triangular_flag_on_post: | Whole-Line to "Whole-Line"
+<kbd>c</kbd><kbd>s</kbd><kbd>"</kbd><kbd>'</kbd> |:heavy_check_mark:| "aWord" to 'aWord'
+<kbd>c</kbd><kbd>s</kbd><kbd>'</kbd><kbd>"</kbd> |:heavy_check_mark:| 'aWord' to "aWord"
+<kbd>c</kbd><kbd>s</kbd><kbd>'</kbd><kbd>&lt;</kbd><kbd>q</kbd><kbd>&gt;</kbd>  | :heavy_check_mark: | 'aWord' to &lt;q&gt;aWord&lt;/q&gt;
+<kbd>d</kbd><kbd>s</kbd><kbd>'</kbd>             |:heavy_check_mark:| 'aWord' to aWord
+<kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>w</kbd><kbd>]</kbd> |:heavy_check_mark:| aWord to [aWord]
+<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>)</kbd> |:heavy_check_mark:| Whole-Line to (Whole-Line)
+<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>"</kbd> |:heavy_check_mark:| Whole-Line to "Whole-Line"
 __Eunuch__
 SudoWrite |&nbsp;" | Write even if you don't have permission.
 __Repeat__
 Not tested yet | &nbsp; | Todo
 __Function Keys__
-<kbd>F1</kbd>                   | :triangular_flag_on_post: | Help, open this page
-<kbd>F2</kbd>                   | :triangular_flag_on_post: | Toggle highlighting whitespace at end of line
-<kbd>F3</kbd>                   | :triangular_flag_on_post: | Toggle whitespace highlight
-<kbd>F4</kbd>                   | :triangular_flag_on_post: | Open left file menu
-<kbd>F5</kbd>                   | :triangular_flag_on_post: | Special binding for kitty, not used in vim
-<kbd>F6</kbd>                   | :triangular_flag_on_post: | Toggle line wrap
-<kbd>F7</kbd>                   | :triangular_flag_on_post: | Toggle spell check highlighting
-<kbd>F8</kbd>                   | &nbsp; | Not defined
-<kbd>F9</kbd>                   | :triangular_flag_on_post: | Open Telescope
-<kbd>F10</kbd>                  | :triangular_flag_on_post: | New terminal in Kitty in new tab
-<kbd>F11</kbd>                  | :triangular_flag_on_post: | Toggle right tagbar
-<kbd>F12</kbd>                  | :triangular_flag_on_post: | Toggle ranger
+<kbd>F1</kbd>                                |:heavy_check_mark:| Help, open this page
+<kbd>F2</kbd>                                |:heavy_check_mark:| Cycle through different folding methods.
+<kbd>F4</kbd>                                |:heavy_check_mark:| Open left file menu
+<kbd>F9</kbd>                                |:heavy_check_mark:| Open Telescope
+<kbd>F10</kbd>                               |:heavy_check_mark:| Kitty command - New terminal in new tab
+<kbd>F11</kbd>                               |:heavy_check_mark:| Toggle right tagbar
+<kbd>F12</kbd>                               |:heavy_check_mark:| Toggle ranger
 __Misc commands__
-`:set number!`                  |&nbsp;| Toggle line numbers.
-`:set relativenumber!`          |&nbsp;| Toggle relative line numbers.
-`:set ft={markdown\|java\|...}` |&nbsp;| Set file type.
-`:set ff={unix\|html\|dos}`     |&nbsp;| Set file format.
-`:set syntax?`                  |&nbsp;| Syntax type.
+`:set number!`                               |:x:               | Toggle line numbers.
+`:set relativenumber!`                       |:x:               | Toggle relative line numbers.
+`:set ft={markdown\|java\|...}`              |:x:               | Set file type.
+`:set ff={unix\|html\|dos}`                  |:x:               | Set file format.
+`:set syntax?`                               |:x:               | Syntax type.
 <!-- }}}1 -->
 
 # Some Useful Links
