@@ -282,12 +282,13 @@ __Surround__
 <kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>)</kbd> |:heavy_check_mark:| Whole-Line to (Whole-Line)
 <kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>"</kbd> |:heavy_check_mark:| Whole-Line to "Whole-Line"
 __Eunuch__
-SudoWrite |&nbsp;" | Write even if you don't have permission.
+SudoWrite                                    |:x:               | Write even if you don't have permission.
 __Repeat__
-Not tested yet | &nbsp; | Todo
+Not tested yet                               |:x:               | Todo
 __Function Keys__
 <kbd>F1</kbd>                                |:heavy_check_mark:| Help, open this page
 <kbd>F2</kbd>                                |:heavy_check_mark:| Cycle through different folding methods.
+<kbd>F3</kbd>                                |:heavy_check_mark:| Toggle most visual items.
 <kbd>F4</kbd>                                |:heavy_check_mark:| Open left file menu
 <kbd>F9</kbd>                                |:heavy_check_mark:| Open Telescope
 <kbd>F10</kbd>                               |:heavy_check_mark:| Kitty command - New terminal in new tab

@@ -164,15 +164,28 @@ function! ToggleGutter()
     endif
 endfunction
 
+function ToggleAll()
+    call ToggleColourCursorColumn()
+    call ToggleColourColumn()
+    call ToggleColourLongLine()
+    call ToggleColourWhiteSpace()
+    call ToggleColourGitBlame()
+    call ToggleColourIncSearch()
+    set list!
+    set foldenable!
+    highlight markerStart NONE
+    highlight markerEnd NONE
+endfunction
+
 " Delete whitespace at end of lines, and put cursor back to where it started.
 function! DeleteTrailingWhiteSpace()
     let current_position=getpos(".")
     let reg=@/
     %s/\s*$//
     let @/=reg
-  unlet reg
-  call setpos('.', current_position)
-  unlet current_position
+    unlet reg
+    call setpos('.', current_position)
+    unlet current_position
 endfunction
 
 " Highlight a column in csv text.
@@ -198,7 +211,11 @@ function FoldingToggle()
         if &foldenable == 1
             set foldenable!
             echo "Folding switched off"
+            highlight markerStart              NONE
+            highlight markerEnd                NONE
         else
+            highlight markerStart              guifg=#777777     guibg=#000000
+            highlight markerEnd                guifg=#777777     guibg=#000000
             set foldenable
             set foldmethod=manual
             echo "Folding method set to Manual"
@@ -288,23 +305,25 @@ noremap <silent> <leader>ji :silent exec "!jump Live %:p:h"<CR>
 noremap <silent> <leader>je :silent exec "!jump TestReports %:p:h"<CR>
 
 " Toggle various visual items. : TODO: Add description to which key.
-noremap <leader>t1 :call ToggleColourCursorLine()<CR>
-noremap <leader>t2 :call ToggleColourCursorColumn()<CR>
-noremap <leader>t3 :call ToggleColourColumn()<CR>
-noremap <leader>t4 :call ToggleColourLongLine()<CR>
-noremap <leader>t5 :call ToggleColourWhiteSpace()<CR>
-noremap <leader>t6 :ColorizerToggle<CR>
-noremap <leader>t7 :set list!<CR>
-noremap <leader>t8 :call ToggleColourGitBlame()<CR>
-noremap <leader>t9 :set wrap!<CR>
-noremap <leader>t0 :call ToggleColourSyntax()<CR>
-noremap <leader>ti :call ToggleColourIncSearch()<CR>
-noremap <leader>tu :call ToggleGutter()<CR>
-noremap <leader>w :call DeleteTrailingWhiteSpace()<CR>
+noremap <silent> <leader>t1 :call ToggleColourCursorLine()<CR>
+noremap <silent> <leader>t2 :call ToggleColourCursorColumn()<CR>
+noremap <silent> <leader>t3 :call ToggleColourColumn()<CR>
+noremap <silent> <leader>t4 :call ToggleColourLongLine()<CR>
+noremap <silent> <leader>t5 :call ToggleColourWhiteSpace()<CR>
+noremap <silent> <leader>t6 :ColorizerToggle<CR>
+noremap <silent> <leader>t7 :set list!<CR>
+noremap <silent> <leader>t8 :call ToggleColourGitBlame()<CR>
+noremap <silent> <leader>t9 :set wrap!<CR>
+noremap <silent> <leader>t0 :call ToggleColourSyntax()<CR>
+noremap <silent> <leader>ti :call ToggleColourIncSearch()<CR>
+noremap <silent> <leader>tu :call ToggleGutter()<CR>
+noremap <silent> <leader>ta :call ToggleAll()<CR>
+noremap <silent> <leader>w :call DeleteTrailingWhiteSpace()<CR>
 
 " Function keys.
 map <F1> :sp $HOME/.config/nvim/README.md<CR>
 map <silent> <F2> :call FoldingToggle()<CR>
+map <silent> <F3> :call ToggleAll()<CR>
 map <F4> :NvimTreeToggle<CR>
 " F5 reserved for kitty, open selected.
 map <F9> :Telescope find_files<CR>
@@ -332,9 +351,6 @@ let bufferline.icon_close_tab_modified=''
 if &diff
     set diffopt+=algorithm:patience
     set diffopt+=indent-heuristic
-    set diffopt+=iblank    " Ignore blank lines
-    set diffopt+=iwhiteall " Ignore all whitespace
-    set diffopt+=iwhiteeol " Ignore whitespace at end of line
     let g:diff_translations=0 " Speed up syntax
     set syntax=diff
     set wrap               " Lines wrap to following lines"
@@ -415,7 +431,7 @@ highlight CursorLineNr                         guifg=Yellow      guibg=Gray19
 highlight DiffAdd                              guifg=#999999     guibg=#115511
 highlight DiffChange                                             guibg=#222266
 highlight DiffDelete                           guifg=#552222     guibg=#552222
-highlight DiffText                             guifg=Red         guibg=#222266
+highlight DiffText                             guifg=#CC2222     guibg=#222266
 
 " Git changes and margins
 highlight GitSignsAdd                          guifg=#608b4e     guibg=#608b4e
@@ -483,11 +499,17 @@ call matchadd('gitMergeConflictEnd', '^>>>>>>>.*$', 1)
 highlight extraWhitespace                                        guibg=Red
 call matchadd('extraWhitespace', '/^\s*\t\s*\|\s\+\%#\@<!$', 1)
 
-highlight IncSearch       NONE                 guifg=#f8f893     guibg=#385f38
+highlight IncSearch           NONE             guifg=#f8f893     guibg=#385f38
+
+highlight HighlightUrl        gui=underline    guifg=#54b5fa
+
+" highlight Tag                 gui=bold         guifg=White
+highlight Todo                gui=bold         guifg=LightGreen
 
 " Highlight folds
 highlight Folded                               guifg=#777777     guibg=#000000
 set foldcolumn=1
+
 " Highlight markers.
 highlight markerStart                          guifg=#777777     guibg=#000000
 highlight markerEnd                            guifg=#777777     guibg=#000000
@@ -548,9 +570,6 @@ iab fb foobar
 iab Attr Attributes
 iab Appl Application
 iab adn and
-
-" For command abbreviations
-cab s sort
 " }}}
 
 " Auto Commands, e.g source init.vim {{{1
@@ -570,6 +589,9 @@ autocmd BufWrite *.py :call DeleteTrailingWhiteSpace()
 autocmd BufWrite *.java :call DeleteTrailingWhiteSpace()
 autocmd BufWrite * if &ft=="sh" | :call DeleteTrailingWhiteSpace() | endif
 autocmd BufWrite * if &ft=="vim" | :call DeleteTrailingWhiteSpace() | endif
+
+" I prefer -- for comments in SQL
+autocmd FileType sql set commentstring=--\ %s
 
 " }}}
 
