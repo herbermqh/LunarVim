@@ -403,13 +403,22 @@ set guifont=SauceCodePro\ Nerd\ Font\ Mono:h15
 
 " Visual and Colours {{{1
 
-" My colour scheme
-colorscheme zenburnmod
 set termguicolors
+
+" Use zenburn colour scheme, but make some minor tweaks.
+let g:zenburn_italic_Comment=1
+colorscheme zenburn
+" Tweaks to zenburn...
+hi Boolean         guifg=#bfbfbf                              ctermfg=181
+hi Character       guifg=#a3aca3 gui=bold                     ctermfg=181 cterm=bold
+hi Constant        guifg=#a3dcdc gui=NONE                     ctermfg=181 cterm=bold
+hi SpecialChar     guifg=#a3a3dc gui=bold                     ctermfg=181 cterm=bold
+hi String          guifg=#539983                              ctermfg=174
+hi Tag             guifg=#93e893 gui=bold                     ctermfg=181 cterm=bold
 
 " Show whitespace characters
 set listchars=eol:¶,tab:»-,trail:·,extends:>,precedes:<,space:·
-
+"
 "Highligh cursor line/column
 set colorcolumn=80,120
 highlight ColorColumn                          guifg=#ffffff     guibg=#3A3A3A
@@ -422,6 +431,13 @@ highlight Visual                                                 guibg=Grey35
 
 " Search hit colour
 highlight Search                               guifg=Wheat       guibg=Peru
+
+" Popup and Float menu
+highlight Pmenu                                guifg=Black       guibg=Gray75
+highlight PmenuSbar                                              guibg=Gray50
+highlight PmenuThumb                                             guibg=Black
+highlight PmenuSel                    gui=bold guifg=Wheat       guibg=Black
+highlight NormalFloat                 gui=NONE guifg=Gold        guibg=Black
 
 " Line number colour
 highlight LineNr                               guifg=RoyalBlue1  guibg=Gray19
@@ -482,22 +498,29 @@ highlight LspDiagnosticsVirtualTextHint        guifg=#4FC1FF
 
 " Highlight text over 120 chars
 highlight longLine                                               guibg=#5F3F3F
-call matchadd('longLine', '.\%>121v', 1)
+call matchadd('longLine', '.\%>121v')
 
 " Highlight git merge conflict markers.
 highlight gitMergeConflictStart                guifg=DarkGreen   guibg=Red
-call matchadd('gitMergeConflictStart', '^<<<<<<< HEAD.*$', 1)
+call matchadd('gitMergeConflictStart', '^<<<<<<< HEAD.*$', 30)
 
 highlight gitMergeConflictMid                  guifg=DarkBlue    guibg=Red
-call matchadd('gitMergeConflictMid', '^=======.*$', 1)
+call matchadd('gitMergeConflictMid', '^=======.*$', 30)
 
 highlight gitMergeConflictEnd                  guifg=Orange      guibg=Red
-call matchadd('gitMergeConflictEnd', '^>>>>>>>.*$', 1)
+call matchadd('gitMergeConflictEnd', '^>>>>>>>.*$', 30)
 
 " Highlight spaces at end of line:
 " https://vim.fandom.com/wiki/Highlight_unwanted_spaces
 highlight extraWhitespace                                        guibg=Red
-call matchadd('extraWhitespace', '/^\s*\t\s*\|\s\+\%#\@<!$', 1)
+call matchadd('extraWhitespace', '/^\s*\t\s*\|\s\+\%#\@<!$', 100)
+
+" Highlight #! lines... Both good and bad.
+highlight sheBangGood gui=bold,italic,underline guifg=#7fdf7f    guibg=NONE
+call matchadd('sheBangGood', '^#!/usr/bin/env \(bash\|sh\|python3\|zsh\)$', 20)
+
+highlight sheBangBad                  gui=bold guifg=Red         guibg=NONE
+call matchadd('sheBangBad', '^#!.*')
 
 highlight IncSearch           NONE             guifg=#f8f893     guibg=#385f38
 
@@ -513,8 +536,8 @@ set foldcolumn=1
 " Highlight markers.
 highlight markerStart                          guifg=#777777     guibg=#000000
 highlight markerEnd                            guifg=#777777     guibg=#000000
-call matchadd('markerStart', '^.*{\{3\}.*$', 1)
-call matchadd('markerEnd', '^.*}\{3\}.*$', 1)
+call matchadd('markerStart', '^.*{\{3\}.*$', 50)
+call matchadd('markerEnd', '^.*}\{3\}.*$', 50)
 " }}}1
 
 " Syntax files {{{1
