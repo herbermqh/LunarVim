@@ -20,6 +20,7 @@ __Insert Mode__
 __Operators__
 |<kbd>d</kbd>|                                                                 Delete/cut|
 |<kbd>d</kbd><kbd>d</kbd>|                                                     Delete current line|
+|<kbd>d</kbd><kbd>^</kbd>|                                                     Delete to start of line.|
 |<kbd>D</kbd>|                                                                 Delete to end of line|
 |<kbd>x</kbd>, <kbd>X</kbd>|                                                   Delete forward, back|
 |<kbd>y</kbd>|                                                                 Yank/copy|
@@ -45,8 +46,14 @@ __Text Objects__
 |<kbd>d</kbd><kbd>t</kbd><kbd>X</kbd>|                                         Delete forward to char X|
 |<kbd>y</kbd><kbd>i</kbd><kbd>"</kbd>|                                         Yank in quotes|
 |<kbd>c</kbd><kbd>i</kbd><kbd>{</kbd>|                                         Change in brackets|
+|<kbd>c</kbd><kbd>i</kbd>[)"}]|                                                Delete inside ()/"/{} and insert|
 |<kbd>c</kbd><kbd>i</kbd><kbd>t</kbd>|       i                                 Change in tags (HTML)|
 |<kbd>v</kbd><kbd>i</kbd><kbd>b</kbd>|                                         Visual in block|
+|<kbd>c</kbd><kbd>a</kbd><kbd>t</kbd>, <kbd>c</kbd><kbd>i</kbd><kbd>t</kbd>|   etc for change insert tags etc.|
+|<kbd>c</kbd><kbd>i</kbd><kbd>'</kbd>, <kbd>c</kbd><kbd>a</kbd><kbd>(</kbd>, <kbd>c</kbd><kbd>i</kbd><kbd>{</kbd>|Change stuff in between ' (also works for ", [, (, {)|
+|<kbd>c</kbd><kbd>c</kbd>|                                                     Change current line.|
+|<kbd>c</kbd><kbd>f</kbd><kbd>char</kbd>|                                      Change to `char` (any char).|
+|<kbd>g</kbd><kbd>d</kbd>|                                                     Goto definition.|
 |`:h text-objects`||
 __Motions__
 |<kbd>h</kbd>, <kbd>j</kbd>, <kbd>k</kbd>, <kbd>l</kbd>|                       Char left, down, up, right|
@@ -114,36 +121,40 @@ __Command Mode__
 |`:%s/foo\(\d\+\)/bar\1/gic`|                                                  Replace all, ignore case, confirm each. Note backreference and escaped parens.|
 |`:s/foo/bar/gI`|                                                              Replace all on current line, mind case|
 |`:s/\%Vfoo/bar/g`|                                                            Match only within visual selection with \%V|
-|&amp;`|                                                                       Repeat last :s|
+|`:%&`|                                                                        Repeat last :s|
 __File Commands__
 |`:e file`|                                                                    Open <i>file</i>|
 |`:enew`|                                                                      New file|
 |`:e .`|                                                                       Explore dir|
 |`:e sftp://me@example.com/myfile`|                                            Open sftp|
 |`:e!`|                                                                        Revert to saved|
-|`:w <i>file</i>`|                                                             Save <i>file</i>|
+|<kbd>Ctrl-s</kbd>|                                                            :heavy_check_mark: Save the current file.|
+|`:w file`|                                                                    Save <i>file</i>|
 |`:wq`|                                                                        Save, close|
 |`:q!`|                                                                        Close, don't save|
 |`:qa`|                                                                        Close all|
 |`:qa!`|                                                                       Close all, don't save|
-|`:SudoWrite`|                                                                 Eunuch : Write even if you don't have permission.|
+|`:SudoWrite`|                                                                 Eunuch plugin : Write even if you don't have permission.|
 __Options__
-|`:set number`|                                                                Show line numbers|
-|`:set rnu`|                                                                   Show relative line numbers|
+|`:set number!`|                                                               Toggle line numbers.|
+|`:set rnu!`|                                                                  Toggle relative line numbers.|
+|`:set ft={markdown\|java\|...}`|                                              Set file type.|
+|`:set ff={unix\|html\|dos}`|                                                  Set file format.|
+|`:set syntax?`|                                                               Syntax type.|
+|`:set syntax=perl`|                                                           Set syntax|
 |`:set paste`|                                                                 Autoindent off|
 |`:set hlsearch`|                                                              Highlight matches|
-|`:set syntax=perl`|                                                           Set syntax|
-|`:set no<i>opt</i>`|                                                          Turn off <i>opt</i>|
-|`:set <i>opt</i>?`|                                                           Show value of <i>opt</i>|
+|`:set noOPT`|                                                                 Turn off <i>opt</i>|
+|`:set OPT?`|                                                                  Show value of <i>opt</i>|
 |`:set`|                                                                       Show current options|
 |`:help options`||
 __Ranges__
 |`:help ranges`||
-|`:5,10d`|                                                                     delete lines 5–10|
-|`:*d`|                                                                        delete last VISUAL selection|
-|`:.,.+10`|                                                                    delete current and next 10 lines|
-|`:/foo/+1d`|                                                                  delete line after next line containing <i>foo</i>|
-|`:.,'td`|                                                                     delete current line to mark <i>t</i>|
+|`:5,10d`|                                                                     Delete lines 5–10|
+|`:*d`|                                                                        Delete last VISUAL selection|
+|`:.,+10d`|                                                                    Delete current and next 10 lines|
+|`:/foo/+1d`|                                                                  Delete line after next line containing <i>foo</i>|
+|`:.,'td`|                                                                     Delete current line to mark <i>t</i>|
 __Visual Mode And Selection__
 |<kbd>v</kbd>|                                                                 Enter visual mode|
 |<kbd>V</kbd>|                                                                 Enter line-wise visual mode|
@@ -177,39 +188,40 @@ __Folding__
 __Help__
 |`:h <i>topic</i>`|                                                            Help on <i>topic</i>|
 |`:h quickref`|                                                                Quick reference|
-|<kbd>Ctrl-</kbd>]|                                                            Follow help link|
+|<kbd>Ctrl-]</kbd>|                                                            Follow help link|
 |<kbd>Ctrl-t</kbd>|                                                            Back to previous|
 __Formatting__
 |`:help formatoptions`||
-|`:set textwidth=80`|                                                          My default|
+|`:set textwidth=80`|                                                          Set default width to 80 columns|
 |`:set formatprg=par\ -w79`|                                                   Format using paragraph to at most 79 chars|
 |<kbd>g</kbd><kbd>q</kbd>{motion}|                                             like gqip to format around paragraph|
 |<kbd>Ctrl-w</kbd>|                                                            does a gqip|
 __Commenting__
-|<kbd>Ctrl</kbd>+<kbd>/</kbd>|                                                 :heavy_check_mark: (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.  <br/> - I find this really handy!|
+|<kbd>Ctrl-/</kbd>|                                                            :heavy_check_mark: (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.  <br/> - I find this really handy!|
 __Moving a Line__
-|<kbd>Alt</kbd>+<kbd>Up</kbd>|                                                 :heavy_check_mark: Move current line up.|
-|<kbd>Alt</kbd>+<kbd>Down</kbd>|                                               :heavy_check_mark: Move current line down.|
+|<kbd>Alt-Up</kbd>|                                                            :heavy_check_mark: Move current line up.|
+|<kbd>Alt-Down</kbd>|                                                          :heavy_check_mark: Move current line down.|
 __Changing case__
-<kbd>|~|</kbd>                                                                 Change case|
+|<kbd>~</kbd>|                                                                 Toggle case|
 |<kbd>g</kbd><kbd>U</kbd><kbd>U</kbd>, <kbd>g</kbd><kbd>u</kbd><kbd>u</kbd>, <kbd>g</kbd><kbd>~</kbd><kbd>~</kbd>|Upper, lower, flip case whole line|
 |<kbd>g</kbd><kbd>~</kbd><kbd>{movement}</kbd>|                                Togglecase, movement is <kbd>w</kbd> or <kbd>}</kbd> etc.|
 |<kbd>g</kbd><kbd>u</kbd><kbd>{movement}</kbd>|                                Lowercase|
 |<kbd>g</kbd><kbd>U</kbd><kbd>{movement}</kbd>|                                Uppercase|
 |`:s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g`|                                           Title Case regex|
 __Increment/Dec a value__
-|<kbd>Ctrl</kbd>+<kbd>a</kbd>|                                                 Increment value under cursor by 1.  Also works with Dates/times....|
-|<kbd>Ctrl</kbd>+<kbd>x</kbd>|                                                 Decrement value under cursor by 1.<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`|
+|<kbd>Ctrl-a</kbd>|                                                            Increment value under cursor by 1.  Also works with Dates/times....|
+|<kbd>Ctrl-x</kbd>|                                                            Decrement value under cursor by 1.<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`|
 __Formatting__
-|<kbd>g</kbd><kbd>g</kbd><kbd>=</kbd><kbd>G</kbd>|                             auto (re)indent entire document.|
+|<kbd>g</kbd><kbd>g</kbd><kbd>=</kbd><kbd>G</kbd>|                             Auto (re)indent entire document.|
 |<kbd>=</kbd>|                                                                 (re)indent the text on the current line or on the area selected (SUPER).|
 |<kbd>=</kbd><kbd>%</kbd>|                                                     (re)indent the current braces { ... }.|
-|`:%!par`|                                                                     Format range, in this case whole doument.|
+|`:%!par`|                                                                     Format range, in this case whole document.|
 |`:%!par j1w80`|                                                               Format range to j1w80.|
-|<kbd>Ctrl</kbd>+<kbd>w</kbd>|                                                 :heavy_check_mark: Wrap, quick format current paragraph.|
-|`:[range]ce[nter] [width]`|                                                   center lines `:.,+3 center 80`|
-|`:[range] ri[ght] [right edge]`|                                              right alignment `:% right`|
-|`:[range] le[ft] [indent]`|                                                   left alignment.(Unit of identation is space) `:% left 4`|
+|<kbd>Ctrl-w</kbd>|                                                            :heavy_check_mark: Wrap, quick format current paragraph.|
+|`:ce 80`|                                                                     Center line <i>columns</i>|
+|`:[range]ce [width]`|                                                         Center lines `:.,+3 center 80`|
+|`:[range]ri [right edge]`|                                                    Right alignment `:% right`|
+|`:[range]le [indent]`|                                                        Left alignment.(Unit of identation is space) `:% left 4`|
 __Function Keys__
 |<kbd>F1</kbd>|                                                                :heavy_check_mark: Help, open this page|
 |<kbd>F2</kbd>|                                                                :heavy_check_mark: Cycle through different folding methods.|
@@ -219,47 +231,30 @@ __Function Keys__
 |<kbd>F10</kbd>|                                                               :heavy_check_mark: Kitty command - New terminal in new tab|
 |<kbd>F11</kbd>|                                                               :heavy_check_mark: Toggle right tagbar|
 |<kbd>F12</kbd>|                                                               :heavy_check_mark: Toggle ranger|
+__Executing lines/commands__
+|<kbd>g</kbd><kbd>r</kbd>|                                                     :heavy_check_mark: Run line under cursor in shell, **USE WITH CARE!**|
+|<kbd>g</kbd><kbd>t</kbd>|                                                     :heavy_check_mark: Run line under cursor as if it were a vim command|
+|<kbd>Alt-r</kbd>|                                                             :heavy_check_mark: Run the current file.|
+|<kbd>Alt-e</kbd>|                                                             :heavy_check_mark: Make the current file executable `chmod a+x file`<br/>The Eunuch plugin also makes files starting with `#!` executable.|
+|`:[range]w !{cmd}`|                                                           Execute cmd with range as stdin, like <code>:w !sbcl</code> or <code>:'&lt;,'&gt;w !python</code>|
+|`:[range]g/pattern/[command]`|                                                Run the Ex command on all lines in [range] matching <i>pattern</i>|
+|`:g/^Foo/norm 0xxxBar`|                                                       Norm runs commands as if you typed them|
 __Miscellaneous__
-|`:set number!`|                                                               Toggle line numbers.|
-|`:set relativenumber!`|                                                       Toggle relative line numbers.|
-|`:set ft={markdown\|java\|...}`|                                              Set file type.|
-|`:set ff={unix\|html\|dos}`|                                                  Set file format.|
-|`:set syntax?`|                                                               Syntax type.|
-|<kbd>z</kbd><kbd>=|</kbd>                                                     suggest spelling|
+|<kbd>z</kbd><kbd>=</kbd>|                                                     Suggest spelling|
 |<kbd>z</kbd><kbd>g</kbd>, <kbd>z</kbd><kbd>u</kbd><kbd>g</kbd>|               Add to dict, undo add|
 |<kbd>Ctrl-a</kbd>|                                                            Increment number under cursor|
 |<kbd>Ctrl-x</kbd>|                                                            Decrement number under cursor|
-|<kbd>c</kbd><kbd>i</kbd><span class="font2">[</span><i>)"}</i><span class="font2">]</span>|         Delete inside ()/"/{} and insert|
-|`:[range]w !{cmd}`|                                                           Execute cmd with range as stdin, like <code>:w !sbcl</code> or <code>:'&lt;,'&gt;w !python</code>|
 |<kbd>g</kbd> <kbd>Ctrl-g</kbd>|                                               Word count|
-|<kbd>g</kbd<kbd>>?|</kbd>                                                     Rot 13|
-|`:ce <i>80</i>`|                                                              Center line <i>columns</i>|
+|<kbd>g</kbd><kbd>?</kbd>|                                                     Rot 13|
 |`:r !date`|                                                                   Insert external command output (e.g. date)|
-|`:%! <i>filter</i>`|                                                          Filter whole file|
-|`:\|<i>filter</i>`|                                                           Same as above|
-|`:'&lt;,'&gt;! <i>filter</i>`|                                                Filter visual selection|
-|`:'&lt;,'&gt;! sort`|                                                         Example of above|
-|`:ab <i>lw LongWord</i>`|                                                     Abbreviate <i>LongWord</i>|
-|`:una lw`|                                                                    Unset abbreviation|
-|`:%s/pattern//gn`|                                                            Count matches|
+|`:%! filter`|                                                                 Filter whole file|
+|`:\|filter`|                                                                  Same as above|
+|`:[range]! filter`|                                                           Filter visual selection|
+|`:[range]! sort`|                                                             Example of above|
+|`:[range]s/pattern//gn`|                                                      Count matches|
 |`:so ~/.vimrc`|                                                               Reload .vimrc|
-|`:[range]g[lobal]/<i>pattern</i>/[command]`|                                  Run the Ex command on all lines in [range] matching <i>pattern</i>|
-|`:[9,20]g/^/d A`|                                                             Delete lines 9–20.
+|`:v/pattern/[command]`|                                                       Like :g but finds NON-matching lines|
 |`:g/foobar/y A`|                                                              Yank all lines matching <i>foobar</i> into copy buffer|
-|`:g/^Foo/norm <i>0xxxBar</i>`|                                                norm runs commands as if you typed them|
-|`:v/<i>pattern</i>/[command]`|                                                Like :g but finds NON-matching lines|
-|<kbd>Ctrl</kbd>+<kbd>l</kbd>|                                                 :heavy_check_mark: Redraws the screen and removes any search highlighting|
-|<kbd>Ctrl</kbd>+<kbd>s</kbd>|                                                 :heavy_check_mark: Save the current file.|
-|<kbd>g</kbd><kbd>r</kbd>|                                                     :heavy_check_mark: Run line under cursor in shell, **USE WITH CARE!**|
-|<kbd>Alt</kbd>+<kbd>r</kbd>|                                                  :heavy_check_mark: Run the current file.|
-|<kbd>Alt</kbd>+<kbd>e</kbd>|                                                  :heavy_check_mark: Make the current file executable `chmod a+x file`<br/>The Eunuch plugin also makes files starting with `#!` executable.|
-|<kbd>d</kbd><kbd>t</kbd><kbd>char</kbd>|                                      Delete to `char`.|
-|<kbd>d</kbd><kbd>^</kbd>|                                                     Delete to start of line.|
-|<kbd>D</kbd>|                                                                 Delete to end of line.|
+|<kbd>Ctrl-l</kbd>|                                                            :heavy_check_mark: Redraws the screen and removes any search highlighting|
 |`:ascii` or <kbd>g</kbd><kbd>a</kbd>|                                         Ascii, octal val of char under cursor.|
-|<kbd>c</kbd><kbd>a</kbd><kbd>t</kbd>, <kbd>c</kbd><kbd>i</kbd><kbd>t</kbd>|   etc for change insert tags etc.|
-|<kbd>c</kbd><kbd>i</kbd><kbd>'</kbd>, <kbd>c</kbd><kbd>a</kbd><kbd>(</kbd>, <kbd>c</kbd><kbd>i</kbd><kbd>{</kbd>|Change stuff in between ' (also works for ", [, (, {)|
-|<kbd>c</kbd><kbd>c</kbd>|                                                     Change current line.|
-|<kbd>c</kbd><kbd>f</kbd><kbd>char</kbd>|                                      Change to `char` (any char).|
-|<kbd>g</kbd><kbd>d</kbd>|                                                     Goto definition.|
 
