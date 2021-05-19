@@ -35,7 +35,7 @@ __Operators__
 |<kbd>U</kbd>|                                                                 Undo all changes to line|
 |<kbd>R</kbd>|                                                                 Type over|
 |<kbd>&gt;</kbd><kbd>&gt;</kbd>, <kbd>&lt;</kbd><kbd>&lt;</kbd>|               Indent, deindent|
-|<kbd>==</kbd>|                                                                Autoindent|
+|<kbd>=</kbd><kbd>=</kbd>|                                                     Autoindent|
 |<kbd>Z</kbd><kbd>Z</kbd>|                                                     Save and close|
 |<kbd>Z</kbd><kbd>Q</kbd>|                                                     Close without saving|
 __Text Objects__
@@ -45,7 +45,7 @@ __Text Objects__
 |<kbd>d</kbd><kbd>t</kbd><kbd>X</kbd>|                                         Delete forward to char X|
 |<kbd>y</kbd><kbd>i</kbd><kbd>"</kbd>|                                         Yank in quotes|
 |<kbd>c</kbd><kbd>i</kbd><kbd>{</kbd>|                                         Change in brackets|
-|<kbd>c</kbd><kbd></kbd><kbd>i</kbd><kbd>t</kbd>|                              Change in tags (HTML)|
+|<kbd>c</kbd><kbd>i</kbd><kbd>t</kbd>|       i                                 Change in tags (HTML)|
 |<kbd>v</kbd><kbd>i</kbd><kbd>b</kbd>|                                         Visual in block|
 |`:h text-objects`||
 __Motions__
@@ -64,7 +64,7 @@ __Motions__
 |<kbd>Ctrl-d</kbd>, <kbd>Ctrl-u</kbd>|                                         Next, previous half-screen|
 |<kbd>g</kbd><kbd>g</kbd>, <kbd>G</kbd>|                                       Start, end of file|
 |<kbd>g</kbd><kbd>;</kbd>, <kbd>g</kbd><kbd>,</kbd>|                           Previous, next change|
-|<kbd>%</kbd>                                                                  Matching brace|
+|<kbd>%</kbd>|                                                                 Matching brace|
 |<kbd>{</kbd>, <kbd>}</kbd>|                                                   Next, previous empty line|
 |<kbd>(</kbd>, <kbd>)</kbd>|                                                   Next, previous sentence|
 |<i>n</i><kbd>G</kbd>, `:n`|                                                   Goto line number <i>n</i>|
@@ -76,20 +76,20 @@ __Macros__
 |<kbd>q</kbd><kbd>x</kbd>|                                                     Record to <i>x</i>|
 |<kbd>q</kbd>|                                                                 Stop recording|
 |<kbd>@</kbd><kbd>x</kbd>|                                                     Execute macro `x`|
-|<kbd>@<kbd></kbd>@</kbd>|                                                     Repeat last macro|
-|<kbd>q</kbd><kbd>q</kbd>|                                                     Record macro (as q), double q is a quick shortcut.|
-|<kbd>Q</kbd>|                                                                 :heavy_check_mark: Play macro q, shortcut for `@q`.|
-|`:%norm @<i>x</i>`|                                                           Run macro @x on all lines|
-|`:5,10norm @<i>x</i>`|                                                        Run macro @x on lines 5-10|
+|<kbd>@</kbd><kbd>@</kbd>|                                                     Repeat last macro|
+|<kbd>q</kbd><kbd>q</kbd>|                                                     Record macro (as q), double <kbd>q</kbd> is a quick shortcut.|
+|<kbd>Q</kbd>|                                                                 :heavy_check_mark: Play macro <kbd>q</kbd>, shortcut for <kbd>@q</kbd>.|
+|`:%norm @x`|                                                                  Run macro @x on all lines|
+|`:5,10norm @x`|                                                               Run macro @x on lines 5-10|
 __Marks__
 |<kbd>m</kbd><kbd>space</kbd>|                                                 Remove all marks.|
 |<kbd>m</kbd><kbd>x</kbd>|                                                     Toggle mark <kbd>x</kbd>|
 |<kbd>'</kbd><kbd>x</kbd>, <kbd>`</kbd><kbd>x</kbd>|                           Goto to mark <i>x</i> (a-z), '=start of line, `=end|
-|<kbd>m<kbd></kbd>X</kbd>|                                                     Set GLOBAL mark <i>X</i> (A-Z)|
+|<kbd>m</kbd><kbd>X</kbd>|                                                     Set GLOBAL mark <i>X</i> (A-Z)|
 |`:Telescope marks`|                                                           List marks, select and jump|
 |`:marks`|                                                                     List marks|
-|`:'<i>x</i>,'<i>y</i> s/<i>foo</i>/<i>bar</i>/g`|                             Replace between marks <i>x</i> and <i>y</i>|
-|`:'&lt;,'&gt; s/<i>foo</i>/<i>bar</i>/g`|                                     Replace between selected text|
+|`:'x,'y s/foo/bar/g`|                                                         Replace between marks <i>x</i> and <i>y</i>|
+|`:'<,'> s/foo/bar/g`|                                                         Replace between selected text|
 __Surround__
 |<kbd>c</kbd><kbd>s</kbd><kbd>"</kbd><kbd>'</kbd>|                             :heavy_check_mark: "aWord" to 'aWord'|
 |<kbd>c</kbd><kbd>s</kbd><kbd>'</kbd><kbd>"</kbd>|                             :heavy_check_mark: 'aWord' to "aWord"|
@@ -101,25 +101,25 @@ __Surround__
 __Command Mode__
 |`:10,20 d`|                                                                   Delete line 10 to 20|
 |`:'x,'y d`|                                                                   Delete mark x to y|
-|`:'&lt;,'&gt;w d`|                                                            Delete selection|
-|`:'&lt;,'&gt;w new.txt`|                                                      Write selection to new file|
-|`:ls` (or` :buffers`)|                                                        List buffers|
+|`:'<,'> d`|                                                                   Delete selection|
+|`:'<,'>w new.txt`|                                                            Write selection to new file|
+|`:ls` (or `:buffers`)|                                                        List buffers|
 |`:changes`|                                                                   Show changes|
 |`:map`|                                                                       Show custom key mappings|
 |`:reg`|                                                                       Show register contents|
 |`:history`|                                                                   Show command history|
 |`:jumps`|                                                                     Show jump list|
-|/<i>foo</i>|                                                                  Search <i>foo</i> forward|
-|?<i>foo</i>|                                                                  Search <i>foo</i> backward|
-|`:%s/<i>foo\(\d\+\)</i>/<i>bar\1</i>/gic`|                                    Replace all, ignore case, confirm each. Note backreference and escaped parens.|
-|`:s/<i>foo</i>/<i>bar</i>/gI`|                                                Replace all on current line, mind case|
-|`:s/\%V<i>foo</i>/<i>bar</i>/g`|                                              Match only within visual selection with \%V|
+|`/foo`|                                                                       Search <i>foo</i> forward|
+|`?foo`|                                                                       Search <i>foo</i> backward|
+|`:%s/foo\(\d\+\)/bar\1/gic`|                                                  Replace all, ignore case, confirm each. Note backreference and escaped parens.|
+|`:s/foo/bar/gI`|                                                              Replace all on current line, mind case|
+|`:s/\%Vfoo/bar/g`|                                                            Match only within visual selection with \%V|
 |&amp;`|                                                                       Repeat last :s|
 __File Commands__
-|`:e <i>file</i>`|                                                             Open <i>file</i>|
+|`:e file`|                                                                    Open <i>file</i>|
 |`:enew`|                                                                      New file|
 |`:e .`|                                                                       Explore dir|
-|`:e <i>sftp://me@example.com/myfile</i>`|                                     Open sftp|
+|`:e sftp://me@example.com/myfile`|                                            Open sftp|
 |`:e!`|                                                                        Revert to saved|
 |`:w <i>file</i>`|                                                             Save <i>file</i>|
 |`:wq`|                                                                        Save, close|
