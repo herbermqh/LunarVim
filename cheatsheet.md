@@ -70,14 +70,7 @@ __Motions__
 |<i>n</i>G, :n|                                                                Goto line number <i>n</i>|
 |<i>n</i>||                                                                    Column <i>n</i>|
 |]s, [s|                                                                       Next, last misspelled|
-|<kbd>g</kbd><kbd>j</kbd>|                                                     :heavy_check_mark:
-JUMP!
-<ul>
-<li>If line contains a url jump to this in browser.
-<li>else if line contains a hex colour, `#AABBCC`jump to that colour on [ColorHexa.com](https://www.colorhexa.com)
-<li>Else if line contains a github project name of the format `user/repository` then jump to this GitHub project.
-<li>Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.
-</ul
+|<kbd>g</kbd><kbd>j</kbd>|                                                     :heavy_check_mark: JUMP!  <ul> <li>If line contains a url jump to this in browser.  <li>else if line contains a hex colour, `#AABBCC`jump to that colour on [ColorHexa.com](https://www.colorhexa.com) <li>Else if line contains a github project name of the format `user/repository` then jump to this GitHub project.  <li>Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.  </ul>|
 |<kbd>g</kbd><kbd>f</kbd>|                                                     Open file under cursor|
 __Macros__
 |q<i>x</i>|                                                                    Record to <i>x</i>|
