@@ -78,7 +78,7 @@ __Macros__
 |@<i>x</i>|                                                                    Execute <i>x</i>|
 |@@|                                                                           Repeat last macro|
 |<kbd>q</kbd><kbd>q</kbd>|                                                     Record macro (as q), double q is a quick shortcut.|
-|<kbd>Q</kbd>|                                                                 :heavy_check_mark:| Play macro q, shortcut for `@q`.|
+|<kbd>Q</kbd>|                                                                 :heavy_check_mark: Play macro q, shortcut for `@q`.|
 |:%norm @<i>x</i>|                                                             Run macro @x on all lines|
 |:5,10norm @<i>x</i>|                                                          Run macro @x on lines 5-10|
 __Marks__
@@ -187,10 +187,10 @@ __Formatting__
 |gq{motion}|                                                                   like gqip to format around paragraph|
 |Ctrl-w|                                                                       does a gqip|
 __Commenting__
-|<kbd>Ctrl</kbd>+<kbd>/</kbd> |                                                :heavy_check_mark:| (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.  <br/> - I find this really handy!|
+|<kbd>Ctrl</kbd>+<kbd>/</kbd> |                                                :heavy_check_mark: (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.  <br/> - I find this really handy!|
 __Moving a Line__
-|<kbd>Alt</kbd>+<kbd>Up</kbd> |                                                :heavy_check_mark:| Move current line up.|
-|<kbd>Alt</kbd>+<kbd>Down</kbd>|                                               :heavy_check_mark:| Move current line down.|
+|<kbd>Alt</kbd>+<kbd>Up</kbd> |                                                :heavy_check_mark: Move current line up.|
+|<kbd>Alt</kbd>+<kbd>Down</kbd>|                                               :heavy_check_mark: Move current line down.|
 __Changing case__
 |~|                                                                            Change case|
 |gUU, guu, g~~|                                                                Upper, lower, flip case whole line|
@@ -207,7 +207,7 @@ __Formatting__
 |<kbd>=</kbd><kbd>%</kbd>     |                                                (re)indent the current braces { ... }.|
 |`:%!par`                     |                                                Format range, in this case whole doument.|
 |`:%!par j1w80`               |                                                Format range to j1w80.|
-|<kbd>Ctrl</kbd>+<kbd>w</kbd> |                                                :heavy_check_mark:| Wrap, quick format current paragraph.|
+|<kbd>Ctrl</kbd>+<kbd>w</kbd> |                                                :heavy_check_mark: Wrap, quick format current paragraph.|
 |&nbsp;                       |                                                `:[range]ce[nter] [width] center lines :.,+3 center 80`|
 |&nbsp;                       |                                                `:[range] ri[ght] [right edge] right alignment :% right`|
 |&nbsp;                       |                                                `:[range] le[ft] [indent] left alignment.(Unit of identation is space) :% left 4`|
@@ -237,7 +237,7 @@ __Miscellaneous__
 |:ce <i>80</i>|                                                                Center line <i>columns</i>|
 |:r !date|                                                                     Insert external command output (e.g. date)|
 |:%! <i>filter</i>|                                                            Filter whole file|
-|:| <i>filter</i>|                                                             Same as above|
+|:\|<i>filter</i>|                                                             Same as above|
 |:'&lt;,'&gt;! <i>filter</i>|                                                  Filter visual selection|
 |:'&lt;,'&gt;! sort|                                                           Example of above|
 |:ab <i>lw LongWord</i>|                                                       Abbreviate <i>LongWord</i>|
