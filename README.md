@@ -210,11 +210,11 @@ I've added a few extra plugins I use to the configuration:
 # Key Bindings
 <!-- {{{1 -->
 
-The following are a mixture of stadard key bindings and my own, which I find
+The following are a mixture of standard key bindings and my own, which I find
 useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt</kbd>+<kbd>Up</kbd> etc. I've marked mine and other non-default
 key-bindings with :heavy_check_mark: in the table below.
 
-
+[Cheatsheet](cheatsheet.html)
 
 <div id="insertmode">
   <h2>Insert Mode</h2>
