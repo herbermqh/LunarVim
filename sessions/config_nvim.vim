@@ -8,34 +8,61 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +57 .config/LunarVim/init.lua
-badd +23 .config/LunarVim/lv-settings.lua
-badd +129 .config/LunarVim/lua/plugins.lua
-badd +19 .config/LunarVim/lua/lv-galaxyline/init.lua
-badd +305 .config/LunarVim/README.md
-badd +520 .config/LunarVim/user.vim
-badd +1 .config/LunarVim/user.lua
+badd +41 .config/LunarVim/init.lua
+badd +105 .config/LunarVim/lua/plugins.lua
+badd +217 .config/LunarVim/README.md
+badd +268 .config/LunarVim/user.vim
+badd +3 .config/LunarVim/lua/lsp/sql-ls.lua
+badd +380 .config/LunarVim/JimsCheatsheet.htm
 argglobal
 %argdel
 $argadd .config/LunarVim/init.lua
-edit .config/LunarVim/user.vim
+edit .config/LunarVim/JimsCheatsheet.htm
 argglobal
-setlocal fdm=marker
+setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
 setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
-setlocal fen
-404
+setlocal nofen
+82
 normal! zo
-let s:l = 416 - ((415 * winheight(0) + 18) / 36)
+87
+normal! zo
+427
+normal! zo
+427
+normal! zc
+487
+normal! zo
+489
+normal! zo
+501
+normal! zo
+503
+normal! zo
+533
+normal! zo
+87
+normal! zc
+556
+normal! zo
+556
+normal! zo
+556
+normal! zo
+556
+normal! zo
+562
+normal! zo
+let s:l = 217 - ((24 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 416
-normal! 07|
+keepjumps 217
+normal! 014|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -47,7 +74,6 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

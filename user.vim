@@ -265,7 +265,6 @@ map <C-w> gqip
 
 " Saves a few key presses.
 nnoremap ; :
-nnoremap W :w<CR>
 map <C-s> :w<CR>
 
 " Highlight column in csv
@@ -388,6 +387,7 @@ set background=dark        " tell vim what the background color looks like
 set showtabline=2          " Always show tabs
 set noshowmode             " We don't need to see things like -- INSERT -- anymore
 set nobackup               " This is recommended by coc
+" set textwidth=80           " Set text width to 80
 set nowritebackup          " This is recommended by coc
 set shortmess+=c           " Don't pass messages to |ins-completion-menu|.
 set signcolumn=yes         " Always show, otherwise it would shift the text each time

@@ -57,7 +57,8 @@ require('lsp.yaml-ls')
 require('lsp.elixir-ls')
 
 -- Jimc extras.
--- require('lsp.java-ls')
+require('lsp.java-ls')
+require('lsp.sql-ls')
 vim.cmd('luafile ~/.config/nvim/user.lua')
 vim.cmd('source ~/.config/nvim/user.vim')
 
