@@ -10,59 +10,32 @@ endif
 set shortmess=aoO
 badd +41 .config/LunarVim/init.lua
 badd +105 .config/LunarVim/lua/plugins.lua
-badd +217 .config/LunarVim/README.md
+badd +214 .config/LunarVim/README.md
 badd +268 .config/LunarVim/user.vim
-badd +3 .config/LunarVim/lua/lsp/sql-ls.lua
-badd +380 .config/LunarVim/JimsCheatsheet.htm
+badd +1 .config/LunarVim/lua/lsp/sql-ls.lua
+badd +26 .config/LunarVim/cheatsheet.md
 argglobal
 %argdel
 $argadd .config/LunarVim/init.lua
-edit .config/LunarVim/JimsCheatsheet.htm
+edit .config/LunarVim/README.md
 argglobal
-setlocal fdm=indent
+balt .config/LunarVim/cheatsheet.md
+setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
 setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
-setlocal nofen
-82
+setlocal fen
+211
 normal! zo
-87
-normal! zo
-427
-normal! zo
-427
-normal! zc
-487
-normal! zo
-489
-normal! zo
-501
-normal! zo
-503
-normal! zo
-533
-normal! zo
-87
-normal! zc
-556
-normal! zo
-556
-normal! zo
-556
-normal! zo
-556
-normal! zo
-562
-normal! zo
-let s:l = 217 - ((24 * winheight(0) + 22) / 45)
+let s:l = 214 - ((211 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 217
-normal! 014|
+keepjumps 214
+normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -74,6 +47,7 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

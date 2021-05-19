@@ -264,7 +264,7 @@ set formatprg=par\ -w79
 map <C-w> gqip
 
 " Saves a few key presses.
-nnoremap ; :
+" nnoremap ; :
 map <C-s> :w<CR>
 
 " Highlight column in csv
