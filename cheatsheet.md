@@ -244,7 +244,7 @@ __Miscellaneous__
 |:una lw|                                                                      Unset abbreviation|
 |:%s/pattern//gn|                                                              Count matches|
 |:so ~/.vimrc|                                                                 Reload .vimrc|
-|:[range]g[lobal]/<i>pattern</i>/[command]</dt> <dd style="font-weight:bold;">Run the Ex command on all lines in [range] matching <i>pattern</i>|
+|:[range]g[lobal]/<i>pattern</i>/[command]|                                    Run the Ex command on all lines in [range] matching <i>pattern</i>|
 |:[9,20]g/^/d A|                                                               Delete lines 9–20.
 |:g/foobar/y A|                                                                Yank all lines matching <i>foobar</i> into copy buffer|
 |:g/^Foo/norm <i>0xxxBar</i>|                                                  norm runs commands as if you typed them|
@@ -257,7 +257,7 @@ __Miscellaneous__
 |<kbd>d</kbd><kbd>t</kbd><kbd>char</kbd>|                                      Delete to `char`.|
 |<kbd>d</kbd><kbd>^</kbd>     |                                                Delete to start of line.|
 |<kbd>D</kbd>                 |                                                Delete to end of line.|
-|:ascii or <kbd>g</kbd><kbd>a</kbd>|                                           Ascii, octal val of char under cursor.|
+|`:ascii` or <kbd>g</kbd><kbd>a</kbd>|                                           Ascii, octal val of char under cursor.|
 |<kbd>c</kbd><kbd>a</kbd><kbd>t</kbd>, <kbd>c</kbd><kbd>i</kbd><kbd>t</kbd>|   etc for change insert tags etc.|
 |<kbd>c</kbd><kbd>i</kbd><kbd>'</kbd>, <kbd>c</kbd><kbd>a</kbd><kbd>(</kbd>, <kbd>c</kbd><kbd>i</kbd><kbd>{</kbd>|Change stuff in between ' (also works for ", [, (, {)|
 |<kbd>c</kbd><kbd>c</kbd>     |                                                Change current line.|
