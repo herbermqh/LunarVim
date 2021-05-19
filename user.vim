@@ -498,7 +498,7 @@ highlight LspDiagnosticsVirtualTextHint        guifg=#4FC1FF
 
 " Highlight text over 120 chars
 highlight longLine                                               guibg=#5F3F3F
-call matchadd('longLine', '.\%>121v')
+call matchadd('longLine', '.\%>121v', 1)
 
 " Highlight git merge conflict markers.
 highlight gitMergeConflictStart                guifg=DarkGreen   guibg=Red
