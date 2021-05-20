@@ -325,6 +325,10 @@ map <silent> <F2> :call FoldingToggle()<CR>
 map <silent> <F3> :call ToggleAll()<CR>
 map <F4> :NvimTreeToggle<CR>
 " F5 reserved for kitty, open selected.
+" Use to replace last :s command on a range
+" * = last range.
+" & = last s/foo/bar/
+map <F6> :*&<CR>
 map <F9> :Telescope find_files<CR>
 " F10 reserved for kitty, open new terminal.
 map <F11> :TagbarToggle<CR>
@@ -413,7 +417,7 @@ hi Boolean         guifg=#bfbfbf                              ctermfg=181
 hi Character       guifg=#a3aca3 gui=bold                     ctermfg=181 cterm=bold
 hi Constant        guifg=#a3dcdc gui=NONE                     ctermfg=181 cterm=bold
 hi SpecialChar     guifg=#a3a3dc gui=bold                     ctermfg=181 cterm=bold
-hi String          guifg=#539983                              ctermfg=174
+hi String          guifg=#53BB83                              ctermfg=174
 hi Tag             guifg=#93e893 gui=bold                     ctermfg=181 cterm=bold
 
 " Show whitespace characters
@@ -495,6 +499,9 @@ highlight LspDiagnosticsVirtualTextError       guifg=#F44747
 highlight LspDiagnosticsVirtualTextWarning     guifg=#FF8800
 highlight LspDiagnosticsVirtualTextInformation guifg=#FFCC66
 highlight LspDiagnosticsVirtualTextHint        guifg=#4FC1FF
+
+" Matching parenthesis
+highlight MatchParen           gui=bold        guifg=Black       guibg=Cyan
 
 " Highlight text over 120 chars
 highlight longLine                                               guibg=#5F3F3F

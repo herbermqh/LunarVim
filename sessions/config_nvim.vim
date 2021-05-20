@@ -11,9 +11,9 @@ set shortmess=aoO
 badd +41 .config/LunarVim/init.lua
 badd +105 .config/LunarVim/lua/plugins.lua
 badd +214 .config/LunarVim/README.md
-badd +501 .config/LunarVim/user.vim
+badd +331 .config/LunarVim/user.vim
 badd +1 .config/LunarVim/lua/lsp/sql-ls.lua
-badd +247 .config/LunarVim/cheatsheet.md
+badd +42 .config/LunarVim/cheatsheet.md
 argglobal
 %argdel
 $argadd .config/LunarVim/init.lua
@@ -27,12 +27,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 254 - ((42 * winheight(0) + 25) / 51)
+let s:l = 43 - ((0 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 254
-normal! 080|
+keepjumps 43
+normal! $
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -44,7 +44,6 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
