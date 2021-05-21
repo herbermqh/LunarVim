@@ -210,7 +210,12 @@ I've added a few extra plugins I use to the configuration:
 # Key Bindings
 <!-- {{{1 -->
 
+Note this cheatsheet is available as a html file, which is accessed by hitting <kbd>F1</kbd> in vim.
+See my dotfiles for a simple bash script to convert this GitHut markdown file into html.
+
 See [Cheatsheet](cheatsheet.md)
+
+![Cheatsheet](./utils/media/cheatsheet.png)
 
 <!-- }}}1 -->
 

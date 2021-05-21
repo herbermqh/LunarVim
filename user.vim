@@ -320,7 +320,7 @@ noremap <silent> <leader>ta :call ToggleAll()<CR>
 noremap <silent> <leader>w :call DeleteTrailingWhiteSpace()<CR>
 
 " Function keys.
-map <F1> :sp $HOME/.config/nvim/README.md<CR>
+map <silent> <F1> :!xdg-open $HOME/.config/nvim/cheatsheet.html<CR>
 map <silent> <F2> :call FoldingToggle()<CR>
 map <silent> <F3> :call ToggleAll()<CR>
 map <F4> :NvimTreeToggle<CR>
@@ -437,10 +437,10 @@ highlight Visual                                                 guibg=Grey35
 highlight Search                               guifg=Wheat       guibg=Peru
 
 " Popup and Float menu
-highlight Pmenu                                guifg=Black       guibg=Gray75
-highlight PmenuSbar                                              guibg=Gray50
-highlight PmenuThumb                                             guibg=Black
-highlight PmenuSel                    gui=bold guifg=Wheat       guibg=Black
+highlight Pmenu                                guifg=Wheat       guibg=Gray25
+highlight PmenuSbar                                              guibg=Gray35
+highlight PmenuThumb                                             guibg=Wheat
+highlight PmenuSel                    gui=bold guifg=Black       guibg=Wheat
 highlight NormalFloat                 gui=NONE guifg=Gold        guibg=Black
 
 " Line number colour
