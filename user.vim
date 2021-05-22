@@ -276,10 +276,12 @@ vnoremap <A-s> :!$HOME/bin/sak sqlflip<CR>
 " Run macro q with just typing Q.
 nnoremap Q @q
 
-" Toggle comment and move to next line.
+" Toggle comment and move to next line, or comment selection.
 nmap <C-_> :CommentToggle<CR>j
+vmap <C-_> :CommentToggle<CR>gv
 " In neovide use this line instead!
 nmap <C-/> :CommentToggle<CR>j
+vmap <C-/> :CommentToggle<CR>gv
 
 " Move lines up and down using alt-up/down.
 nnoremap <A-Down> :m .+1<CR>==

@@ -6,21 +6,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
     body{
-        -moz-column-width: 400px;
-        -webkit-column-width: 400px;
-        column-width: 400px;
+        -moz-column-width: 450px;
+        -webkit-column-width: 450px;
+        column-width: 450px;
         background: #3f3f3f;
         color: #ffffff;
         font: 9pt sans-serif;
-        padding: 1em;
     }
-    div{
-        break-inside: avoid;
-        margin: 5px;
-        padding: 0;
+    div.clean {
+    }
+    div.border {
         border: 2px solid #fa5522;
+    }
+    div.inner {
+        break-inside: avoid;
         border-radius: 5px;
-        min-width: 400px;
+        min-width: 450px;
+        max-width: 450px;
+        margin: 5px;
     }
     th{
         color: White;
@@ -61,31 +64,43 @@
     a {
         color: Cyan;
     }
-@media print {
-    body{ background: #fff; color: #000; font-size: 5pt; }
-    dt{ color: #000; text-decoration: none; }
-    dd{ color: #000; font: normal 1.0em sans-serif; padding-left: 1em; }
-    h1,h2,h3,h4{ color: #000; } span.font1 { color: #000; }
-    span.font2 { color: #000; }
-}
-@page { margin: 0.25in; }
+    @media print {
+        body{ background: #fff; color: #000; font-size: 5pt; }
+        dt{ color: #000; text-decoration: none; }
+        dd{ color: #000; font: normal 1.0em sans-serif; padding-left: 1em; }
+        h1,h2,h3,h4{ color: #000; } span.font1 { color: #000; }
+        span.font2 { color: #000; }
+    }
+    @page { margin: 0.25in; }
 </style>
 </head>
 
 <body>
+<div class="outer">
+<div class="inner clean">
 The following are a mixture of standard key bindings and my own, which I find
 useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've marked mine and other non-default
 (from plugins) key-bindings with <img src="utils/media/tick.png"/> in the table below.
 
-<div id="help">
+</div><div class="inner border" id="help">
 <h1>Help <kbd class="cmd">:h topic</kbd></h1>
 <table><tbody>
 <tr><th><kbd class="cmd">:h quickref</kbd></th><td>                                                                Quick reference</td></tr>
 <tr><th><kbd>Ctrl-]</kbd></th><td>                                                            Follow help link</td></tr>
 <tr><th><kbd>Ctrl-t</kbd></th><td>                                                            Back to previous</td></tr>
-</tbody></table></div>
-<div id="filecommands">
-<h1>File Commands </h1>
+</tbody></table>
+</div><div class="inner border" id="modes">
+<h1>Modes <kbd class="cmd">:h vim-modes</kbd></h1>
+<table><tbody>
+The far left of the tagline at the bottom of the screen is colour coded according to the mode
+<tr><th>Normal (Blue)</th><td>Enter all the normal editor commands</td></tr>
+<tr><th>Insert (Red)</th><td><kbd>i</kbd>,<kbd>a</kbd>,<kbd>o</kbd> etc. Text is inserted</td></tr>
+<tr><th>Visual (Purple)</th><td>Movement commands extend highlighted area.  A non-movement command is executed against selection</td></tr>
+<tr><th>Block (Yellow)</th><td>Select a rectangular region</td></tr>
+<tr><th>Command (Green)</th><td><kbd>:</kbd> Enter a command at the bottom<br/> <kbd>/</kbd> Search forwards<br/> <kbd>?</kbd> Search backwards</td></tr>
+</tbody></table>
+</div><div class="inner border" id="filecommands">
+<h1>File Commands <kbd class="cmd">:h editing.txt</kbd></h1>
 <table><tbody>
 <tr><th><kbd class="cmd">:e file</kbd></th><td>                                                                    Open <kbd class="cmd">file</kbd></td></tr>
 <tr><th><kbd class="cmd">:enew</kbd></th><td>                                                                      New file</td></tr>
@@ -99,8 +114,8 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 <tr><th><kbd class="cmd">:qa</kbd></th><td>                                                                        Close all</td></tr>
 <tr><th><kbd class="cmd">:qa!</kbd></th><td>                                                                       Close all, don't save</td></tr>
 <tr><th><kbd class="cmd">:SudoWrite</kbd></th><td>                                                                 <a target="_new" href="https://github.com/tpope/vim-eunuch">Vim-Eunuch</a> plugin : Write even if you don't have permission</td></tr>
-</tbody></table></div>
-<div id="motionmovement">
+</tbody></table>
+</div><div class="inner border" id="motionmovement">
 <h1>Motion/Movement <kbd class="cmd">:h motion.txt</kbd></h1>
 <table><tbody>
 <tr><th><kbd>h</kbd>, <kbd>j</kbd>, <kbd>k</kbd>, <kbd>l</kbd></th><td>                       Char left, down, up, right</td></tr>
@@ -126,8 +141,53 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 <tr><th><kbd>g</kbd><kbd>d</kbd></th><td>                                                     Goto definition</td></tr>
 <tr><th><kbd>g</kbd><kbd>f</kbd></th><td>                                                     Open file under cursor</td></tr>
 <tr><th><kbd>g</kbd><kbd>j</kbd></th><td>                                                     <img src="utils/media/tick.png"/> JUMP!  <ul> <li>If line contains a url jump to this in browser.  <li>else if line contains a hex colour, <kbd class="cmd">#AABBCC</kbd>jump to that colour on <a target="_new" href="https://www.colorhexa.com">ColorHexa.com</a> <li>Else if line contains a github project name of the format <kbd class="cmd">user/repository</kbd> then jump to this GitHub project.  <li>Else if try and open the current word in <a target="_new" href="https://cheat.sh">cheat.sh</a> uses the buffers language to help get the right command.  </ul></td></tr>
-</tbody></table></div>
-<div id="ranges">
+</tbody></table>
+</div><div class="inner border" id="insertmode">
+<h1>Insert Mode <kbd class="cmd">:h inserting</kbd></h1>
+<table><tbody>
+<tr><th><kbd>ESC</kbd></th><td>                                                               Exit insert mode</td></tr>
+<tr><th><kbd>i</kbd>, <kbd>a</kbd></th><td>                                                   Insert before, after cursor</td></tr>
+<tr><th><kbd>I</kbd>, <kbd>A</kbd></th><td>                                                   Insert start, end of line</td></tr>
+<tr><th><kbd>g</kbd><kbd>I</kbd></th><td>                                                     Insert start of line, even before whitespace</td></tr>
+<tr><th><kbd>o</kbd>, <kbd>O</kbd></th><td>                                                   Insert new line below, above</td></tr>
+<tr><th><kbd>g</kbd><kbd>i</kbd></th><td>                                                     Insert at last insert point</td></tr>
+<tr><th><kbd>C</kbd></th><td>                                                                 Change to end of line</td></tr>
+<tr><th><kbd>S</kbd></th><td>                                                                 Substitute line</td></tr>
+<tr><th><kbd>s</kbd></th><td>                                                                 Substitute character</td></tr>
+<tr><th><kbd>Ctrl-n</kbd>, <kbd>Ctrl-p</kbd></th><td>                                         Complete word</td></tr>
+<tr><th><kbd>Ctrl-x-l</kbd></th><td>                                                          Complete line</td></tr>
+<tr><th><kbd>Ctrl-d</kbd></th><td>                                                            Deindent</td></tr>
+</tbody></table>
+</div><div class="inner border" id="visualmodeandselection">
+<h1>Visual Mode And Selection <kbd class="cmd">:h visual-mode</kbd></h1>
+<table><tbody>
+<tr><th><kbd>v</kbd></th><td>                                                                 Enter visual mode</td></tr>
+<tr><th><kbd>V</kbd></th><td>                                                                 Enter line-wise visual mode</td></tr>
+<tr><th><kbd>Ctrl-v</kbd></th><td>                                                            Block mode</td></tr>
+<tr><th><kbd>I</kbd>, <kbd>A</kbd>, <kbd>x</kbd></th><td>                                     Prepend, append, delete block selection</td></tr>
+<tr><th><kbd>&lt;</kbd>, <kbd>&gt;</kbd></th><td>                                             Indent selection</td></tr>
+<tr><th><kbd>g</kbd><kbd>g</kbd><kbd>V</kbd><kbd>G</kbd></th><td>                             Select whole file</td></tr>
+<tr><th><kbd>=</kbd></th><td>                                                                 Auto format selected</td></tr>
+<tr><th><kbd>g</kbd><kbd>v</kbd></th><td>                                                     Re-select visual area</td></tr>
+</tbody></table>
+</div><div class="inner border" id="commandmode">
+<h1>Command Mode <kbd class="cmd">:h command-mode</kbd></h1>
+<table><tbody>
+<tr><th><kbd class="cmd">:ls</kbd> (or <kbd class="cmd">:buffers</kbd>)</th><td>                                                        List buffers</td></tr>
+<tr><th><kbd class="cmd">:changes</kbd></th><td>                                                                   Show changes</td></tr>
+<tr><th><kbd class="cmd">:map</kbd></th><td>                                                                       Show custom key mappings</td></tr>
+<tr><th><kbd class="cmd">:reg</kbd></th><td>                                                                       Show register contents</td></tr>
+<tr><th><kbd class="cmd">:history</kbd></th><td>                                                                   Show command history</td></tr>
+<tr><th><kbd class="cmd">:jumps</kbd></th><td>                                                                     Show jump list</td></tr>
+<tr><th><kbd class="cmd">:Man</kbd></th><td>                                                                       Man page for word under cursor</td></tr>
+<tr><th><kbd class="cmd">:VsnipOpenEdit</kbd></th><td>                                                             Edit the snippet config for the current language or global</td></tr>
+<tr><th><kbd class="cmd">/foo</kbd></th><td>                                                                       Search <kbd class="cmd">foo</kbd> forward</td></tr>
+<tr><th><kbd class="cmd">?foo</kbd></th><td>                                                                       Search <kbd class="cmd">foo</kbd> backward</td></tr>
+<tr><th><kbd>n</kbd>, <kbd>N</kbd></th><td>                                                   Next, previous search result</td></tr>
+<tr><th><kbd class="cmd">:s/foo/bar/gI</kbd></th><td>                                                              Replace all on current line, mind case</td></tr>
+<tr><th><kbd class="cmd">:s/%Vfoo/bar/g</kbd></th><td>                                                            Match only within visual selection with %V</td></tr>
+</tbody></table>
+</div><div class="inner border" id="ranges">
 <h1>Ranges <kbd class="cmd">:h ranges</kbd></h1>
 <table><tbody>
 <tr><th>&nbsp;</th><td>                                                                       Any of the following can be used when you see <kbd class="cmd">[range]</kbd> in the rest of this table</td></tr>
@@ -149,8 +209,8 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 <tr><th><kbd class="cmd">'a,'b</kbd></th><td>                                                                      From marker a to marker b inclusive</td></tr>
 <tr><th><kbd class="cmd">'<,'></kbd></th><td>                                                                      Selection, if you hit <kbd class="cmd">:</kbd> to go to command mode when something is selected you will see this</td></tr>
 <tr><th><kbd class="cmd">'a,'<</kbd></th><td>                                                                      You can mix start and ends, so this is from marker a to start of selection</td></tr>
-</tbody></table></div>
-<div id="rangeactions">
+</tbody></table>
+</div><div class="inner border" id="rangeactions">
 <h1>Range Actions </h1>
 <table><tbody>
 <tr><th><kbd class="cmd">:[range]d</kbd></th><td>                                                                  Delete range</td></tr>
@@ -171,24 +231,8 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 <tr><th><kbd class="cmd">:[range]s/foo(d+)/bar1/gic</kbd></th><td>                                            TODO: Replace all, ignore case, confirm each. Note backreference and escaped parens</td></tr>
 <tr><th><kbd class="cmd">:[range]&</kbd></th><td>                                                                  Repeat last :s on range</td></tr>
 <tr><th><kbd class="cmd">:/foo/+1d</kbd></th><td>                                                                  Delete line after next line containing <kbd class="cmd">foo</kbd></td></tr>
-</tbody></table></div>
-<div id="insertmode">
-<h1>Insert Mode <kbd class="cmd">:h inserting</kbd></h1>
-<table><tbody>
-<tr><th><kbd>ESC</kbd></th><td>                                                               Exit insert mode</td></tr>
-<tr><th><kbd>i</kbd>, <kbd>a</kbd></th><td>                                                   Insert before, after cursor</td></tr>
-<tr><th><kbd>I</kbd>, <kbd>A</kbd></th><td>                                                   Insert start, end of line</td></tr>
-<tr><th><kbd>g</kbd><kbd>I</kbd></th><td>                                                     Insert start of line, even before whitespace</td></tr>
-<tr><th><kbd>o</kbd>, <kbd>O</kbd></th><td>                                                   Insert new line below, above</td></tr>
-<tr><th><kbd>g</kbd><kbd>i</kbd></th><td>                                                     Insert at last insert point</td></tr>
-<tr><th><kbd>C</kbd></th><td>                                                                 Change to end of line</td></tr>
-<tr><th><kbd>S</kbd></th><td>                                                                 Substitute line</td></tr>
-<tr><th><kbd>s</kbd></th><td>                                                                 Substitute character</td></tr>
-<tr><th><kbd>Ctrl-n</kbd>, <kbd>Ctrl-p</kbd></th><td>                                         Complete word</td></tr>
-<tr><th><kbd>Ctrl-x-l</kbd></th><td>                                                          Complete line</td></tr>
-<tr><th><kbd>Ctrl-d</kbd></th><td>                                                            Deindent</td></tr>
-</tbody></table></div>
-<div id="operators">
+</tbody></table>
+</div><div class="inner border" id="operators">
 <h1>Operators <kbd class="cmd">:h operator</kbd></h1>
 <table><tbody>
 <tr><th><kbd>d</kbd></th><td>                                                                 Delete/cut</td></tr>
@@ -210,8 +254,8 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 <tr><th><kbd>g</kbd><kbd>J</kbd></th><td>                                                     Join without spaces</td></tr>
 <tr><th><kbd>&gt;</kbd><kbd>&gt;</kbd>, <kbd>&lt;</kbd><kbd>&lt;</kbd></th><td>               Indent, deindent</td></tr>
 <tr><th><kbd>=</kbd><kbd>=</kbd></th><td>                                                     Autoindent</td></tr>
-</tbody></table></div>
-<div id="textobjects">
+</tbody></table>
+</div><div class="inner border" id="textobjects">
 <h1>Text Objects <kbd class="cmd">:h text-objects</kbd></h1>
 <table><tbody>
 <tr><th><kbd>[char]</kbd> can be any of <kbd>[</kbd>, <kbd>(</kbd>, <kbd>{</kbd></th><td>     Motion chars </td></tr>
@@ -230,9 +274,9 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 <tr><th><kbd>y</kbd><kbd>i</kbd><kbd>"</kbd></th><td>                                         Yank in quotes</td></tr>
 <tr><th><kbd>v</kbd><kbd>i</kbd><kbd>b</kbd></th><td>                                         Visual in block</td></tr>
 <tr><th><kbd>v</kbd><kbd>i</kbd><kbd>p</kbd></th><td>                                         Select paragraph</td></tr>
-</tbody></table></div>
-<div id="surround">
-<h1>Surround </h1>
+</tbody></table>
+</div><div class="inner border" id="surround">
+<h1>Surround <a target="_new" href="https://github.com/tpope/vim-surround">plugin</a></h1>
 <table><tbody>
 <tr><th><kbd>c</kbd><kbd>s</kbd><kbd>"</kbd><kbd>'</kbd></th><td>                             <img src="utils/media/tick.png"/> "aWord" to 'aWord'</td></tr>
 <tr><th><kbd>c</kbd><kbd>s</kbd><kbd>'</kbd><kbd>"</kbd></th><td>                             <img src="utils/media/tick.png"/> 'aWord' to "aWord"</td></tr>
@@ -241,8 +285,8 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 <tr><th><kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>w</kbd><kbd>]</kbd></th><td>                 <img src="utils/media/tick.png"/> aWord to [aWord]</td></tr>
 <tr><th><kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>)</kbd></th><td>                             <img src="utils/media/tick.png"/> Whole-Line to (Whole-Line)</td></tr>
 <tr><th><kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>"</kbd></th><td>                             <img src="utils/media/tick.png"/> Whole-Line to "Whole-Line"</td></tr>
-</tbody></table></div>
-<div id="macros">
+</tbody></table>
+</div><div class="inner border" id="macros">
 <h1>Macros <kbd class="cmd">:h complex-repeat</kbd></h1>
 <table><tbody>
 <tr><th><kbd>q</kbd><kbd>x</kbd></th><td>                                                     Record to <kbd class="cmd">x</kbd></td></tr>
@@ -253,8 +297,8 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 <tr><th><kbd>Q</kbd></th><td>                                                                 <img src="utils/media/tick.png"/> Play macro <kbd>q</kbd>, shortcut for <kbd>@q</kbd></td></tr>
 <tr><th><kbd class="cmd">:%norm @x</kbd></th><td>                                                                  Run macro @x on all lines</td></tr>
 <tr><th><kbd class="cmd">:5,10norm @x</kbd></th><td>                                                               Run macro @x on lines 5-10</td></tr>
-</tbody></table></div>
-<div id="marks">
+</tbody></table>
+</div><div class="inner border" id="marks">
 <h1>Marks <kbd class="cmd">:h mark-motions</kbd></h1>
 <table><tbody>
 <tr><th><kbd>m</kbd><kbd>space</kbd></th><td>                                                 Remove all marks</td></tr>
@@ -265,25 +309,8 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 <tr><th><kbd class="cmd">:marks</kbd></th><td>                                                                     List marks</td></tr>
 <tr><th><kbd class="cmd">:'x,'y s/foo/bar/g</kbd></th><td>                                                         Replace between marks <kbd class="cmd">x</kbd> and <kbd class="cmd">y</kbd></td></tr>
 <tr><th><kbd class="cmd">:'<,'> s/foo/bar/g</kbd></th><td>                                                         Replace between selected text</td></tr>
-</tbody></table></div>
-<div id="commandmode">
-<h1>Command Mode </h1>
-<table><tbody>
-<tr><th><kbd class="cmd">:ls</kbd> (or <kbd class="cmd">:buffers</kbd>)</th><td>                                                        List buffers</td></tr>
-<tr><th><kbd class="cmd">:changes</kbd></th><td>                                                                   Show changes</td></tr>
-<tr><th><kbd class="cmd">:map</kbd></th><td>                                                                       Show custom key mappings</td></tr>
-<tr><th><kbd class="cmd">:reg</kbd></th><td>                                                                       Show register contents</td></tr>
-<tr><th><kbd class="cmd">:history</kbd></th><td>                                                                   Show command history</td></tr>
-<tr><th><kbd class="cmd">:jumps</kbd></th><td>                                                                     Show jump list</td></tr>
-<tr><th><kbd class="cmd">:Man</kbd></th><td>                                                                       Man page for word under cursor</td></tr>
-<tr><th><kbd class="cmd">:VsnipOpenEdit</kbd></th><td>                                                             Edit the snippet config for the current language or global</td></tr>
-<tr><th><kbd class="cmd">/foo</kbd></th><td>                                                                       Search <kbd class="cmd">foo</kbd> forward</td></tr>
-<tr><th><kbd class="cmd">?foo</kbd></th><td>                                                                       Search <kbd class="cmd">foo</kbd> backward</td></tr>
-<tr><th><kbd>n</kbd>, <kbd>N</kbd></th><td>                                                   Next, previous search result</td></tr>
-<tr><th><kbd class="cmd">:s/foo/bar/gI</kbd></th><td>                                                              Replace all on current line, mind case</td></tr>
-<tr><th><kbd class="cmd">:s/%Vfoo/bar/g</kbd></th><td>                                                            Match only within visual selection with %V</td></tr>
-</tbody></table></div>
-<div id="options">
+</tbody></table>
+</div><div class="inner border" id="options">
 <h1>Options <kbd class="cmd">:h options</kbd></h1>
 <table><tbody>
 <tr><th><kbd class="cmd">:set number!</kbd></th><td>                                                               Toggle line numbers</td></tr>
@@ -297,20 +324,8 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 <tr><th><kbd class="cmd">:set noOPT</kbd></th><td>                                                                 Turn off <kbd class="cmd">opt</kbd></td></tr>
 <tr><th><kbd class="cmd">:set OPT?</kbd></th><td>                                                                  Show value of <kbd class="cmd">opt</kbd></td></tr>
 <tr><th><kbd class="cmd">:set</kbd></th><td>                                                                       Show current options</td></tr>
-</tbody></table></div>
-<div id="visualmodeandselection">
-<h1>Visual Mode And Selection </h1>
-<table><tbody>
-<tr><th><kbd>v</kbd></th><td>                                                                 Enter visual mode</td></tr>
-<tr><th><kbd>V</kbd></th><td>                                                                 Enter line-wise visual mode</td></tr>
-<tr><th><kbd>Ctrl-v</kbd></th><td>                                                            Visual block-wise mode</td></tr>
-<tr><th><kbd>I</kbd>, <kbd>A</kbd>, <kbd>x</kbd></th><td>                                     Prepend, append, delete block selection</td></tr>
-<tr><th><kbd>&lt;</kbd>, <kbd>&gt;</kbd></th><td>                                             Indent selection</td></tr>
-<tr><th><kbd>g</kbd><kbd>g</kbd><kbd>V</kbd><kbd>G</kbd></th><td>                             Select all</td></tr>
-<tr><th><kbd>=</kbd></th><td>                                                                 Auto format selected</td></tr>
-<tr><th><kbd>g</kbd><kbd>v</kbd></th><td>                                                     Re-select visual area</td></tr>
-</tbody></table></div>
-<div id="buffersandwindows">
+</tbody></table>
+</div><div class="inner border" id="buffersandwindows">
 <h1>Buffers and Windows </h1>
 <table><tbody>
 <tr><th><kbd>tab</kbd>, <kbd>shift-tab</kbd>, <kbd>b</kbd><kbd>d</kbd></th><td>               Buffer next, previous, delete (close)</td></tr>
@@ -319,8 +334,8 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 <tr><th><kbd>Ctrl-w</kbd> <kbd>q</kbd></th><td>                                               Close viewport</td></tr>
 <tr><th><kbd>Ctrl-w</kbd> [-+=_]</th><td>                                                     Resize viewport</td></tr>
 <tr><th><kbd class="cmd">:bufdo %s/foo/bar</kbd></th><td>                                                          Do to all buffers</td></tr>
-</tbody></table></div>
-<div id="folding">
+</tbody></table>
+</div><div class="inner border" id="folding">
 <h1>Folding <kbd class="cmd">:h folding</kbd></h1>
 <table><tbody>
 <tr><th><kbd>F2</kbd></th><td>                                                                Cycle through fold methods</td></tr>
@@ -334,8 +349,8 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 <tr><th><kbd>z</kbd><kbd>E</kbd></th><td>                                                     Delete all folds</td></tr>
 <tr><th><kbd>z</kbd><kbd>R</kbd></th><td>                                                     Fold open</td></tr>
 <tr><th><kbd>z</kbd><kbd>M</kbd></th><td>                                                     Fold collapse</td></tr>
-</tbody></table></div>
-<div id="formatting">
+</tbody></table>
+</div><div class="inner border" id="formatting">
 <h1>Formatting <kbd class="cmd">:h formatoptions</kbd></h1>
 <table><tbody>
 <tr><th><kbd class="cmd">:set textwidth=80</kbd></th><td>                                                          Set default width to 80 columns</td></tr>
@@ -345,19 +360,8 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 <tr><th><kbd>g</kbd><kbd>g</kbd><kbd>=</kbd><kbd>G</kbd></th><td>                             Auto (re)indent entire document</td></tr>
 <tr><th><kbd>=</kbd></th><td>                                                                 (re)indent the text on the current line or on the area selected (SUPER)</td></tr>
 <tr><th><kbd>=</kbd><kbd>%</kbd></th><td>                                                     (re)indent the current braces { ... }</td></tr>
-</tbody></table></div>
-<div id="commenting">
-<h1>Commenting </h1>
-<table><tbody>
-<tr><th><kbd>Ctrl-/</kbd></th><td>                                                            <img src="utils/media/tick.png"/> (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.  <br/> - I find this really handy!</td></tr>
-</tbody></table></div>
-<div id="movingaline">
-<h1>Moving a Line </h1>
-<table><tbody>
-<tr><th><kbd>Alt-Up</kbd></th><td>                                                            <img src="utils/media/tick.png"/> Move current line up</td></tr>
-<tr><th><kbd>Alt-Down</kbd></th><td>                                                          <img src="utils/media/tick.png"/> Move current line down</td></tr>
-</tbody></table></div>
-<div id="changingcase">
+</tbody></table>
+</div><div class="inner border" id="changingcase">
 <h1>Changing case <kbd class="cmd">:h case</kbd></h1>
 <table><tbody>
 <tr><th><kbd>~</kbd></th><td>                                                                 Toggle case</td></tr>
@@ -368,15 +372,26 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 <tr><th><kbd>g</kbd><kbd>u</kbd><kbd>[motion]</kbd></th><td>                                  Lowercase</td></tr>
 <tr><th><kbd>g</kbd><kbd>U</kbd><kbd>[motion]</kbd></th><td>                                  Uppercase</td></tr>
 <tr><th><kbd class="cmd">:s/<(w)(w*)>/u1L2/g</kbd></th><td>                                           TODO: Title Case regex</td></tr>
-</tbody></table></div>
-<div id="incrementdecavalue">
+</tbody></table>
+</div><div class="inner border" id="incrementdecavalue">
 <h1>Increment/Dec a value </h1>
 <table><tbody>
-<tr><th><kbd>Ctrl-a</kbd></th><td>                                                            Increment value under cursor by 1.  Also works with Dates/times...</td></tr>
-<tr><th><kbd>Ctrl-x</kbd></th><td>                                                            Decrement value under cursor by 1.</td></tr>
+<tr><th><kbd>Ctrl-a</kbd></th><td>                                                            <img src="utils/media/tick.png"/> Increment value under cursor by 1.  Also works with Dates/times. See <a target="_new" href="https://github.com/tpope/vim-speeddating">Speeddating plugin</a></td></tr>
+<tr><th><kbd>Ctrl-x</kbd></th><td>                                                            <img src="utils/media/tick.png"/> Decrement value under cursor by 1.</td></tr>
 A query to increment value in whole file<br/><kbd class="cmd">:let i=1 | g/foo/s//\=i/ | let i=i+1</kbd><br/>For example:<br/><kbd class="cmd">:let i=1 | g/foo/s//\="morestuff".i."morestuff"/ | let i=i+1</kbd>
-</tbody></table></div>
-<div id="functionkeys">
+</tbody></table>
+</div><div class="inner border" id="commenting">
+<h1>Commenting </h1>
+<table><tbody>
+<tr><th><kbd>Ctrl-/</kbd></th><td>                                                            <img src="utils/media/tick.png"/> (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.<br/> - Or you can relect and range and then comment, try <kbd>v</kbd><kbd>i</kbd><kbd>p</kbd><kbd>Ctrl-/</kbd><br/> - I find this really handy!</td></tr>
+</tbody></table>
+</div><div class="inner border" id="movingaline">
+<h1>Moving a Line </h1>
+<table><tbody>
+<tr><th><kbd>Alt-Up</kbd></th><td>                                                            <img src="utils/media/tick.png"/> Move current line up</td></tr>
+<tr><th><kbd>Alt-Down</kbd></th><td>                                                          <img src="utils/media/tick.png"/> Move current line down</td></tr>
+</tbody></table>
+</div><div class="inner border" id="functionkeys">
 <h1>Function Keys </h1>
 <table><tbody>
 <tr><th><kbd>F1</kbd></th><td>                                                                <img src="utils/media/tick.png"/> Open this cheatsheet</td></tr>
@@ -388,8 +403,8 @@ A query to increment value in whole file<br/><kbd class="cmd">:let i=1 | g/foo/s
 <tr><th><kbd>F10</kbd></th><td>                                                               <img src="utils/media/tick.png"/> Kitty command - New terminal in new tab</td></tr>
 <tr><th><kbd>F11</kbd></th><td>                                                               <img src="utils/media/tick.png"/> Toggle right tagbar</td></tr>
 <tr><th><kbd>F12</kbd></th><td>                                                               <img src="utils/media/tick.png"/> Toggle ranger</td></tr>
-</tbody></table></div>
-<div id="executinglinescommands">
+</tbody></table>
+</div><div class="inner border" id="executinglinescommands">
 <h1>Executing lines/commands </h1>
 <table><tbody>
 <tr><th><kbd>g</kbd><kbd>r</kbd></th><td>                                                     <img src="utils/media/tick.png"/> Run line under cursor in shell, **USE WITH CARE!**</td></tr>
@@ -397,14 +412,14 @@ A query to increment value in whole file<br/><kbd class="cmd">:let i=1 | g/foo/s
 <tr><th><kbd>Alt-r</kbd></th><td>                                                             <img src="utils/media/tick.png"/> Run the current file</td></tr>
 <tr><th><kbd>Alt-e</kbd></th><td>                                                             <img src="utils/media/tick.png"/> Make the current file executable <kbd class="cmd">chmod a+x file</kbd><br/>The Eunuch plugin also makes files starting with <kbd class="cmd">#!</kbd> executable</td></tr>
 <tr><th><kbd class="cmd">:g/^Foo/norm 0xxxBar</kbd></th><td>                                                       Norm runs commands as if you typed them</td></tr>
-</tbody></table></div>
-<div id="spelling">
+</tbody></table>
+</div><div class="inner border" id="spelling">
 <h1>Spelling <kbd class="cmd">:h spell</kbd></h1>
 <table><tbody>
 <tr><th><kbd>z</kbd><kbd>=</kbd></th><td>                                                     Suggest spelling</td></tr>
 <tr><th><kbd>z</kbd><kbd>g</kbd>, <kbd>z</kbd><kbd>u</kbd><kbd>g</kbd></th><td>               Add to dict, undo add</td></tr>
-</tbody></table></div>
-<div id="miscellaneous">
+</tbody></table>
+</div><div class="inner border" id="miscellaneous">
 <h1>Miscellaneous </h1>
 <table><tbody>
 <tr><th><kbd>g</kbd><kbd>Ctrl-g</kbd></th><td>                                                Word count</td></tr>
@@ -417,6 +432,7 @@ A query to increment value in whole file<br/><kbd class="cmd">:let i=1 | g/foo/s
 <tr><th><kbd>Ctrl-l</kbd></th><td>                                                            <img src="utils/media/tick.png"/> Redraws the screen and removes any search highlighting</td></tr>
 </tbody>
 </table>
+</div>
 </div>
 </body>
 </html>

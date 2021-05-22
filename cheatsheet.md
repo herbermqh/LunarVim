@@ -8,7 +8,14 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 |`:h quickref`|                                                                Quick reference|
 |<kbd>Ctrl-]</kbd>|                                                            Follow help link|
 |<kbd>Ctrl-t</kbd>|                                                            Back to previous|
-|__File Commands__||
+|__Modes__|`:h vim-modes`|
+The far left of the tagline at the bottom of the screen is colour coded according to the mode
+|Normal (Blue)|Enter all the normal editor commands|
+|Insert (Red)|<kbd>i</kbd>,<kbd>a</kbd>,<kbd>o</kbd> etc. Text is inserted|
+|Visual (Purple)|Movement commands extend highlighted area.  A non-movement command is executed against selection|
+|Block (Yellow)|Select a rectangular region|
+|Command (Green)|<kbd>:</kbd> Enter a command at the bottom<br/> <kbd>/</kbd> Search forwards<br/> <kbd>?</kbd> Search backwards|
+|__File Commands__|`:h editing.txt`|
 |`:e file`|                                                                    Open `file`|
 |`:enew`|                                                                      New file|
 |`:e .` or <kbd>-</kbd> or <kbd>F12</kbd>|                                     Explore dir, opens Ranger|
@@ -45,6 +52,42 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 |<kbd>g</kbd><kbd>d</kbd>|                                                     Goto definition|
 |<kbd>g</kbd><kbd>f</kbd>|                                                     Open file under cursor|
 |<kbd>g</kbd><kbd>j</kbd>|                                                     :heavy_check_mark: JUMP!  <ul> <li>If line contains a url jump to this in browser.  <li>else if line contains a hex colour, `#AABBCC`jump to that colour on [ColorHexa.com](https://www.colorhexa.com) <li>Else if line contains a github project name of the format `user/repository` then jump to this GitHub project.  <li>Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.  </ul>|
+|__Insert Mode__|`:h inserting`|
+|<kbd>ESC</kbd>|                                                               Exit insert mode|
+|<kbd>i</kbd>, <kbd>a</kbd>|                                                   Insert before, after cursor|
+|<kbd>I</kbd>, <kbd>A</kbd>|                                                   Insert start, end of line|
+|<kbd>g</kbd><kbd>I</kbd>|                                                     Insert start of line, even before whitespace|
+|<kbd>o</kbd>, <kbd>O</kbd>|                                                   Insert new line below, above|
+|<kbd>g</kbd><kbd>i</kbd>|                                                     Insert at last insert point|
+|<kbd>C</kbd>|                                                                 Change to end of line|
+|<kbd>S</kbd>|                                                                 Substitute line|
+|<kbd>s</kbd>|                                                                 Substitute character|
+|<kbd>Ctrl-n</kbd>, <kbd>Ctrl-p</kbd>|                                         Complete word|
+|<kbd>Ctrl-x-l</kbd>|                                                          Complete line|
+|<kbd>Ctrl-d</kbd>|                                                            Deindent|
+|__Visual Mode And Selection__|`:h visual-mode`|
+|<kbd>v</kbd>|                                                                 Enter visual mode|
+|<kbd>V</kbd>|                                                                 Enter line-wise visual mode|
+|<kbd>Ctrl-v</kbd>|                                                            Block mode|
+|<kbd>I</kbd>, <kbd>A</kbd>, <kbd>x</kbd>|                                     Prepend, append, delete block selection|
+|<kbd>&lt;</kbd>, <kbd>&gt;</kbd>|                                             Indent selection|
+|<kbd>g</kbd><kbd>g</kbd><kbd>V</kbd><kbd>G</kbd>|                             Select whole file|
+|<kbd>=</kbd>|                                                                 Auto format selected|
+|<kbd>g</kbd><kbd>v</kbd>|                                                     Re-select visual area|
+|__Command Mode__|`:h command-mode`|
+|`:ls` (or `:buffers`)|                                                        List buffers|
+|`:changes`|                                                                   Show changes|
+|`:map`|                                                                       Show custom key mappings|
+|`:reg`|                                                                       Show register contents|
+|`:history`|                                                                   Show command history|
+|`:jumps`|                                                                     Show jump list|
+|`:Man`|                                                                       Man page for word under cursor|
+|`:VsnipOpenEdit`|                                                             Edit the snippet config for the current language or global|
+|`/foo`|                                                                       Search `foo` forward|
+|`?foo`|                                                                       Search `foo` backward|
+|<kbd>n</kbd>, <kbd>N</kbd>|                                                   Next, previous search result|
+|`:s/foo/bar/gI`|                                                              Replace all on current line, mind case|
+|`:s/\%Vfoo/bar/g`|                                                            Match only within visual selection with \%V|
 |__Ranges__|`:h ranges`|
 |&nbsp;|                                                                       Any of the following can be used when you see `[range]` in the rest of this table|
 |`.`|                                                                          __Current line__, can be omitted as in `1,.d` and `1,d` are equivalent|
@@ -84,19 +127,6 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 |`:[range]s/foo\(\d\+\)/bar\1/gic`|                                            TODO: Replace all, ignore case, confirm each. Note backreference and escaped parens|
 |`:[range]&`|                                                                  Repeat last :s on range|
 |`:/foo/+1d`|                                                                  Delete line after next line containing `foo`|
-|__Insert Mode__|`:h inserting`|
-|<kbd>ESC</kbd>|                                                               Exit insert mode|
-|<kbd>i</kbd>, <kbd>a</kbd>|                                                   Insert before, after cursor|
-|<kbd>I</kbd>, <kbd>A</kbd>|                                                   Insert start, end of line|
-|<kbd>g</kbd><kbd>I</kbd>|                                                     Insert start of line, even before whitespace|
-|<kbd>o</kbd>, <kbd>O</kbd>|                                                   Insert new line below, above|
-|<kbd>g</kbd><kbd>i</kbd>|                                                     Insert at last insert point|
-|<kbd>C</kbd>|                                                                 Change to end of line|
-|<kbd>S</kbd>|                                                                 Substitute line|
-|<kbd>s</kbd>|                                                                 Substitute character|
-|<kbd>Ctrl-n</kbd>, <kbd>Ctrl-p</kbd>|                                         Complete word|
-|<kbd>Ctrl-x-l</kbd>|                                                          Complete line|
-|<kbd>Ctrl-d</kbd>|                                                            Deindent|
 |__Operators__|`:h operator`|
 |<kbd>d</kbd>|                                                                 Delete/cut|
 |<kbd>d</kbd><kbd>d</kbd>|                                                     Delete current line|
@@ -134,7 +164,7 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 |<kbd>y</kbd><kbd>i</kbd><kbd>"</kbd>|                                         Yank in quotes|
 |<kbd>v</kbd><kbd>i</kbd><kbd>b</kbd>|                                         Visual in block|
 |<kbd>v</kbd><kbd>i</kbd><kbd>p</kbd>|                                         Select paragraph|
-|__Surround__||
+|__Surround__|[plugin](https://github.com/tpope/vim-surround)|
 |<kbd>c</kbd><kbd>s</kbd><kbd>"</kbd><kbd>'</kbd>|                             :heavy_check_mark: "aWord" to 'aWord'|
 |<kbd>c</kbd><kbd>s</kbd><kbd>'</kbd><kbd>"</kbd>|                             :heavy_check_mark: 'aWord' to "aWord"|
 |<kbd>c</kbd><kbd>s</kbd><kbd>'</kbd><kbd>&lt;</kbd><kbd>q</kbd><kbd>&gt;</kbd>|:heavy_check_mark: 'aWord' to &lt;q&gt;aWord&lt;/q&gt;|
@@ -160,20 +190,6 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 |`:marks`|                                                                     List marks|
 |`:'x,'y s/foo/bar/g`|                                                         Replace between marks `x` and `y`|
 |`:'<,'> s/foo/bar/g`|                                                         Replace between selected text|
-|__Command Mode__||
-|`:ls` (or `:buffers`)|                                                        List buffers|
-|`:changes`|                                                                   Show changes|
-|`:map`|                                                                       Show custom key mappings|
-|`:reg`|                                                                       Show register contents|
-|`:history`|                                                                   Show command history|
-|`:jumps`|                                                                     Show jump list|
-|`:Man`|                                                                       Man page for word under cursor|
-|`:VsnipOpenEdit`|                                                             Edit the snippet config for the current language or global|
-|`/foo`|                                                                       Search `foo` forward|
-|`?foo`|                                                                       Search `foo` backward|
-|<kbd>n</kbd>, <kbd>N</kbd>|                                                   Next, previous search result|
-|`:s/foo/bar/gI`|                                                              Replace all on current line, mind case|
-|`:s/\%Vfoo/bar/g`|                                                            Match only within visual selection with \%V|
 |__Options__|`:h options`|
 |`:set number!`|                                                               Toggle line numbers|
 |`:set rnu!`|                                                                  Toggle relative line numbers|
@@ -186,15 +202,6 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 |`:set noOPT`|                                                                 Turn off `opt`|
 |`:set OPT?`|                                                                  Show value of `opt`|
 |`:set`|                                                                       Show current options|
-|__Visual Mode And Selection__||
-|<kbd>v</kbd>|                                                                 Enter visual mode|
-|<kbd>V</kbd>|                                                                 Enter line-wise visual mode|
-|<kbd>Ctrl-v</kbd>|                                                            Visual block-wise mode|
-|<kbd>I</kbd>, <kbd>A</kbd>, <kbd>x</kbd>|                                     Prepend, append, delete block selection|
-|<kbd>&lt;</kbd>, <kbd>&gt;</kbd>|                                             Indent selection|
-|<kbd>g</kbd><kbd>g</kbd><kbd>V</kbd><kbd>G</kbd>|                             Select all|
-|<kbd>=</kbd>|                                                                 Auto format selected|
-|<kbd>g</kbd><kbd>v</kbd>|                                                     Re-select visual area|
 |__Buffers and Windows__||
 |<kbd>tab</kbd>, <kbd>shift-tab</kbd>, <kbd>b</kbd><kbd>d</kbd>|               Buffer next, previous, delete (close)|
 |`:sp, :vsp`|                                                                  Split view horizontal, vertical|
@@ -222,11 +229,6 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 |<kbd>g</kbd><kbd>g</kbd><kbd>=</kbd><kbd>G</kbd>|                             Auto (re)indent entire document|
 |<kbd>=</kbd>|                                                                 (re)indent the text on the current line or on the area selected (SUPER)|
 |<kbd>=</kbd><kbd>%</kbd>|                                                     (re)indent the current braces { ... }|
-|__Commenting__||
-|<kbd>Ctrl-/</kbd>|                                                            :heavy_check_mark: (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.  <br/> - I find this really handy!|
-|__Moving a Line__||
-|<kbd>Alt-Up</kbd>|                                                            :heavy_check_mark: Move current line up|
-|<kbd>Alt-Down</kbd>|                                                          :heavy_check_mark: Move current line down|
 |__Changing case__|`:h case`|
 |<kbd>~</kbd>|                                                                 Toggle case|
 |<kbd>g</kbd><kbd>U</kbd><kbd>U</kbd>|                                         Upper case whole line|
@@ -237,9 +239,14 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 |<kbd>g</kbd><kbd>U</kbd><kbd>[motion]</kbd>|                                  Uppercase|
 |`:s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g`|                                           TODO: Title Case regex|
 |__Increment/Dec a value__||
-|<kbd>Ctrl-a</kbd>|                                                            Increment value under cursor by 1.  Also works with Dates/times...|
-|<kbd>Ctrl-x</kbd>|                                                            Decrement value under cursor by 1.|
+|<kbd>Ctrl-a</kbd>|                                                            :heavy_check_mark: Increment value under cursor by 1.  Also works with Dates/times. See [Speeddating plugin](https://github.com/tpope/vim-speeddating)|
+|<kbd>Ctrl-x</kbd>|                                                            :heavy_check_mark: Decrement value under cursor by 1.|
 A query to increment value in whole file<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>For example:<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`
+|__Commenting__||
+|<kbd>Ctrl-/</kbd>|                                                            :heavy_check_mark: (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.<br/> - Or you can relect and range and then comment, try <kbd>v</kbd><kbd>i</kbd><kbd>p</kbd><kbd>Ctrl-/</kbd><br/> - I find this really handy!|
+|__Moving a Line__||
+|<kbd>Alt-Up</kbd>|                                                            :heavy_check_mark: Move current line up|
+|<kbd>Alt-Down</kbd>|                                                          :heavy_check_mark: Move current line down|
 |__Function Keys__||
 |<kbd>F1</kbd>|                                                                :heavy_check_mark: Open this cheatsheet|
 |<kbd>F2</kbd>|                                                                :heavy_check_mark: Cycle through different folding methods|

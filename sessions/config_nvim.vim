@@ -9,17 +9,18 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +1 .config/LunarVim/user.vim
+badd +74 .config/LunarVim/cheatsheet.md
+badd +135 .config/LunarVim/lua/plugins.lua
 badd +41 .config/LunarVim/init.lua
-badd +105 .config/LunarVim/lua/plugins.lua
 badd +1 .config/LunarVim/README.md
-badd +1 ~/.config/LunarVim/cheatsheet.md
-badd +91 ~/bin/dotfiles/bin/mdToCheat
+badd +133 bin/dotfiles/bin/mdToCheat
+badd +85 .config/LunarVim/lua/lv-galaxyline/init.lua
 argglobal
 %argdel
 $argadd .config/LunarVim/init.lua
-edit .config/LunarVim/lua/plugins.lua
+edit .config/LunarVim/user.vim
 argglobal
-balt .config/LunarVim/README.md
+balt .config/LunarVim/cheatsheet.md
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -28,12 +29,14 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 135 - ((43 * winheight(0) + 22) / 44)
+244
+normal! zo
+let s:l = 284 - ((36 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 135
-normal! 0
+keepjumps 284
+normal! 031|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -45,7 +48,6 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
