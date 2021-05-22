@@ -545,6 +545,14 @@ highlight markerStart                          guifg=#777777     guibg=#000000
 highlight markerEnd                            guifg=#777777     guibg=#000000
 call matchadd('markerStart', '^.*{\{3\}.*$', 50)
 call matchadd('markerEnd', '^.*}\{3\}.*$', 50)
+
+" Highlight my marker lines
+highlight markerLineCommentAmber               guifg=#000000     guibg=#999900
+call matchadd('markerLineCommentAmber', '^.*\.\{5,\}$', 50)
+highlight markerLineCommentGreen               guifg=#000000     guibg=#009900
+call matchadd('markerLineCommentGreen', '^.*-\{5,\}$', 50)
+highlight markerLineCommentRed                 guifg=#000000     guibg=#990000
+call matchadd('markerLineCommentRed',   '^.*=\{5,\}$', 50)
 " }}}1
 
 " Syntax files {{{1

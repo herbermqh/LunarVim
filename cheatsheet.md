@@ -5,87 +5,86 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 | Key     | Action  |
 | ------: | :-------|
 |__Help__|`:h topic`|
-|`:h quickref`|                                                Quick reference|
-|<kbd>Ctrl-]</kbd>|                                            Follow help link|
-|<kbd>Ctrl-t</kbd>|                                            Back to previous|
+|`:h quickref`|                                                                Quick reference|
+|<kbd>Ctrl-]</kbd>|                                                            Follow help link|
+|<kbd>Ctrl-t</kbd>|                                                            Back to previous|
 |__File Commands__||
-|`:e file`|                                                    Open `file`|
-|`:enew`|                                                      New file|
-|`:e .`|                                                       Explore dir|
-|`:e sftp://me@example.com/myfile`|                            Open sftp|
-|`:e!`|                                                        Revert to saved|
-|<kbd>Ctrl-s</kbd>|                                            :heavy_check_mark: Save the current file|
-|`:w file`|                                                    Save `file`|
-|`:wq` or <kbd>Z</kbd><kbd>Z</kbd>|                            Save and close|
-|`:q!` or <kbd>Z</kbd><kbd>Q</kbd>|                            Close without saving|
-|`:qa`|                                                        Close all|
-|`:qa!`|                                                       Close all, don't save|
-|`:SudoWrite`|                                                 Eunuch plugin : Write even if you don't have permission|
-|__Motion/Movement__||
-|<kbd>h</kbd>, <kbd>j</kbd>, <kbd>k</kbd>, <kbd>l</kbd>|       Char left, down, up, right|
-|<kbd>0</kbd>, <kbd>g</kbd><kbd>m</kbd>, <kbd>$|</kbd>         Start, middle, end of line|
-|<kbd>^</kbd>|                                                 First non-white character of line|
-|<kbd>Enter</kbd>|                                             First non-white char of next line|
-|<kbd>*</kbd>, <kbd>#</kbd>|                                   Next, last word under cursor|
-|<kbd>b</kbd>, <kbd>w</kbd>|                                   Word left, right|
-|<kbd>B</kbd>, <kbd>W</kbd>|                                   Whitespaced word left, right|
-|<kbd>n</kbd>, <kbd>N</kbd>|                                   Next, previous search result|
-|<kbd>f</kbd><kbd>x</kbd>, <kbd>F</kbd><kbd>x</kbd>|           Next, previous character `x`|
-|<kbd>H</kbd>, <kbd>M</kbd>, <kbd>L</kbd>|                     Top, middle, bottom of screen|
+|`:e file`|                                                                    Open `file`|
+|`:enew`|                                                                      New file|
+|`:e .` or <kbd>-</kbd> or <kbd>F12</kbd>|                                     Explore dir, opens Ranger|
+|`:e sftp://me@example.com/myfile`|                                            Open sftp|
+|`:e!`|                                                                        Revert to saved version|
+|<kbd>Ctrl-s</kbd>|                                                            :heavy_check_mark: Save the current file|
+|`:w file`|                                                                    Save to `file`|
+|`:wq` or <kbd>Z</kbd><kbd>Z</kbd>|                                            Save and close|
+|`:q!` or <kbd>Z</kbd><kbd>Q</kbd>|                                            Close without saving|
+|`:qa`|                                                                        Close all|
+|`:qa!`|                                                                       Close all, don't save|
+|`:SudoWrite`|                                                                 [Vim-Eunuch](https://github.com/tpope/vim-eunuch) plugin : Write even if you don't have permission|
+|__Motion/Movement__|`:h motion.txt`|
+|<kbd>h</kbd>, <kbd>j</kbd>, <kbd>k</kbd>, <kbd>l</kbd>|                       Char left, down, up, right|
+|<kbd>0</kbd>, <kbd>g</kbd><kbd>m</kbd>, <kbd>$|</kbd>                         Start, middle, end of line|
+|<kbd>^</kbd>|                                                                 First non-white character of line|
+|<kbd>Enter</kbd>|                                                             First non-white char of next line|
+|<kbd>*</kbd>, <kbd>#</kbd>|                                                   Next, last word under cursor|
+|<kbd>b</kbd>, <kbd>w</kbd>|                                                   Word left, right|
+|<kbd>B</kbd>, <kbd>W</kbd>|                                                   Whitespaced word left, right|
+|<kbd>f</kbd><kbd>x</kbd>, <kbd>F</kbd><kbd>x</kbd>|                           Next, previous character `x`|
+|<kbd>H</kbd>, <kbd>M</kbd>, <kbd>L</kbd>|                                     Top, middle, bottom of screen|
 |<kbd>z</kbd><kbd>z</kbd>, <kbd>z</kbd><kbd>t</kbd>, <kbd>z</kbd><kbd>b</kbd>| View line center, top, bottom|
-|<kbd>Ctrl-f</kbd>, <kbd>Ctrl-b</kbd>|                         Next, previous screen|
-|<kbd>Ctrl-d</kbd>, <kbd>Ctrl-u</kbd>|                         Next, previous half-screen|
-|<kbd>g</kbd><kbd>g</kbd>, <kbd>G</kbd>|                       Start, end of file|
-|<kbd>g</kbd><kbd>;</kbd>, <kbd>g</kbd><kbd>,</kbd>|           Previous, next change|
-|<kbd>%</kbd>|                                                 Matching brace|
-|<kbd>{</kbd>, <kbd>}</kbd>|                                   Next, previous empty line|
-|<kbd>(</kbd>, <kbd>)</kbd>|                                   Next, previous sentence|
-|`n`<kbd>G</kbd>, `:n`|                                        Goto line number `n`|
-|`n`<kbd>\|</kbd>|                                             Column `n`|
-|<kbd>]</kbd><kbd>s</kbd>, <kbd>[</kbd><kbd>s</kbd>|           Next, last misspelled|
-|<kbd>g</kbd><kbd>d</kbd>|                                     Goto definition|
-|<kbd>g</kbd><kbd>f</kbd>|                                     Open file under cursor|
-|<kbd>g</kbd><kbd>j</kbd>|                                     :heavy_check_mark: JUMP!  <ul> <li>If line contains a url jump to this in browser.  <li>else if line contains a hex colour, `#AABBCC`jump to that colour on [ColorHexa.com](https://www.colorhexa.com) <li>Else if line contains a github project name of the format `user/repository` then jump to this GitHub project.  <li>Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.  </ul>|
+|<kbd>Ctrl-f</kbd>, <kbd>Ctrl-b</kbd>|                                         Next, previous screen|
+|<kbd>Ctrl-d</kbd>, <kbd>Ctrl-u</kbd>|                                         Next, previous half-screen|
+|<kbd>g</kbd><kbd>g</kbd>, <kbd>G</kbd>|                                       Start, end of file|
+|<kbd>g</kbd><kbd>;</kbd>, <kbd>g</kbd><kbd>,</kbd>|                           Previous, next change|
+|<kbd>%</kbd>|                                                                 Jump forward or backwards to matching brace|
+|<kbd>{</kbd>, <kbd>}</kbd>|                                                   Next, previous empty line|
+|<kbd>(</kbd>, <kbd>)</kbd>|                                                   Next, previous sentence|
+|`n`<kbd>G</kbd>, `:n`|                                                        Goto line number `n`|
+|`n`<kbd>\|</kbd>|                                                             Column `n`|
+|<kbd>]</kbd><kbd>s</kbd>, <kbd>[</kbd><kbd>s</kbd>|                           Next, last misspelled|
+|<kbd>g</kbd><kbd>d</kbd>|                                                     Goto definition|
+|<kbd>g</kbd><kbd>f</kbd>|                                                     Open file under cursor|
+|<kbd>g</kbd><kbd>j</kbd>|                                                     :heavy_check_mark: JUMP!  <ul> <li>If line contains a url jump to this in browser.  <li>else if line contains a hex colour, `#AABBCC`jump to that colour on [ColorHexa.com](https://www.colorhexa.com) <li>Else if line contains a github project name of the format `user/repository` then jump to this GitHub project.  <li>Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.  </ul>|
 |__Ranges__|`:h ranges`|
-|&nbsp;|                            Any of the following can be used when you see `[range]` in the rest of this table|
-|`.`|                               __Current line__, can be omitted as in `1,.d` and `1,d` are equivalent|
-|`1`|                               __First line__|
-|`$`|                               __Last line__ of file|
-|`$-n`|                             n lines before the last line of the file|
-|`%`|                               The __whole__ file, same as `1,$`|
-|`*`|                               Use __last range__, whatever it was!|
-|`n`|                               Absolute __line number__ n|
-|`+n`|                              Relative n lines down|
-|`-n`|                              Relative n lines up|
-|`'m`|                              A __marker__, a-z|
-|`'<`|                              Start of selection|
-|`'>`|                              End of selection|
-|&nbsp;|                            __Add any of the above together with a comma to specify a range__|
-|`n,m` e.g: `20,30`|                Absolute position in file, e.g. lines 20 to 30 inclusive|
-|`+n,+m` e.g: `+20,+30`|            Relative position from current line, e.g. lines +20 to +30 inclusive|
-|`'a,'b`|                           From marker a to marker b inclusive|
-|`'<,'>`|                           Selection, if you hit `:` to go to command mode when something is selected you will see this|
-|`'a,'<`|                           You can mix start and ends, so this is from marker a to start of selection|
+|&nbsp;|                                                                       Any of the following can be used when you see `[range]` in the rest of this table|
+|`.`|                                                                          __Current line__, can be omitted as in `1,.d` and `1,d` are equivalent|
+|`1`|                                                                          __First line__|
+|`$`|                                                                          __Last line__ of file|
+|`$-n`|                                                                        n lines before the last line of the file|
+|`%`|                                                                          The __whole__ file, same as `1,$`|
+|`*`|                                                                          Use __last range__, whatever it was!|
+|`n`|                                                                          Absolute __line number__ n|
+|`+n`|                                                                         Relative n lines down|
+|`-n`|                                                                         Relative n lines up|
+|`'m`|                                                                         A __marker__, a-z|
+|`'<`|                                                                         Start of selection|
+|`'>`|                                                                         End of selection|
+|&nbsp;|                                                                       __Add any of the above together with a comma to specify a range__|
+|`n,m` e.g: `20,30`|                                                           Absolute position in file, e.g. lines 20 to 30 inclusive|
+|`+n,+m` e.g: `+20,+30`|                                                       Relative position from current line, e.g. lines +20 to +30 inclusive|
+|`'a,'b`|                                                                      From marker a to marker b inclusive|
+|`'<,'>`|                                                                      Selection, if you hit `:` to go to command mode when something is selected you will see this|
+|`'a,'<`|                                                                      You can mix start and ends, so this is from marker a to start of selection|
 |__Range Actions__||
-|`:[range]d`|                       Delete range|
-|`:[range]!{cmd}`|                  Run a command over the selection, the contents are overwritten!|
-|`:[range]!sort -u`|                Sort unique selection|
-|`:[range]!column -t`|              Tabulate range|
-|`:[range]!grep {word}`|            Only return lines containing word|
-|`:[range]w new.txt`|               Write range to new file|
-|`:[range]w !{cmd}`|                Execute cmd with range as stdin, `:'a,'bw !python3`, output is to command message window|
-|`:[range]g/pattern/{cmd}`|         TODO: Run the command on all lines in [range] matching `pattern`|
-|`:[range]s/pattern//gn`|           Count matches|
-|`:[range]!par`|                    Format range|
-|`:[range]!par j1w80`|              Format range to j1w80|
-|<kbd>Ctrl-w</kbd>|                 :heavy_check_mark: Wrap, quick format current paragraph|
-|`:[range]ce [width]`|              Centre lines `:.,+3 ce 80`, to centre current line on 80 cols use `:ce 80`|
-|`:[range]ri [right edge]`|         Right alignment `:% right 100`|
-|`:[range]le [indent]`|             Left alignment.(Unit of identation is space) `:% left 4`|
-|`:[range]s/foo\(\d\+\)/bar\1/gic`| TODO: Replace all, ignore case, confirm each. Note backreference and escaped parens|
-|`:[range]&`|                       Repeat last :s on range|
-|`:/foo/+1d`|                       Delete line after next line containing `foo`|
-|__Insert Mode__||
+|`:[range]d`|                                                                  Delete range|
+|`:[range]!{cmd}`|                                                             Run a command over the selection, the contents are overwritten!|
+|`:[range]!sort -u`|                                                           Sort unique selection|
+|`:[range]!column -t`|                                                         Tabulate range|
+|`:[range]!grep {word}`|                                                       Only return lines containing word|
+|`:[range]w new.txt`|                                                          Write range to new file|
+|`:[range]w !{cmd}`|                                                           Execute cmd with range as stdin, `:'a,'bw !python3`, output is to command message window|
+|`:[range]g/pattern/{cmd}`|                                                    TODO: Run the command on all lines in [range] matching `pattern`|
+|`:[range]s/pattern//gn`|                                                      Count matches|
+|`:[range]!par`|                                                               Format range|
+|`:[range]!par j1w80`|                                                         Format range to j1w80|
+|<kbd>Ctrl-w</kbd>|                                                            :heavy_check_mark: Wrap, quick format current paragraph|
+|`:[range]ce [width]`|                                                         Centre lines `:.,+3 ce 80`, to centre current line on 80 cols use `:ce 80`|
+|`:[range]ri [right edge]`|                                                    Right alignment `:% right 100`|
+|`:[range]le [indent]`|                                                        Left alignment.(Unit of identation is space) `:% left 4`|
+|`:[range]s/foo\(\d\+\)/bar\1/gic`|                                            TODO: Replace all, ignore case, confirm each. Note backreference and escaped parens|
+|`:[range]&`|                                                                  Repeat last :s on range|
+|`:/foo/+1d`|                                                                  Delete line after next line containing `foo`|
+|__Insert Mode__|`:h inserting`|
 |<kbd>ESC</kbd>|                                                               Exit insert mode|
 |<kbd>i</kbd>, <kbd>a</kbd>|                                                   Insert before, after cursor|
 |<kbd>I</kbd>, <kbd>A</kbd>|                                                   Insert start, end of line|
@@ -98,7 +97,7 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 |<kbd>Ctrl-n</kbd>, <kbd>Ctrl-p</kbd>|                                         Complete word|
 |<kbd>Ctrl-x-l</kbd>|                                                          Complete line|
 |<kbd>Ctrl-d</kbd>|                                                            Deindent|
-|__Operators__||
+|__Operators__|`:h operator`|
 |<kbd>d</kbd>|                                                                 Delete/cut|
 |<kbd>d</kbd><kbd>d</kbd>|                                                     Delete current line|
 |<kbd>d</kbd><kbd>^</kbd>|                                                     Delete to start of line|
@@ -143,7 +142,7 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 |<kbd>y</kbd><kbd>s</kbd><kbd>i</kbd><kbd>w</kbd><kbd>]</kbd>|                 :heavy_check_mark: aWord to [aWord]|
 |<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>)</kbd>|                             :heavy_check_mark: Whole-Line to (Whole-Line)|
 |<kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>"</kbd>|                             :heavy_check_mark: Whole-Line to "Whole-Line"|
-|__Macros__||
+|__Macros__|`:h complex-repeat`|
 |<kbd>q</kbd><kbd>x</kbd>|                                                     Record to `x`|
 |<kbd>q</kbd>|                                                                 Stop recording|
 |<kbd>@</kbd><kbd>x</kbd>|                                                     Execute macro `x`|
@@ -152,11 +151,11 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 |<kbd>Q</kbd>|                                                                 :heavy_check_mark: Play macro <kbd>q</kbd>, shortcut for <kbd>@q</kbd>|
 |`:%norm @x`|                                                                  Run macro @x on all lines|
 |`:5,10norm @x`|                                                               Run macro @x on lines 5-10|
-|__Marks__||
+|__Marks__|`:h mark-motions`|
 |<kbd>m</kbd><kbd>space</kbd>|                                                 Remove all marks|
 |<kbd>m</kbd><kbd>x</kbd>|                                                     Toggle mark <kbd>x</kbd>|
 |<kbd>'</kbd><kbd>x</kbd>, <kbd>`</kbd><kbd>x</kbd>|                           Goto to mark `x` (a-z), '=start of line, `=end|
-|<kbd>m</kbd><kbd>X</kbd>|                                                     Set GLOBAL mark `X` (A-Z)|
+|<kbd>m</kbd><kbd>X</kbd>|                                                     Set GLOBAL mark `X` (A-Z), i.e. a mark in another file|
 |`:Telescope marks`|                                                           List marks, select and jump|
 |`:marks`|                                                                     List marks|
 |`:'x,'y s/foo/bar/g`|                                                         Replace between marks `x` and `y`|
@@ -172,6 +171,7 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 |`:VsnipOpenEdit`|                                                             Edit the snippet config for the current language or global|
 |`/foo`|                                                                       Search `foo` forward|
 |`?foo`|                                                                       Search `foo` backward|
+|<kbd>n</kbd>, <kbd>N</kbd>|                                                   Next, previous search result|
 |`:s/foo/bar/gI`|                                                              Replace all on current line, mind case|
 |`:s/\%Vfoo/bar/g`|                                                            Match only within visual selection with \%V|
 |__Options__|`:h options`|
@@ -227,7 +227,7 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 |__Moving a Line__||
 |<kbd>Alt-Up</kbd>|                                                            :heavy_check_mark: Move current line up|
 |<kbd>Alt-Down</kbd>|                                                          :heavy_check_mark: Move current line down|
-|__Changing case__||
+|__Changing case__|`:h case`|
 |<kbd>~</kbd>|                                                                 Toggle case|
 |<kbd>g</kbd><kbd>U</kbd><kbd>U</kbd>|                                         Upper case whole line|
 |<kbd>g</kbd><kbd>u</kbd><kbd>u</kbd>|                                         Lower case whole line|
@@ -238,7 +238,8 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 |`:s/\<\(\w\)\(\w\*\)\>/\u\1\L\2/g`|                                           TODO: Title Case regex|
 |__Increment/Dec a value__||
 |<kbd>Ctrl-a</kbd>|                                                            Increment value under cursor by 1.  Also works with Dates/times...|
-|<kbd>Ctrl-x</kbd>|                                                            Decrement value under cursor by 1.<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`|
+|<kbd>Ctrl-x</kbd>|                                                            Decrement value under cursor by 1.|
+A query to increment value in whole file<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`
 |__Function Keys__||
 |<kbd>F1</kbd>|                                                                :heavy_check_mark: Open this cheatsheet|
 |<kbd>F2</kbd>|                                                                :heavy_check_mark: Cycle through different folding methods|
@@ -255,7 +256,7 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 |<kbd>Alt-r</kbd>|                                                             :heavy_check_mark: Run the current file|
 |<kbd>Alt-e</kbd>|                                                             :heavy_check_mark: Make the current file executable `chmod a+x file`<br/>The Eunuch plugin also makes files starting with `#!` executable|
 |`:g/^Foo/norm 0xxxBar`|                                                       Norm runs commands as if you typed them|
-|__Spelling__||
+|__Spelling__|`:h spell`|
 |<kbd>z</kbd><kbd>=</kbd>|                                                     Suggest spelling|
 |<kbd>z</kbd><kbd>g</kbd>, <kbd>z</kbd><kbd>u</kbd><kbd>g</kbd>|               Add to dict, undo add|
 |__Miscellaneous__||
