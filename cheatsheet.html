@@ -374,7 +374,7 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 <table><tbody>
 <tr><th><kbd>Ctrl-a</kbd></th><td>                                                            Increment value under cursor by 1.  Also works with Dates/times...</td></tr>
 <tr><th><kbd>Ctrl-x</kbd></th><td>                                                            Decrement value under cursor by 1.</td></tr>
-A query to increment value in whole file<br/><kbd class="cmd">:let i=1 \| g/foo/s//\=i/ \| let i=i+1</kbd><br/><kbd class="cmd">:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1</kbd>
+A query to increment value in whole file<br/><kbd class="cmd">:let i=1 | g/foo/s//\=i/ | let i=i+1</kbd><br/>For example:<br/><kbd class="cmd">:let i=1 | g/foo/s//\="morestuff".i."morestuff"/ | let i=i+1</kbd>
 </tbody></table></div>
 <div id="functionkeys">
 <h1>Function Keys </h1>

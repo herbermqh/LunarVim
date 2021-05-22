@@ -239,7 +239,7 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 |__Increment/Dec a value__||
 |<kbd>Ctrl-a</kbd>|                                                            Increment value under cursor by 1.  Also works with Dates/times...|
 |<kbd>Ctrl-x</kbd>|                                                            Decrement value under cursor by 1.|
-A query to increment value in whole file<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`
+A query to increment value in whole file<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>For example:<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`
 |__Function Keys__||
 |<kbd>F1</kbd>|                                                                :heavy_check_mark: Open this cheatsheet|
 |<kbd>F2</kbd>|                                                                :heavy_check_mark: Cycle through different folding methods|
