@@ -91,7 +91,17 @@ The line is split into 5 main sections, 3 on the left and 2 on the right:
   - LSP information
 - On the right:
   - File information
+    - Line Ending, Linux, Mac or Windows
+    - File Name
+    - File Type
+    - File Size
+    - Character encoding
   - Position information
+    - Percentage
+    - Current Line Number / Number of lines in the file
+    - Current column / length of current line
+    - Tab mode, space or tab and number of characters
+Note the column information is colour coded, >80 = Yellow >120 = Red.
 <!-- }}}1 -->
 
 # Java LSP Install
