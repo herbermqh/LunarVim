@@ -83,14 +83,14 @@ useful like <kbd>Q</kbd>, <kbd>g</kbd><kbd>j</kbd>, <kbd>Alt-Up</kbd> etc. I've 
 (from plugins) key-bindings with <img src="utils/media/tick.png"/> in the table below.
 
 </div><div class="inner border" id="help">
-<h1>Help <kbd class="cmd">:h topic</kbd></h1>
+<h1>Help <a target="_new" href="https://neovim.io/doc/user/usr_02.html#02.8"><kbd class="cmd">:h topic</kbd></a></h1>
 <table><tbody>
 <tr><th><kbd class="cmd">:h quickref</kbd></th><td>                                                                Quick reference</td></tr>
 <tr><th><kbd>Ctrl-]</kbd></th><td>                                                            Follow help link</td></tr>
 <tr><th><kbd>Ctrl-t</kbd></th><td>                                                            Back to previous</td></tr>
 </tbody></table>
 </div><div class="inner border" id="modes">
-<h1>Modes <kbd class="cmd">:h vim-modes</kbd></h1>
+<h1>Modes <a target="_new" href="https://neovim.io/doc/user/intro.html#vim-modes"><kbd class="cmd">:h vim-modes</kbd></a></h1>
 <table><tbody>
 The far left of the tagline at the bottom of the screen is colour coded according to the mode
 <tr><th>Normal (Blue)</th><td>Enter all the normal editor commands</td></tr>
@@ -100,7 +100,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th>Command (Green)</th><td><kbd>:</kbd> Enter a command at the bottom<br/> <kbd>/</kbd> Search forwards<br/> <kbd>?</kbd> Search backwards</td></tr>
 </tbody></table>
 </div><div class="inner border" id="filecommands">
-<h1>File Commands <kbd class="cmd">:h editing.txt</kbd></h1>
+<h1>File Commands <a target="_new" href="https://neovim.io/doc/user/editing.html"><kbd class="cmd">:h editing.txt</kbd></a></h1>
 <table><tbody>
 <tr><th><kbd class="cmd">:e file</kbd></th><td>                                                                    Open <kbd class="cmd">file</kbd></td></tr>
 <tr><th><kbd class="cmd">:enew</kbd></th><td>                                                                      New file</td></tr>
@@ -113,10 +113,10 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd class="cmd">:q!</kbd> or <kbd>Z</kbd><kbd>Q</kbd></th><td>                                            Close without saving</td></tr>
 <tr><th><kbd class="cmd">:qa</kbd></th><td>                                                                        Close all</td></tr>
 <tr><th><kbd class="cmd">:qa!</kbd></th><td>                                                                       Close all, don't save</td></tr>
-<tr><th><kbd class="cmd">:SudoWrite</kbd></th><td>                                                                 <a target="_new" href="https://github.com/tpope/vim-eunuch">Vim-Eunuch</a> plugin : Write even if you don't have permission</td></tr>
+<tr><th><kbd class="cmd">:SudoWrite</kbd></th><td>                                                                 <a target="_new" href="https://github.com/tpope/vim-eunuch">Vim-Eunuch</a> plug-in : Write even if you don't have permission</td></tr>
 </tbody></table>
 </div><div class="inner border" id="motionmovement">
-<h1>Motion/Movement <kbd class="cmd">:h motion.txt</kbd></h1>
+<h1>Motion/Movement <a target="_new" href="https://neovim.io/doc/user/motion.html"><kbd class="cmd">:h motion.txt</kbd></a></h1>
 <table><tbody>
 <tr><th><kbd>h</kbd>, <kbd>j</kbd>, <kbd>k</kbd>, <kbd>l</kbd></th><td>                       Char left, down, up, right</td></tr>
 <tr><th><kbd>0</kbd>, <kbd>g</kbd><kbd>m</kbd>, <kbd>$</th><td></kbd>                         Start, middle, end of line</td></tr>
@@ -124,10 +124,11 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd>Enter</kbd></th><td>                                                             First non-white char of next line</td></tr>
 <tr><th><kbd>*</kbd>, <kbd>#</kbd></th><td>                                                   Next, last word under cursor</td></tr>
 <tr><th><kbd>b</kbd>, <kbd>w</kbd></th><td>                                                   Word left, right</td></tr>
-<tr><th><kbd>B</kbd>, <kbd>W</kbd></th><td>                                                   Whitespaced word left, right</td></tr>
+<tr><th><kbd>B</kbd>, <kbd>W</kbd></th><td>                                                   White spaced word left, right</td></tr>
 <tr><th><kbd>f</kbd><kbd>x</kbd>, <kbd>F</kbd><kbd>x</kbd></th><td>                           Next, previous character <kbd class="cmd">x</kbd></td></tr>
 <tr><th><kbd>H</kbd>, <kbd>M</kbd>, <kbd>L</kbd></th><td>                                     Top, middle, bottom of screen</td></tr>
 <tr><th><kbd>z</kbd><kbd>z</kbd>, <kbd>z</kbd><kbd>t</kbd>, <kbd>z</kbd><kbd>b</kbd></th><td> View line center, top, bottom</td></tr>
+<tr><th><kbd>Ctrl-e</kbd>, <kbd>Ctrl-y</kbd></th><td>                                         Move up/down, keeping cursor on same line</td></tr>
 <tr><th><kbd>Ctrl-f</kbd>, <kbd>Ctrl-b</kbd></th><td>                                         Next, previous screen</td></tr>
 <tr><th><kbd>Ctrl-d</kbd>, <kbd>Ctrl-u</kbd></th><td>                                         Next, previous half-screen</td></tr>
 <tr><th><kbd>g</kbd><kbd>g</kbd>, <kbd>G</kbd></th><td>                                       Start, end of file</td></tr>
@@ -143,7 +144,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd>g</kbd><kbd>j</kbd></th><td>                                                     <img src="utils/media/tick.png"/> JUMP!  <ul> <li>If line contains a url jump to this in browser.  <li>else if line contains a hex colour, <kbd class="cmd">#AABBCC</kbd>jump to that colour on <a target="_new" href="https://www.colorhexa.com">ColorHexa.com</a> <li>Else if line contains a github project name of the format <kbd class="cmd">user/repository</kbd> then jump to this GitHub project.  <li>Else if try and open the current word in <a target="_new" href="https://cheat.sh">cheat.sh</a> uses the buffers language to help get the right command.  </ul></td></tr>
 </tbody></table>
 </div><div class="inner border" id="insertmode">
-<h1>Insert Mode <kbd class="cmd">:h inserting</kbd></h1>
+<h1>Insert Mode <a target="_new" href="https://neovim.io/doc/user/insert.html#Insert"><kbd class="cmd">:h inserting</kbd></a></h1>
 <table><tbody>
 <tr><th><kbd>ESC</kbd></th><td>                                                               Exit insert mode</td></tr>
 <tr><th><kbd>i</kbd>, <kbd>a</kbd></th><td>                                                   Insert before, after cursor</td></tr>
@@ -156,10 +157,10 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd>s</kbd></th><td>                                                                 Substitute character</td></tr>
 <tr><th><kbd>Ctrl-n</kbd>, <kbd>Ctrl-p</kbd></th><td>                                         Complete word</td></tr>
 <tr><th><kbd>Ctrl-x-l</kbd></th><td>                                                          Complete line</td></tr>
-<tr><th><kbd>Ctrl-d</kbd></th><td>                                                            Deindent</td></tr>
+<tr><th><kbd>Ctrl-d</kbd></th><td>                                                            De-indent</td></tr>
 </tbody></table>
 </div><div class="inner border" id="visualmodeandselection">
-<h1>Visual Mode And Selection <kbd class="cmd">:h visual-mode</kbd></h1>
+<h1>Visual Mode And Selection <a target="_new" href="https://neovim.io/doc/user/visual.html#Visual"><kbd class="cmd">:h visual-mode</kbd></a></h1>
 <table><tbody>
 <tr><th><kbd>v</kbd></th><td>                                                                 Enter visual mode</td></tr>
 <tr><th><kbd>V</kbd></th><td>                                                                 Enter line-wise visual mode</td></tr>
@@ -171,7 +172,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd>g</kbd><kbd>v</kbd></th><td>                                                     Re-select visual area</td></tr>
 </tbody></table>
 </div><div class="inner border" id="commandmode">
-<h1>Command Mode <kbd class="cmd">:h command-mode</kbd></h1>
+<h1>Command Mode <a target="_new" href="https://neovim.io/doc/user/cmdline.html#Command-line"><kbd class="cmd">:h command-mode</kbd></a></h1>
 <table><tbody>
 <tr><th><kbd class="cmd">:ls</kbd> (or <kbd class="cmd">:buffers</kbd>)</th><td>                                                        List buffers</td></tr>
 <tr><th><kbd class="cmd">:changes</kbd></th><td>                                                                   Show changes</td></tr>
@@ -180,7 +181,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd class="cmd">:history</kbd></th><td>                                                                   Show command history</td></tr>
 <tr><th><kbd class="cmd">:jumps</kbd></th><td>                                                                     Show jump list</td></tr>
 <tr><th><kbd class="cmd">:Man</kbd></th><td>                                                                       Man page for word under cursor</td></tr>
-<tr><th><kbd class="cmd">:VsnipOpenEdit</kbd></th><td>                                                             Edit the snippet config for the current language or global</td></tr>
+<tr><th><kbd class="cmd">:VsnipOpenEdit</kbd></th><td>                                                             Edit the snippet configuration for the current language or global</td></tr>
 <tr><th><kbd class="cmd">/foo</kbd></th><td>                                                                       Search <kbd class="cmd">foo</kbd> forward</td></tr>
 <tr><th><kbd class="cmd">?foo</kbd></th><td>                                                                       Search <kbd class="cmd">foo</kbd> backward</td></tr>
 <tr><th><kbd>n</kbd>, <kbd>N</kbd></th><td>                                                   Next, previous search result</td></tr>
@@ -188,7 +189,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd class="cmd">:s/%Vfoo/bar/g</kbd></th><td>                                                            Match only within visual selection with %V</td></tr>
 </tbody></table>
 </div><div class="inner border" id="ranges">
-<h1>Ranges <kbd class="cmd">:h ranges</kbd></h1>
+<h1>Ranges <a target="_new" href="https://neovim.io/doc/user/cmdline.html#%5Brange%5D"><kbd class="cmd">:h ranges</kbd></a></h1>
 <table><tbody>
 <tr><th>&nbsp;</th><td>                                                                       Any of the following can be used when you see <kbd class="cmd">[range]</kbd> in the rest of this table</td></tr>
 <tr><th><kbd class="cmd">.</kbd></th><td>                                                                          <strong>Current line</strong>, can be omitted as in <kbd class="cmd">1,.d</kbd> and <kbd class="cmd">1,d</kbd> are equivalent</td></tr>
@@ -219,12 +220,12 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd class="cmd">:[range]!column -t</kbd></th><td>                                                         Tabulate range</td></tr>
 <tr><th><kbd class="cmd">:[range]!grep {word}</kbd></th><td>                                                       Only return lines containing word</td></tr>
 <tr><th><kbd class="cmd">:[range]w new.txt</kbd></th><td>                                                          Write range to new file</td></tr>
-<tr><th><kbd class="cmd">:[range]w !{cmd}</kbd></th><td>                                                           Execute cmd with range as stdin, <kbd class="cmd">:'a,'bw !python3</kbd>, output is to command message window</td></tr>
+<tr><th><kbd class="cmd">:[range]w !{cmd}</kbd></th><td>                                                           Execute cmd with range as stdin, <kbd class="cmd">:'a,'bw !python3</kbd>, output is to command window</td></tr>
 <tr><th><kbd class="cmd">:[range]g/pattern/{cmd}</kbd></th><td>                                                    TODO: Run the command on all lines in [range] matching <kbd class="cmd">pattern</kbd></td></tr>
 <tr><th><kbd class="cmd">:[range]s/pattern//gn</kbd></th><td>                                                      Count matches</td></tr>
 <tr><th><kbd class="cmd">:[range]!par</kbd></th><td>                                                               Format range</td></tr>
 <tr><th><kbd class="cmd">:[range]!par j1w80</kbd></th><td>                                                         Format range to j1w80</td></tr>
-<tr><th><kbd>Ctrl-w</kbd></th><td>                                                            <img src="utils/media/tick.png"/> Wrap, quick format current paragraph</td></tr>
+<tr><th><kbd>g</kbd><kbd>w</kbd></th><td>                                                     <img src="utils/media/tick.png"/> Wrap, quick format current paragraph</td></tr>
 <tr><th><kbd class="cmd">:[range]ce [width]</kbd></th><td>                                                         Centre lines <kbd class="cmd">:.,+3 ce 80</kbd>, to centre current line on 80 cols use <kbd class="cmd">:ce 80</kbd></td></tr>
 <tr><th><kbd class="cmd">:[range]ri [right edge]</kbd></th><td>                                                    Right alignment <kbd class="cmd">:% right 100</kbd></td></tr>
 <tr><th><kbd class="cmd">:[range]le [indent]</kbd></th><td>                                                        Left alignment.(Unit of identation is space) <kbd class="cmd">:% left 4</kbd></td></tr>
@@ -233,7 +234,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd class="cmd">:/foo/+1d</kbd></th><td>                                                                  Delete line after next line containing <kbd class="cmd">foo</kbd></td></tr>
 </tbody></table>
 </div><div class="inner border" id="operators">
-<h1>Operators <kbd class="cmd">:h operator</kbd></h1>
+<h1>Operators <a target="_new" href="https://neovim.io/doc/user/motion.html"><kbd class="cmd">:h operator</kbd></a></h1>
 <table><tbody>
 <tr><th><kbd>d</kbd></th><td>                                                                 Delete/cut</td></tr>
 <tr><th><kbd>d</kbd><kbd>d</kbd></th><td>                                                     Delete current line</td></tr>
@@ -256,7 +257,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd>=</kbd><kbd>=</kbd></th><td>                                                     Autoindent</td></tr>
 </tbody></table>
 </div><div class="inner border" id="textobjects">
-<h1>Text Objects <kbd class="cmd">:h text-objects</kbd></h1>
+<h1>Text Objects <a target="_new" href="https://neovim.io/doc/user/motion.html#text-objects"><kbd class="cmd">:h text-objects</kbd></a></h1>
 <table><tbody>
 <tr><th><kbd>[char]</kbd> can be any of <kbd>[</kbd>, <kbd>(</kbd>, <kbd>{</kbd></th><td>     Motion chars </td></tr>
 <tr><th><kbd>c</kbd><kbd>c</kbd></th><td>                                                     Change current line</td></tr>
@@ -287,7 +288,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd>y</kbd><kbd>s</kbd><kbd>s</kbd><kbd>"</kbd></th><td>                             <img src="utils/media/tick.png"/> Whole-Line to "Whole-Line"</td></tr>
 </tbody></table>
 </div><div class="inner border" id="macros">
-<h1>Macros <kbd class="cmd">:h complex-repeat</kbd></h1>
+<h1>Macros <a target="_new" href="https://neovim.io/doc/user/repeat.html#complex-repeat"><kbd class="cmd">:h complex-repeat</kbd></a></h1>
 <table><tbody>
 <tr><th><kbd>q</kbd><kbd>x</kbd></th><td>                                                     Record to <kbd class="cmd">x</kbd></td></tr>
 <tr><th><kbd>q</kbd></th><td>                                                                 Stop recording</td></tr>
@@ -299,7 +300,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd class="cmd">:5,10norm @x</kbd></th><td>                                                               Run macro @x on lines 5-10</td></tr>
 </tbody></table>
 </div><div class="inner border" id="marks">
-<h1>Marks <kbd class="cmd">:h mark-motions</kbd></h1>
+<h1>Marks <a target="_new" href="https://neovim.io/doc/user/motion.html#mark-motions"><kbd class="cmd">:h mark-motions</kbd></a></h1>
 <table><tbody>
 <tr><th><kbd>m</kbd><kbd>space</kbd></th><td>                                                 Remove all marks</td></tr>
 <tr><th><kbd>m</kbd><kbd>x</kbd></th><td>                                                     Toggle mark <kbd>x</kbd></td></tr>
@@ -311,7 +312,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd class="cmd">:'<,'> s/foo/bar/g</kbd></th><td>                                                         Replace between selected text</td></tr>
 </tbody></table>
 </div><div class="inner border" id="options">
-<h1>Options <kbd class="cmd">:h options</kbd></h1>
+<h1>Options <a target="_new" href="https://neovim.io/doc/user/options.html"><kbd class="cmd">:h options</kbd></a></h1>
 <table><tbody>
 <tr><th><kbd class="cmd">:set number!</kbd></th><td>                                                               Toggle line numbers</td></tr>
 <tr><th><kbd class="cmd">:set rnu!</kbd></th><td>                                                                  Toggle relative line numbers</td></tr>
@@ -325,8 +326,8 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd class="cmd">:set OPT?</kbd></th><td>                                                                  Show value of <kbd class="cmd">opt</kbd></td></tr>
 <tr><th><kbd class="cmd">:set</kbd></th><td>                                                                       Show current options</td></tr>
 </tbody></table>
-</div><div class="inner border" id="buffersandwindows">
-<h1>Buffers and Windows </h1>
+</div><div class="inner border" id="windowsandbuffers">
+<h1>Windows and Buffers <a target="_new" href="https://neovim.io/doc/user/windows.html"><kbd class="cmd">:h windows</kbd></a></h1>
 <table><tbody>
 <tr><th><kbd>tab</kbd>, <kbd>shift-tab</kbd>, <kbd>b</kbd><kbd>d</kbd></th><td>               Buffer next, previous, delete (close)</td></tr>
 <tr><th><kbd class="cmd">:sp, :vsp</kbd></th><td>                                                                  Split view horizontal, vertical</td></tr>
@@ -336,7 +337,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd class="cmd">:bufdo %s/foo/bar</kbd></th><td>                                                          Do to all buffers</td></tr>
 </tbody></table>
 </div><div class="inner border" id="folding">
-<h1>Folding <kbd class="cmd">:h folding</kbd></h1>
+<h1>Folding <a target="_new" href="https://neovim.io/doc/user/fold.html#Folding"><kbd class="cmd">:h folding</kbd></a></h1>
 <table><tbody>
 <tr><th><kbd>F2</kbd></th><td>                                                                Cycle through fold methods</td></tr>
 <tr><th><kbd class="cmd">:set foldmethod=manual</kbd></th><td>                                                     or syntax, indent, etc</td></tr>
@@ -351,18 +352,19 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd>z</kbd><kbd>M</kbd></th><td>                                                     Fold collapse</td></tr>
 </tbody></table>
 </div><div class="inner border" id="formatting">
-<h1>Formatting <kbd class="cmd">:h formatoptions</kbd></h1>
+<h1>Formatting <a target="_new" href="https://neovim.io/doc/user/options.html#formatoptions"><kbd class="cmd">:h formatoptions</kbd></a></h1>
 <table><tbody>
 <tr><th><kbd class="cmd">:set textwidth=80</kbd></th><td>                                                          Set default width to 80 columns</td></tr>
 <tr><th><kbd class="cmd">:set formatprg=par -w79</kbd></th><td>                                                   Format using paragraph to at most 79 chars</td></tr>
 <tr><th><kbd>g</kbd><kbd>q</kbd><kbd>[motion]</kbd></th><td>                                  like gqip to format around paragraph</td></tr>
 <tr><th><kbd>Ctrl-w</kbd></th><td>                                                            does a gqip</td></tr>
+<tr><th><kbd>g</kbd><kbd>s</kbd></th><td>                                                     Delete trailing whitespace in whole file</td></tr>
 <tr><th><kbd>g</kbd><kbd>g</kbd><kbd>=</kbd><kbd>G</kbd></th><td>                             Auto (re)indent entire document</td></tr>
 <tr><th><kbd>=</kbd></th><td>                                                                 (re)indent the text on the current line or on the area selected (SUPER)</td></tr>
 <tr><th><kbd>=</kbd><kbd>%</kbd></th><td>                                                     (re)indent the current braces { ... }</td></tr>
 </tbody></table>
 </div><div class="inner border" id="changingcase">
-<h1>Changing case <kbd class="cmd">:h case</kbd></h1>
+<h1>Changing case <a target="_new" href="https://neovim.io/doc/user/change.html#case"><kbd class="cmd">:h case</kbd></a></h1>
 <table><tbody>
 <tr><th><kbd>~</kbd></th><td>                                                                 Toggle case</td></tr>
 <tr><th><kbd>g</kbd><kbd>U</kbd><kbd>U</kbd></th><td>                                         Upper case whole line</td></tr>
@@ -371,14 +373,14 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd>g</kbd><kbd>~</kbd><kbd>[motion]</kbd></th><td>                                  Togglecase</td></tr>
 <tr><th><kbd>g</kbd><kbd>u</kbd><kbd>[motion]</kbd></th><td>                                  Lowercase</td></tr>
 <tr><th><kbd>g</kbd><kbd>U</kbd><kbd>[motion]</kbd></th><td>                                  Uppercase</td></tr>
-<tr><th><kbd class="cmd">:s/<(w)(w*)>/u1L2/g</kbd></th><td>                                           TODO: Title Case regex</td></tr>
+<kbd class="cmd">:%s/\v(\a+)/\u\1/g</kbd> Title Case regex, \u,\l=Upper/lower next char, \U,\L=Up/Low following chars<br/><kbd class="cmd">:%s/\v(\w)_(\a+)/\1\u\2/g</kbd> Change <kbd class="cmd">variable_name</kbd> to camel case, <kbd class="cmd">variableName</kbd>
 </tbody></table>
 </div><div class="inner border" id="incrementdecavalue">
-<h1>Increment/Dec a value </h1>
+<h1>Increment/Dec a value <a target="_new" href="https://github.com/tpope/vim-speeddating">plugin</a></h1>
 <table><tbody>
-<tr><th><kbd>Ctrl-a</kbd></th><td>                                                            <img src="utils/media/tick.png"/> Increment value under cursor by 1.  Also works with Dates/times. See <a target="_new" href="https://github.com/tpope/vim-speeddating">Speeddating plugin</a></td></tr>
+<tr><th><kbd>Ctrl-a</kbd></th><td>                                                            <img src="utils/media/tick.png"/> Increment value under cursor by 1.  Also works with Dates/times.</td></tr>
 <tr><th><kbd>Ctrl-x</kbd></th><td>                                                            <img src="utils/media/tick.png"/> Decrement value under cursor by 1.</td></tr>
-A query to increment value in whole file<br/><kbd class="cmd">:let i=1 | g/foo/s//\=i/ | let i=i+1</kbd><br/>For example:<br/><kbd class="cmd">:let i=1 | g/foo/s//\="morestuff".i."morestuff"/ | let i=i+1</kbd>
+A query to increment value in whole file<br/><kbd class="cmd">:let i=1 | g/foo/s//\=i/ | let i=i+1</kbd><br/>For example:<br/><kbd class="cmd">:let i=1 | g/foo/s//\="morestuff".i."morestuff"/ | let i=i+1</kbd><br/><kbd class="cmd">:let i=1 | g/WEEKNUMBER/s//\=i/ | let i=i+1</kbd>
 </tbody></table>
 </div><div class="inner border" id="commenting">
 <h1>Commenting </h1>
@@ -414,7 +416,7 @@ A query to increment value in whole file<br/><kbd class="cmd">:let i=1 | g/foo/s
 <tr><th><kbd class="cmd">:g/^Foo/norm 0xxxBar</kbd></th><td>                                                       Norm runs commands as if you typed them</td></tr>
 </tbody></table>
 </div><div class="inner border" id="spelling">
-<h1>Spelling <kbd class="cmd">:h spell</kbd></h1>
+<h1>Spelling <a target="_new" href="https://neovim.io/doc/user/spell.html"><kbd class="cmd">:h spell</kbd></a></h1>
 <table><tbody>
 <tr><th><kbd>z</kbd><kbd>=</kbd></th><td>                                                     Suggest spelling</td></tr>
 <tr><th><kbd>z</kbd><kbd>g</kbd>, <kbd>z</kbd><kbd>u</kbd><kbd>g</kbd></th><td>               Add to dict, undo add</td></tr>

@@ -28,10 +28,12 @@ endfunction
 " Jump, looks under the cursor for a URL, Hex Code, GithubProject or Word!
 function! JumpToSelection()
   let url=matchstr(expand("<cWORD>"), 'http[s]*:\/\/[^ >,;)]*')
+  " let url=matchstr(expand("<cWORD>"), 'https\?:\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?\S*/')
+  " let url=matchstr(expand("<cWORD>"), 'https\?:\/\/\(\w\+\(:\w\+\)\?@\)\?\([A-Za-z][-_0-9A-Za-z]*\.\)\{1,}\(\w\{2,}\.\?\)\{1,}\(:[0-9]\{1,5}\)\?\S*/')
 
   " Is it a url?
   if url != ""
-    silent exec ':!xdg-open "'.url.'"' | redraw!
+    silent exec ":!xdg-open '".url."'" | redraw!
     echo "Opening URL ".url
   else
     let wordUnderCursor = expand("<cWORD>")
@@ -261,7 +263,9 @@ nmap gt :exe getline('.')<CR>
 " gq to format selection as 80 char justified.
 " set formatoptions q
 set formatprg=par\ -w79
-map <C-w> gqip
+map gw gqip
+
+noremap <silent> gs :call DeleteTrailingWhiteSpace()<CR>
 
 " Saves a few key presses.
 " nnoremap ; :
@@ -319,7 +323,6 @@ noremap <silent> <leader>t0 :call ToggleColourSyntax()<CR>
 noremap <silent> <leader>ti :call ToggleColourIncSearch()<CR>
 noremap <silent> <leader>tu :call ToggleGutter()<CR>
 noremap <silent> <leader>ta :call ToggleAll()<CR>
-noremap <silent> <leader>w :call DeleteTrailingWhiteSpace()<CR>
 
 " Function keys.
 map <silent> <F1> :!xdg-open $HOME/.config/nvim/cheatsheet.html<CR>
