@@ -81,7 +81,7 @@ If your interested my website is [![Web Site](https://img.shields.io/badge/Jims%
 The Galaxy line configuration can be found [here](https://github.com/jimcornmell/LunarVim/blob/master/lua/lv-galaxyline/init.lua).
 This image shows what is in the different sections.
 
-![Galaxy Line](./utils/media/GalaxyLine.svg)
+![Galaxy Line](./utils/media/GalaxyLine.png)
 
 The line is split into 5 main sections, 3 on the left and 2 on the right:
 
