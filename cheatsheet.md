@@ -52,7 +52,20 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |<kbd>]</kbd><kbd>s</kbd>, <kbd>[</kbd><kbd>s</kbd>|                           Next, last misspelled|
 |<kbd>g</kbd><kbd>d</kbd>|                                                     Goto definition|
 |<kbd>g</kbd><kbd>f</kbd>|                                                     Open file under cursor|
-|<kbd>g</kbd><kbd>j</kbd>|                                                     :heavy_check_mark: JUMP!  <ul> <li>If line contains a url jump to this in browser.  <li>else if line contains a hex colour, `#AABBCC`jump to that colour on [ColorHexa.com](https://www.colorhexa.com) <li>Else if line contains a github project name of the format `user/repository` then jump to this GitHub project.  <li>Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.  </ul>|
+|<kbd>g</kbd><kbd>j</kbd>|                                                     :heavy_check_mark: JUMP!  <ul> <li>If line contains a url jump to this in browser.  <li>else if line contains a hex colour, `#AABBCC`jump to that colour on [ColorHexa.com](https://www.colorhexa.com) <li>Else if line contains a github project name of the format `user/repository` then jump to this GitHub project.  <li>Else if the word looks like a ticket id, open that in your browser (only works with Jira at the moment)<li>Else if try and open the current word in [cheat.sh](https://cheat.sh) uses the buffers language to help get the right command.  </ul>|
+|__Jumping__||
+|<kbd>leader</kbd><kbd>j</kbd><kbd>a</kbd>|                                    :heavy_check_mark: Jump to artifact in Artifactory/jFrog|
+|<kbd>leader</kbd><kbd>j</kbd><kbd>c</kbd>|                                    :heavy_check_mark: Jump to Jenkins|
+|<kbd>leader</kbd><kbd>j</kbd><kbd>e</kbd>|                                    :heavy_check_mark: Jump to reports|
+|<kbd>leader</kbd><kbd>j</kbd><kbd>h</kbd>|                                    :heavy_check_mark: Open help page|
+|<kbd>leader</kbd><kbd>j</kbd><kbd>i</kbd>|                                    :heavy_check_mark: Jump to live Rundeck job|
+|<kbd>leader</kbd><kbd>j</kbd><kbd>j</kbd>|                                    :heavy_check_mark: Same as gj|
+|<kbd>leader</kbd><kbd>j</kbd><kbd>l</kbd>|                                    :heavy_check_mark: Jump to Lint output, SonarQube|
+|<kbd>leader</kbd><kbd>j</kbd><kbd>m</kbd>|                                    :heavy_check_mark: Open manual page|
+|<kbd>leader</kbd><kbd>j</kbd><kbd>n</kbd>|                                    :heavy_check_mark: Jump to notes|
+|<kbd>leader</kbd><kbd>j</kbd><kbd>r</kbd>|                                    :heavy_check_mark: Jump to repository|
+|<kbd>leader</kbd><kbd>j</kbd><kbd>s</kbd>|                                    :heavy_check_mark: Show jira information|
+|<kbd>leader</kbd><kbd>j</kbd><kbd>t</kbd>|                                    :heavy_check_mark: Jump to ticket|
 |__Insert Mode__|[`:h inserting`](https://neovim.io/doc/user/insert.html#Insert)|
 |<kbd>ESC</kbd>|                                                               Exit insert mode|
 |<kbd>i</kbd>, <kbd>a</kbd>|                                                   Insert before, after cursor|
@@ -249,6 +262,7 @@ A query to increment value in whole file<br/>`:let i=1 \| g/foo/s//\=i/ \| let i
 |__Moving a Line__||
 |<kbd>Alt-Up</kbd>|                                                            :heavy_check_mark: Move current line up|
 |<kbd>Alt-Down</kbd>|                                                          :heavy_check_mark: Move current line down|
+
 |__Function Keys__||
 |<kbd>F1</kbd>|                                                                :heavy_check_mark: Open this cheatsheet|
 |<kbd>F2</kbd>|                                                                :heavy_check_mark: Cycle through different folding methods|

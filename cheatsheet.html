@@ -141,7 +141,23 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd>]</kbd><kbd>s</kbd>, <kbd>[</kbd><kbd>s</kbd></th><td>                           Next, last misspelled</td></tr>
 <tr><th><kbd>g</kbd><kbd>d</kbd></th><td>                                                     Goto definition</td></tr>
 <tr><th><kbd>g</kbd><kbd>f</kbd></th><td>                                                     Open file under cursor</td></tr>
-<tr><th><kbd>g</kbd><kbd>j</kbd></th><td>                                                     <img src="utils/media/tick.png"/> JUMP!  <ul> <li>If line contains a url jump to this in browser.  <li>else if line contains a hex colour, <kbd class="cmd">#AABBCC</kbd>jump to that colour on <a target="_new" href="https://www.colorhexa.com">ColorHexa.com</a> <li>Else if line contains a github project name of the format <kbd class="cmd">user/repository</kbd> then jump to this GitHub project.  <li>Else if try and open the current word in <a target="_new" href="https://cheat.sh">cheat.sh</a> uses the buffers language to help get the right command.  </ul></td></tr>
+<tr><th><kbd>g</kbd><kbd>j</kbd></th><td>                                                     <img src="utils/media/tick.png"/> JUMP!  <ul> <li>If line contains a url jump to this in browser.  <li>else if line contains a hex colour, <kbd class="cmd">#AABBCC</kbd>jump to that colour on <a target="_new" href="https://www.colorhexa.com">ColorHexa.com</a> <li>Else if line contains a github project name of the format <kbd class="cmd">user/repository</kbd> then jump to this GitHub project.  <li>Else if the word looks like a ticket id, open that in your browser (only works with Jira at the moment)<li>Else if try and open the current word in <a target="_new" href="https://cheat.sh">cheat.sh</a> uses the buffers language to help get the right command.  </ul></td></tr>
+</tbody></table>
+</div><div class="inner border" id="jumping">
+<h1>Jumping </h1>
+<table><tbody>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>a</kbd></th><td>                                    <img src="utils/media/tick.png"/> Jump to artifact in Artifactory/jFrog</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>c</kbd></th><td>                                    <img src="utils/media/tick.png"/> Jump to Jenkins</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>e</kbd></th><td>                                    <img src="utils/media/tick.png"/> Jump to reports</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>h</kbd></th><td>                                    <img src="utils/media/tick.png"/> Open help page</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>i</kbd></th><td>                                    <img src="utils/media/tick.png"/> Jump to live Rundeck job</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>j</kbd></th><td>                                    <img src="utils/media/tick.png"/> Same as gj</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>l</kbd></th><td>                                    <img src="utils/media/tick.png"/> Jump to Lint output, SonarQube</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>m</kbd></th><td>                                    <img src="utils/media/tick.png"/> Open manual page</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>n</kbd></th><td>                                    <img src="utils/media/tick.png"/> Jump to notes</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>r</kbd></th><td>                                    <img src="utils/media/tick.png"/> Jump to repository</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>s</kbd></th><td>                                    <img src="utils/media/tick.png"/> Show jira information</td></tr>
+<tr><th><kbd>leader</kbd><kbd>j</kbd><kbd>t</kbd></th><td>                                    <img src="utils/media/tick.png"/> Jump to ticket</td></tr>
 </tbody></table>
 </div><div class="inner border" id="insertmode">
 <h1>Insert Mode <a target="_new" href="https://neovim.io/doc/user/insert.html#Insert"><kbd class="cmd">:h inserting</kbd></a></h1>
@@ -392,6 +408,7 @@ A query to increment value in whole file<br/><kbd class="cmd">:let i=1 | g/foo/s
 <table><tbody>
 <tr><th><kbd>Alt-Up</kbd></th><td>                                                            <img src="utils/media/tick.png"/> Move current line up</td></tr>
 <tr><th><kbd>Alt-Down</kbd></th><td>                                                          <img src="utils/media/tick.png"/> Move current line down</td></tr>
+
 </tbody></table>
 </div><div class="inner border" id="functionkeys">
 <h1>Function Keys </h1>

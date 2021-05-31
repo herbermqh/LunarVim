@@ -33,38 +33,61 @@ function! JumpToSelection()
 
   " Is it a url?
   if url != ""
-    silent exec ":!xdg-open '".url."'" | redraw!
-    echo "Opening URL ".url
+      silent exec ":!xdg-open '".url."'" | redraw!
+      echo "Opening URL ".url
   else
-    let wordUnderCursor = expand("<cWORD>")
-    let hexcode = matchstr(wordUnderCursor, '[0-9a-fA-F]\{6}')
+      let wordUnderCursor = expand("<cWORD>")
+      let hexcode = matchstr(wordUnderCursor, '[0-9a-fA-F]\{6}')
 
-    " Is it a hex colour code?
-    if hexcode != ""
-      let url="https://www.colorhexa.com/" . hexcode
-      silent exec ':!xdg-open "'.url.'"' | redraw!
-      echo "Opened HEX colour ".url
-    else
-      let projectPath = matchstr(wordUnderCursor, '[0-9a-zA-Z]\{3,}/[0-9a-z-A-Z\.]\{3,}')
-
-      " Is it a github project?
-      if projectPath != ""
-        let url="https://github.com/" . projectPath
-        silent exec ':!xdg-open "'.url.'"' | redraw!
-        echo "Opened GitHub project : ".projectPath
+      " Is it a hex colour code?
+      if hexcode != ""
+          let url="https://www.colorhexa.com/" . hexcode
+          silent exec ':!xdg-open "'.url.'"' | redraw!
+          echo "Opened HEX colour ".url
       else
-        let url='https://cheat.sh/' . &filetype . '/' . wordUnderCursor
+          let projectPath = matchstr(wordUnderCursor, '[0-9a-zA-Z]\{3,}/[0-9a-z-A-Z\.]\{3,}')
 
-        if url != ""
-          let $CURLCMDVIM='https://cheat.sh/' . &filetype . '/' . wordUnderCursor
-          term curl -s $CURLCMDVIM
-          echo "Opened Cheat ".url
-        else
-          echo "No URL, HEX colour sequence, GitHub Project or Keyword under cursor."
-        endif
+          " Is it a github project?
+          if projectPath != ""
+              let url="https://github.com/" . projectPath
+              silent exec ':!xdg-open "'.url.'"' | redraw!
+              echo "Opened GitHub project : ".projectPath
+          else
+              let jiraTicket = matchstr(wordUnderCursor, '[a-zA-Z]\{2,4}-[0-9]\{1,7}')
+
+              " Is it a Jira ticket number project?
+              if jiraTicket != ""
+                  exec ':!$HOME/bin/Jira open '.jiraTicket
+                  " silent exec ':~/bin/Jira open '.jiraTicket
+                  " echo "Opened Jira ticket: ".jiraTicket
+              else
+                  let url='https://cheat.sh/' . &filetype . '/' . wordUnderCursor
+
+                  if url != ""
+                      let $CURLCMDVIM='https://cheat.sh/' . &filetype . '/' . wordUnderCursor
+                      term curl -s $CURLCMDVIM
+                      echo "Opened Cheat ".url
+                  else
+                      echo "No URL, HEX colour sequence, GitHub Project or Keyword under cursor."
+                  endif
+              endif
+          endif
       endif
-    endif
   endif
+endfunction
+
+" Use jira command line tool to show info for current ticket (if under curdor)
+" or branch for current project file is in.
+function! ShowJira()
+    let wordUnderCursor = expand("<cWORD>")
+    let jiraTicket = matchstr(wordUnderCursor, '[a-zA-Z]\{2,4}-[0-9]\{1,7}')
+
+    if jiraTicket != ""
+        let $TICKET=jiraTicket
+        term $HOME/bin/Jira show $TICKET
+    else
+        term $HOME/bin/Jira show
+    endif
 endfunction
 
 function! OpenHelpPage()
@@ -297,7 +320,7 @@ vnoremap <A-Up> :m '<-2<CR>gv=gv
 
 " Jump : TODO: Add description to which key.
 nmap gj :call JumpToSelection()<CR>
-noremap <leader>jj :call JumpToSelection()<CR>
+noremap <silent> <leader>jj :call JumpToSelection()<CR>
 noremap <silent> <leader>jr :silent exec "!jump Repo %:p:h"<CR>
 noremap <silent> <leader>jt :silent exec "!jump Ticket %:p:h"<CR>
 noremap <silent> <leader>ja :silent exec "!jump Artifact %:p:h"<CR>
@@ -308,6 +331,7 @@ noremap <silent> <leader>jh :call OpenHelpPage()<CR>
 noremap <silent> <leader>jm :<C-U>exe "Man" v:count "<C-R><C-W>"<CR>
 noremap <silent> <leader>ji :silent exec "!jump Live %:p:h"<CR>
 noremap <silent> <leader>je :silent exec "!jump TestReports %:p:h"<CR>
+noremap <silent> <leader>js :call ShowJira()<CR>
 
 " Toggle various visual items. : TODO: Add description to which key.
 noremap <silent> <leader>t1 :call ToggleColourCursorLine()<CR>
@@ -442,7 +466,7 @@ highlight Visual                                                 guibg=Grey35
 highlight Search                               guifg=Wheat       guibg=Peru
 
 " Popup and Float menu
-highlight Pmenu                                guifg=Wheat       guibg=Gray25
+highlight Pmenu                                guifg=Wheat       guibg=#332000
 highlight PmenuSbar                                              guibg=Gray35
 highlight PmenuThumb                                             guibg=Wheat
 highlight PmenuSel                    gui=bold guifg=Black       guibg=Wheat
