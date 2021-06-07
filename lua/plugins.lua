@@ -163,23 +163,19 @@ return require("packer").startup(function(use)
 
     -- Jimc extras.
     use {"kshenoy/vim-signature", opt = true}        -- Markers in margin.
-    use {"preservim/tagbar", opt = true}             -- Tags navigation.
-    use {"tpope/vim-surround", opt = true}           -- Surroundings.
-    use {"tpope/vim-eunuch", opt = true}             -- Unix commands.
-    use {"tpope/vim-repeat", opt = true}             -- . repeats properly for macros.
-    -- use {"tpope/vim-speeddating", opt = true}        -- Inc/dec dates.
-    use {"tpope/vim-fugitive", opt = true}           -- Inc/dec dates.
-    use {"mfussenegger/nvim-jdtls", opt = true}      -- Java LSP.
-    use {"itchyny/vim-highlighturl", opt = true}     -- Highlight URL's.
-    -- Jimc extras.
     require_plugin("vim-signature")
+    use {"preservim/tagbar", opt = true}             -- Tags navigation.
     require_plugin("tagbar")
+    use {"tpope/vim-surround", opt = true}           -- Surroundings.
     require_plugin("vim-surround")
+    use {"tpope/vim-eunuch", opt = true}             -- Unix commands.
     require_plugin("vim-eunuch")
+    use {"tpope/vim-repeat", opt = true}             -- . repeats properly for macros.
     require_plugin("vim-repeat")
-    -- require_plugin("vim-speeddating")
+    use {"tpope/vim-fugitive", opt = true}           -- Inc/dec dates.
     require_plugin("vim-fugitive")
+    use {"mfussenegger/nvim-jdtls", opt = true}      -- Java LSP.
     require_plugin("nvim-jdtls")
+    use {"itchyny/vim-highlighturl", opt = true}     -- Highlight URL's.
     require_plugin("vim-highlighturl")
-
 end)
