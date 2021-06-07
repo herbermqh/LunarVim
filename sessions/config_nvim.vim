@@ -8,17 +8,17 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +326 user.vim
-badd +60 cheatsheet.md
+badd +322 user.vim
+badd +68 cheatsheet.md
 badd +33 init.lua
 badd +97 README.md
 badd +22 ~/bin/Jira
 argglobal
 %argdel
 $argadd init.lua
-edit cheatsheet.md
+edit user.vim
 argglobal
-balt user.vim
+balt cheatsheet.md
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -27,11 +27,13 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 68 - ((37 * winheight(0) + 22) / 45)
+269
+normal! zo
+let s:l = 341 - ((37 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 68
+keepjumps 341
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'

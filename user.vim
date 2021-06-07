@@ -311,12 +311,12 @@ nmap <C-/> :CommentToggle<CR>j
 vmap <C-/> :CommentToggle<CR>gv
 
 " Move lines up and down using alt-up/down.
-nnoremap <A-Down> :m .+1<CR>==
 nnoremap <A-Up> :m .-2<CR>==
-inoremap <A-Down> <Esc>:m .+1<CR>==gi
+nnoremap <A-Down> :m .+1<CR>==
 inoremap <A-Up> <Esc>:m .-2<CR>==gi
-vnoremap <A-Down> :m '>+1<CR>gv=gv
+inoremap <A-Down> <Esc>:m .+1<CR>==gi
 vnoremap <A-Up> :m '<-2<CR>gv=gv
+vnoremap <A-Down> :m '>+1<CR>gv=gv
 
 " Jump : TODO: Add description to which key.
 nmap gj :call JumpToSelection()<CR>

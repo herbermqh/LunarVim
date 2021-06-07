@@ -257,12 +257,11 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |<kbd>Ctrl-a</kbd>|                                                            :heavy_check_mark: Increment value under cursor by 1.  Also works with Dates/times.|
 |<kbd>Ctrl-x</kbd>|                                                            :heavy_check_mark: Decrement value under cursor by 1.|
 A query to increment value in whole file<br/>`:let i=1 \| g/foo/s//\=i/ \| let i=i+1`<br/>For example:<br/>`:let i=1 \| g/foo/s//\="morestuff".i."morestuff"/ \| let i=i+1`<br/>`:let i=1 \| g/WEEKNUMBER/s//\=i/ \| let i=i+1`
+|__Moving Lines__||
+|<kbd>Alt-Up</kbd>|                                                            :heavy_check_mark: Move current line/selection up 1 line|
+|<kbd>Alt-Down</kbd>|                                                          :heavy_check_mark: Move current line/selection down 1 line|
 |__Commenting__||
 |<kbd>Ctrl-/</kbd>|                                                            :heavy_check_mark: (un)Comment a line and move to the next.<br/> - I've tweaked the commenter to comment the currentline (or uncomment) and then move to the next.<br/> - Or you can relect and range and then comment, try <kbd>v</kbd><kbd>i</kbd><kbd>p</kbd><kbd>Ctrl-/</kbd><br/> - I find this really handy!|
-|__Moving a Line__||
-|<kbd>Alt-Up</kbd>|                                                            :heavy_check_mark: Move current line up|
-|<kbd>Alt-Down</kbd>|                                                          :heavy_check_mark: Move current line down|
-
 |__Function Keys__||
 |<kbd>F1</kbd>|                                                                :heavy_check_mark: Open this cheatsheet|
 |<kbd>F2</kbd>|                                                                :heavy_check_mark: Cycle through different folding methods|
