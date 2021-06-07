@@ -30,6 +30,7 @@ if O.extras then
     require('lv-dial')
     require('lv-hop')
     require('lv-colorizer')
+    require('lv-symbols-outline')
 end
 
 -- TODO is there a way to do this without vimscript
@@ -40,6 +41,7 @@ require('lsp')
 require('lsp.angular-ls')
 require('lsp.bash-ls')
 require('lsp.clangd')
+require('lsp.cmake-ls')
 require('lsp.css-ls')
 require('lsp.dart-ls')
 require('lsp.docker-ls')
