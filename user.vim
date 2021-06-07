@@ -47,7 +47,7 @@ function! JumpToSelection()
       else
           let projectPath = matchstr(wordUnderCursor, '[0-9a-zA-Z]\{3,}/[0-9a-z-A-Z\.]\{3,}')
 
-          " Is it a github project?
+          " Is it a GitHub project?
           if projectPath != ""
               let url="https://github.com/" . projectPath
               silent exec ':!xdg-open "'.url.'"' | redraw!
@@ -58,8 +58,6 @@ function! JumpToSelection()
               " Is it a Jira ticket number project?
               if jiraTicket != ""
                   exec ':!$HOME/bin/Jira open '.jiraTicket
-                  " silent exec ':~/bin/Jira open '.jiraTicket
-                  " echo "Opened Jira ticket: ".jiraTicket
               else
                   let url='https://cheat.sh/' . &filetype . '/' . wordUnderCursor
 
@@ -76,7 +74,7 @@ function! JumpToSelection()
   endif
 endfunction
 
-" Use jira command line tool to show info for current ticket (if under curdor)
+" Use Jira command line tool to show info for current ticket (if under cursor)
 " or branch for current project file is in.
 function! ShowJira()
     let wordUnderCursor = expand("<cWORD>")
@@ -94,16 +92,6 @@ function! OpenHelpPage()
   let s:help_word = expand('<cword>')
   :exe ":help " . s:help_word
 endfunction
-
-" function! OpenManualPage()
-  " let s:wordUnderCursor = expand("<cWORD>")
-  " let $MANPG=s:wordUnderCursor
-  " term colored man $MANPG
-  " :exe ":wincmd n"
-  " :exe ":r!man " . s:man_word . " | col -b"
-  " :exe ":goto"
-  " :exe ":delete"
-" endfunction
 
 function! ToggleColourCursorLine()
     if &cursorline
@@ -196,6 +184,7 @@ function ToggleAll()
     call ToggleColourWhiteSpace()
     call ToggleColourGitBlame()
     call ToggleColourIncSearch()
+    set spell!
     set list!
     set foldenable!
     highlight markerStart NONE
@@ -213,7 +202,7 @@ function! DeleteTrailingWhiteSpace()
     unlet current_position
 endfunction
 
-" Highlight a column in csv text.
+" Highlight a column in CSV text.
 " See: https://vim.fandom.com/wiki/Working_with_CSV_files
 " :Csv 1    " highlight first column
 " :Csv 12   " highlight twelfth column
@@ -294,10 +283,10 @@ noremap <silent> gs :call DeleteTrailingWhiteSpace()<CR>
 " nnoremap ; :
 map <C-s> :w<CR>
 
-" Highlight column in csv
+" Highlight column in CSV
 command! -nargs=1 Csv :call CSVH(<args>)
 
-" Sql and Java flipping.
+" SQL and Java flipping.
 vnoremap <A-s> :!$HOME/bin/sak sqlflip<CR>
 
 " Run macro q with just typing Q.
@@ -306,7 +295,7 @@ nnoremap Q @q
 " Toggle comment and move to next line, or comment selection.
 nmap <C-_> :CommentToggle<CR>j
 vmap <C-_> :CommentToggle<CR>gv
-" In neovide use this line instead!
+" In Neovide use this line instead!
 nmap <C-/> :CommentToggle<CR>j
 vmap <C-/> :CommentToggle<CR>gv
 
@@ -378,7 +367,7 @@ let bufferline.icons="both"
 let bufferline.icon_custom_colors="true"
 let bufferline.icon_close_tab_modified=''
 
-" If diffing two or more files then....
+" If running diff two or more files then....
 " See: https://neovim.io/doc/user/options.html
 if &diff
     set diffopt+=algorithm:patience
@@ -392,12 +381,12 @@ else
     set list               " Display whitespace
 endif
 
-syntax enable              " Enables syntax highlighing
+syntax enable              " Enables syntax highlighting
 set iskeyword+=-           " Treat dash separated words as a word text object"
-set formatoptions-=cro     " Stop newline continution of comments
+set formatoptions-=cro     " Stop newline continuation of comments
 set hidden                 " Required to keep multiple buffers open multiple buffers
 set encoding=utf-8         " The encoding displayed
-set pumheight=10           " Makes popup menu smaller
+set pumheight=10           " Makes pop-up menu smaller
 set fileencoding=utf-8     " The encoding written to file
 set ruler                  " Show the cursor position all the time
 set cmdheight=2            " More space for displaying messages
@@ -414,14 +403,13 @@ set expandtab              " Converts tabs to spaces
 set smartindent            " Makes indenting smart
 set autoindent             " Good auto indent
 set laststatus=2           " Always display the status line
-set number relativenumber  " Line numbers and relativenumbers
+set number relativenumber  " Line numbers and relative numbers
 set cursorline             " Enable highlighting of the current line
-set background=dark        " tell vim what the background color looks like
+set background=dark        " tell Vim what the background color looks like
 set showtabline=2          " Always show tabs
 set noshowmode             " We don't need to see things like -- INSERT -- anymore
-set nobackup               " This is recommended by coc
-" set textwidth=80           " Set text width to 80
-set nowritebackup          " This is recommended by coc
+set nobackup               " This is recommended by various posts
+set nowritebackup          " This is recommended by various posts
 set shortmess+=c           " Don't pass messages to |ins-completion-menu|.
 set signcolumn=yes         " Always show, otherwise it would shift the text each time
 set updatetime=300         " Faster completion
@@ -429,8 +417,13 @@ set timeoutlen=750         " By default timeoutlen is 1000 ms
 set incsearch              " Highlight all matches
 set foldenable             " Folding enabled
 set foldmethod=marker      " Folding method, based on { { {1
-set clipboard=unnamedplus  " Copy paste between vim and everything else
+set clipboard=unnamedplus  " Copy paste between Vim and everything else
 set guifont=SauceCodePro\ Nerd\ Font\ Mono:h15
+
+" Setup spelling
+set spell
+setlocal spell spelllang=en_gb
+set spellfile=~/bin/dictionary.add
 
 " }}}
 
@@ -452,7 +445,7 @@ hi Tag             guifg=#93e893 gui=bold                     ctermfg=181 cterm=
 " Show whitespace characters
 set listchars=eol:¶,tab:»-,trail:·,extends:>,precedes:<,space:·
 "
-"Highligh cursor line/column
+"Highlight cursor line/column
 set colorcolumn=80,120
 highlight ColorColumn                          guifg=#ffffff     guibg=#3A3A3A
 set cursorcolumn
@@ -465,7 +458,10 @@ highlight Visual                                                 guibg=Grey35
 " Search hit colour
 highlight Search                               guifg=Wheat       guibg=Peru
 
-" Popup and Float menu
+" Spelling
+highlight SpellBad              gui=underline  guifg=Red
+
+" Pop-up and Float menu
 highlight Pmenu                                guifg=Wheat       guibg=#332000
 highlight PmenuSbar                                              guibg=Gray35
 highlight PmenuThumb                                             guibg=Wheat
@@ -511,19 +507,19 @@ highlight LspDiagnosticsFloatingInformation    guifg=#FFCC66
 highlight LspDiagnosticsFloatingInfor          guifg=#FFCC66
 highlight LspDiagnosticsFloatingHint           guifg=#4FC1FF
 
-" Lsp highlight in left margin.
+" LSP highlight in left margin.
 highlight LspDiagnosticsSignError              guifg=#F44747     guibg=Gray19
 highlight LspDiagnosticsSignWarning            guifg=#FF8800     guibg=Gray19
 highlight LspDiagnosticsSignInformation        guifg=#FFCC66     guibg=Gray19
 highlight LspDiagnosticsSignHint               guifg=#4FC1FF     guibg=Gray19
 
-" Lsp Inline error highlight.
+" LSP In-line error highlight.
 highlight LspDiagnosticsUnderlineError         guifg=Black       guibg=#F44747
 highlight LspDiagnosticsUnderlineWarning       guifg=Black       guibg=#FF8800
 highlight LspDiagnosticsUnderlineInformation   guifg=Black       guibg=#FFCC66
 highlight LspDiagnosticsUnderlineHint          guifg=Black       guibg=#4FC1FF
 
-" Lsp error on right side.
+" LSP error on right side.
 highlight LspDiagnosticsVirtualTextError       guifg=#F44747
 highlight LspDiagnosticsVirtualTextWarning     guifg=#FF8800
 highlight LspDiagnosticsVirtualTextInformation guifg=#FFCC66
@@ -562,7 +558,7 @@ highlight IncSearch           NONE             guifg=#f8f893     guibg=#385f38
 
 highlight HighlightUrl        gui=underline    guifg=#54b5fa
 
-" highlight Tag                 gui=bold         guifg=White
+highlight Tag                 gui=bold         guifg=Pink
 highlight Todo                gui=bold         guifg=LightGreen
 
 " Highlight folds
@@ -595,7 +591,7 @@ au BufRead,BufNewFile AUDDIS*.ASC set filetype=auddis
 au! Syntax cel source ~/.config/nvim/syntax/cel.vim
 au BufRead,BufNewFile *.cel set filetype=cel
 
-" Csv files.
+" CSV files.
 au! Syntax csvfile source ~/.config/nvim/syntax/csv.vim
 au BufRead,BufNewFile *.csv set filetype=csvfile
 au BufRead,BufNewFile *.tsv set filetype=csvfile
@@ -606,7 +602,7 @@ au BufRead,BufNewFile *.edi set filetype=edifile
 au BufRead,BufNewFile *.mdf set filetype=edifile
 au BufRead,BufNewFile *.hse set filetype=edifile
 
-" Franchise dat files.
+" Franchise DAT files.
 au! Syntax franchisefile source ~/.config/nvim/syntax/franchisefile.vim
 au BufRead,BufNewFile *.dat set filetype=franchisefile
 
@@ -639,7 +635,7 @@ iab Appl Application
 iab adn and
 " }}}
 
-" Auto Commands, e.g source init.vim {{{1
+" Auto Commands, e.g. source init.vim {{{1
 
 " Auto reload my init.vim file.
 " autocmd! bufwritepost ~/.config/nvim/init.vim source ~/.config/nvim/init.vim | echo "Reloaded my init.vim"
