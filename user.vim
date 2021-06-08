@@ -3,7 +3,6 @@
 " http://cheat.sh
 " Buffer bar info: https://github.com/romgrk/barbar.nvim
 
-" TODO: Tidy galaxyline code.
 " TODO: LSP Perl
 " TODO: LSP Java
 " TODO: LSP JavaScript
@@ -253,6 +252,10 @@ function FoldingToggle()
     endif
 endfunction
 
+function FullScreenToggle()
+    let g:neovide_fullscreen=!g:neovide_fullscreen
+endfunction
+
 " }}}1
 
 " Key mappings {{{1
@@ -349,8 +352,8 @@ map <F4> :NvimTreeToggle<CR>
 map <F6> :*&<CR>
 map <F9> :Telescope find_files<CR>
 " F10 reserved for kitty, open new terminal.
-map <F11> :TagbarToggle<CR>
-map <F12> :RnvimrToggle<CR>
+map <F11> :call FullScreenToggle()<CR>
+map <F12> :TagbarToggle<CR>
 
 " Keep X as delete backwards, rather then close buffer, I prefer to use :bd
 nunmap X
@@ -366,6 +369,8 @@ let g:startify_session_dir=['~/.config/nvim/sessions']
 let bufferline.icons="both"
 let bufferline.icon_custom_colors="true"
 let bufferline.icon_close_tab_modified=''
+let g:neovide_cursor_animation_length=0
+let g:neovide_fullscreen=v:true
 
 " If running diff two or more files then....
 " See: https://neovim.io/doc/user/options.html
@@ -459,7 +464,10 @@ highlight Visual                                                 guibg=Grey35
 highlight Search                               guifg=Wheat       guibg=Peru
 
 " Spelling
-highlight SpellBad              gui=underline  guifg=Red
+highlight SpellBad   guisp=Red    gui=undercurl guifg=NONE
+highlight SpellLocal guisp=Orange gui=NONE      guifg=NONE
+highlight SpellCap   guisp=Pink   gui=NONE      guifg=NONE
+highlight SpellRare  guisp=Yellow gui=NONE      guifg=NONE
 
 " Pop-up and Float menu
 highlight Pmenu                                guifg=Wheat       guibg=#332000
@@ -533,14 +541,14 @@ highlight longLine                                               guibg=#5F3F3F
 call matchadd('longLine', '.\%>121v', 1)
 
 " Highlight git merge conflict markers.
-highlight gitMergeConflictStart                guifg=DarkGreen   guibg=Red
-call matchadd('gitMergeConflictStart', '^<<<<<<< HEAD.*$', 30)
+highlight gitMergeConflictStart                guifg=Black       guibg=Red
+call matchadd('gitMergeConflictStart', '^<\{7\} HEAD.*$', 60)
 
-highlight gitMergeConflictMid                  guifg=DarkBlue    guibg=Red
-call matchadd('gitMergeConflictMid', '^=======.*$', 30)
+highlight gitMergeConflictMid                  guifg=Yellow      guibg=Red
+call matchadd('gitMergeConflictMid', '^=\{7\}$', 60)
 
-highlight gitMergeConflictEnd                  guifg=Orange      guibg=Red
-call matchadd('gitMergeConflictEnd', '^>>>>>>>.*$', 30)
+highlight gitMergeConflictEnd                  guifg=Black       guibg=Red
+call matchadd('gitMergeConflictEnd', '^>\{7\} .*$', 60)
 
 " Highlight spaces at end of line:
 " https://vim.fandom.com/wiki/Highlight_unwanted_spaces
@@ -556,7 +564,7 @@ call matchadd('sheBangBad', '^#!.*')
 
 highlight IncSearch           NONE             guifg=#f8f893     guibg=#385f38
 
-highlight HighlightUrl        gui=underline    guifg=#54b5fa
+highlight HighlightUrl        gui=underline    guifg=#54b5fa     guisp=#54b5fa
 
 highlight Tag                 gui=bold         guifg=Pink
 highlight Todo                gui=bold         guifg=LightGreen
@@ -655,6 +663,13 @@ autocmd BufWrite * if &ft=="vim" | :call DeleteTrailingWhiteSpace() | endif
 
 " I prefer -- for comments in SQL
 autocmd FileType sql set commentstring=--\ %s
+
+" Ignore CamelCase words when spell checking
+fun! IgnoreCamelCaseSpell()
+  syn match CamelCase /\<[A-Z][a-z]\+[A-Z].\{-}\>/ contains=@NoSpell transparent
+  syn cluster Spell add=CamelCase
+endfun
+autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
 
 " }}}
 
