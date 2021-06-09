@@ -564,10 +564,10 @@ call matchadd('sheBangBad', '^#!.*')
 
 highlight IncSearch           NONE             guifg=#f8f893     guibg=#385f38
 
-highlight HighlightUrl        gui=underline    guifg=#54b5fa     guisp=#54b5fa
+highlight HighlightUrl   gui=underline,bold    guifg=#0099FF     guisp=#0099FF
 
-highlight Tag                 gui=bold         guifg=Pink
-highlight Todo                gui=bold         guifg=LightGreen
+highlight Tag            gui=bold              guifg=Pink
+highlight Todo           gui=bold              guifg=LightGreen
 
 " Highlight folds
 highlight Folded                               guifg=#777777     guibg=#000000

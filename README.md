@@ -61,7 +61,7 @@ If your interested my website is [![Web Site](https://img.shields.io/badge/Jims%
 <!-- {{{1 -->
 ![Visual Appearance](./utils/media/VisualAppearance.png)
 - I use zenburn theme.  One of the reasons for this is that its available in virtually
-  any plugin/app/program that allows themeing, so I can near consistent code themeing
+  any plug-in/app/program that allows theming, so I can near consistent code theming
   everywhere.
 - I've added vertical markers at 80 and 120 characters.
   - Galaxy line displays the current column and line length, these change colour at 80 and 120 characters.

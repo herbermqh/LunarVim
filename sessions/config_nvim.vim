@@ -8,22 +8,17 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +668 user.vim
-badd +1 lua/plugins.lua
+badd +561 user.vim
+badd +130 lua/plugins.lua
 badd +20 init.lua
-badd +43 lua/lv-zen/init.lua
 badd +444 lua/lv-galaxyline/init.lua
-badd +5 term://~/.local/share/nvim/lspinstall/cmake//112975:set\ -e\
-\ \ python3\ -m\ venv\ ./venv\
-\ \ ./venv/bin/pip3\ install\ -U\ pip\
-\ \ ./venv/bin/pip3\ install\ -U\ cmake-language-server\
-\ \ 
+badd +92 README.md
 argglobal
 %argdel
 $argadd init.lua
 edit user.vim
 argglobal
-balt lua/plugins.lua
+balt README.md
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -38,13 +33,12 @@ normal! zo
 normal! zo
 646
 normal! zo
-let s:l = 675 - ((4 * winheight(0) + 22) / 45)
+let s:l = 439 - ((438 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 675
+keepjumps 439
 normal! 0
-lcd ~/.config/LunarVim
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -57,7 +51,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
