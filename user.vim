@@ -410,7 +410,7 @@ set autoindent             " Good auto indent
 set laststatus=2           " Always display the status line
 set number relativenumber  " Line numbers and relative numbers
 set cursorline             " Enable highlighting of the current line
-set background=dark        " tell Vim what the background color looks like
+set background=dark        " tell Vim what the background colour looks like
 set showtabline=2          " Always show tabs
 set noshowmode             " We don't need to see things like -- INSERT -- anymore
 set nobackup               " This is recommended by various posts
@@ -418,12 +418,13 @@ set nowritebackup          " This is recommended by various posts
 set shortmess+=c           " Don't pass messages to |ins-completion-menu|.
 set signcolumn=yes         " Always show, otherwise it would shift the text each time
 set updatetime=300         " Faster completion
-set timeoutlen=750         " By default timeoutlen is 1000 ms
+set timeoutlen=750         " By default this is 1000 ms
 set incsearch              " Highlight all matches
 set foldenable             " Folding enabled
 set foldmethod=marker      " Folding method, based on { { {1
 set clipboard=unnamedplus  " Copy paste between Vim and everything else
 set guifont=SauceCodePro\ Nerd\ Font\ Mono:h15
+set ignorecase             " When searching ignore case of words.
 
 " Setup spelling
 set spell

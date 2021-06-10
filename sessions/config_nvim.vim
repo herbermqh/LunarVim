@@ -8,7 +8,7 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +561 user.vim
+badd +425 user.vim
 badd +130 lua/plugins.lua
 badd +20 init.lua
 badd +444 lua/lv-galaxyline/init.lua
@@ -29,16 +29,14 @@ setlocal fdn=20
 setlocal fen
 1
 normal! zo
-435
+363
 normal! zo
-646
-normal! zo
-let s:l = 439 - ((438 * winheight(0) + 22) / 45)
+let s:l = 436 - ((0 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 439
-normal! 0
+keepjumps 436
+normal! 01|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
