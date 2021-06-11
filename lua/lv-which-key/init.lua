@@ -150,6 +150,40 @@ local mappings = {
         t = {"<cmd>TZTop<cr>", "toggle tab bar"},
         z = {"<cmd>TZMinimalist<cr>", "toggle zen"},
     }
+
+    -- JIMC
+    ,
+    t = {
+        name = "+Toggle Display Options",
+        a = {"Toggle All"},
+        b = {"Toggle git Blame line visibility"},
+        c = {"Toggle cursor Column visibility"},
+        e = {"Toggle whitespace at End of line visibility"},
+        g = {"Toggle left Gutter"},
+        h = {"Toggle Hex colour and colour name matches"},
+        i = {"Toggle hIghlight matching words under cursor"},
+        l = {"Toggle cursor Line visibility"},
+        r = {"Toggle line wRap"},
+        s = {"Toggle Spell checking"},
+        t = {"Toggle line Too long highlighting"},
+        w = {"Toggle Whitespace visibility"},
+        y = {"Toggle sYntax highlighting"}
+    },
+    j = {
+        name = "+Show/Jump various dev info",
+        a = {"Jump Artifactory (project)"},
+        c = {"Jump Ci (project)"},
+        h = {"Jump vim Help page for word under cursor"},
+        i = {"Jump lIve (project)"},
+        j = {"Jump to url or hex color or git etc"},
+        l = {"Jump Lint (project)"},
+        m = {"Jump linux Man page for word under cursor"},
+        n = {"Jump Notes (project search in confluence)"},
+        r = {"Jump Repo (git or bitbucket)"},
+        s = {"Show jira ticket in new buffer"},
+        t = {"Jump jira Ticket in browser"},
+        u = {"Jump Unit test reports"}
+    }
 }
 
 local wk = require("which-key")

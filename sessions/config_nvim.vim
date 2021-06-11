@@ -3,22 +3,24 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/.config/LunarVim
+cd ~/bin/dotfiles/bin
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +425 user.vim
-badd +130 lua/plugins.lua
-badd +20 init.lua
-badd +444 lua/lv-galaxyline/init.lua
-badd +92 README.md
+badd +300 ~/.config/LunarVim/user.vim
+badd +130 ~/.config/LunarVim/lua/plugins.lua
+badd +20 ~/.config/LunarVim/init.lua
+badd +444 ~/.config/LunarVim/lua/lv-galaxyline/init.lua
+badd +92 ~/.config/LunarVim/README.md
+badd +167 ~/.config/LunarVim/lua/lv-which-key/init.lua
+badd +75 jump
 argglobal
 %argdel
-$argadd init.lua
-edit user.vim
+$argadd ~/.config/LunarVim/init.lua
+edit ~/.config/LunarVim/user.vim
 argglobal
-balt README.md
+balt ~/.config/LunarVim/init.lua
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -27,16 +29,15 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-1
+255
 normal! zo
-363
-normal! zo
-let s:l = 436 - ((0 * winheight(0) + 19) / 39)
+let s:l = 333 - ((12 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 436
-normal! 01|
+keepjumps 333
+normal! 038|
+lcd ~/bin/dotfiles/bin
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

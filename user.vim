@@ -110,23 +110,18 @@ function! ToggleColourCursorColumn()
     endif
 endfunction
 
-function! ToggleColourColumn()
+function! ToggleColourLineTooLong()
     if &colorcolumn == 0
         set colorcolumn=80,120
+        " if synIDattr(hlID("longLine"), "bg", "gui") == "#5F3F3F"
+        highlight longLine                          guibg=#5F3F3F
     else
         set colorcolumn=0
-    endif
-endfunction
-
-function! ToggleColourLongLine()
-    if synIDattr(hlID("longLine"), "bg", "gui") == "#5F3F3F"
         highlight longLine        NONE
-    else
-        highlight longLine                          guibg=#5F3F3F
     endif
 endfunction
 
-function! ToggleColourWhiteSpace()
+function! ToggleColourWhiteSpaceAtEndOfLine()
     if synIDattr(hlID("extraWhitespace"), "bg", "gui") == "Red"
         highlight extraWhitespace NONE
     else
@@ -178,9 +173,8 @@ endfunction
 
 function ToggleAll()
     call ToggleColourCursorColumn()
-    call ToggleColourColumn()
-    call ToggleColourLongLine()
-    call ToggleColourWhiteSpace()
+    call ToggleColourLineTooLong()
+    call ToggleColourWhiteSpaceAtEndOfLine()
     call ToggleColourGitBlame()
     call ToggleColourIncSearch()
     set spell!
@@ -312,33 +306,33 @@ vnoremap <A-Down> :m '>+1<CR>gv=gv
 
 " Jump : TODO: Add description to which key.
 nmap gj :call JumpToSelection()<CR>
-noremap <silent> <leader>jj :call JumpToSelection()<CR>
-noremap <silent> <leader>jr :silent exec "!jump Repo %:p:h"<CR>
-noremap <silent> <leader>jt :silent exec "!jump Ticket %:p:h"<CR>
 noremap <silent> <leader>ja :silent exec "!jump Artifact %:p:h"<CR>
-noremap <silent> <leader>jn :silent exec "!jump Notes %:p:h"<CR>
 noremap <silent> <leader>jc :silent exec "!jump Ci %:p:h"<CR>
-noremap <silent> <leader>jl :silent exec "!jump Lint %:p:h"<CR>
 noremap <silent> <leader>jh :call OpenHelpPage()<CR>
-noremap <silent> <leader>jm :<C-U>exe "Man" v:count "<C-R><C-W>"<CR>
 noremap <silent> <leader>ji :silent exec "!jump Live %:p:h"<CR>
-noremap <silent> <leader>je :silent exec "!jump TestReports %:p:h"<CR>
+noremap <silent> <leader>jj :call JumpToSelection()<CR>
+noremap <silent> <leader>jl :silent exec "!jump Lint %:p:h"<CR>
+noremap <silent> <leader>jm :<C-U>exe "Man" v:count "<C-R><C-W>"<CR>
+noremap <silent> <leader>jn :silent exec "!jump Notes %:p:h"<CR>
+noremap <silent> <leader>jr :silent exec "!jump Repo %:p:h"<CR>
 noremap <silent> <leader>js :call ShowJira()<CR>
+noremap <silent> <leader>jt :silent exec "!jump Ticket %:p:h"<CR>
+noremap <silent> <leader>ju :silent exec "!jump TestReports %:p:h"<CR>
 
 " Toggle various visual items. : TODO: Add description to which key.
-noremap <silent> <leader>t1 :call ToggleColourCursorLine()<CR>
-noremap <silent> <leader>t2 :call ToggleColourCursorColumn()<CR>
-noremap <silent> <leader>t3 :call ToggleColourColumn()<CR>
-noremap <silent> <leader>t4 :call ToggleColourLongLine()<CR>
-noremap <silent> <leader>t5 :call ToggleColourWhiteSpace()<CR>
-noremap <silent> <leader>t6 :ColorizerToggle<CR>
-noremap <silent> <leader>t7 :set list!<CR>
-noremap <silent> <leader>t8 :call ToggleColourGitBlame()<CR>
-noremap <silent> <leader>t9 :set wrap!<CR>
-noremap <silent> <leader>t0 :call ToggleColourSyntax()<CR>
-noremap <silent> <leader>ti :call ToggleColourIncSearch()<CR>
-noremap <silent> <leader>tu :call ToggleGutter()<CR>
 noremap <silent> <leader>ta :call ToggleAll()<CR>
+noremap <silent> <leader>tb :call ToggleColourGitBlame()<CR>
+noremap <silent> <leader>tc :call ToggleColourCursorColumn()<CR>
+noremap <silent> <leader>te :call ToggleColourWhiteSpaceAtEndOfLine()<CR>
+noremap <silent> <leader>tg :call ToggleGutter()<CR>
+noremap <silent> <leader>th :ColorizerToggle<CR>
+noremap <silent> <leader>ti :call ToggleColourIncSearch()<CR>
+noremap <silent> <leader>tl :call ToggleColourCursorLine()<CR>
+noremap <silent> <leader>tr :set wrap!<CR>
+noremap <silent> <leader>ts :set spell!<CR>
+noremap <silent> <leader>tt :call ToggleColourLineTooLong()<CR>
+noremap <silent> <leader>tw :set list!<CR>
+noremap <silent> <leader>ty :call ToggleColourSyntax()<CR>
 
 " Function keys.
 map <silent> <F1> :!xdg-open $HOME/.config/nvim/cheatsheet.html<CR>
