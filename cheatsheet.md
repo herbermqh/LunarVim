@@ -270,8 +270,8 @@ A query to increment value in whole file<br/>`:let i=1 \| g/foo/s//\=i/ \| let i
 |<kbd>F6</kbd>|                                                                :heavy_check_mark: Runs the last range substitute, see * and &|
 |<kbd>F9</kbd>|                                                                :heavy_check_mark: Open Telescope|
 |<kbd>F10</kbd>|                                                               :heavy_check_mark: Kitty command - New terminal in new tab|
-|<kbd>F11</kbd>|                                                               :heavy_check_mark: Toggle right tagbar|
-|<kbd>F12</kbd>|                                                               :heavy_check_mark: Toggle ranger|
+|<kbd>F11</kbd>|                                                               :heavy_check_mark: Kitty command - full screen|
+|<kbd>F12</kbd>|                                                               :heavy_check_mark: Toggle right tags bar|
 |__Executing lines/commands__||
 |<kbd>g</kbd><kbd>r</kbd>|                                                     :heavy_check_mark: Run line under cursor in shell, **USE WITH CARE!**|
 |<kbd>g</kbd><kbd>t</kbd>|                                                     :heavy_check_mark: Run line under cursor as if it were a vim command|

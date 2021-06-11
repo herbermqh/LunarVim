@@ -346,7 +346,7 @@ map <F4> :NvimTreeToggle<CR>
 map <F6> :*&<CR>
 map <F9> :Telescope find_files<CR>
 " F10 reserved for kitty, open new terminal.
-map <F11> :call FullScreenToggle()<CR>
+" F11 reserved for kitty, fullscreen.
 map <F12> :TagbarToggle<CR>
 
 " Keep X as delete backwards, rather then close buffer, I prefer to use :bd
