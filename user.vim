@@ -200,11 +200,16 @@ endfunction
 " :Csv 1    " highlight first column
 " :Csv 12   " highlight twelfth column
 " :Csv 0    " switch off highlight
+highlight CsvColHeading guifg=Yellow guibg=Black
 function! CSVH(colnr)
   if a:colnr > 1
     let n = a:colnr - 1
-    execute 'match CsvColHighlight /^\([^,|\t]*[,|\t]\)\{'.n.'}\zs[^,|\t]*/'
+
+    execute 'match CsvColHeading /^\([^,]*,\)\{'.n.'}\zs[^,]*/'
+    " execute 'match CsvColHighlight /^\([^,|\t]*[,|\t]\)\{'.n.'}\zs[^,|\t]*/'
     execute 'normal! 0'.n.'f,'
+    execute 'syntax match csvHeading /\%1l\%(\%("\zs\%([^"]\|""\)*\ze"\)\|\%(\zs[^,"]*\ze\)\)/'
+    execute 'highlight csvHeading guifg=Yellow guibg=Black gui=bold'
   elseif a:colnr == 1
     match CsvColHighlight /^[^,|\t]*/
     normal! 0
@@ -377,7 +382,7 @@ if &diff
     set nolist             " Do not display whitespace
 else
     set nowrap             " Display long lines as just one line
-    set list               " Display whitespace
+    set list               " Do not display whitespace
 endif
 
 syntax enable              " Enables syntax highlighting
@@ -442,18 +447,20 @@ hi SpecialChar     guifg=#a3a3dc gui=bold                     ctermfg=181 cterm=
 hi String          guifg=#53BB83                              ctermfg=174
 hi Tag             guifg=#93e893 gui=bold                     ctermfg=181 cterm=bold
 
-" Show whitespace characters
-set listchars=eol:¶,tab:»-,trail:·,extends:>,precedes:<,space:·
-"
-"Highlight cursor line/column
+" Show white space characters
+set listchars=eol:¶,tab:»\ ,trail:·,extends:>,precedes:<,space:·
+highlight NonText                                        gui=bold guifg=#49494F
+highlight Whitespace                                     gui=bold guifg=#49494F
+
+" Highlight cursor line/column
 set colorcolumn=80,120
 highlight ColorColumn                          guifg=#ffffff     guibg=#3A3A3A
 set cursorcolumn
 highlight CursorColumn                         guifg=#ffffff     guibg=#483d8b
 highlight CursorLine                                             guibg=#605555
 
-" Selection line colours
-highlight Visual                                                 guibg=Grey35
+" Selected area colours
+highlight Visual                               guifg=#ffffff     guibg=#1B5193
 
 " Search hit colour
 highlight Search                               guifg=Wheat       guibg=Peru
@@ -650,7 +657,7 @@ autocmd! Filetype * if &ft=="dashboard"| highlight extraWhitespace NONE |endif |
 " Highlight matching words in buffer.
 autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
-" Remove whitespace on save for certain file types.
+" Remove white space on save for certain file types.
 autocmd BufWrite *.py :call DeleteTrailingWhiteSpace()
 autocmd BufWrite *.java :call DeleteTrailingWhiteSpace()
 autocmd BufWrite * if &ft=="sh" | :call DeleteTrailingWhiteSpace() | endif

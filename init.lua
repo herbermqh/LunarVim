@@ -69,8 +69,9 @@ require('lsp.yaml-ls')
 require('lsp.elixir-ls')
 
 -- Jimc extras.
-require('lsp.java-ls')
-require('lsp.sql-ls')
-vim.cmd('luafile ~/.config/nvim/user.lua')
-vim.cmd('source ~/.config/nvim/user.vim')
-
+vim.lsp.set_log_level("debug")
+require('lv-sqls')                             -- For Sql LSP install.
+require('lsp.sql-ls')                          -- To configure the Sql LSP.
+require('lsp.java-ls')                         -- Java LSP.
+vim.cmd('luafile ~/.config/nvim/user.lua')     -- My config, lua syntax.
+vim.cmd('source ~/.config/nvim/user.vim')      -- My config, vim syntax.

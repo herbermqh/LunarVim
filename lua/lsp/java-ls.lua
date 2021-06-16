@@ -14,7 +14,7 @@
 if vim.fn.has("mac") == 1 then
     JAVA_LS_EXECUTABLE = 'java-mac-ls'
 elseif vim.fn.has("unix") == 1 then
-    JAVA_LS_EXECUTABLE = 'java-linux-ls'
+    JAVA_LS_EXECUTABLE = '/home/jim/bin/dotfiles/bin/java-linux-ls'
 else
     print("Unsupported system")
 end
@@ -30,8 +30,16 @@ local on_attach = function(client, bufr)
 end
 
 require('jdtls').start_or_attach({
-    on_attach = on_attach,
     cmd = {JAVA_LS_EXECUTABLE},
+    filetypes = { "java" },
+    on_attach = on_attach,
     root_dir = require('jdtls.setup').find_root({'build.gradle', 'pom.xml', '.git'}),
     init_options = {bundles = bundles}
 })
+
+-- require('jdtls').setup({
+    -- cmd = {JAVA_LS_EXECUTABLE},
+    -- filetypes = { "java" },
+    -- on_attach = on_attach
+-- })
+

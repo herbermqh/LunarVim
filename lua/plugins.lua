@@ -172,10 +172,13 @@ return require("packer").startup(function(use)
     require_plugin("vim-eunuch")
     use {"tpope/vim-repeat", opt = true}             -- . repeats properly for macros.
     require_plugin("vim-repeat")
-    use {"tpope/vim-fugitive", opt = true}           -- Inc/dec dates.
+    use {"tpope/vim-fugitive", opt = true}           -- Git plugin.
     require_plugin("vim-fugitive")
     use {"mfussenegger/nvim-jdtls", opt = true}      -- Java LSP.
     require_plugin("nvim-jdtls")
     use {"itchyny/vim-highlighturl", opt = true}     -- Highlight URL's.
     require_plugin("vim-highlighturl")
+    use {"nanotee/sqls.nvim", opt = true}            -- SQL LSP.
+    require_plugin("sqls.nvim")
+
 end)
