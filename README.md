@@ -153,6 +153,7 @@ git clone git@github.com:eclipse/eclipse.jdt.ls.git
 cd eclipse.jdt.ls
 ./mvnw clean verify
 cd ..
+
 sudo mv eclipse.jdt.ls /opt
 ```
 
@@ -237,7 +238,7 @@ See my dotfiles for a simple bash script to convert this GitHut markdown file in
 | :--: | :--: | :--:
 | [![Vim Cheatsheet](https://img.shields.io/badge/Vim%20CheatSheet.wtf-website-red)](https://www.cheatsheet.wtf/vim/) | [![Quick ref](https://img.shields.io/badge/Quick%20Ref-website-red)](http://tnerual.eriogerg.free.fr/vimqrc.html) | [![Cheatsheet](https://img.shields.io/badge/Cheatsheet-website-red)](https://paulgorman.org/technical/vim.html)
 | [![100 Essential commands](https://img.shields.io/badge/100%20Essential%20Commands-website-red)](https://catswhocode.com/vim-commands/) | [![Vim tutorial](https://img.shields.io/badge/Vim%20Tutorial-website-red)](https://www.openvim.com/) | [![Vim cookbook](https://img.shields.io/badge/Vim%20Cookbook-website-red)](http://www.oualline.com/vim-cook.html)
-| [![VimAwesome](https://img.shields.io/badge/NeoVim-website-red)](https://vimawesome.com) | &nbsp; | &nbsp;
+| [![VimAwesome](https://img.shields.io/badge/VimAwesome-website-red)](https://vimawesome.com) | &nbsp; | &nbsp;
 <!-- }}}1 -->
 
 <!--
