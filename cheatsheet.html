@@ -193,7 +193,6 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <tr><th><kbd class="cmd">:ls</kbd> (or <kbd class="cmd">:buffers</kbd>)</th><td>                                                        List buffers</td></tr>
 <tr><th><kbd class="cmd">:changes</kbd></th><td>                                                                   Show changes</td></tr>
 <tr><th><kbd class="cmd">:map</kbd></th><td>                                                                       Show custom key mappings</td></tr>
-<tr><th><kbd class="cmd">:reg</kbd></th><td>                                                                       Show register contents</td></tr>
 <tr><th><kbd class="cmd">:history</kbd></th><td>                                                                   Show command history</td></tr>
 <tr><th><kbd class="cmd">:jumps</kbd></th><td>                                                                     Show jump list</td></tr>
 <tr><th><kbd class="cmd">:Man</kbd></th><td>                                                                       Man page for word under cursor</td></tr>
@@ -347,10 +346,17 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 <table><tbody>
 <tr><th><kbd>tab</kbd>, <kbd>shift-tab</kbd>, <kbd>b</kbd><kbd>d</kbd></th><td>               Buffer next, previous, delete (close)</td></tr>
 <tr><th><kbd class="cmd">:sp, :vsp</kbd></th><td>                                                                  Split view horizontal, vertical</td></tr>
-<tr><th><kbd>Ctrl-w</kbd> <kbd>Ctrl-w</kbd></th><td>                                          Move cursor viewport</td></tr>
-<tr><th><kbd>Ctrl-w</kbd> <kbd>q</kbd></th><td>                                               Close viewport</td></tr>
-<tr><th><kbd>Ctrl-w</kbd> [-+=_]</th><td>                                                     Resize viewport</td></tr>
+<tr><th><kbd>Ctrl-w</kbd> <kbd>[sv]</kbd></th><td>                                            Split view horizontal, vertical</td></tr>
+<tr><th><kbd>Ctrl-w</kbd> <kbd>w</kbd></th><td>                                               Switch view</td></tr>
+<tr><th><kbd>Ctrl-w</kbd> <kbd>Ctrl-w</kbd></th><td>                                          Switch view</td></tr>
+<tr><th><kbd>Ctrl-w</kbd> <kbd>q</kbd></th><td>                                               Close view</td></tr>
+<tr><th><kbd>Ctrl-w</kbd> [-+=_]</th><td>                                                     Resize view</td></tr>
 <tr><th><kbd class="cmd">:bufdo %s/foo/bar</kbd></th><td>                                                          Do to all buffers</td></tr>
+</tbody></table>
+</div><div class="inner border" id="registers">
+<h1>Registers <a target="_new" href="https://neovim.io/doc/user/fold.html#Folding"><kbd class="cmd">:h registers</kbd></a></h1>
+<table><tbody>
+<tr><th><kbd class="cmd">:reg</kbd></th><td>                                                                       Show register contents</td></tr>
 </tbody></table>
 </div><div class="inner border" id="folding">
 <h1>Folding <a target="_new" href="https://neovim.io/doc/user/fold.html#Folding"><kbd class="cmd">:h folding</kbd></a></h1>
@@ -419,8 +425,8 @@ A query to increment value in whole file<br/><kbd class="cmd">:let i=1 | g/foo/s
 <tr><th><kbd>F6</kbd></th><td>                                                                <img src="utils/media/tick.png"/> Runs the last range substitute, see * and &</td></tr>
 <tr><th><kbd>F9</kbd></th><td>                                                                <img src="utils/media/tick.png"/> Open Telescope</td></tr>
 <tr><th><kbd>F10</kbd></th><td>                                                               <img src="utils/media/tick.png"/> Kitty command - New terminal in new tab</td></tr>
-<tr><th><kbd>F11</kbd></th><td>                                                               <img src="utils/media/tick.png"/> Toggle right tagbar</td></tr>
-<tr><th><kbd>F12</kbd></th><td>                                                               <img src="utils/media/tick.png"/> Toggle ranger</td></tr>
+<tr><th><kbd>F11</kbd></th><td>                                                               <img src="utils/media/tick.png"/> Kitty command - full screen</td></tr>
+<tr><th><kbd>F12</kbd></th><td>                                                               <img src="utils/media/tick.png"/> Toggle right tags bar</td></tr>
 </tbody></table>
 </div><div class="inner border" id="executinglinescommands">
 <h1>Executing lines/commands </h1>

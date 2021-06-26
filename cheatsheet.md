@@ -92,7 +92,6 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |`:ls` (or `:buffers`)|                                                        List buffers|
 |`:changes`|                                                                   Show changes|
 |`:map`|                                                                       Show custom key mappings|
-|`:reg`|                                                                       Show register contents|
 |`:history`|                                                                   Show command history|
 |`:jumps`|                                                                     Show jump list|
 |`:Man`|                                                                       Man page for word under cursor|
@@ -219,10 +218,14 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |__Windows and Buffers__|[`:h windows`](https://neovim.io/doc/user/windows.html)|
 |<kbd>tab</kbd>, <kbd>shift-tab</kbd>, <kbd>b</kbd><kbd>d</kbd>|               Buffer next, previous, delete (close)|
 |`:sp, :vsp`|                                                                  Split view horizontal, vertical|
-|<kbd>Ctrl-w</kbd> <kbd>Ctrl-w</kbd>|                                          Move cursor viewport|
-|<kbd>Ctrl-w</kbd> <kbd>q</kbd>|                                               Close viewport|
-|<kbd>Ctrl-w</kbd> [-+=_]|                                                     Resize viewport|
+|<kbd>Ctrl-w</kbd> <kbd>[sv]</kbd>|                                            Split view horizontal, vertical|
+|<kbd>Ctrl-w</kbd> <kbd>w</kbd>|                                               Switch view|
+|<kbd>Ctrl-w</kbd> <kbd>Ctrl-w</kbd>|                                          Switch view|
+|<kbd>Ctrl-w</kbd> <kbd>q</kbd>|                                               Close view|
+|<kbd>Ctrl-w</kbd> [-+=_]|                                                     Resize view|
 |`:bufdo %s/foo/bar`|                                                          Do to all buffers|
+|__Registers__|[`:h registers`](https://neovim.io/doc/user/fold.html#Folding)|
+|`:reg`|                                                                       Show register contents|
 |__Folding__|[`:h folding`](https://neovim.io/doc/user/fold.html#Folding)|
 |<kbd>F2</kbd>|                                                                Cycle through fold methods|
 |`:set foldmethod=manual`|                                                     or syntax, indent, etc|
