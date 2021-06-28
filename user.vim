@@ -361,13 +361,16 @@ nunmap X
 
 " Settings {{{1
 
-:Gitsigns toggle_current_line_blame
+" ERRORS: WHY!
+" :Gitsigns toggle_current_line_blame
+
+" ERRORS: WHY!
+" let bufferline.icons="both"
+" let bufferline.icon_custom_colors="true"
+" let bufferline.icon_close_tab_modified=''
 
 let g:github_enterprise_urls = ['https://bitbucket.org']
 let g:startify_session_dir=['~/.config/nvim/sessions']
-let bufferline.icons="both"
-let bufferline.icon_custom_colors="true"
-let bufferline.icon_close_tab_modified=''
 let g:neovide_cursor_animation_length=0
 let g:neovide_fullscreen=v:true
 

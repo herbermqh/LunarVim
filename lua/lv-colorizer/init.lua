@@ -1,5 +1,4 @@
 require'colorizer'.setup(
-    -- nil,
   {'*';},
   {
     RGB      = true;         -- #RGB hex codes

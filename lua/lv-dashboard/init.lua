@@ -1,42 +1,52 @@
--- ChristianChiarulli/dashboard-nvim
-vim.g.dashboard_custom_header = O.dashboard.custom_header
-vim.g.dashboard_default_executive = 'telescope'
+local M = {}
 
-vim.g.dashboard_custom_section = {
-    a = {description = {'  New File           '}, command = 'DashboardNewFile'},
-    b = {description = {'  Find File          '}, command = 'Telescope find_files'},
-    c = {description = {'  File Browser       '}, command = 'Telescope file_browser'},
-    d = {description = {'  Ranger             '}, command = 'RnvimrToggle'},
-    e = {description = {'  Recently Used Files'}, command = 'Telescope oldfiles'},
-    f = {description = {'  Find Word          '}, command = 'Telescope live_grep'},
-    g = {description = {'  Load Last Session  '}, command = 'SessionLoad'},
-    h = {description = {'  Git Status         '}, command = 'Telescope git_status'},
-    i = {description = {'  Marks              '}, command = 'Telescope marks'},
-    j = {description = {'  Settings           '}, command = ':e ~/.config/nvim/lv-settings.lua'},
-    k = {description = {'  VIM Session        '}, command = ':source ~/.config/nvim.user/sessions/config_nvim.vim'},
-    l = {description = {'  Zshrc              '}, command = ':e ~/.zshrc'}
-}
+M.config = function()
+	-- ChristianChiarulli/dashboard-nvim
+    vim.g.dashboard_disable_at_vimenter = 0
 
-vim.g.dashboard_session_directory = '~/.cache/nvim/session'
-    -- a = {description = {'  Find File          '}, command = 'Telescope find_files'},
-    -- b = {description = {'  Recently Used Files'}, command = 'Telescope oldfiles'},
-    -- c = {description = {'  Load Last Session  '}, command = 'SessionLoad'},
-    -- d = {description = {'  Find Word          '}, command = 'Telescope live_grep'},
-    -- e = {description = {'  Settings           '}, command = ':e '..CONFIG_PATH..'/lv-settings.lua'}
-    -- e = {description = {'  Marks              '}, command = 'Telescope marks'}
--- }
+    vim.g.dashboard_custom_header = O.dashboard.custom_header
 
--- file_browser = {description = {' File Browser'}, command = 'Telescope find_files'},
+    vim.g.dashboard_default_executive = 'telescope'
 
--- vim.g.dashboard_custom_shortcut = {
---     a = 'f',
---     find_word = 'SPC f a',
---     last_session = 'SPC s l',
---     new_file = 'SPC c n',
---     book_marks = 'SPC f b'
--- }
--- find_history = 'SPC f h',
+    vim.g.dashboard_custom_section = {
 
--- vim.g.dashboard_session_directory = CACHE_PATH..'/session'
+	    a = {description = {'  New File           '}, command = 'DashboardNewFile'},
+	    b = {description = {'  Find File          '}, command = 'Telescope find_files'},
+	    c = {description = {'  File Browser       '}, command = 'Telescope file_browser'},
+	    d = {description = {'  Ranger             '}, command = 'RnvimrToggle'},
+	    e = {description = {'  Recently Used Files'}, command = 'Telescope oldfiles'},
+	    f = {description = {'  Find Word          '}, command = 'Telescope live_grep'},
+	    g = {description = {'  Load Last Session  '}, command = 'SessionLoad'},
+	    h = {description = {'  Git Status         '}, command = 'Telescope git_status'},
+	    i = {description = {'  Marks              '}, command = 'Telescope marks'},
+	    j = {description = {'  Settings           '}, command = ':e ~/.config/nvim/lv-settings.lua'},
+	    k = {description = {'  VIM Session        '}, command = ':source ~/.config/nvim.user/sessions/config_nvim.vim'},
+	    l = {description = {'  Zshrc              '}, command = ':e ~/.zshrc'}
+	}
 
-vim.g.dashboard_custom_footer = O.dashboard.footer
+	vim.g.dashboard_session_directory = '~/.cache/nvim/session'
+	    -- a = {description = {'  Find File          '}, command = 'Telescope find_files'},
+	    -- b = {description = {'  Recently Used Files'}, command = 'Telescope oldfiles'},
+	    -- c = {description = {'  Load Last Session  '}, command = 'SessionLoad'},
+	    -- d = {description = {'  Find Word          '}, command = 'Telescope live_grep'},
+	    -- e = {description = {'  Settings           '}, command = ':e '..CONFIG_PATH..'/lv-settings.lua'}
+	    -- e = {description = {'  Marks              '}, command = 'Telescope marks'}
+	-- }
+
+    -- file_browser = {description = {' File Browser'}, command = 'Telescope find_files'},
+
+    -- vim.g.dashboard_custom_shortcut = {
+    --     a = 'f',
+    --     find_word = 'SPC f a',
+    --     last_session = 'SPC s l',
+    --     new_file = 'SPC c n',
+    --     book_marks = 'SPC f b'
+    -- }
+    -- find_history = 'SPC f h',
+
+    -- vim.g.dashboard_session_directory = CACHE_PATH..'/session'
+    vim.g.dashboard_custom_footer = O.dashboard.footer
+end
+
+return M
+
