@@ -225,6 +225,12 @@ local mappings = {
         t = {"Jump jira Ticket in browser"},
         u = {"Jump Unit test reports"}
     }
+    -- z = {
+    --     name = "Zen",
+    --     s = {"<cmd>TZBottom<cr>", "toggle status line"},
+    --     t = {"<cmd>TZTop<cr>", "toggle tab bar"},
+    --     z = {"<cmd>TZAtaraxis<cr>", "toggle zen"}
+    -- }
 }
 
 if O.extras then
