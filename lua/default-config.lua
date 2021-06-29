@@ -15,13 +15,14 @@ O = {
     timeoutlen = 100,
     nvim_tree_disable_netrw = 0,
     extras = false,
+    ignore_case = true,
+    smart_case = true,
 
     -- @usage pass a table with your desired languages
     treesitter = {
         ensure_installed = "all",
         ignore_install = {"haskell"},
         highlight = {enabled = true},
-        playground = {enabled = true},
         rainbow = {enabled = false}
     },
 
@@ -31,8 +32,34 @@ O = {
         hop = {active = false},
         dial = {active = false},
         dashboard = {active = false},
-        matchup = {active = false}
-
+        matchup = {active = false},
+        colorizer = {active = false},
+        numb = {active = false},
+        zen = {active = false},
+        ts_playground = {active = false},
+        indent_line = {active = false},
+        ts_context_commentstring = {active = false},
+        symbol_outline = {active = false},
+        debug = {active = false},
+        bqf = {active = false},
+        trouble = {active = false},
+        floatterm = {active = false},
+        spectre = {active = false},
+        lsp_rooter = {active = false},
+        markdown_preview = {active = false},
+        codi = {active = false},
+        telescope_fzy = {active = false},
+        sanegx = {active = false},
+        todo_comments = {active = false},
+        lsp_colors = {active = false},
+        git_blame = {active = false},
+        gist = {active = false},
+        gitlinker = {active = false},
+        lazygit = {active = false},
+        octo = {active = false},
+        diffview = {active = false},
+        bracey = {active = false},
+        telescope_project = {active = false}
 
     },
 

@@ -355,7 +355,7 @@ map <F9> :Telescope find_files<CR>
 map <F12> :TagbarToggle<CR>
 
 " Keep X as delete backwards, rather then close buffer, I prefer to use :bd
-nunmap X
+" nunmap X
 
 " }}}
 
