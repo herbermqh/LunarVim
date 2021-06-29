@@ -19,16 +19,17 @@ O.ignore_case = true
 O.smart_case = true
 
 -- After changing plugin config it is recommended to run :PackerCompile
-O.plugin.hop.active = false
-O.plugin.dial.active = false
+O.plugin.hop.active = true
+O.plugin.dial.active = true
 O.plugin.dashboard.active = true
 O.plugin.matchup.active = false
-O.plugin.colorizer.active = false
+O.plugin.colorizer.active = true
 O.plugin.numb.active = false
 O.plugin.ts_playground.active = false
 O.plugin.indent_line.active = false
 O.plugin.gitlinker.active = true
 O.plugin.zen.active = true
+O.plugin.git_blame.active = true
 
 -- dashboard
 -- O.dashboard.custom_header = {""}
@@ -87,7 +88,7 @@ O.lang.go.autoformat = true
 -- Turn off cursorline
 -- O.cursorline = false
 
--- Neovim turns the default cursor to 'Block' 
+-- Neovim turns the default cursor to 'Block'
 -- when switched back into terminal.
 -- This below line fixes that. Uncomment if needed.
 

@@ -349,20 +349,21 @@ map <F4> :NvimTreeToggle<CR>
 " * = last range.
 " & = last s/foo/bar/
 map <F6> :*&<CR>
+" Diff current buffer and the next.
+map <F7> :vsplit<CR>:bnext<CR>:windo diffthis<CR>
+" map <F8> UNDEFINED
 map <F9> :Telescope find_files<CR>
 " F10 reserved for kitty, open new terminal.
 " F11 reserved for kitty, fullscreen.
 map <F12> :TagbarToggle<CR>
 
 " Keep X as delete backwards, rather then close buffer, I prefer to use :bd
+" ERRORS: WHY!
 " nunmap X
 
 " }}}
 
 " Settings {{{1
-
-" ERRORS: WHY!
-" :Gitsigns toggle_current_line_blame
 
 " ERRORS: WHY!
 " let bufferline.icons="both"

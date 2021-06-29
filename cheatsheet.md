@@ -33,7 +33,7 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |<kbd>0</kbd>, <kbd>g</kbd><kbd>m</kbd>, <kbd>$|</kbd>                         Start, middle, end of line|
 |<kbd>^</kbd>|                                                                 First non-white character of line|
 |<kbd>Enter</kbd>|                                                             First non-white char of next line|
-|<kbd>*</kbd>, <kbd>#</kbd>|                                                   Next, last word under cursor|
+|<kbd>*</kbd>, <kbd>#</kbd>|                                                   Find forwards/backwards word under cursor|
 |<kbd>b</kbd>, <kbd>w</kbd>|                                                   Word left, right|
 |<kbd>B</kbd>, <kbd>W</kbd>|                                                   White spaced word left, right|
 |<kbd>f</kbd><kbd>x</kbd>, <kbd>F</kbd><kbd>x</kbd>|                           Next, previous character `x`|
@@ -271,6 +271,7 @@ A query to increment value in whole file<br/>`:let i=1 \| g/foo/s//\=i/ \| let i
 |<kbd>F3</kbd>|                                                                :heavy_check_mark: Toggle most visual items|
 |<kbd>F4</kbd>|                                                                :heavy_check_mark: Open left file menu|
 |<kbd>F6</kbd>|                                                                :heavy_check_mark: Runs the last range substitute, see * and &|
+|<kbd>F7</kbd>|                                                                :heavy_check_mark: Diff current buffer and next (split and windo diffthis)|
 |<kbd>F9</kbd>|                                                                :heavy_check_mark: Open Telescope|
 |<kbd>F10</kbd>|                                                               :heavy_check_mark: Kitty command - New terminal in new tab|
 |<kbd>F11</kbd>|                                                               :heavy_check_mark: Kitty command - full screen|

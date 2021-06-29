@@ -372,23 +372,74 @@ return require("packer").startup(function(use)
         disable = not O.lang.latex.active
     }
 
-     -- Jimc extras.
-    use {"kshenoy/vim-signature", opt = true}        -- Markers in margin.
-    -- require_plugin("vim-signature")
-    use {"preservim/tagbar", opt = true}             -- Tags navigation.
-    -- require_plugin("tagbar")
-    use {"tpope/vim-surround", opt = true}           -- Surroundings.
-    -- require_plugin("vim-surround")
-    use {"tpope/vim-eunuch", opt = true}             -- Unix commands.
-    -- require_plugin("vim-eunuch")
-    use {"tpope/vim-repeat", opt = true}             -- . repeats properly for macros.
-    -- require_plugin("vim-repeat")
-    use {"tpope/vim-fugitive", opt = true}           -- Git plugin.
-    -- require_plugin("vim-fugitive")
-    -- use {"mfussenegger/nvim-jdtls", opt = true}      -- Java LSP.
-    -- require_plugin("nvim-jdtls")
-    use {"itchyny/vim-highlighturl", opt = true}     -- Highlight URL's.
-    -- require_plugin("vim-highlighturl")
-    -- use {"nanotee/sqls.nvim", opt = true}            -- SQL LSP.
-    -- require_plugin("sqls.nvim")
+    -- -------------------------------------------------------------------------
+    -- Jimc extras.
+    -- Tags navigation.  'F12' Opens to the right.
+    use {
+        "preservim/tagbar",
+        event = "BufRead",
+        disable = false
+    }
+
+    -- Markers in margin. 'ma' adds marger
+    use {"kshenoy/vim-signature",
+        event = "BufRead",
+        disable = false
+    }
+
+    -- Surroundings.  Try cs"'  in a string "with double quotes"
+    use {
+        "tpope/vim-surround",
+        event = "BufRead",
+        disable = false
+    }
+
+    -- Unix commands. Try ":SudoWrite"
+    use {
+        "tpope/vim-eunuch",
+        event = "BufRead",
+        disable = false
+    }
+
+    -- Git plugin.  Try ":Git "
+    use {
+        "tpope/vim-fugitive",
+        event = "BufRead",
+        disable = false
+    }
+
+    -- Highlight URL's. http://www.google.com
+    use {
+        "itchyny/vim-highlighturl",
+        event = "BufRead",
+        disable = false
+    }
+
+    -- I LIKE ranger.
+    use {
+        "kevinhwang91/rnvimr",
+        event = "BufRead",
+        disable = false
+    }
+
+    -- Repeats properly for macros.
+    -- use {
+        -- "tpope/vim-repeat",
+        -- event = "BufRead",
+        -- disable = false
+    -- }
+
+    -- SQL LSP.
+    -- use {
+        -- "nanotee/sqls.nvim",
+        -- opt = true
+    -- }
+
+    -- Java LSP.
+    -- use {
+        -- "mfussenegger/nvim-jdtls",
+        -- event = "BufRead",
+        -- disable = false
+    -- }
+
 end)
