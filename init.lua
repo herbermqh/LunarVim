@@ -12,17 +12,16 @@ require('lv-treesitter')
 require('lv-autopairs')
 require('lv-which-key')
 
--- require('lv-globals')
--- vim.cmd('luafile '..CONFIG_PATH..'/lv-settings.lua')
 require('lv-matchup')
-require('lv-nvimtree') -- This plugin must be required somewhere before colorscheme.  Placing it after will break navigation keymappings
 -- require('lv-comment')
+require('lv-nvimtree') -- This plugin must be required somewhere before colorscheme.  Placing it after will break navigation keymappings
 require('lv-gitblame')
 require('lv-compe')
 require('lv-barbar')
 require('lv-dashboard')
 require('lv-gitsigns')
 require('lv-rnvimr')
+
 -- require('lv-lsp-rooter')
 -- require('lv-zen')
 

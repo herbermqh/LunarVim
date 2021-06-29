@@ -111,8 +111,6 @@ return require("packer").startup(function(use)
 
     }
 
-    -- use {"hrsh7th/vim-vsnip"}
-
     -- extras, these do not load by default
 
     -- Better motions
@@ -146,32 +144,6 @@ return require("packer").startup(function(use)
         disable = not O.plugin.dashboard.active,
         opt = true
     }
-
-    -- Zen Mode TODO this don't work with whichkey might gave to make this built in
-    use {
-        "Pocco81/TrueZen.nvim",
-        -- event = 'BufEnter',
-        cmd = {"TZAtaraxis"},
-        config = function()
-            require('lv-zen').config()
-        end
-        -- event = "BufEnter"
-        -- disable = not O.plugin.zen.active,
-    }
-
-    -- matchup
-    use {
-        'andymass/vim-matchup',
-        event = "CursorMoved",
-        config = function()
-            require('lv-matchup').config()
-        end,
-        disable = not O.plugin.matchup.active,
-        opt = true
-    }
-
-    --     -- Colorizer
-    --     use {'norcalli/nvim-colorizer.lua', opt = true}
 
     -- Zen Mode TODO this don't work with whichkey might gave to make this built in
     use {

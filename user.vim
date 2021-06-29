@@ -366,8 +366,8 @@ nunmap X
 
 " ERRORS: WHY!
 " let bufferline.icons="both"
-" let bufferline.icon_custom_colors="true"
 " let bufferline.icon_close_tab_modified=''
+" let bufferline.icon_custom_colors="true"
 
 let g:github_enterprise_urls = ['https://bitbucket.org']
 let g:startify_session_dir=['~/.config/nvim/sessions']
@@ -562,7 +562,7 @@ call matchadd('extraWhitespace', '/^\s*\t\s*\|\s\+\%#\@<!$', 100)
 
 " Highlight #! lines... Both good and bad.
 highlight sheBangGood gui=bold,italic,underline guifg=#7fdf7f    guibg=NONE
-call matchadd('sheBangGood', '^#!/usr/bin/env \(bash\|sh\|python3\|zsh\)$', 20)
+call matchadd('sheBangGood', '^#!/usr/bin/env \(bash\|sh\|python3\|zsh\|groovy\)$', 20)
 
 highlight sheBangBad                  gui=bold guifg=Red         guibg=NONE
 call matchadd('sheBangBad', '^#!.*')
@@ -677,4 +677,3 @@ endfun
 autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
 
 " }}}
-
