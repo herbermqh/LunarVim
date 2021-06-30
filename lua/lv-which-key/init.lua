@@ -283,7 +283,6 @@ end
 
 -- JIMC
 vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<CR><C-l>", {noremap = true, silent = true})
-mappings[";"] = "Dashboard"
 mappings["t"] = {
     name = "+Toggle Display Options",
     a = {"Toggle All"},

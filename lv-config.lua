@@ -32,6 +32,7 @@ O.plugin.indent_line.active = false
 O.plugin.gitlinker.active = true
 O.plugin.zen.active = true
 O.plugin.git_blame.active = true
+O.plugin.ranger.active = true
 
 -- dashboard
 -- O.dashboard.custom_header = {""}
