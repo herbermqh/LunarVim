@@ -187,6 +187,7 @@ O = {
         docker = {active = false},
         cmake = {active = false},
         java = {active = false},
+        sql = {active = false},
         css = {
             active = false,
 

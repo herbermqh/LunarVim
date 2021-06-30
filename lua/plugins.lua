@@ -394,13 +394,13 @@ return require("packer").startup(function(use)
     -- -------------------------------------------------------------------------
     -- Jimc extras.
 
-    -- Markers in margin. 'ma' adds marger
+    -- Markers in margin. 'ma' adds marker
     use {"kshenoy/vim-signature",
         event = "BufRead",
         disable = false
     }
 
-    -- Surroundings.  Try cs"'  in a string "with double quotes"
+    -- Surroundings.  Try cs"'  in a string "with double quotes" to convert to single.
     use {
         "tpope/vim-surround",
         event = "BufRead",
@@ -443,15 +443,18 @@ return require("packer").startup(function(use)
     -- }
 
     -- SQL LSP.
-    -- use {
-        -- "nanotee/sqls.nvim",
-        -- opt = true
-    -- }
+    use {
+        "nanotee/sqls.nvim",
+        event = "BufRead",
+        ft = "sql",
+        disable = false
+    }
 
     -- Java LSP.
-    -- use {
-        -- "mfussenegger/nvim-jdtls",
-        -- event = "BufRead",
-        -- disable = false
-    -- }
+    use {
+        "mfussenegger/nvim-jdtls",
+        event = "BufRead",
+        ft = "java",
+        disable = false
+    }
 end)

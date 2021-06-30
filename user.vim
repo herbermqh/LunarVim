@@ -677,4 +677,9 @@ fun! IgnoreCamelCaseSpell()
 endfun
 autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
 
+" augroup lsp
+  " au!
+  " au FileType java lua require('jdtls').start_or_attach({cmd = {'java-linux-ls'}})
+" augroup end
+
 " }}}

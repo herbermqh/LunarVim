@@ -51,7 +51,8 @@ if O.lang.tsserver.active then
     require('lsp.vue-ls')
 end
 
--- Jimc extras.
+-- JIMC extras.
 vim.cmd('luafile ~/.config/nvim/user.lua')     -- My config, lua syntax.
 vim.cmd('source ~/.config/nvim/user.vim')      -- My config, vim syntax.
 
+if O.lang.sql.active then require('lsp.sql-ls') end

@@ -40,7 +40,6 @@ O.plugin.telescope_project.active = true
 O.plugin.sanegx.active = true
 O.plugin.lazygit.active = true
 O.plugin.bracey.active = true
-O.lang.latex.active = true
 
 -- dashboard
 -- O.dashboard.custom_header = {""}
@@ -120,4 +119,9 @@ O.lang.rust.autoformat = true
 -- custom autocommands
 -- user defined plugin config
 -- custom settings
+
+-- JIMC
+O.lang.java.active = true
+O.lang.sql.active = true
+O.lang.latex.active = true
 
