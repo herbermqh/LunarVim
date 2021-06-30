@@ -9,6 +9,8 @@ an executable
 -- general
 O.auto_complete = true
 O.colorscheme = 'lunar'
+-- TODO is there a lua native way to do this?
+vim.cmd('colorscheme ' .. O.colorscheme)
 O.auto_close_tree = 0
 O.wrap_lines = false
 O.timeoutlen = 100
@@ -73,7 +75,7 @@ O.lang.tsserver.linter = nil
 O.lang.tsserver.autoformat = true
 
 -- json
-O.lang.json.active = true
+O.lang.json.active = false
 O.lang.json.autoformat = true
 
 -- ruby
@@ -81,6 +83,9 @@ O.lang.ruby.autoformat = true
 
 -- go
 O.lang.go.autoformat = true
+
+-- rust
+O.lang.rust.autoformat = true
 -- create custom autocommand field (This would be easy with lua)
 
 -- Turn off relative_numbers
@@ -102,4 +107,8 @@ O.lang.go.autoformat = true
 --       The numbers didn't make a difference in alacritty. Please change
 --       the number to something that suits your needs if it looks weird.
 
+-- TODO
+-- custom autocommands
+-- user defined plugin config
+-- custom settings
 
