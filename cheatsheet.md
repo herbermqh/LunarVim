@@ -226,6 +226,10 @@ The far left of the tagline at the bottom of the screen is colour coded accordin
 |`:bufdo %s/foo/bar`|                                                          Do to all buffers|
 |__Registers__|[`:h registers`](https://neovim.io/doc/user/fold.html#Folding)|
 |`:reg`|                                                                       Show register contents|
+|<kbd>"</kbd><kbd>a</kbd><kbd>Y</kbd>|                                         Yank(copy) to register a|
+|<kbd>"</kbd><kbd>a</kbd><kbd>p</kbd>|                                         Paste from register a|
+|<kbd>Y</kbd>|                                                                 Yank(copy) to default register, " or 0|
+|<kbd>p</kbd>|                                                                 Paste from default register|
 |__Folding__|[`:h folding`](https://neovim.io/doc/user/fold.html#Folding)|
 |<kbd>F2</kbd>|                                                                Cycle through fold methods|
 |`:set foldmethod=manual`|                                                     or syntax, indent, etc|
