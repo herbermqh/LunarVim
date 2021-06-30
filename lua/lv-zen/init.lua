@@ -4,22 +4,24 @@ M.config = function()
     require("zen-mode").setup {
         window = {
             backdrop = 1,
-            height = .85, -- height of the Zen window
+            height = 1, -- height of the Zen window
+            width = 1, -- width of the Zen window
             options = {
                 signcolumn = "no", -- disable signcolumn
-                number = false, -- disable number column
-                relativenumber = false -- disable relative numbers
+                number = true, -- disable number column
+                relativenumber = false, -- disable relative numbers
                 -- cursorline = false, -- disable cursorline
-                -- cursorcolumn = false, -- disable cursor column
-                -- foldcolumn = "0", -- disable fold column
-                -- list = false, -- disable whitespace characters
+                cursorcolumn = false, -- disable cursor column
+                foldcolumn = "0", -- disable fold column
+                list = false -- disable whitespace characters
             }
         },
         plugins = {
-            gitsigns = {enabled = false} -- disables git signs
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
+            gitsigns = {enabled = false}, -- disables git signs
+            kitty = {
+                enabled = true,
+                font = "+4", -- font size increment
+            }
         }
     }
 end
