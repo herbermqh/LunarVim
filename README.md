@@ -1,5 +1,3 @@
-![LunarVim Demo](./utils/media/lunarvim_logo_dark.png)
-
 <!-- Sheilds -->
 <!-- {{{1 -->
 [![GitHub License](https://img.shields.io/github/license/jimcornmell/LunarVim)](https://github.com/jimcornmell/LunarVim/blob/master/LICENSE)
@@ -10,6 +8,7 @@
 
 <!-- Main Image -->
 <!-- {{{1 -->
+![LunarVim Demo](./utils/media/lunarvim_logo_dark.png)
 ![LunarVim](./utils/media/demoScreen.png)
 <!-- }}}1 -->
 
