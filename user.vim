@@ -44,7 +44,7 @@ function! JumpToSelection()
           silent exec ':!xdg-open "'.url.'"' | redraw!
           echo "Opened HEX colour ".url
       else
-          let projectPath = matchstr(wordUnderCursor, '[0-9a-zA-Z]\{3,}/[0-9a-z-A-Z\.]\{3,}')
+          let projectPath = matchstr(wordUnderCursor, '[0-9a-zA-Z-]\{3,}/[0-9a-z-A-Z\.]\{3,}')
 
           " Is it a GitHub project?
           if projectPath != ""
@@ -351,11 +351,11 @@ map <F4> :NvimTreeToggle<CR>
 map <F6> :*&<CR>
 " Diff current buffer and the next.
 map <F7> :vsplit<CR>:bnext<CR>:windo diffthis<CR>
-" map <F8> UNDEFINED
+map <F8> :LazyGit<CR>
 map <F9> :Telescope find_files<CR>
 " F10 reserved for kitty, open new terminal.
 " F11 reserved for kitty, fullscreen.
-map <F12> :TagbarToggle<CR>
+map <F12> :SymbolsOutline<CR>
 
 " Keep X as delete backwards, rather then close buffer, I prefer to use :bd
 " ERRORS: WHY!

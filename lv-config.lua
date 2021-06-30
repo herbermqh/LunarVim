@@ -22,15 +22,25 @@ O.smart_case = true
 O.plugin.hop.active = true
 O.plugin.dial.active = true
 O.plugin.dashboard.active = true
-O.plugin.matchup.active = false
+O.plugin.matchup.active = true
 O.plugin.colorizer.active = true
-O.plugin.numb.active = false
+O.plugin.numb.active = true
 O.plugin.ts_playground.active = false
 O.plugin.indent_line.active = false
 O.plugin.gitlinker.active = true
 O.plugin.zen.active = true
 O.plugin.git_blame.active = true
 O.plugin.ranger.active = true
+O.plugin.symbol_outline.active = true
+O.plugin.trouble.active = true
+O.plugin.markdown_preview.active = true
+O.plugin.codi.active = true
+O.plugin.telescope_fzy.active = true
+O.plugin.telescope_project.active = true
+O.plugin.sanegx.active = true
+O.plugin.lazygit.active = true
+O.plugin.bracey.active = true
+O.lang.latex.active = true
 
 -- dashboard
 -- O.dashboard.custom_header = {""}

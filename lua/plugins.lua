@@ -393,12 +393,6 @@ return require("packer").startup(function(use)
 
     -- -------------------------------------------------------------------------
     -- Jimc extras.
-    -- Tags navigation.  'F12' Opens to the right.
-    use {
-        "preservim/tagbar",
-        event = "BufRead",
-        disable = false
-    }
 
     -- Markers in margin. 'ma' adds marger
     use {"kshenoy/vim-signature",
@@ -420,19 +414,26 @@ return require("packer").startup(function(use)
         disable = false
     }
 
-    -- Git plugin.  Try ":Git "
-    use {
-        "tpope/vim-fugitive",
-        event = "BufRead",
-        disable = false
-    }
-
-    -- Highlight URL's. http://www.google.com
+    -- Highlight URL's. http://www.vivaldi.com
     use {
         "itchyny/vim-highlighturl",
         event = "BufRead",
         disable = false
     }
+
+    -- Tags navigation.  'F12' Opens to the right.
+    -- use {
+        -- "preservim/tagbar",
+        -- event = "BufRead",
+        -- disable = false
+    -- }
+
+    -- Git plugin.  Try ":Git "
+    -- use {
+        -- "tpope/vim-fugitive",
+        -- event = "BufRead",
+        -- disable = false
+    -- }
 
     -- Repeats properly for macros.
     -- use {
