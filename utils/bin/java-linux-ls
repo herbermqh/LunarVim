@@ -8,13 +8,13 @@
 # to point to the `config_mac' or `config_win` folders depending on your system.
 
 JAR="$HOME/.config/nvim/.language-servers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_*.jar"
-GRADLE_HOME=$HOME/gradle $HOME/.sdkman/candidates/java/current/bin/java \
+# GRADLE_HOME=$HOME/gradle $HOME/.sdkman/candidates/java/current/bin/java \
+GRADLE_HOME=/opt/gradle $JAVA_HOME/bin/java \
   -Declipse.application=org.eclipse.jdt.ls.core.id1 \
   -Dosgi.bundles.defaultStartLevel=4 \
   -Declipse.product=org.eclipse.jdt.ls.core.product \
   -Dlog.protocol=true \
   -Dlog.level=ALL \
-  -javaagent:/usr/local/share/lombok/lombok.jar \
   -Xms1g \
   -Xmx2G \
   -jar $(echo "$JAR") \
@@ -24,5 +24,6 @@ GRADLE_HOME=$HOME/gradle $HOME/.sdkman/candidates/java/current/bin/java \
   --add-opens java.base/java.util=ALL-UNNAMED \
   --add-opens java.base/java.lang=ALL-UNNAMED
 
+  # -javaagent:/usr/local/share/lombok/lombok.jar \
   # for older java versions if you wanna use lombok
   # -Xbootclasspath/a:/usr/local/share/lombok/lombok.jar \

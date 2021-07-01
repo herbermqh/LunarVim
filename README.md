@@ -193,28 +193,28 @@ require_plugin("nvim-jdtls")
 <!-- {{{1 -->
 I've added a few extra plugins I use to the configuration:
 
-- [NVim Colorizer](https://github.com/norcalli/nvim-colorizer.lua)
-  - A high-performance color highlighter for Neovim which has no external dependencies! Written in performant Luajit.
+<!-- - [NVim Colorizer](https://github.com/norcalli/nvim-colorizer.lua) -->
+  <!-- - A high-performance color highlighter for Neovim which has no external dependencies! Written in performant Luajit. -->
 - [Vim Signature](https://github.com/kshenoy/vim-signature)
   - A plugin to place, toggle and display marks.
-- [Tagbar](https://github.com/preservim/tagbar)
-  - A plugin that provides an easy way to browse the tags of the current file and get an overview of the files structure.
-  - Opened with <kbd>F11</kbd>
+<!-- - [Tagbar](https://github.com/preservim/tagbar) -->
+<!--   - A plugin that provides an easy way to browse the tags of the current file and get an overview of the files structure. -->
+<!--   - Opened with <kbd>F11</kbd> -->
 - [Vim Eunuch](https://github.com/tpope/vim-eunuch)
   - Vim sugar for the UNIX shell commands that need it the most.
   - Also makes files starting with `#!` executable.
 - [Vim Surround](https://github.com/tpope/vim-surround)
   - Surround.vim is all about "surroundings": parentheses, brackets, quotes,
     XML tags, and more. The plugin provides mappings to easily delete, change and add such surroundings in pairs.
-- [Java LSP](https://github.com/mfussenegger/nvim-jdtls)
-  - See [Java LSP Install](#java-lsp-install)
+<!-- - [Java LSP](https://github.com/mfussenegger/nvim-jdtls) -->
+<!--   - See [Java LSP Install](#java-lsp-install) -->
 <!-- }}}1 -->
 
 # Key Bindings
 <!-- {{{1 -->
 
 Note this cheatsheet is available as a HTML file, which is accessed by hitting <kbd>F1</kbd> in vim.
-See my dotfiles for a simple bash script to convert this GitHut markdown file into html (and thus png).
+See my dotfiles for a simple bash script to convert this GitHut markdown file into HTML (and thus PNG).
 
 - [Markdown Cheatsheet](cheatsheet.md)
 - [HTML Cheatsheet](cheatsheet.html)
@@ -232,7 +232,3 @@ See my dotfiles for a simple bash script to convert this GitHut markdown file in
 | [![100 Essential commands](https://img.shields.io/badge/100%20Essential%20Commands-website-red)](https://catswhocode.com/vim-commands/) | [![Vim tutorial](https://img.shields.io/badge/Vim%20Tutorial-website-red)](https://www.openvim.com/) | [![Vim cookbook](https://img.shields.io/badge/Vim%20Cookbook-website-red)](http://www.oualline.com/vim-cook.html)
 | [![VimAwesome](https://img.shields.io/badge/VimAwesome-website-red)](https://vimawesome.com) | &nbsp; | &nbsp;
 <!-- }}}1 -->
-
-<!--
-TODO: https://github.com/tpope/vim-repeat
--->

@@ -365,10 +365,10 @@ map <F12> :SymbolsOutline<CR>
 
 " Settings {{{1
 
-" ERRORS: WHY!
-" let bufferline.icons="both"
-" let bufferline.icon_close_tab_modified=''
-" let bufferline.icon_custom_colors="true"
+let bufferline = get(g:, 'bufferline', {})
+let bufferline.icons="both"
+let bufferline.icon_close_tab_modified=''
+let bufferline.icon_custom_colors="false"
 
 let g:github_enterprise_urls = ['https://bitbucket.org']
 let g:startify_session_dir=['~/.config/nvim/sessions']
@@ -497,6 +497,7 @@ highlight GitSignsAdd                          guifg=#608b4e     guibg=#608b4e
 highlight GitSignsDelete                       guifg=#d16969     guibg=#343434
 highlight GitSignsChange                       guifg=#5497cf     guibg=#5497cf
 highlight GitSignsCurrentLineBlame             guifg=Black       guibg=#605555
+highlight default link gitblame GitSignsCurrentLineBlame
 
 " Tab bar at top!
 highlight BufferCurrent                        guifg=Black       guibg=#CCCCCC
