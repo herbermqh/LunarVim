@@ -113,7 +113,6 @@ endfunction
 function! ToggleColourLineTooLong()
     if &colorcolumn == 0
         set colorcolumn=80,120
-        " if synIDattr(hlID("longLine"), "bg", "gui") == "#5F3F3F"
         highlight longLine                          guibg=#5F3F3F
     else
         set colorcolumn=0
@@ -544,7 +543,7 @@ highlight LspDiagnosticsVirtualTextHint        guifg=#4FC1FF
 highlight MatchParen           gui=bold        guifg=Black       guibg=Cyan
 
 " Highlight text over 120 chars
-highlight longLine                                               guibg=#5F3F3F
+highlight longLine                                               NONE
 call matchadd('longLine', '.\%>121v', 1)
 
 " Highlight git merge conflict markers.
