@@ -120,7 +120,7 @@ O.lang.rust.autoformat = true
 -- user defined plugin config
 -- custom settings
 
--- JIMC
+-- JIMC extras
 O.lang.java.active = true
 O.lang.sql.active = true
 O.lang.latex.active = true

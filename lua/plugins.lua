@@ -9,6 +9,23 @@ if fn.empty(fn.glob(install_path)) > 0 then
     execute "packadd packer.nvim"
 end
 
+local packer_ok, packer = pcall(require, "packer")
+if not packer_ok then
+  return
+end
+
+packer.init {
+  -- compile_path = vim.fn.stdpath('data')..'/site/pack/loader/start/packer.nvim/plugin/packer_compiled.vim',
+  git = {
+    clone_timeout = 300
+  },
+  display = {
+    open_fn = function()
+      return require("packer.util").float { border = "single" }
+    end,
+  },
+}
+
 vim.cmd "autocmd BufWritePost plugins.lua PackerCompile" -- Auto compile when there are changes in plugins.lua
 
 return require("packer").startup(function(use)
@@ -22,8 +39,11 @@ return require("packer").startup(function(use)
     -- Telescope
     use {"nvim-lua/popup.nvim"}
     use {"nvim-lua/plenary.nvim"}
-    use {"nvim-telescope/telescope.nvim"}
-
+    use {
+        "nvim-telescope/telescope.nvim",
+        config = [[require('lv-telescope')]],
+        cmd = "Telescope"
+    }
     -- Autocomplete
     use {
         "hrsh7th/nvim-compe",
@@ -290,6 +310,7 @@ return require("packer").startup(function(use)
     use {
         "nvim-telescope/telescope-project.nvim",
         event = "BufRead",
+        after = "telescope.nvim",
         disable = not O.plugin.telescope_project.active
     }
     -- Sane gx for netrw_gx bug
@@ -363,6 +384,12 @@ return require("packer").startup(function(use)
         event = "BufRead",
         disable = not O.plugin.gist.active,
         requires = 'mattn/webapi-vim'
+    }
+    -- Lush Create Color Schemes
+    use {
+        "rktjmp/lush.nvim",
+        cmd = {"LushRunQuickstart", "LushRunTutorial", "Lushify"},
+        disable = not O.plugin.lush.active,
     }
     -- HTML preview
     use {

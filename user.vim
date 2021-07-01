@@ -684,3 +684,4 @@ autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
 " augroup end
 
 " }}}
+
