@@ -35,10 +35,11 @@ return require("packer").startup(function(use)
     -- TODO refactor all of this (for now it works, but yes I know it could be wrapped in a simpler function)
     use {"neovim/nvim-lspconfig"}
     use {"glepnir/lspsaga.nvim", event = "BufRead"}
-    use {"kabouzeid/nvim-lspinstall", event = "BufRead"}
+    use {"kabouzeid/nvim-lspinstall"}
     -- Telescope
     use {"nvim-lua/popup.nvim"}
     use {"nvim-lua/plenary.nvim"}
+    use {"tjdevries/astronauta.nvim"}
     use {
         "nvim-telescope/telescope.nvim",
         config = [[require('lv-telescope')]],
@@ -398,6 +399,12 @@ return require("packer").startup(function(use)
         event = "BufRead",
         run = 'npm install --prefix server',
         disable = not O.plugin.bracey.active
+    }
+    -- Debugger management
+    use {
+        'Pocco81/DAPInstall.nvim',
+        event = "BufRead",
+        disable = not O.plugin.dap_install.active
     }
 
     -- LANGUAGE SPECIFIC GOES HERE
