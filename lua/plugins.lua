@@ -486,10 +486,10 @@ return require("packer").startup(function(use)
     }
 
     -- Java LSP.
-    use {
-        "mfussenegger/nvim-jdtls",
-        event = "BufRead",
-        ft = "java",
-        disable = false
-    }
+    -- use {
+        -- "mfussenegger/nvim-jdtls",
+        -- event = "BufRead",
+        -- ft = "java",
+        -- disable = false
+    -- }
 end)

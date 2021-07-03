@@ -26,8 +26,7 @@ end
 
 require'lspconfig'.jdtls.setup {
     on_attach = on_attach,
-    -- cmd = {DATA_PATH .. "/lspinstall/java/jdtls.sh"},
-    cmd = {"/home/jim/bin/dotfiles/bin/java-linux-ls"},
+    cmd = {DATA_PATH .. "/lspinstall/java/jdtls.sh"},
     filetypes = { "java" },
     root_dir = util.root_pattern({'.git', 'build.gradle', 'pom.xml'}),
     -- init_options = {bundles = bundles}
