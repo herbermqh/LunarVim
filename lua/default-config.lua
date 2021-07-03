@@ -17,6 +17,8 @@ O = {
     extras = false,
     ignore_case = true,
     smart_case = true,
+    lushmode = false,
+    leader_key = "space";
 
     -- @usage pass a table with your desired languages
     treesitter = {
@@ -50,6 +52,7 @@ O = {
         codi = {active = false},
         telescope_fzy = {active = false},
         sanegx = {active = false},
+        snap = {active = false},
         ranger = {active = false},
         todo_comments = {active = false},
         lsp_colors = {active = false},
@@ -141,7 +144,9 @@ O = {
             diagnostics = {
                 virtual_text = {spacing = 0, prefix = ""},
                 signs = true,
-                underline = true
+                underline = true,
+                cross_file_rename = true,
+                header_insertion = 'never'
             }
         },
         ruby = {
@@ -184,7 +189,8 @@ O = {
             formatter = '',
             autoformat = false,
             virtual_text = true
-        }
+        },
+        zig = {}
 
     },
 

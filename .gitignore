@@ -1,4 +1,5 @@
 plugin/
+.metadata/
 dein
 tags*
 .netrwhist
@@ -11,6 +12,7 @@ session
 wiki/
 pack/
 utils/java/*
+lv-config.lua
 lua-language-server/
 eclipse.jdt.ls/
 .language-servers/
