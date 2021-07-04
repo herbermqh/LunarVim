@@ -68,7 +68,8 @@ local gls = gl.section
 
 -- Colours, maps and icons {{{2
 local colors = {
-    bg              = '#000000',
+    bg              = '#663333',
+    modetext        = '#000000',
 
     giticon         = '#FF8800',
     gitbg           = '#5C2C2E',
@@ -224,7 +225,7 @@ gls.left =
         }, {
             ViModeIconAndText = {
                 provider = function()
-                    highlight('GalaxyViMode', colors.bg, mode_map[vim.fn.mode()][1])
+                    highlight('GalaxyViMode', colors.modetext, mode_map[vim.fn.mode()][1])
                     return icons['vim'] .. " " .. mode_map[vim.fn.mode()][2]
                 end,
                 highlight = 'GalaxyViMode'
