@@ -1,3 +1,7 @@
+-- if not package.loaded['which-key'] then
+--  return
+-- end
+
 require("which-key").setup {
     plugins = {
         marks = true, -- shows a list of your marks on ' and `
@@ -88,7 +92,7 @@ vim.api.nvim_set_keymap("v", "<leader>/", ":CommentToggle<CR>",
                         {noremap = true, silent = true})
 
 -- close buffer
-vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>",
+vim.api.nvim_set_keymap("n", "<leader>c", ":bdelete<CR>",
                         {noremap = true, silent = true})
 
 -- TODO create entire treesitter section
@@ -213,7 +217,8 @@ local mappings = {
         r = {"<cmd>Lspsaga rename<cr>", "Rename"},
         t = {"<cmd>LspTypeDefinition<cr>", "Type Definition"},
         x = {"<cmd>cclose<cr>", "Close Quickfix"},
-        s = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
+        s = {O.plugin.symbol_outline.active and "<cmd>SymbolsOutline<cr>" or
+            "<cmd> Telescope lsp_document_symbols<cr>", "Document Symbols"},
         S = {
             "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
             "Workspace Symbols"

@@ -391,6 +391,10 @@ gls.left =
 
         -- }}}2
 
+-- local condition = require('galaxyline.condition')
+-- local gls = gl.section
+-- gl.short_line_list = {'NvimTree', 'vista', 'dbui', 'packer'}
+
     }
 -- }}}1
 
