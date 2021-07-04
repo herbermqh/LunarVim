@@ -7,6 +7,9 @@
 -- See: https://github.com/glepnir/galaxyline.nvim
 
 -- Configuration {{{1
+if not package.loaded['galaxyline'] then
+   return
+end
 
 -- Imports {{{2
 local gl = require('galaxyline')
