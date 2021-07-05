@@ -461,71 +461,81 @@ return require("packer").startup(function(use)
     disable = not O.plugin.tabnine.active,
   }
 
-    -- -------------------------------------------------------------------------
-    -- JIMC extras.
+  -- ---------------------------------------------------------------------- --
+  -- JIMC extras Start.
 
-    -- Markers in margin. 'ma' adds marker
-    use {"kshenoy/vim-signature",
-        event = "BufRead",
-        disable = false
-    }
+  -- Markers in margin. 'ma' adds marker
+  use {"kshenoy/vim-signature",
+    event = "BufRead",
+    disable = false
+  }
 
-    -- Surroundings.  Try cs"'  in a string "with double quotes" to convert to single.
-    use {
-        "tpope/vim-surround",
-        event = "BufRead",
-        disable = false
-    }
+  -- Surroundings.  Try cs"'  in a string "with double quotes" to convert to single.
+  use {
+    "tpope/vim-surround",
+    event = "BufRead",
+    disable = false
+  }
 
-    -- Unix commands. Try ":SudoWrite"
-    use {
-        "tpope/vim-eunuch",
-        event = "BufRead",
-        disable = false
-    }
+  -- Unix commands. Try ":SudoWrite"
+  use {
+    "tpope/vim-eunuch",
+    event = "BufRead",
+    disable = false
+  }
 
-    -- Highlight URL's. http://www.vivaldi.com
-    use {
-        "itchyny/vim-highlighturl",
-        event = "BufRead",
-        disable = false
-    }
+  -- Highlight URL's. http://www.vivaldi.com
+  use {
+    "itchyny/vim-highlighturl",
+    event = "BufRead",
+    disable = false
+  }
 
-    -- Tags navigation.  'F12' Opens to the right.
-    -- use {
-        -- "preservim/tagbar",
-        -- event = "BufRead",
-        -- disable = false
-    -- }
+  -- Tags navigation.  'F12' Opens to the right.
+  -- use {
+    -- "preservim/tagbar",
+    -- event = "BufRead",
+    -- disable = false
+  -- }
 
-    -- Git plugin.  Try ":Git "
-    -- use {
-        -- "tpope/vim-fugitive",
-        -- event = "BufRead",
-        -- disable = false
-    -- }
+  -- Git plugin.  Try ":Git "
+  -- use {
+    -- "tpope/vim-fugitive",
+    -- event = "BufRead",
+    -- disable = false
+  -- }
 
-    -- Repeats properly for macros.
-    -- use {
-        -- "tpope/vim-repeat",
-        -- event = "BufRead",
-        -- disable = false
-    -- }
+  -- Repeats properly for macros.
+  -- use {
+    -- "tpope/vim-repeat",
+    -- event = "BufRead",
+    -- disable = false
+  -- }
 
-    -- SQL LSP.
-    use {
-        "nanotee/sqls.nvim",
-        event = "BufRead",
-        ft = "sql",
-        disable = false
-    }
+  -- SQL LSP.
+  use {
+    "nanotee/sqls.nvim",
+    event = "BufRead",
+    ft = "sql",
+    disable = false
+  }
 
-    -- Java LSP.
-    -- use {
-        -- "mfussenegger/nvim-jdtls",
-        -- event = "BufRead",
-        -- ft = "java",
-        -- disable = false
-    -- }
+  -- Java LSP.
+  -- use {
+    -- "mfussenegger/nvim-jdtls",
+    -- event = "BufRead",
+    -- ft = "java",
+    -- disable = false
+  -- }
+
+  -- Kitty config syntax.
+  use {
+    "fladson/vim-kitty",
+    event = "BufRead",
+    ft = "conf",
+    disable = false
+  }
+  -- JIMC extras End.
+  -- ---------------------------------------------------------------------- --
 
 end)
