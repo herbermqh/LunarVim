@@ -20,7 +20,7 @@ M.config = function()
             gitsigns = {enabled = false}, -- disables git signs
             kitty = {
                 enabled = true,
-                font = "+4", -- font size increment
+                font = "+5", -- font size increment
             }
         }
     }
