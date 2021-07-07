@@ -33,7 +33,9 @@ M.config = function()
     --   command = "Telescope find_files cwd=" .. CONFIG_PATH,
     -- },
     -- e = {description = {'  Marks              '}, command = 'Telescope marks'}
-        -- JIMC START
+
+      -- -----------------------------------------------------------------------
+      -- JIMC START
 	    n = {
             description = {'  New File           '},
             command = 'DashboardNewFile'
@@ -51,8 +53,11 @@ M.config = function()
 	    z = {
             description = {'  Zshrc              '},
             command = ':e ~/.zshrc'
-	}
-        -- JIMC END
+	    }
+      -- JIMC END
+      -- .......................................................................
+
+
   }
   vim.cmd "let g:dashboard_session_directory = $HOME..'/.config/nvim/.sessions'"
   vim.cmd "let packages = len(globpath('~/.local/share/nvim/site/pack/packer/start', '*', 0, 1))"

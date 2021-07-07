@@ -20,7 +20,10 @@ end
 --   require "lsp.tailwindcss-ls"
 -- end
 
--- JIMC extras.
+--------------------------------------------------------------------------------
+-- JIMC START
 vim.cmd('luafile ~/.config/nvim/user.lua')     -- My config, lua syntax.
 vim.cmd('source ~/.config/nvim/user.vim')      -- My config, vim syntax.
 -- if O.lang.sql.active then require('lsp.sql-ls') end
+-- JIMC END
+-- .............................................................................

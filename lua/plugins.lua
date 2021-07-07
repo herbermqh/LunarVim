@@ -326,116 +326,6 @@ return require("packer").startup(function(use)
   --   end,
   -- }
 
-  -- ---------------------------------------------------------------------- --
-  -- JIMC extras Start.
-  -- Better motions
-  use {
-    "phaazon/hop.nvim",
-    event = "BufRead",
-    config = function()
-      require("lv-hop").config()
-    end,
-    disable = false, -- not O.plugin.hop.active,
-    opt = true,
-  }
-  -- Enhanced increment/decrement
-  use {
-    "monaqa/dial.nvim",
-    event = "BufRead",
-    config = function()
-      require("lv-dial").config()
-    end,
-    disable = false, -- not O.plugin.dial.active,
-    opt = true,
-  }
-  -- Ranger
-  use {
-    "kevinhwang91/rnvimr",
-    cmd = "Rnvimr",
-    config = function()
-      require("lv-rnvimr").config()
-    end,
-    disable = false, -- not O.plugin.ranger.active,
-  }
-    -- Markdown preview
-  use {
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    ft = "markdown",
-    disable = false, -- not O.plugin.markdown_preview.active,
-  }
-
-  -- Interactive scratchpad
-  use {
-    "metakirby5/codi.vim",
-    cmd = "Codi",
-    disable = false, -- not O.plugin.codi.active,
-  }
-  -- Markers in margin. 'ma' adds marker
-  use {"kshenoy/vim-signature",
-    event = "BufRead",
-    disable = false
-  }
-  -- Surroundings.  Try cs"'  in a string "with double quotes" to convert to single.
-  use {
-    "tpope/vim-surround",
-    event = "BufRead",
-    disable = false
-  }
-  -- Unix commands. Try ":SudoWrite"
-  use {
-    "tpope/vim-eunuch",
-    event = "BufRead",
-    disable = false
-  }
-  -- Highlight URL's. http://www.vivaldi.com
-  use {
-    "itchyny/vim-highlighturl",
-    event = "BufRead",
-    disable = false
-  }
-  -- Tags navigation.  'F12' Opens to the right.
-  -- use {
-    -- "preservim/tagbar",
-    -- event = "BufRead",
-    -- disable = false
-  -- }
-  -- Git plugin.  Try ":Git "
-  -- use {
-    -- "tpope/vim-fugitive",
-    -- event = "BufRead",
-    -- disable = false
-  -- }
-  -- Repeats properly for macros.
-  -- use {
-    -- "tpope/vim-repeat",
-    -- event = "BufRead",
-    -- disable = false
-  -- }
-  -- SQL LSP.
-  use {
-    "nanotee/sqls.nvim",
-    event = "BufRead",
-    ft = "sql",
-    disable = false
-  }
-  -- Java LSP.
-  -- use {
-    -- "mfussenegger/nvim-jdtls",
-    -- event = "BufRead",
-    -- ft = "java",
-    -- disable = false
-  -- }
-  -- Kitty config syntax.
-  use {
-    "fladson/vim-kitty",
-    event = "BufRead",
-    ft = "conf",
-    disable = false
-  }
-  -- JIMC extras End.
-  -- ---------------------------------------------------------------------- --
-
   -- Pretty parentheses
   use {
     "p00f/nvim-ts-rainbow",
@@ -467,6 +357,109 @@ return require("packer").startup(function(use)
     event = "BufRead",
     disable = not O.plugin.ts_hintobjects.active,
   }
+
+  -----------------------------------------------------------------------------
+  -- JIMC START
+  -- Better motions
+  use {
+    "phaazon/hop.nvim",
+    event = "BufRead",
+    config = function()
+      require("lv-hop").config()
+    end,
+    disable = not O.plugin.hop.active,
+    opt = true,
+  }
+  -- Enhanced increment/decrement : True, true
+  use {
+    "monaqa/dial.nvim",
+    event = "BufRead",
+    config = function()
+      require("lv-dial").config()
+    end,
+    disable = not O.plugin.dial.active,
+    opt = true,
+  }
+  -- Ranger
+  use {
+    "kevinhwang91/rnvimr",
+    cmd = "Rnvimr",
+    config = function()
+      require("lv-rnvimr").config()
+    end,
+    disable = not O.plugin.ranger.active,
+  }
+    -- Markdown preview
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    ft = "markdown",
+    disable = not O.plugin.markdown_preview.active,
+  }
+  -- Interactive scratchpad
+  use {
+    "metakirby5/codi.vim",
+    cmd = "Codi",
+    disable = not O.plugin.codi.active,
+  }
+  -- Markers in margin. 'ma' adds marker
+  use {"kshenoy/vim-signature",
+    event = "BufRead",
+    disable = not O.plugin.signature.active
+  }
+  -- Surroundings.  Try cs"'  in a string "with double quotes" to convert to single.
+  use {
+    "tpope/vim-surround",
+    event = "BufRead",
+    disable = not O.plugin.surround.active
+  }
+  -- Unix commands. Try ":SudoWrite"
+  use {
+    "tpope/vim-eunuch",
+    event = "BufRead",
+    disable = not O.plugin.eunuch.active
+  }
+  -- Highlight URL's. http://www.vivaldi.com
+  use {
+    "itchyny/vim-highlighturl",
+    event = "BufRead",
+    disable = not O.plugin.highlighturl.active
+  }
+  -- Tags navigation.  'F12' Opens to the right.
+  -- use {
+    -- "preservim/tagbar",
+    -- event = "BufRead",
+    -- disable = false
+  -- }
+  -- Git plugin.  Try ":Git "
+  -- use {
+    -- "tpope/vim-fugitive",
+    -- event = "BufRead",
+    -- disable = false
+  -- }
+  -- SQL LSP.
+  use {
+    "nanotee/sqls.nvim",
+    event = "BufRead",
+    ft = "sql",
+    disable = false
+  }
+  -- Java LSP.
+  -- use {
+    -- "mfussenegger/nvim-jdtls",
+    -- event = "BufRead",
+    -- ft = "java",
+    -- disable = false
+  -- }
+  -- Kitty config syntax.
+  use {
+    "fladson/vim-kitty",
+    event = "BufRead",
+    ft = "conf",
+    disable = false
+  }
+  -- JIMC END
+  -- ...........................................................................
 
   for _, plugin in pairs(O.user_plugins) do
     packer.use(plugin)

@@ -313,6 +313,7 @@ for k, v in pairs(O.user_which_key) do
   --   print(v)
 end
 
+--------------------------------------------------------------------------------
 -- JIMC START
 vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<CR><C-l>", {noremap = true, silent = true})
 mappings["t"] = {
@@ -347,6 +348,7 @@ mappings["j"] = {
     u = {"Jump Unit test reports"}
 }
 -- JIMC END
+-- .............................................................................
 
 local wk = require "which-key"
 wk.register(mappings, opts)

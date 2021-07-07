@@ -84,6 +84,21 @@ O = {
     floatterm = { active = false },
     trouble = { active = false },
     sanegx = { active = false },
+
+    ----------------------------------------------------------------------------
+    -- JIMC START
+    hop = { active = false },
+    dial = { active = false },
+    ranger = { active = false },
+    markdown_preview = { active = false },
+    codi = { active = false },
+    signature = { active = false },
+    surround = { active = false },
+    eunuch = { active = false },
+    highlighturl = { active = false },
+    -- JIMC END
+    -- .........................................................................
+
   },
 
   user_which_key = {},
