@@ -38,6 +38,7 @@ Most of my configuration is contained in `user.vim`.
 I intend to merge Christian's changes into my config regularly to keep up with
 his brilliant work.
 
+<<<<<<< HEAD
 If your interested my website is [![Web Site](https://img.shields.io/badge/Jims%20Cosmos-website-red)](https://JimsCosmos.com)
 
 <!-- }}}1 -->
@@ -105,6 +106,59 @@ The line is split into 5 main sections, 3 on the left and 2 on the right:
 # Java LSP Install
 
 <!-- {{{1 -->
+=======
+```lua
+-- O is the global options object
+
+-- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
+-- general
+O.auto_complete = true
+O.relative_number = false
+O.colorscheme = 'spacegray'
+O.timeoutlen = 100
+O.leader_key = ' '
+
+-- After changing plugin config it is recommended to run :PackerCompile
+O.plugin.hop.active = true
+O.plugin.colorizer.active = true
+O.plugin.trouble.active = true
+O.plugin.lazygit.active = true
+O.plugin.zen.active = true
+O.plugin.markdown_preview.active = true
+
+-- if you don't want all the parsers change this to a table of the ones you want
+O.treesitter.ensure_installed = "all"
+O.treesitter.ignore_install = {"haskell"}
+O.treesitter.highlight.enabled = true
+
+-- lua
+O.lang.lua.autoformat = false
+O.lang.lua.formatter = 'lua-format'
+
+-- javascript
+O.lang.tsserver.formatter = 'prettier'
+O.lang.tsserver.linter = nil
+O.lang.tsserver.autoformat = true
+
+-- json
+O.lang.json.autoformat = true
+
+-- Additional Plugins
+-- O.user_plugins = {{"windwp/nvim-ts-autotag"}}
+
+-- Autocommands (https://neovim.io/doc/user/autocmd.html)
+-- O.user_autocommands = {{ "BufWinEnter", "*", "echo \"hi again\""}}
+
+-- Additional Leader bindings for WhichKey
+-- O.user_which_key = {
+--   A = {
+--     name = "+Custom Leader Keys",
+--     a = { "<cmd>echo 'first custom command'<cr>", "Description for a" },
+--     b = { "<cmd>echo 'second custom command'<cr>", "Description for b" },
+--   },
+-- }
+```
+>>>>>>> cd7da503505d6707fbe9f674e8b75fed00f1e690
 
 Note Java is not stable at the moment but it looks like there is plenty of
 activity, so I guess sometime in 2021 it will reach a tipping point.
@@ -248,4 +302,17 @@ See my dotfiles for a simple bash script to convert this GitHut markdown file in
 | [![100 Essential commands](https://img.shields.io/badge/100%20Essential%20Commands-website-red)](https://catswhocode.com/vim-commands/) |         [![Vim tutorial](https://img.shields.io/badge/Vim%20Tutorial-website-red)](https://www.openvim.com/)         | [![Vim cookbook](https://img.shields.io/badge/Vim%20Cookbook-website-red)](http://www.oualline.com/vim-cook.html) |
 |                      [![VimAwesome](https://img.shields.io/badge/VimAwesome-website-red)](https://vimawesome.com)                       |                                                        &nbsp;                                                        |                                                      &nbsp;                                                       |
 
+<<<<<<< HEAD
 <!-- }}}1 -->
+=======
+<<<<<<< HEAD
+
+=======
+<div align="center">
+	
+[![Lua](https://img.shields.io/badge/Made%20with%20Lua-blue.svg?style=for-the-badge&logo=lua)]()
+	
+	
+</div>
+>>>>>>> 68bfac0468ea4d5d7faf5bede0a4ab8cb5572f0c
+>>>>>>> cd7da503505d6707fbe9f674e8b75fed00f1e690

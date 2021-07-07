@@ -38,7 +38,7 @@ return require("packer").startup(function(use)
   use {
     "nvim-telescope/telescope.nvim",
     config = [[require('lv-telescope')]],
-    event = "BufEnter",
+    --event = "BufEnter",
   }
 
   -- Autocomplete
@@ -61,7 +61,9 @@ return require("packer").startup(function(use)
 
   use {
     "kyazdani42/nvim-tree.lua",
+    -- event = "BufEnter",
     -- cmd = "NvimTreeToggle",
+    commit = "fd7f60e242205ea9efc9649101c81a07d5f458bb",
     config = function()
       require("lv-nvimtree").config()
     end,
@@ -92,9 +94,14 @@ return require("packer").startup(function(use)
   -- Comments
   use {
     "terrortylor/nvim-comment",
-    cmd = "CommentToggle",
+    event = "BufRead",
+    -- cmd = "CommentToggle",
     config = function()
-      require("nvim_comment").setup()
+      local status_ok, nvim_comment = pcall(require, "nvim_comment")
+      if not status_ok then
+        return
+      end
+      nvim_comment.setup()
     end,
   }
 
@@ -123,12 +130,12 @@ return require("packer").startup(function(use)
   use {
     "ChristianChiarulli/dashboard-nvim",
     event = "BufWinEnter",
-    cmd = { "Dashboard", "DashboardNewFile", "DashboardJumpMarks" },
-    config = function()
-      require("lv-dashboard").config()
-    end,
+    -- cmd = { "Dashboard", "DashboardNewFile", "DashboardJumpMarks" },
+    -- config = function()
+    --   require("lv-dashboard").config()
+    -- end,
     disable = not O.plugin.dashboard.active,
-    opt = true,
+    -- opt = true,
   }
   -- Zen Mode
   use {
@@ -145,8 +152,8 @@ return require("packer").startup(function(use)
     "norcalli/nvim-colorizer.lua",
     event = "BufRead",
     config = function()
-      require("colorizer").setup()
-      vim.cmd "ColorizerReloadAllBuffers"
+      require "lv-colorizer"
+      -- vim.cmd "ColorizerReloadAllBuffers"
     end,
     disable = not O.plugin.colorizer.active,
   }
@@ -202,14 +209,18 @@ return require("packer").startup(function(use)
   use {
     "mfussenegger/nvim-dap",
     config = function()
-      require "dap"
+      local status_ok, dap = pcall(require, "dap")
+      if not status_ok then
+        return
+      end
+      -- require "dap"
       vim.fn.sign_define("DapBreakpoint", {
         text = "",
         texthl = "LspDiagnosticsSignError",
         linehl = "",
         numhl = "",
       })
-      require("dap").defaults.fallback.terminal_win_cmd = "50vsplit new"
+      dap.defaults.fallback.terminal_win_cmd = "50vsplit new"
     end,
     disable = not O.plugin.debug.active,
   }
@@ -219,7 +230,7 @@ return require("packer").startup(function(use)
     "numToStr/FTerm.nvim",
     event = "BufWinEnter",
     config = function()
-        require('lv-floatterm').config()
+      require("lv-floatterm").config()
     end,
     disable = not O.plugin.floatterm.active,
   }
@@ -235,7 +246,9 @@ return require("packer").startup(function(use)
   use {
     "nvim-telescope/telescope-project.nvim",
     event = "BufRead",
-    setup = function () vim.cmd[[packadd telescope.nvim]] end,
+    setup = function()
+      vim.cmd [[packadd telescope.nvim]]
+    end,
     disable = not O.plugin.telescope_project.active,
   }
 
@@ -313,65 +326,92 @@ return require("packer").startup(function(use)
   --   end,
   -- }
 
-  -- Tabnine
-  use {
-    "tzachar/compe-tabnine",
-    run = "./install.sh",
-    requires = "hrsh7th/nvim-compe",
-    disable = not O.plugin.tabnine.active,
-  }
-
   -- ---------------------------------------------------------------------- --
   -- JIMC extras Start.
+  -- Better motions
+  use {
+    "phaazon/hop.nvim",
+    event = "BufRead",
+    config = function()
+      require("lv-hop").config()
+    end,
+    disable = false, -- not O.plugin.hop.active,
+    opt = true,
+  }
+  -- Enhanced increment/decrement
+  use {
+    "monaqa/dial.nvim",
+    event = "BufRead",
+    config = function()
+      require("lv-dial").config()
+    end,
+    disable = false, -- not O.plugin.dial.active,
+    opt = true,
+  }
+  -- Ranger
+  use {
+    "kevinhwang91/rnvimr",
+    cmd = "Rnvimr",
+    config = function()
+      require("lv-rnvimr").config()
+    end,
+    disable = false, -- not O.plugin.ranger.active,
+  }
+    -- Markdown preview
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    ft = "markdown",
+    disable = false, -- not O.plugin.markdown_preview.active,
+  }
 
+  -- Interactive scratchpad
+  use {
+    "metakirby5/codi.vim",
+    cmd = "Codi",
+    disable = false, -- not O.plugin.codi.active,
+  }
   -- Markers in margin. 'ma' adds marker
   use {"kshenoy/vim-signature",
     event = "BufRead",
     disable = false
   }
-
   -- Surroundings.  Try cs"'  in a string "with double quotes" to convert to single.
   use {
     "tpope/vim-surround",
     event = "BufRead",
     disable = false
   }
-
   -- Unix commands. Try ":SudoWrite"
   use {
     "tpope/vim-eunuch",
     event = "BufRead",
     disable = false
   }
-
   -- Highlight URL's. http://www.vivaldi.com
   use {
     "itchyny/vim-highlighturl",
     event = "BufRead",
     disable = false
   }
-
   -- Tags navigation.  'F12' Opens to the right.
   -- use {
     -- "preservim/tagbar",
     -- event = "BufRead",
     -- disable = false
   -- }
-
   -- Git plugin.  Try ":Git "
   -- use {
     -- "tpope/vim-fugitive",
     -- event = "BufRead",
     -- disable = false
   -- }
-
   -- Repeats properly for macros.
   -- use {
     -- "tpope/vim-repeat",
     -- event = "BufRead",
     -- disable = false
   -- }
-
   -- SQL LSP.
   use {
     "nanotee/sqls.nvim",
@@ -379,7 +419,6 @@ return require("packer").startup(function(use)
     ft = "sql",
     disable = false
   }
-
   -- Java LSP.
   -- use {
     -- "mfussenegger/nvim-jdtls",
@@ -387,7 +426,6 @@ return require("packer").startup(function(use)
     -- ft = "java",
     -- disable = false
   -- }
-
   -- Kitty config syntax.
   use {
     "fladson/vim-kitty",
@@ -430,7 +468,7 @@ return require("packer").startup(function(use)
     disable = not O.plugin.ts_hintobjects.active,
   }
 
-  for _, plugin in pairs(O.custom_plugins) do
+  for _, plugin in pairs(O.user_plugins) do
     packer.use(plugin)
   end
 end)
