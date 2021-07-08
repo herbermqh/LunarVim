@@ -329,13 +329,9 @@ noremap <silent> <leader>tb :call ToggleColourGitBlame()<CR>
 noremap <silent> <leader>tc :call ToggleColourCursorColumn()<CR>
 noremap <silent> <leader>te :call ToggleColourWhiteSpaceAtEndOfLine()<CR>
 noremap <silent> <leader>tg :call ToggleGutter()<CR>
-noremap <silent> <leader>th :ColorizerToggle<CR>
 noremap <silent> <leader>ti :call ToggleColourIncSearch()<CR>
 noremap <silent> <leader>tl :call ToggleColourCursorLine()<CR>
-noremap <silent> <leader>tr :set wrap!<CR>
-noremap <silent> <leader>ts :set spell!<CR>
 noremap <silent> <leader>tt :call ToggleColourLineTooLong()<CR>
-noremap <silent> <leader>tw :set list!<CR>
 noremap <silent> <leader>ty :call ToggleColourSyntax()<CR>
 
 " Function keys.
