@@ -449,6 +449,7 @@ hi Constant        guifg=#a3dcdc gui=NONE                     ctermfg=181 cterm=
 hi SpecialChar     guifg=#a3a3dc gui=bold                     ctermfg=181 cterm=bold
 hi String          guifg=#53BB83                              ctermfg=174
 hi Tag             guifg=#93e893 gui=bold                     ctermfg=181 cterm=bold
+hi javaTSVariable  guifg=#CEDF99
 
 " Show white space characters
 set listchars=eol:¶,tab:»\ ,trail:·,extends:>,precedes:<,space:·
