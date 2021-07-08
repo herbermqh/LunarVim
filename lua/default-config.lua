@@ -96,6 +96,9 @@ O = {
     surround = { active = false },
     eunuch = { active = false },
     highlighturl = { active = false },
+    fugitive = { active = false },
+    lazygit = { active = false },
+    sql = { active = false },
     -- JIMC END
     -- .........................................................................
 
@@ -238,6 +241,15 @@ O = {
     css = {
       virtual_text = true,
     },
+
+    ----------------------------------------------------------------------------
+    -- JIMC START
+    sql = {
+      active = true,
+    },
+    -- JIMC START
+    -- .........................................................................
+
   },
 
   dashboard = {

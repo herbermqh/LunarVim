@@ -387,9 +387,9 @@ return require("packer").startup(function(use)
     config = function()
       require("lv-rnvimr").config()
     end,
-    disable = not O.plugin.ranger.active,
+    disable = not O.plugin.ranger.active
   }
-    -- Markdown preview
+  -- Markdown preview
   use {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
@@ -425,24 +425,31 @@ return require("packer").startup(function(use)
     event = "BufRead",
     disable = not O.plugin.highlighturl.active
   }
-  -- Tags navigation.  'F12' Opens to the right.
-  -- use {
-    -- "preservim/tagbar",
-    -- event = "BufRead",
-    -- disable = false
-  -- }
   -- Git plugin.  Try ":Git "
-  -- use {
-    -- "tpope/vim-fugitive",
-    -- event = "BufRead",
-    -- disable = false
-  -- }
+  use {
+    "tpope/vim-fugitive",
+    event = "BufRead",
+    disable = not O.plugin.fugitive.active
+  }
   -- SQL LSP.
   use {
     "nanotee/sqls.nvim",
     event = "BufRead",
     ft = "sql",
+    disable = not O.plugin.sql.active
+  }
+  -- Kitty config syntax.  Edit kitty, with vk
+  use {
+    "fladson/vim-kitty",
+    event = "BufRead",
+    ft = "conf",
     disable = false
+  }
+  -- Lazygit: Try F8
+  use {
+    "kdheepak/lazygit.nvim",
+    cmd = "LazyGit",
+    disable = not O.plugin.lazygit.active,
   }
   -- Java LSP.
   -- use {
@@ -451,13 +458,12 @@ return require("packer").startup(function(use)
     -- ft = "java",
     -- disable = false
   -- }
-  -- Kitty config syntax.
-  use {
-    "fladson/vim-kitty",
-    event = "BufRead",
-    ft = "conf",
-    disable = false
-  }
+  -- Tags navigation.  'F12' Opens to the right.
+  -- use {
+    -- "preservim/tagbar",
+    -- event = "BufRead",
+    -- disable = false
+  -- }
   -- JIMC END
   -- ...........................................................................
 
