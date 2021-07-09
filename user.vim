@@ -323,17 +323,6 @@ noremap <silent> <leader>js :call ShowJira()<CR>
 noremap <silent> <leader>jt :silent exec "!jump Ticket %:p:h"<CR>
 noremap <silent> <leader>ju :silent exec "!jump TestReports %:p:h"<CR>
 
-" Toggle various visual items. : TODO: Add description to which key.
-noremap <silent> <leader>ta :call ToggleAll()<CR>
-noremap <silent> <leader>tb :call ToggleColourGitBlame()<CR>
-noremap <silent> <leader>tc :call ToggleColourCursorColumn()<CR>
-noremap <silent> <leader>te :call ToggleColourWhiteSpaceAtEndOfLine()<CR>
-noremap <silent> <leader>tg :call ToggleGutter()<CR>
-noremap <silent> <leader>ti :call ToggleColourIncSearch()<CR>
-noremap <silent> <leader>tl :call ToggleColourCursorLine()<CR>
-noremap <silent> <leader>tt :call ToggleColourLineTooLong()<CR>
-noremap <silent> <leader>ty :call ToggleColourSyntax()<CR>
-
 " Function keys.
 map <silent> <F1> :!xdg-open $HOME/.config/nvim/cheatsheet.html<CR>
 map <silent> <F2> :call FoldingToggle()<CR>
