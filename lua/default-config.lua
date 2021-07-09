@@ -103,6 +103,7 @@ O = {
     fugitive = { active = false },
     lazygit = { active = false },
     sql = { active = false },
+    todocomments = { active = false },
     -- JIMC END
     -- .........................................................................
 

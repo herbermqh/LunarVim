@@ -308,7 +308,7 @@ inoremap <A-Down> <Esc>:m .+1<CR>==gi
 vnoremap <A-Up> :m '<-2<CR>gv=gv
 vnoremap <A-Down> :m '>+1<CR>gv=gv
 
-" Jump : TODO: Add description to which key.
+" Jump : TODO: Add command to which key and remove from here.
 nmap gj :call JumpToSelection()<CR>
 noremap <silent> <leader>ja :silent exec "!jump Artifact %:p:h"<CR>
 noremap <silent> <leader>jc :silent exec "!jump Ci %:p:h"<CR>
@@ -338,11 +338,11 @@ map <F7> :vsplit<CR>:bnext<CR>:windo diffthis<CR>
 map <F8> :LazyGit<CR>
 map <F9> :Telescope find_files<CR>
 " F10 reserved for kitty, open new terminal.
-" F11 reserved for kitty, fullscreen.
+" F11 reserved for kitty, full screen.
 map <F12> :SymbolsOutline<CR>
 
 " Keep X as delete backwards, rather then close buffer, I prefer to use :bd
-" ERRORS: WHY!
+" FIXME: WHY! nunmap X not working!
 " nunmap X
 
 " }}}

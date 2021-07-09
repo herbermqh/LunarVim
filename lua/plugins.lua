@@ -382,15 +382,6 @@ return require("packer").startup(function(use)
     disable = not O.plugin.dial.active,
     opt = true,
   }
-  -- Ranger
-  use {
-    "kevinhwang91/rnvimr",
-    cmd = "Rnvimr",
-    config = function()
-      require("lv-rnvimr").config()
-    end,
-    disable = not O.plugin.ranger.active
-  }
   -- Markdown preview
   use {
     "iamcco/markdown-preview.nvim",
@@ -453,19 +444,38 @@ return require("packer").startup(function(use)
     cmd = "LazyGit",
     disable = not O.plugin.lazygit.active,
   }
-  -- Java LSP.
-  -- use {
-    -- "mfussenegger/nvim-jdtls",
-    -- event = "BufRead",
-    -- ft = "java",
-    -- disable = false
-  -- }
-  -- Tags navigation.  'F12' Opens to the right.
-  -- use {
-    -- "preservim/tagbar",
-    -- event = "BufRead",
-    -- disable = false
-  -- }
+  -- Todo comments.
+    -- PERF:Something to describe.
+    -- HACK:Something to describe.
+    -- TODO:Something to describe.
+    -- NOTE:Something to describe.
+    -- WARNING:Something to describe.
+    -- FIX:Something to describe.
+    -- BUG:Something to describe.
+    -- FIXME: Something to describe.
+    -- :TodoQuickFix
+    -- :TodoTelescope
+    -- :TodoTrouble
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+  -- FIXME: Ranger
+  use {
+    "kevinhwang91/rnvimr",
+    cmd = "Rnvimr",
+    config = function()
+      require("lv-rnvimr").config()
+    end,
+    disable = not O.plugin.ranger.active
+  }
   -- JIMC END
   -- ...........................................................................
 
