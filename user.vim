@@ -337,6 +337,14 @@ map <F12> :SymbolsOutline<CR>
 
 " Settings {{{1
 
+" For Ranger, for some reason does not work in the lua config.
+let g:rnvimr_enable_ex = 1
+let g:rnvimr_enable_picker = 1
+let g:rnvimr_draw_border = 1
+let g:rnvimr_hide_gitignore = 1
+let g:rnvimr_border_attr = {'fg': 7, 'bg': -1}
+let g:rnvimr_enable_bw = 1
+
 let bufferline = get(g:, 'bufferline', {})
 let bufferline.icons="both"
 let bufferline.icon_close_tab_modified=''
@@ -537,7 +545,7 @@ call matchadd('extraWhitespace', '/^\s*\t\s*\|\s\+\%#\@<!$', 100)
 
 " Highlight #! lines... Both good and bad.
 highlight sheBangGood gui=bold,italic,underline guifg=#7fdf7f    guibg=NONE
-call matchadd('sheBangGood', '^#!/usr/bin/env \(bash\|sh\|python3\|zsh\|groovy\)$', 20)
+call matchadd('sheBangGood', '^#!/usr/bin/env \(bash\|sh\|python3\|zsh\|groovy\|perl\)$', 20)
 
 highlight sheBangBad                  gui=bold guifg=Red         guibg=NONE
 call matchadd('sheBangBad', '^#!.*')

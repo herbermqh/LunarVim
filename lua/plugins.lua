@@ -476,9 +476,7 @@ return require("packer").startup(function(use)
   -- Ranger, Leader r
   use {
     "kevinhwang91/rnvimr",
-    config = function()
-      require("lv-rnvimr").config()
-    end,
+    cmd = "RnvimrToggle",
     disable = not O.plugin.ranger.active
   }
   -- JIMC END
