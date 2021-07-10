@@ -192,6 +192,7 @@ local mappings = {
 
   --------------------------------------------------------------------------------
   -- JIMC START
+  r = { "<cmd>RnvimrToggle<cr>",                             "Ranger" },
   t = {
       name = "Toggle Display Options",
       a = { ":call ToggleAll()<CR>",                         "Toggle All"},

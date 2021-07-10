@@ -473,10 +473,9 @@ return require("packer").startup(function(use)
       }
     end
   }
-  -- FIXME: Ranger
+  -- Ranger, Leader r
   use {
     "kevinhwang91/rnvimr",
-    cmd = "Rnvimr",
     config = function()
       require("lv-rnvimr").config()
     end,
