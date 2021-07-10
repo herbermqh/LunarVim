@@ -20,10 +20,6 @@ vmap g<C-x> <Plug>(dial-decrement-additional)
     "date#[%Y-%m-%d]",
     "date#[%H:%M:%S]",
     "date#[%H:%M]",
-    "char#alph#small#word",
-    "char#alph#capital#word",
-    "char#alph#small#str",
-    "char#alph#capital#str",
     "color#hex",
     "markup#markdown#header",
   }
@@ -49,6 +45,15 @@ vmap g<C-x> <Plug>(dial-decrement-additional)
     },
   }
   table.insert(dial.config.searchlist.normal, "custom#Calendar")
+
+  -- For CAL.
+  dial.augends["custom#CAL"] = dial.common.enum_cyclic {
+    name = "CAL",
+    strlist = {
+      "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"
+    },
+  }
+  table.insert(dial.config.searchlist.normal, "custom#CAL")
 
 end
 
