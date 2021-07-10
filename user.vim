@@ -308,20 +308,8 @@ inoremap <A-Down> <Esc>:m .+1<CR>==gi
 vnoremap <A-Up> :m '<-2<CR>gv=gv
 vnoremap <A-Down> :m '>+1<CR>gv=gv
 
-" Jump : TODO: Add command to which key and remove from here.
+" Jump
 nmap gj :call JumpToSelection()<CR>
-noremap <silent> <leader>ja :silent exec "!jump Artifact %:p:h"<CR>
-noremap <silent> <leader>jc :silent exec "!jump Ci %:p:h"<CR>
-noremap <silent> <leader>jh :call OpenHelpPage()<CR>
-noremap <silent> <leader>ji :silent exec "!jump Live %:p:h"<CR>
-noremap <silent> <leader>jj :call JumpToSelection()<CR>
-noremap <silent> <leader>jl :silent exec "!jump Lint %:p:h"<CR>
-noremap <silent> <leader>jm :<C-U>exe "Man" v:count "<C-R><C-W>"<CR>
-noremap <silent> <leader>jn :silent exec "!jump Notes %:p:h"<CR>
-noremap <silent> <leader>jr :silent exec "!jump Repo %:p:h"<CR>
-noremap <silent> <leader>js :call ShowJira()<CR>
-noremap <silent> <leader>jt :silent exec "!jump Ticket %:p:h"<CR>
-noremap <silent> <leader>ju :silent exec "!jump TestReports %:p:h"<CR>
 
 " Function keys.
 map <silent> <F1> :!xdg-open $HOME/.config/nvim/cheatsheet.html<CR>

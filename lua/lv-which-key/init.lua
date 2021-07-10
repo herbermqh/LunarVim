@@ -193,36 +193,45 @@ local mappings = {
   --------------------------------------------------------------------------------
   -- JIMC START
   t = {
-      name = "+Toggle Display Options",
-      a = { ":call ToggleAll()<cr>",                         "Toggle All"},
-      b = { ":call ToggleColourGitBlame()<cr>",              "Toggle git Blame line visibility"},
-      c = { ":call ToggleColourCursorColumn()<cr>",          "Toggle cursor Column visibility"},
-      e = { ":call ToggleColourWhiteSpaceAtEndOfLine()<cr>", "Toggle whitespace at End of line visibility"},
-      g = { ":call ToggleGutter()<cr>",                      "Toggle left Gutter"},
-      h = { ":ColorizerToggle<cr>",                          "Toggle Hex colour and colour name matches"},
-      i = { ":call ToggleColourIncSearch()<cr>",             "Toggle hIghlight matching words under cursor"},
-      l = { ":call ToggleColourCursorLine()<cr>",            "Toggle cursor Line visibility"},
-      r = { ":set wrap!<cr>",                                "Toggle line wRap"},
-      s = { ":set spell!<cr>",                               "Toggle Spell checking"},
-      t = { ":call ToggleColourLineTooLong()<cr>",           "Toggle line Too long highlighting"},
-      w = { ":set list!<cr>",                                "Toggle Whitespace visibility"},
-      y = { ":call ToggleColourSyntax()<cr>",                "Toggle sYntax highlighting"}
+      name = "Toggle Display Options",
+      a = { ":call ToggleAll()<CR>",                         "Toggle All"},
+      b = { ":call ToggleColourGitBlame()<CR>",              "Toggle git Blame line visibility"},
+      c = { ":call ToggleColourCursorColumn()<CR>",          "Toggle cursor Column visibility"},
+      e = { ":call ToggleColourWhiteSpaceAtEndOfLine()<CR>", "Toggle whitespace at End of line visibility"},
+      g = { ":call ToggleGutter()<CR>",                      "Toggle left Gutter"},
+      h = { ":ColorizerToggle<CR>",                          "Toggle Hex colour and colour name matches"},
+      i = { ":call ToggleColourIncSearch()<CR>",             "Toggle hIghlight matching words under cursor"},
+      l = { ":call ToggleColourCursorLine()<CR>",            "Toggle cursor Line visibility"},
+      r = { ":set wrap!<CR>",                                "Toggle line wRap"},
+      s = { ":set spell!<CR>",                               "Toggle Spell checking"},
+      t = { ":call ToggleColourLineTooLong()<CR>",           "Toggle line Too long highlighting"},
+      w = { ":set list!<CR>",                                "Toggle Whitespace visibility"},
+      y = { ":call ToggleColourSyntax()<CR>",                "Toggle sYntax highlighting"}
   },
   j = {
-      name = "+Show/Jump various dev info",
-      a = {                                     "Jump Artifactory (project)"},
-      c = {                                     "Jump Ci (project)"},
-      h = {                                     "Jump vim Help page for word under cursor"},
-      i = {                                     "Jump lIve (project)"},
-      j = {                                     "Jump to url or hex color or git etc"},
-      l = {                                     "Jump Lint (project)"},
-      m = {                                     "Jump linux Man page for word under cursor"},
-      n = {                                     "Jump Notes (project search in confluence)"},
-      r = {                                     "Jump Repo (git or bitbucket)"},
-      s = {                                     "Show jira ticket in new buffer"},
-      t = {                                     "Jump jira Ticket in browser"},
-      u = {                                     "Jump Unit test reports"}
+      name = "Show/Jump various dev info",
+      a = {":silent exec '!jump Artifact %:p:h'<CR>",        "Jump Artifactory (project)"},
+      c = {":silent exec '!jump Ci %:p:h'<CR>",              "Jump Ci (project)"},
+      h = {":call OpenHelpPage()<CR>",                       "Jump vim Help page for word under cursor"},
+      i = {":silent exec '!jump Live %:p:h'<CR>",            "Jump lIve (project)"},
+      j = {":call JumpToSelection()<cr>",                    "Jump to url or hex color or git etc"},
+      l = {":silent exec '!jump Lint %:p:h'<CR>",            "Jump Lint (project)"},
+      m = {":<C-U>exe 'Man' v:count '<C-R><C-W>'<CR>",       "Jump linux Man page for word under cursor"},
+      n = {":silent exec '!jump Notes %:p:h'<CR>",           "Jump Notes (project search in confluence)"},
+      r = {":silent exec '!jump Repo %:p:h'<CR>",            "Jump Repo (git or bitbucket)"},
+      s = {":call ShowJira()<CR>",                           "Show jira ticket in new buffer"},
+      t = {":silent exec '!jump Ticket %:p:h'<CR>",          "Jump jira Ticket in browser"},
+      u = {":silent exec '!jump TestReports %:p:h'<CR>",     "Jump Unit test reports"}
   },
+  d = {
+    name = "Diagnostics",
+    t = { "<cmd>TroubleToggle<cr>", "trouble" },
+    w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "workspace" },
+    d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "document" },
+    q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
+    l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
+    r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
+  }
   -- JIMC END
   -- .............................................................................
 
