@@ -436,11 +436,11 @@ set cursorcolumn
 highlight CursorColumn                         guifg=#ffffff     guibg=#483d8b
 highlight CursorLine                                             guibg=#605555
 
-" Selected area colours
-highlight Visual                               guifg=#ffffff     guibg=#1B5193
+" Selected area colour
+highlight Visual                  gui=bold     guifg=#ffffff     guibg=#1B51a3
 
-" Search hit colour
-highlight Search                               guifg=Wheat       guibg=Peru
+" Search hit colour, also the colour of selection when yanked!
+highlight Search                  gui=bold     guifg=Black       guibg=Cyan
 
 " Spelling
 highlight SpellBad   guisp=Red    gui=undercurl guifg=NONE
