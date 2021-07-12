@@ -274,8 +274,10 @@ A query to increment value in whole file<br/>`:let i=1 \| g/foo/s//\=i/ \| let i
 |<kbd>F2</kbd>|                                                                :heavy_check_mark: Cycle through different folding methods|
 |<kbd>F3</kbd>|                                                                :heavy_check_mark: Toggle most visual items|
 |<kbd>F4</kbd>|                                                                :heavy_check_mark: Open left file menu|
+|<kbd>F5</kbd>|                                                                :heavy_check_mark: Kitty command - assumes text highlighted is a filename and opens it|
 |<kbd>F6</kbd>|                                                                :heavy_check_mark: Runs the last range substitute, see * and &|
 |<kbd>F7</kbd>|                                                                :heavy_check_mark: Diff current buffer and next (split and windo diffthis)|
+|<kbd>F8</kbd>|                                                                :heavy_check_mark: Open Lazygit|
 |<kbd>F9</kbd>|                                                                :heavy_check_mark: Open Telescope|
 |<kbd>F10</kbd>|                                                               :heavy_check_mark: Kitty command - New terminal in new tab|
 |<kbd>F11</kbd>|                                                               :heavy_check_mark: Kitty command - full screen|

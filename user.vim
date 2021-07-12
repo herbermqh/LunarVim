@@ -147,10 +147,10 @@ function! ToggleColourSyntax()
 endfunction
 
 function! ToggleColourIncSearch()
-    if synIDattr(hlID("IncSearch"), "bg", "gui") == "#385f38"
+    if synIDattr(hlID("IncSearch"), "bg", "gui") == "#3f1f1f"
         highlight IncSearch NONE
     else
-        highlight IncSearch                            guifg=#f8f893     guibg=#385f38
+        highlight IncSearch      gui=bold              guibg=#3f1f1f
     endif
 endfunction
 
@@ -423,14 +423,14 @@ set termguicolors
 " Use zenburn colour scheme, but make some minor tweaks.
 let g:zenburn_italic_Comment=1
 colorscheme zenburn
-" Tweaks to zenburn...
-hi Boolean         guifg=#bfbfbf                              ctermfg=181
-hi Character       guifg=#a3aca3 gui=bold                     ctermfg=181 cterm=bold
-hi Constant        guifg=#a3dcdc gui=NONE                     ctermfg=181 cterm=bold
-hi SpecialChar     guifg=#a3a3dc gui=bold                     ctermfg=181 cterm=bold
-hi String          guifg=#53BB83                              ctermfg=174
-hi Tag             guifg=#93e893 gui=bold                     ctermfg=181 cterm=bold
-hi javaTSVariable  guifg=#CEDF99
+" Tweaks to zenburn... I only like red to mean a problem.
+highlight Boolean         guifg=#bfbfbf          ctermfg=181
+highlight Character       guifg=#a3aca3 gui=bold ctermfg=181 cterm=bold
+highlight Constant        guifg=#a3dcdc gui=NONE ctermfg=181 cterm=bold
+highlight SpecialChar     guifg=#a3a3dc gui=bold ctermfg=181 cterm=bold
+highlight String          guifg=#53BB83          ctermfg=174
+highlight Tag             guifg=#93e893 gui=bold ctermfg=181 cterm=bold
+highlight javaTSVariable  guifg=#CEDF99
 
 " Show white space characters
 set listchars=eol:¶,tab:»\ ,trail:·,extends:>,precedes:<,space:·
@@ -457,11 +457,12 @@ highlight SpellCap   guisp=Pink   gui=NONE      guifg=NONE
 highlight SpellRare  guisp=Yellow gui=NONE      guifg=NONE
 
 " Pop-up and Float menu
-highlight Pmenu                                guifg=Wheat       guibg=#332000
+highlight Pmenu                                guifg=Wheat       guibg=Black
 highlight PmenuSbar                                              guibg=Gray35
 highlight PmenuThumb                                             guibg=Wheat
 highlight PmenuSel                    gui=bold guifg=Black       guibg=Wheat
 highlight NormalFloat                 gui=NONE guifg=Gold        guibg=Black
+highlight NormalNC                                               guibg=Black
 
 " Line number colour
 highlight LineNr                               guifg=RoyalBlue1  guibg=Gray19
@@ -550,7 +551,7 @@ call matchadd('sheBangGood', '^#!/usr/bin/env \(bash\|sh\|python3\|zsh\|groovy\|
 highlight sheBangBad                  gui=bold guifg=Red         guibg=NONE
 call matchadd('sheBangBad', '^#!.*')
 
-highlight IncSearch           NONE             guifg=#f8f893     guibg=#385f38
+highlight IncSearch      gui=bold              guibg=#3f1f1f
 
 highlight HighlightUrl   gui=underline,bold    guifg=#0099FF     guisp=#0099FF
 

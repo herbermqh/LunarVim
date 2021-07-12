@@ -126,7 +126,13 @@ I've added a few extra plugins I use to the configuration:
 - [Dial](https://github.com/monaqa/dial.nvim)
 
   - I've enabled a bunch of the predefined "incrementors", also added a few of my own, e.g: True<->False and full month names.
+  - [See the config for details](LunarVim/blob/master/lua/lv-dial/init.lua)I
+  - [See the config for details](/blob/master/lua/lv-dial/init.lua)I
   - [See the config for details](blob/master/lua/lv-dial/init.lua)I
+  - [See the config for details](/master/lua/lv-dial/init.lua)I
+  - [See the config for details](master/lua/lv-dial/init.lua)I
+  - [See the config for details](/lua/lv-dial/init.lua)I
+  - [See the config for details](lua/lv-dial/init.lua)I
 
 - [Hop](https://github.com/phaazon/hop.nvim)
 
