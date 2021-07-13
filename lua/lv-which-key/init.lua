@@ -203,6 +203,7 @@ local mappings = {
       h = { ":ColorizerToggle<CR>",                          "Toggle Hex colour and colour name matches"},
       i = { ":call ToggleColourIncSearch()<CR>",             "Toggle hIghlight matching words under cursor"},
       l = { ":call ToggleColourCursorLine()<CR>",            "Toggle cursor Line visibility"},
+      m = { ":call ToggleMarkerLines()<CR>",                 "Toggle Marker lines"},
       r = { ":set wrap!<CR>",                                "Toggle line wRap"},
       s = { ":set spell!<CR>",                               "Toggle Spell checking"},
       t = { ":call ToggleColourLineTooLong()<CR>",           "Toggle line Too long highlighting"},

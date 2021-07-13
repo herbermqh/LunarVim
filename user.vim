@@ -170,12 +170,28 @@ function! ToggleGutter()
     endif
 endfunction
 
+let s:markerline=1
+function! ToggleMarkerLines()
+    if s:markerline
+        let s:markerline=0
+        highlight markerLineCommentAmber  NONE
+        highlight markerLineCommentGreen  NONE
+        highlight markerLineCommentRed    NONE
+    else
+        let s:markerline=1
+        highlight markerLineCommentAmber               guifg=#000000     guibg=#999900
+        highlight markerLineCommentGreen               guifg=#000000     guibg=#009900
+        highlight markerLineCommentRed                 guifg=#000000     guibg=#990000
+    endif
+endfunction
+
 function ToggleAll()
     call ToggleColourCursorColumn()
     call ToggleColourLineTooLong()
     call ToggleColourWhiteSpaceAtEndOfLine()
     call ToggleColourGitBlame()
     call ToggleColourIncSearch()
+    call ToggleMarkerLines()
     set spell!
     set list!
     set foldenable!
@@ -575,6 +591,7 @@ highlight markerLineCommentGreen               guifg=#000000     guibg=#009900
 call matchadd('markerLineCommentGreen', '^.*-\{5,\}$', 50)
 highlight markerLineCommentRed                 guifg=#000000     guibg=#990000
 call matchadd('markerLineCommentRed',   '^.*=\{5,\}$', 50)
+
 " }}}1
 
 " Syntax files {{{1
