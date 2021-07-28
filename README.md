@@ -11,8 +11,8 @@
 <!-- Main Image -->
 <!-- {{{1 -->
 
-![LunarVim Demo](./utils/media/lunarvim_logo_dark.png)
-![LunarVim](./utils/media/demoScreen.png)
+![LunarVim Demo](./media/lunarvim_logo_dark.png)
+![LunarVim](./media/demo_screen.png)
 
 <!-- }}}1 -->
 
@@ -59,7 +59,7 @@ If your interested my website is [![Web Site](https://img.shields.io/badge/Jims%
 
 <!-- {{{1 -->
 
-![Visual Appearance](./utils/media/VisualAppearance.png)
+![Visual Appearance](./media/visual_appearance.png)
 
 - I use zenburn theme. One of the reasons for this is that its available in virtually
   any plug-in/app/program that allows theming, so I can near consistent code theming
@@ -84,7 +84,7 @@ If your interested my website is [![Web Site](https://img.shields.io/badge/Jims%
 The Galaxy line configuration can be found [here](https://github.com/jimcornmell/LunarVim/blob/master/lua/lv-galaxyline/init.lua).
 This image shows what is in the different sections.
 
-![Galaxy Line](./utils/media/GalaxyLine.png)
+![Galaxy Line](./media/galaxy_line.png)
 
 The line is split into 5 main sections, 3 on the left and 2 on the right:
 
@@ -94,12 +94,12 @@ The line is split into 5 main sections, 3 on the left and 2 on the right:
   - LSP information
 - On the right:
   - File information
-    - Line Ending, Linux ![tux](./utils/media/tux.png), Mac ![tux](./utils/media/tux.png) or Windows ![windows](./utils/media/tux.png)
+    - Line Ending, Linux ![tux](./media/tux.png), Mac ![mac](./media/mac.png) or Windows ![windows](./media/win.png)
     - File Name
     - File Type
     - File Size
     - Character encoding
-  - Position information - Percentage - Current Line Number / Number of lines in the file - Current column / length of current line - Tab mode, ![space](./utils/media/space.png) or ![tab](./utils/media/tab.png) and number of characters
+  - Position information - Percentage - Current Line Number / Number of lines in the file - Current column / length of current line - Tab mode, ![space](./media/space.png) or ![tab](./media/tab.png) and number of characters
   Note the column information is colour coded, >80 = Yellow >120 = Red.
   <!-- }}}1 -->
 
@@ -176,9 +176,9 @@ See my dotfiles for a simple bash script to convert this GitHut markdown file in
 
 - [Markdown Cheatsheet](cheatsheet.md)
 - [HTML Cheatsheet](cheatsheet.html)
-- [PNG Cheatsheet](./utils/media/cheatsheet.png)
+- [PNG Cheatsheet](./media/cheatsheet.png)
 
-![Cheatsheet](./utils/media/cheatsheet.png)
+![Cheatsheet](./media/cheatsheet.png)
 
 <!-- }}}1 -->
 
