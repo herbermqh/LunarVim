@@ -328,7 +328,7 @@ vnoremap <A-Down> :m '>+1<CR>gv=gv
 nmap gj :call JumpToSelection()<CR>
 
 " Function keys.
-map <silent> <F1> :!xdg-open $HOME/.config/nvim/cheatsheet.html<CR>
+map <silent> <F1> :!xdg-open $HOME/.config/lvim/cheatsheet.html<CR>
 map <silent> <F2> :call FoldingToggle()<CR>
 map <silent> <F3> :call ToggleAll()<CR>
 map <F4> :NvimTreeToggle<CR>
@@ -367,7 +367,7 @@ let bufferline.icon_close_tab_modified=''
 let bufferline.icon_custom_colors="false"
 
 let g:github_enterprise_urls = ['https://bitbucket.org']
-let g:startify_session_dir=['~/.config/nvim/sessions']
+let g:startify_session_dir=['~/.config/lvim/sessions']
 let g:neovide_cursor_animation_length=0
 let g:neovide_fullscreen=v:true
 
@@ -438,7 +438,7 @@ set termguicolors
 
 " Use zenburn colour scheme, but make some minor tweaks.
 let g:zenburn_italic_Comment=1
-colorscheme zenburn
+" colorscheme zenburn
 " Tweaks to zenburn... I only like red to mean a problem.
 highlight Boolean         guifg=#bfbfbf          ctermfg=181
 highlight Character       guifg=#a3aca3 gui=bold ctermfg=181 cterm=bold
@@ -597,39 +597,39 @@ call matchadd('markerLineCommentRed',   '^.*=\{5,\}$', 50)
 " Syntax files {{{1
 
 "  Auddis!
-au! Syntax auddis source ~/.config/nvim/syntax/auddis.vim
+au! Syntax auddis source ~/.config/lvim/syntax/auddis.vim
 au BufRead,BufNewFile *.aud set filetype=auddis
 au BufRead,BufNewFile AUDDIS*.ASC set filetype=auddis
 
 "  Celestia!
-au! Syntax cel source ~/.config/nvim/syntax/cel.vim
+au! Syntax cel source ~/.config/lvim/syntax/cel.vim
 au BufRead,BufNewFile *.cel set filetype=cel
 
 " CSV files.
-au! Syntax csvfile source ~/.config/nvim/syntax/csv.vim
+au! Syntax csvfile source ~/.config/lvim/syntax/csv.vim
 au BufRead,BufNewFile *.csv set filetype=csvfile
 au BufRead,BufNewFile *.tsv set filetype=csvfile
 
 " EDI files.
-au! Syntax edifile source $HOME/.config/nvim/syntax/edifile.vim
+au! Syntax edifile source $HOME/.config/lvim/syntax/edifile.vim
 au BufRead,BufNewFile *.edi set filetype=edifile
 au BufRead,BufNewFile *.mdf set filetype=edifile
 au BufRead,BufNewFile *.hse set filetype=edifile
 
 " Franchise DAT files.
-au! Syntax franchisefile source ~/.config/nvim/syntax/franchisefile.vim
+au! Syntax franchisefile source ~/.config/lvim/syntax/franchisefile.vim
 au BufRead,BufNewFile *.dat set filetype=franchisefile
 
 " TTT text files.
-au! Syntax cooptttfile source ~/.config/nvim/syntax/cooptttfile.vim
+au! Syntax cooptttfile source ~/.config/lvim/syntax/cooptttfile.vim
 au BufRead,BufNewFile tau.cc.* set filetype=cooptttfile
 
 " Log4j files.
-au! Syntax log4j source ~/.config/nvim/syntax/log4j.vim
+au! Syntax log4j source ~/.config/lvim/syntax/log4j.vim
 au BufRead,BufNewFile *.log set filetype=log4j
 
 " Rundeck log files.
-au! Syntax runlog source ~/.config/nvim/syntax/runlog.vim
+au! Syntax runlog source ~/.config/lvim/syntax/runlog.vim
 au BufRead,BufNewFile ALLREAD*.txt set filetype=runlog
 au BufRead,BufNewFile ALLKewill*.txt set filetype=runlog
 
@@ -652,7 +652,7 @@ iab adn and
 " Auto Commands, e.g. source init.vim {{{1
 
 " Auto reload my init.vim file.
-" autocmd! bufwritepost ~/.config/nvim/init.vim source ~/.config/nvim/init.vim | echo "Reloaded my init.vim"
+" autocmd! bufwritepost ~/.config/lvim/init.vim source ~/.config/lvim/init.vim | echo "Reloaded my init.vim"
 
 " Disable some things on the dashboard.
 autocmd! Filetype * if &ft=="dashboard"| highlight longLine NONE |endif | autocmd WinLeave <buffer> highlight longLine guibg=#5F3F3F

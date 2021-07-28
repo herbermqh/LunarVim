@@ -7,8 +7,6 @@ if exists("b:current_syntax")
     finish
 endif
 
-ColorizerDetachFromBuffer
-
 syn keyword ediKeywords    GS GE SE ST
 
 syn match ediCDT         "^CDT="

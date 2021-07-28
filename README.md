@@ -1,4 +1,4 @@
-<!-- Sheilds -->
+<!-- Shields -->
 <!-- {{{1 -->
 
 [![GitHub License](https://img.shields.io/github/license/jimcornmell/LunarVim)](https://github.com/jimcornmell/LunarVim/blob/master/LICENSE)
