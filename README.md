@@ -46,12 +46,22 @@ If your interested my website is [![Web Site](https://img.shields.io/badge/Jims%
 
 <!-- {{{1 -->
 
+- [Installation](#installation)
 - [Visual Appearance](#visual-appearance)
 - [Galaxy Line](#galaxy-line)
 - [Extra Plugins](#extra-plugins)
 - [Configured LSP's](#configures-lsp's)
 - [Key Bindings](#key-bindings-cheatsheet)
 - [Some Useful Links](#some-useful-links)
+
+<!-- }}}1 -->
+
+# Installation
+
+<!-- {{{1 -->
+
+- Follow the instructions on [Christian's site](https://github.com/ChristianChiarulli/LunarVim)
+- Download this repo to `~/.config/lvim`
 
 <!-- }}}1 -->
 
@@ -66,15 +76,16 @@ If your interested my website is [![Web Site](https://img.shields.io/badge/Jims%
   everywhere.
 - I've added vertical markers at 80 and 120 characters.
   - Galaxy line displays the current column and line length, these change colour at 80 and 120 characters.
-- The current cursor line is highlighted in red, #605555
-- The current cursor column is highlighted in light blue, #483d8b.
-- Whitespace at the end of a line in highlighted in bright Red.
+- The current cursor line is highlighted in light red
+- The current cursor column is highlighted in light blue
+- Whitespace at the end of a line in highlighted in bright red.
 - Margin:
-  - Current line number is highlighted in Yellow.
-  - Relative line numbers are shown in RoyalBlue1.
-  - Markers are shown.
-  - Git changes are shown.
-  - Folding marks are also shown in the margin.
+  - Current line number is highlighted in Yellow
+  - Relative line numbers are shown in RoyalBlue
+  - Markers are shown
+  - Git changes are shown
+  - Folding marks are also shown in the margin
+
   <!-- }}}1 -->
 
 # Galaxy line
