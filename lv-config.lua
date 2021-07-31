@@ -15,6 +15,7 @@ Colorizer: #ff0000, Blue, #f0f
 ]]
 
 -- Settings {{{1
+
 lvim.format_on_save = false
 lvim.auto_complete = true
 lvim.colorscheme = "zenburn"
@@ -28,22 +29,55 @@ lvim.termguicolors = true
 lvim.builtin.dashboard.active = true
 lvim.builtin.galaxyline.active = true
 lvim.vsnip_dir = os.getenv "HOME" .. "/.config/lvim/snippets/"
--- lvim.builtin.zen.active = true
-
--- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = "all"
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
--- python
--- O.python.linter = 'flake8'
--- lvim.lang.python.isort = true
--- lvim.lang.python.diagnostics.virtual_text = true
--- lvim.lang.python.analysis.use_library_code_types = true
+--}}}
 
--- javascript
--- lvim.lang.tsserver.linter = nil
+-- Dashboard {{{1
 
+lvim.builtin.dashboard.custom_header = {
+    -- "⠀⣿⡟",
+    -- "⠀⣿⠇⠀⠀⠀⠀⠀⣤⡄⠀⠀⢠⣤⡄⠀⢠⣤⣠⣤⣤⣤⡀⠀⠀⢀⣤⣤⣤⣤⡄⠀⠀⠀⣤⣄⣤⣤⣤⠀⠀⣤⣤  ⣤⡄⠀ ⢠⣤⣤⣤⣤⣤⠀⠀⣠⣤⣤⣤⣄⣤⣤",
+    -- "⢠⣿⠀⠀⠀⠀⠀⠀⣿⠃⠀⠀⣸⣿⠁⠀⣿⣿⠉⠀⠈⣿⡇⠀⠀⠛⠋⠀⠀⢹⣿⠀⠀⠀⣿⠏⠀⠸⠿⠃⠀⣿⣿⠀⣰⡟⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀⣿⡟⢸⣿⡇⢀⣿",
+    -- "⣸⡇⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⣿⡟⠀⢠⣿⡇⠀⠀⢰⣿⡇⠀⣰⣾⠟⠛⠛⣻⡇⠀⠀⢸⡿⠀⠀⠀⠀⠀⠀⢻⣿⢰⣿⠀⠀⠀⠀⠀⠀⣾⡇⠀⠀⠀⢸⣿⠇⢸⣿⠀⢸⡏",
+    -- "⣿⣧⣤⣤⣤⡄⠀⠘⣿⣤⣤⡤⣿⠇⠀⢸⣿⠁⠀⠀⣼⣿⠀⠀⢿⣿⣤⣤⠔⣿⠃⠀⠀⣾⡇⠀⠀⠀⠀⠀⠀⢸⣿⣿⠋⠀⠀⠀⢠⣤⣤⣿⣥⣤⡄⠀⣼⣿⠀⣸⡏⠀⣿⠃",
+    -- "⠉⠉⠉⠉⠉⠁⠀⠀⠈⠉⠉⠀⠉⠀⠀⠈⠉⠀⠀⠀⠉⠉⠀⠀⠀⠉⠉⠁⠈⠉⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠁⠀⠉⠁⠀⠉⠁⠀⠉",
+
+    -- "█                                  █░  ░█   █",
+    -- "█                                  ▓▒  ▒▓",
+    -- "█      █   █  █▒██▒  ░███░   █▒██▒ ▒█  █▒ ███    ██▓█▓",
+    -- "█      █   █  █▓ ▒█  █▒ ▒█   ██  █  █  █    █    █▒█▒█",
+    -- "█      █   █  █   █      █   █      █░░█    █    █ █ █",
+    -- "█      █   █  █   █  ▒████   █      ▓▒▒▓    █    █ █ █",
+    -- "█      █   █  █   █  █▒  █   █      ▒██▒    █    █ █ █",
+    -- "█      █▒ ▓█  █   █  █░ ▓█   █       ██     █    █ █ █",
+    -- "██████ ▒██▒█  █   █  ▒██▒█   █       ██   █████  █ █ █",
+
+    "    __                          _    ___         ",
+    "   / /   __  ______  ____ _____| |  / (_)___ ___ ",
+    "  / /   / / / / __ \\/ __ `/ ___/ | / / / __ `__ \\",
+    " / /___/ /_/ / / / / /_/ / /   | |/ / / / / / / /",
+    "/_____/\\__,_/_/ /_/\\__,_/_/    |___/_/_/ /_/ /_/ ",
+    "                                                 ",
+}
+
+lvim.builtin.dashboard.custom_section = {
+    a = {description = {"  New File           "}, command = "DashboardNewFile" },
+    b = {description = {"  Find File          "}, command = "Telescope find_files", },
+    c = {description = {"  Ranger             "}, command = "RnvimrToggle"},
+    d = {description = {"  Recently Used Files"}, command = "Telescope oldfiles", },
+    e = {description = {"  Find Word          "}, command = "Telescope live_grep", },
+    f = {description = {"  Marks              "}, command = "Telescope marks"},
+    g = {description = {"  Settings           "}, command = ":e ~/.config/lvim/lv-config.lua", },
+    h = {description = {"  Git Status         "}, command = "Telescope git_status" },
+    i = {description = {"  Zshrc              "}, command = ":e ~/.zshrc" },
+    j = {description = {"  Kitty Config       "}, command = ":e ~/.config/kitty/kitty.conf" }
+    -- f = {description = {"  Neovim Config Files"}, command = "Telescope find_files cwd=" .. CONFIG_PATH, },
+    -- h = {description = {"  File Browser       "}, command = "Telescope file_browser" },
+    -- i = {description = {"  Load Last Session  "}, command = "SessionLoad"},
+}
 
 --}}}
 
@@ -73,6 +107,11 @@ lvim.plugins = {
       require("lv-hop").config()
     end,
   },
+  -- Symbols outline - F12
+  {
+    'simrat39/symbols-outline.nvim',
+    cmd = 'SymbolsOutline'
+  },
   -- Enhanced increment/decrement : True, true
   {
     "monaqa/dial.nvim",
@@ -86,6 +125,9 @@ lvim.plugins = {
     "nanotee/sqls.nvim",
     event = "BufRead",
     ft = "sql",
+    config = function()
+      require("lv-sqls").config()
+    end,
   },
   -- Markdown preview
   {
