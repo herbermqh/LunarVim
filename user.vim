@@ -592,6 +592,12 @@ call matchadd('markerLineCommentGreen', '^.*-\{5,\}$', 50)
 highlight markerLineCommentRed                 guifg=#000000     guibg=#990000
 call matchadd('markerLineCommentRed',   '^.*=\{5,\}$', 50)
 
+" Hop colours.
+highlight HopNextKey                  gui=bold guifg=#ff007c
+highlight HopNextKey1                 gui=bold guifg=#00dfff
+highlight HopNextKey2                          guifg=#2b8db3
+highlight HopUnmatched                         guifg=#666666
+
 " }}}1
 
 " Syntax files {{{1
