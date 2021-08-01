@@ -1,4 +1,5 @@
---[[
+--[[ Notes: {{{1
+
  Useful Links and TODO
  https://github.com/Kethku/neovide
  http://cheat.sh
@@ -11,8 +12,7 @@ TODO: LSP React
 TODO: LSP PHP
 TODO: LSP Bash
 TODO: LSP Python
-Colorizer: #ff0000, Blue, #f0f
-]]
+}}}1 ]]
 
 -- Settings {{{1
 
@@ -76,7 +76,7 @@ lvim.builtin.dashboard.custom_section = {
     d = {description = {"  Recently Used Files"}, command = "Telescope oldfiles", },
     e = {description = {"  Find Word          "}, command = "Telescope live_grep", },
     f = {description = {"  Marks              "}, command = "Telescope marks"},
-    g = {description = {"  Settings           "}, command = ":e ~/.config/lvim/lv-config.lua", },
+    g = {description = {"  Settings           "}, command = ":e ~/.config/lvim/config.lua", },
     h = {description = {"  Git Status         "}, command = "Telescope git_status" },
     i = {description = {"  Zshrc              "}, command = ":e ~/.zshrc" },
     j = {description = {"  Kitty Config       "}, command = ":e ~/.config/kitty/kitty.conf" }
@@ -89,20 +89,19 @@ lvim.builtin.dashboard.custom_section = {
 
 -- Additional Plugins {{{1
 lvim.plugins = {
+  -- Colorizer: #ff0000, Blue, #f0f
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("user.colorizer").config()
+    end,
+  },
   -- Zen Mode
   {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
     config = function()
-      require("lv-zen").config()
-    end,
-  },
-  -- Colorizer: #ff0000, Blue, #f0f
-  {
-    "norcalli/nvim-colorizer.lua",
-    event = "BufRead",
-    config = function()
-      require("lv-colorizer").config()
+      require("user.zen").config()
     end,
   },
   -- Better motions
@@ -110,7 +109,7 @@ lvim.plugins = {
     "phaazon/hop.nvim",
     event = "BufRead",
     config = function()
-      require("lv-hop").config()
+      require("user.hop").config()
     end,
   },
   -- Symbols outline - F12
@@ -123,16 +122,16 @@ lvim.plugins = {
     "monaqa/dial.nvim",
     event = "BufRead",
     config = function()
-      require("lv-dial").config()
+      require("user.dial").config()
     end,
   },
-  -- TODO: SQL LSP.
+  -- SQL LSP.
   {
     "nanotee/sqls.nvim",
     event = "BufRead",
     ft = "sql",
     config = function()
-      require("lv-sqls").config()
+      require("user.sqls").config()
     end,
   },
   -- Markdown preview
@@ -274,6 +273,17 @@ vim.api.nvim_set_keymap("n", "<S-x>",   ":BufferClose<CR>", { noremap = true, si
 
 -- }}}1
 
--- Personal vim format config and galaxyline {{{1
+-- Personal vim format config and galaxyline etc.
 vim.cmd('source ~/.config/lvim/user.lua')
--- }}}
+
+-- Colorizer example: #ff0000, Blue, #F0F #F00
+-- TODO: Something to fix.
+
+-- This works but colorizer does not load for first file.
+lvim.builtin.which_key.on_config_done = function()
+    vim.cmd('source ~/.config/lvim/user.vim')
+end
+
+-- Colorizer works but my colours/styling are not applied, (To do above should be yellow)
+-- vim.cmd('source ~/.config/lvim/user.vim')
+

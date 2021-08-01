@@ -1,7 +1,14 @@
 local M = {}
 
 M.config = function()
-    require("colorizer").setup({ "*" }, {
+    local status_ok, colorizer = pcall(require, "colorizer")
+
+    -- if not status_ok then
+        -- print("Error starting colorizer")
+        -- return
+    -- end
+
+    colorizer.setup({ "*" }, {
         RGB      = true,         -- #RGB hex codes
         RRGGBB   = true,         -- #RRGGBB hex codes
         RRGGBBAA = true,         -- #RRGGBBAA hex codes

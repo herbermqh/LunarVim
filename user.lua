@@ -174,8 +174,6 @@ end
 -- }}}1
 
 lvim.builtin.galaxyline.on_config_done = function(gl)
-    vim.cmd('source ~/.config/lvim/user.vim')
-
     local gls = gl.section
     local condition = require "galaxyline.condition"
 
