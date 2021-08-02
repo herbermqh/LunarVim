@@ -273,17 +273,14 @@ vim.api.nvim_set_keymap("n", "<S-x>",   ":BufferClose<CR>", { noremap = true, si
 
 -- }}}1
 
--- Personal vim format config and galaxyline etc.
-vim.cmd('source ~/.config/lvim/user.lua')
+vim.cmd('source ~/.config/lvim/lua/user/galaxyline.lua')
+
+lvim.builtin.galaxyline.on_config_done = function()
+    vim.cmd('source ~/.config/lvim/user_colors.vim')
+end
+
+vim.cmd('source ~/.config/lvim/user.vim')
 
 -- Colorizer example: #ff0000, Blue, #F0F #F00
 -- TODO: Something to fix.
-
--- This works but colorizer does not load for first file.
-lvim.builtin.which_key.on_config_done = function()
-    vim.cmd('source ~/.config/lvim/user.vim')
-end
-
--- Colorizer works but my colours/styling are not applied, (To do above should be yellow)
--- vim.cmd('source ~/.config/lvim/user.vim')
 
